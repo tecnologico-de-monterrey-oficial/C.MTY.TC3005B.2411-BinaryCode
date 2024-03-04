@@ -1,0 +1,48 @@
+<div nz-row>
+  <span nz-col nzSpan="12">
+    <img class='FSAEImage' src="assets/FSAE.png" alt="Example Image">
+  </span>
+  <span nz-col nzSpan="6" class="login-form">
+    <div nz-row class="car-icon">
+      Acceder a CarDrive
+      <span nz-icon nzType="car" nzTheme="fill"></span>
+    </div>
+    <button nz-button class="login-form-button login-form-margin" [nzType]="'secondary'" nzShape="round">
+      <span nz-icon nzType="google" nzTheme="outline"></span>
+      Continuar con Google
+    </button>
+    <span nz-row>o</span>
+    <form  nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Por favor introducir nombre de usuario">
+          <nz-input-group nzPrefixIcon="user">
+            <input type="text" nz-input formControlName="userName" placeholder="Usuario" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Por favor introducir contraseña">
+          <nz-input-group [nzSuffix]="suffixTemplate" nzPrefixIcon="lock">
+            <input
+              [type]="passwordVisible ? 'text' : 'password'"
+              nz-input
+              placeholder="Contraseña"
+              formControlName="password"
+            />
+          </nz-input-group>
+          <ng-template #suffixTemplate>
+            <span
+              nz-icon
+              [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+              (click)="passwordVisible = !passwordVisible"
+            ></span>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" nzShape="round">Log in</button>
+      <a nz-row class="login-form-forgot">Resetear contraseña</a>
+      <a nz-row class="login-form-forgot">Crear cuenta</a>
+    </form>
+  </span>
+  
+</div>

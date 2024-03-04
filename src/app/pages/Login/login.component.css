@@ -1,0 +1,37 @@
+.login-form {
+  max-width: 300px;
+}
+
+.login-form-margin {
+  margin-bottom: 16px;
+}
+
+.login-form-forgot {
+  float: right;
+}
+
+.login-form-button {
+  width: 100%;
+  margin: 0;
+}
+
+.ant-row {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.FSAEImage {
+  width: 100%;
+}
+
+.ant-form-item {
+  margin: 0 0 10px;
+}
+
+.car-icon {
+  font-size: 26px;
+}
