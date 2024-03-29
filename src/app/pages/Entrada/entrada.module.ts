@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 
-import { LoginRoutingModule } from './login-routing.module';
+import { EntradaRoutingModule } from './entrada-routing.module';
 
-import { LoginComponent } from './login.component';
+import { EntradaComponent } from './entrada.component';
 import { NzFormModule } from 'ng-zorro-antd/form'
 import { NzInputModule } from 'ng-zorro-antd/input'
 import { ReactiveFormsModule } from '@angular/forms';
@@ -11,14 +11,14 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @NgModule({
   imports: [
-    LoginRoutingModule,
+    EntradaRoutingModule,
     NzFormModule,
     NzInputModule,
     ReactiveFormsModule,
     NzButtonModule,
     NzIconModule
   ],
-  declarations: [LoginComponent],
-  exports: [LoginComponent],
+  declarations: [EntradaComponent],
+  exports: [EntradaComponent],
 })
-export class LoginModule { }
+export class EntradaModule { }

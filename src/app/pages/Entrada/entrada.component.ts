@@ -3,21 +3,19 @@ import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@ang
 
 @Component({
   selector: 'app-main-layout',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './entrada.component.html',
+  styleUrls: ['./entrada.component.css']
 })
-export class LoginComponent implements OnInit {
+export class EntradaComponent implements OnInit {
 
   passwordVisible = false;
 
   validateForm: FormGroup<{
     userName: FormControl<string>;
     password: FormControl<string>;
-    remember: FormControl<boolean>;
   }> = this.fb.group({
     userName: ['', [Validators.required]],
     password: ['', [Validators.required]],
-    remember: [true]
   });
 
   submitForm(): void {

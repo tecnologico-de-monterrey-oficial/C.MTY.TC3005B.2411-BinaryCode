@@ -13,7 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IconsProviderModule } from './icons-provider.module';
 import { MainLayoutModule } from './pages/MainLayout/main-layout.module';
-import { LoginModule } from './pages/Login/login.module';
+import { EntradaModule } from './pages/Entrada/entrada.module';
 
 registerLocaleData(es);
 
@@ -31,7 +31,7 @@ registerLocaleData(es);
     HttpClientModule,
     BrowserAnimationsModule,
     MainLayoutModule,
-    LoginModule
+    EntradaModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: es_ES }
