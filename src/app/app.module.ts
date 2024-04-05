@@ -12,8 +12,8 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IconsProviderModule } from './icons-provider.module';
-import { MainLayoutModule } from './pages/MainLayout/main-layout.module';
-import { EntradaModule } from './pages/Entrada/entrada.module';
+import { MainLayoutModule } from './paginas/MainLayout/main-layout.module';
+import { EntradaModule } from './paginas/Entrada/entrada.module';
 
 registerLocaleData(es);
 

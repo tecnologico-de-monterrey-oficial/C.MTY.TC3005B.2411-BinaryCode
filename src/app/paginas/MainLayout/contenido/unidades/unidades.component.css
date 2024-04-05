@@ -1,0 +1,10 @@
+.grid-container {
+    background: #fff;
+    padding: 24px;
+    min-height: 280px;
+    border-radius: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+

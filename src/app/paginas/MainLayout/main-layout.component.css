@@ -1,0 +1,19 @@
+.ant-layout-sider {
+  overflow: auto;
+  background: #F7FAFF;
+}
+.inner-layout {
+  margin: 24px;
+}
+.whole-layout {
+  height: 100%;
+}
+
+.ant-layout {
+  background: #F7FAFF;
+  overflow: auto;
+}
+
+.sider-trigger {
+  background: #F7FAFF;
+}
