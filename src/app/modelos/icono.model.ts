@@ -1,5 +1,3 @@
-import { empty } from "rxjs";
-
 export class Icono {
     nombre: string;
     color: string;

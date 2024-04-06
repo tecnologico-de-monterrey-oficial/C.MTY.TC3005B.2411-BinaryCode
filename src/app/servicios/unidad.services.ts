@@ -4,6 +4,11 @@ import { Unidad } from '../modelos/unidad.model';
 @Injectable({
   providedIn: 'root'
 })
+
+// TODO: Parametros que delimitar
+// Cuántas unidades pueden verse a la vez (ponemos paginación?)
+// Cuántas unidades puede haber en total
+
 export class UnidadesService {
 
   constructor() { }
