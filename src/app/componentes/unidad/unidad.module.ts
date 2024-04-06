@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 
-import { UnidadComponent } from '../../componentes/unidad/unidad.component';
 import { CommonModule } from '@angular/common';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzIconModule } from 'ng-zorro-antd/icon';
-import { NzDropDownModule } from 'ng-zorro-antd/dropdown'
+import { UnidadComponent } from '../../componentes/unidad/unidad.component';
+
+import { MoreOutline } from '@ant-design/icons-angular/icons';
 
 @NgModule({
   imports: [
     CommonModule,
-    NzIconModule,
+    NzIconModule.forRoot([MoreOutline]),
     NzDropDownModule,
   ],
   declarations: [

@@ -1,11 +1,11 @@
 export class Unidad {
-  name: string;
-  imageUrl: string;
-  labelColor: string;
+  nombre: string;
+  urlImagen: string;
+  color: string;
 
-  constructor(name: string, imageUrl: string, labelColor: string) {
-    this.name = name;
-    this.imageUrl = imageUrl;
-    this.labelColor = labelColor;
+  constructor(nombre: string, urlImagen: string, color: string) { 
+    this.nombre = nombre;
+    this.urlImagen = urlImagen;
+    this.color = color;
   }
 }

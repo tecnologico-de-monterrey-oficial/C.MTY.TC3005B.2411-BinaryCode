@@ -1,10 +1,9 @@
 <div class="card">
-    
     <div 
         class="image-container" 
         [ngStyle]="{ 
-            'background-image': 'url(' + unidad.imageUrl + ')', 
-            'border-color': unidad.labelColor 
+            'background-image': 'url(' + unidad.urlImagen + ')', 
+            'border-color': unidad.color 
         }"
     >
         <div class="options-button">
@@ -12,18 +11,18 @@
                 <span nz-icon nzType="more" nzTheme="outline"></span>
             </a>
             <nz-dropdown-menu #menu="nzDropdownMenu">
-            <ul nz-menu nzSelectable>
-                <li nz-menu-item>1st menu item</li>
-                <li nz-menu-item>2nd menu item</li>
-                <li nz-menu-item>3rd menu item</li>
-                <li nz-menu-item nzDanger>4th danger item</li>
-            </ul>
+                <ul nz-menu nzSelectable>
+                    <li nz-menu-item>1st menu item</li>
+                    <li nz-menu-item>2nd menu item</li>
+                    <li nz-menu-item>3rd menu item</li>
+                    <li nz-menu-item nzDanger>4th danger item</li>
+                </ul>
             </nz-dropdown-menu>
         </div>
     </div>
-    <div class="name-label" [ngStyle]="{'color': unidad.labelColor}">
-      {{ unidad.name }}
+    <div class="name-label" [ngStyle]="{'color': unidad.color}">
+        {{ unidad.nombre }}
     </div>
-  </div>
+</div>
 
   

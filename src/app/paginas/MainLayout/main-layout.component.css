@@ -1,6 +1,6 @@
 .ant-layout-sider {
   overflow: auto;
-  background: #F7FAFF;
+  background: var(--blanco);
 }
 .inner-layout {
   margin: 24px;
@@ -10,10 +10,10 @@
 }
 
 .ant-layout {
-  background: #F7FAFF;
+  background: var(--blanco);
   overflow: auto;
 }
 
 .sider-trigger {
-  background: #F7FAFF;
+  background: var(--blanco);
 }

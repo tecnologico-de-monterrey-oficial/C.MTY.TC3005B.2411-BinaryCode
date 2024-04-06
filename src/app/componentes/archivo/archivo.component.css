@@ -1,0 +1,48 @@
+.file-card {
+    width: 100%;
+    border-bottom: 1px solid var(--bordes);
+    padding: 10px 0 10px 0;
+}
+
+.estrella-llena {
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.estrella-vacia {
+    font-size: 16px;
+    cursor: pointer;
+    color: var(--contentBg);
+}
+
+.estrella-vacia:hover {
+    color: var(--negro);
+}
+
+.archivo-icono {
+    font-size: 40px;
+}
+
+.ant-col {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.grupo-columna {
+    justify-content: flex-start;
+}
+
+.lista-etiquetas {
+    justify-content: flex-start;
+    overflow: scroll;
+}
+
+.anticon {
+    padding: 0 5px 0 5px;
+}
+
+.etiqueta {
+    border-radius: 10px;
+}

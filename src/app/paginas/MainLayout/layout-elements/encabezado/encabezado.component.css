@@ -1,7 +1,7 @@
 .logo {
     width: 120px;
     height: 31px;
-    background: #818181;
+    background: var(--icono_azul);
     margin: 16px 30px 16px 30px;
     float: left;
 }
@@ -9,7 +9,7 @@
 .ant-layout-header {
     padding: 0;
     line-height: 64px;
-    background: #F7FAFF;
+    background: var(--blanco);
     display: flex;
     justify-content: space-around;
     align-items: center;

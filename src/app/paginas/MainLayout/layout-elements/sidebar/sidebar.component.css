@@ -3,8 +3,8 @@
 }
 
 .ant-menu {
-    background: #F7FAFF;
+    background: var(--blanco);
 }
 .ant-menu-inline {
-    border-right: #F7FAFF;
+    border-right: var(--blanco);
 }

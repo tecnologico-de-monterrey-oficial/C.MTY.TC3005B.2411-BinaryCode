@@ -1,1 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('assets/fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('assets/fonts/Roboto-Medium.ttf') format('truetype');
+    font-weight: 500;
+  
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+:root {
+    --blanco: #f7faff;
+    --negro: #070809;
+    --contentBg: #eef5f8;
+    --bordes: #c5cdd1;
+    --grisPerfil: #595959;
+    --rojoLogin: #ff4d4f;
+    --icono_morado: #9918ff;
+    --icono_rojo: #ff1818;
+    --icono_azul: #1890ff;
+    --icono_verde: #1dff18;
+    --icono_rosa: #ff18cc;
+    --icono_naranja: #ffb018;
+    --tarjeta_azul_fuerte: #4d69ff;
+    --tarjeta_azul_medio: #1499b5;
+    --tarjeta_azul_claro: #4dfff4;
+    --tarjeta_rojo_fuerte: #cd2f2f;
+    --tarjeta_rojo_medio: #ff2f2f;
+    --tarjeta_rojo_claro: #ff4d4f;
+    --tarjeta_morado_fuerte: #7138cc;
+    --tarjeta_morado: #914dff;
+    --tarjeta_morado_claro: #b385ff;
+    --tarjeta_verde_fuerte: #17820d;
+    --tarjeta_verde_medio: #21b514;
+    --tarjeta_verde_claro: #75ef6a;
+    --tarjeta_amarillo_fuerte: #fbb501;
+    --tarjeta_amarillo: #ffcd4d;
+    --tarjeta_amarillo_claro: #ffe298;
+    --tarjeta_rosa_fuerte: #d000af;
+    --tarjeta_rosa: #ff4de3;
+    --tarjeta_rosa_claro: #ff95ee;  
+}
