@@ -1,7 +1,35 @@
 .grid-container {
     background: var(--contentBg);
-    padding: 24px;
+    padding: 0 24px;
     min-height: 90%;
     border-radius: 25px;
 }
 
+.encabezado {
+    padding: 10px 0;
+    font-weight: 500;
+}
+
+.titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 1048px) {
+    .hide-on-small-1 {
+        display: none;
+    }
+}
+
+@media (max-width: 820px) {
+    .hide-on-small-2 {
+        display: none;
+    }
+}
+
+@media (max-width: 540px) {
+    .hide-on-small-3 {
+        display: none;
+    }
+}
