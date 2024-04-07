@@ -1,3 +1,5 @@
+import { icono_azul, icono_morado, icono_naranja, icono_rojo, icono_verde } from "../../assets/colores";
+
 export class Icono {
     nombre: string;
     color: string;
@@ -9,13 +11,15 @@ export class Icono {
 }
 
 export const fileIcons = {
-    excel: "file-excel",
-    jpg: "file-jpg",
-    pdf: "file-pdf",
+    excel: new Icono("file-excel", icono_verde),
+    jpg: new Icono("file-jpg", icono_morado),
+    pdf: new Icono("file-pdf", icono_rojo),
+    ppt: new Icono("file-ppt", icono_naranja),
+    word: new Icono("file-word", icono_azul),
+
+    
     gif: "file-gif",
     image: "file-image",
-    ppt: "file-ppt",
-    word: "file-word",
     text: "file-text",
     unknown: "file-unknown",
     empty: "file",

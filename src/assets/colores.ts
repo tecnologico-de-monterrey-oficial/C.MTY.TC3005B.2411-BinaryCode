@@ -30,3 +30,11 @@ export const tarjeta_amarillo_claro : string = "#ffe298";
 export const tarjeta_rosa_fuerte : string = "#d000af";
 export const tarjeta_rosa : string = "#ff4de3";
 export const tarjeta_rosa_claro : string = "#ff95ee";
+
+export const unidad_roja : string = "#FF4D4F";
+export const unidad_morada : string = "#914DFF";
+export const unidad_amarilla : string = "#FFCD4D";
+export const unidad_verde : string = "#21B514";
+export const unidad_azul : string = "#1499B5";
+export const unidad_rosa : string = "#FF4DE3";
+
