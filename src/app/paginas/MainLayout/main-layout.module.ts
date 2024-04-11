@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { MainLayoutRoutingModule } from './main-layout-routing.module';
 import { MainLayoutComponent } from './main-layout.component';
 
-import { ArchivosModule } from './contenido/archivos/archivos.module';
+import { ContenidoArchivosModule } from '../../componentes/contenido-archivos/contenido-archivos.module';
 import { UnidadesModule } from './contenido/unidades/unidades.module';
 
 import { EncabezadoComponent } from './layout-elements/encabezado/encabezado.component';
@@ -17,7 +17,7 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 @NgModule({
   imports: [
     MainLayoutRoutingModule,
-    ArchivosModule,
+    ContenidoArchivosModule,
     UnidadesModule,
     NzIconModule,
     NzInputModule,

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ArchivosComponent } from './archivos.component';
+import { ContenidoArchivosComponent } from './contenido-archivos.component';
 
 describe('ArchivosComponent', () => {
-  let component: ArchivosComponent;
-  let fixture: ComponentFixture<ArchivosComponent>;
+  let component: ContenidoArchivosComponent;
+  let fixture: ComponentFixture<ContenidoArchivosComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ArchivosComponent]
+      declarations: [ContenidoArchivosComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(ArchivosComponent);
+    fixture = TestBed.createComponent(ContenidoArchivosComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

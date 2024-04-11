@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Archivo } from '../../modelos/archivo.model';
+import { Archivo } from '../../../modelos/archivo.model';
 
 @Component({
   selector: 'app-archivo-fila',
