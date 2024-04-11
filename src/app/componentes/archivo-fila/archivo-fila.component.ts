@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core';
 import { Archivo } from '../../modelos/archivo.model';
 
 @Component({
-  selector: 'app-archivo',
-  templateUrl: './archivo.component.html',
-  styleUrl: './archivo.component.css'
+  selector: 'app-archivo-fila',
+  templateUrl: './archivo-fila.component.html',
+  styleUrl: './archivo-fila.component.css'
 })
-export class ArchivoComponent {
+export class ArchivoFilaComponent {
   @Input() archivo: Archivo;
 
   onStarClick(): void {

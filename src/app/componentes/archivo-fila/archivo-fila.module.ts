@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { ArchivoComponent } from './archivo.component';
+import { ArchivoFilaComponent } from './archivo-fila.component';
 
 import { CommonModule } from '@angular/common';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
@@ -17,8 +17,8 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
     NzGridModule,
   ],
   declarations: [
-    ArchivoComponent,
+    ArchivoFilaComponent,
   ],
-  exports: [ArchivoComponent],
+  exports: [ArchivoFilaComponent],
 })
-export class ArchivoModule { }
+export class ArchivoFilaModule { }

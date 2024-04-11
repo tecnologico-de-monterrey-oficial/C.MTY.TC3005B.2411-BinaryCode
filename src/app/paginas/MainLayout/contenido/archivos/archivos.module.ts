@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { ArchivosComponent } from './archivos.component';
-import { ArchivoModule } from '../../../../componentes/archivo/archivo.module';
+import { ArchivoFilaModule } from '../../../../componentes/archivo-fila/archivo-fila.module';
 
 import { CommonModule } from '@angular/common';
 import { NzGridModule } from 'ng-zorro-antd/grid';
@@ -10,7 +10,7 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 @NgModule({
   imports: [
-    ArchivoModule,
+    ArchivoFilaModule,
     CommonModule,
     NzGridModule,
     NzIconModule,
