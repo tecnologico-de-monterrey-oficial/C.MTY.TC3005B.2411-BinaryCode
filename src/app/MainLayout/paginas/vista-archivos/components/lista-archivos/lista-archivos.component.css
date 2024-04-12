@@ -12,8 +12,9 @@
 
 .titulo {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    padding-left: 12px;
 }
 
 @media (max-width: 1048px) {

@@ -10,7 +10,5 @@ import { tarjeta_morado } from '../../../../../../assets/colores';
 })
 export class ListaArchivosComponent {
   @Input() archivos: Archivo[];
-
-  carpeta: Carpeta = new Carpeta('1', 'Carpeta 1', tarjeta_morado);
-
+  @Input() carpetas: Carpeta[];
 }

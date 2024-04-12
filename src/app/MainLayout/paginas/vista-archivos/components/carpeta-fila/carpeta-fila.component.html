@@ -6,7 +6,12 @@
         <div class="texto">{{ carpeta.nombre }}</div>
     </div>
 
-    <div nz-col nzFlex="18"></div>
+    <div nz-col nzFlex="12"></div>
+
+    <!-- Fecha -->
+    <div nz-col nzFlex="6" class="hide-on-small-2" >
+        <div class="texto">{{ carpeta.fecha }}</div>
+    </div>
 
     <!-- Icono de detalles -->
     <div nz-col nzFlex="1" nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu" class="columna-icono" >

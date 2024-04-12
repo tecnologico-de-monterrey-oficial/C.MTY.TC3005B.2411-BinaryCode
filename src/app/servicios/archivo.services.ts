@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
 import { 
-    icono_azul, 
-    icono_morado, 
-    icono_naranja, 
-    icono_rojo, 
-    icono_rosa, 
     tarjeta_amarillo, 
     tarjeta_amarillo_fuerte, 
     tarjeta_azul_claro, 
@@ -22,6 +17,8 @@ import { Archivo } from '../modelos/archivo.model';
 import { Etiqueta } from '../modelos/etiqueta.model';
 import { Icono, fileIcons } from '../modelos/icono.model';
 import { Usuario } from '../modelos/usuario.model';
+import { Carpeta } from '../modelos/carpeta.model';
+import { Contenidos } from '../modelos/contenidos.model';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +41,14 @@ export class ArchivosService {
         new Archivo("6",false, fileIcons.image, 'Archivo 6', new Usuario("36", '', 'Presno Gonzalez'), [new Etiqueta("26", 'Etiqueta 16', tarjeta_amarillo_fuerte), new Etiqueta("21", 'Etiqueta 17', tarjeta_azul_medio), new Etiqueta("21", 'Etiqueta 18', tarjeta_verde_claro)], '29 de febrero de 2024'),
         ];
 
+    carpetas: Carpeta[] = [
+        new Carpeta("51", "Manuales técnicos", '29 de febrero de 2024', tarjeta_azul_fuerte),
+        new Carpeta("52", "Partes motor", '29 de febrero de 2024', tarjeta_rojo_claro),
+        new Carpeta("53", "Facturas", '29 de febrero de 2024', tarjeta_verde_claro),
+    ]
+
+    contenidos: Contenidos = new Contenidos(this.archivos, this.carpetas);
+
     getArchivosFavoritos() {
         return this.archivos;
     }
@@ -53,7 +58,7 @@ export class ArchivosService {
     }
 
     getArchivos(idParaAPI: string) {
-        return this.archivos;
+        return this.contenidos;
     }
 
 }
