@@ -12,6 +12,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { VistaUnidadesModule } from './paginas/vista-unidades/vista-unidades.module';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
     MainLayoutRoutingModule,
 
     VistaArchivosModule,
+    VistaUnidadesModule,
 
     NzIconModule,
     NzInputModule,

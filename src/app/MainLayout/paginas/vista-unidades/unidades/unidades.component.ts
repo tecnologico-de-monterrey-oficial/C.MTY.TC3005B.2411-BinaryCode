@@ -3,11 +3,11 @@ import { Unidad } from '../../../../modelos/unidad.model';
 import { UnidadesService } from '../../../../servicios/unidad.services';
 
 @Component({
-  selector: 'app-contenido-unidades',
-  templateUrl: './contenido-unidades.component.html',
-  styleUrl: './contenido-unidades.component.css'
+  selector: 'app-unidades',
+  templateUrl: './unidades.component.html',
+  styleUrl: './unidades.component.css'
 })
-export class ContenidoUnidadesComponent {
+export class UnidadesComponent {
   unidades : Unidad[] = [];
 
   constructor(private unidadesService: UnidadesService) {
