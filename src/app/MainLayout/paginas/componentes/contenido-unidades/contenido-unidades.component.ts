@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Unidad } from '../../modelos/unidad.model';
-import { UnidadesService } from '../../servicios/unidad.services';
+import { Unidad } from '../../../../modelos/unidad.model';
+import { UnidadesService } from '../../../../servicios/unidad.services';
 
 @Component({
   selector: 'app-contenido-unidades',

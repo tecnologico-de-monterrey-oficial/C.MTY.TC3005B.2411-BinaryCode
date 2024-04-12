@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Unidad } from '../../../modelos/unidad.model';
+import { Unidad } from '../../../../../modelos/unidad.model';
 
 @Component({
   selector: 'app-unidad',

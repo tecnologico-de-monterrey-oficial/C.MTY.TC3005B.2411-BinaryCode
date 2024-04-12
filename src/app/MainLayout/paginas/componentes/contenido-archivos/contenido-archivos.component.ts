@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Archivo } from '../../modelos/archivo.model';
-import { ArchivosService } from '../../servicios/archivo.services';
+import { Archivo } from '../../../../modelos/archivo.model';
+import { ArchivosService } from '../../../../servicios/archivo.services';
 
 @Component({
   selector: 'app-contenido-archivos',
