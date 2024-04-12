@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Archivo } from '../../../../modelos/archivo.model';
-import { ArchivosService } from '../../../../servicios/archivo.services';
 
 @Component({
   selector: 'app-contenido-archivos',
@@ -8,9 +7,6 @@ import { ArchivosService } from '../../../../servicios/archivo.services';
   styleUrl: './contenido-archivos.component.css'
 })
 export class ContenidoArchivosComponent {
-  archivos: Archivo[] = [];
+  @Input() archivos: Archivo[];
 
-  constructor(private archivosService: ArchivosService) {
-    this.archivos = archivosService.getArchivos();
-  }
 }

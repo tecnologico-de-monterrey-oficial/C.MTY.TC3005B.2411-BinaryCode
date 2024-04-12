@@ -44,7 +44,11 @@ export class ArchivosService {
         new Archivo("6",false, fileIcons.image, 'Archivo 6', new Usuario("36", '', 'Presno Gonzalez'), [new Etiqueta("26", 'Etiqueta 16', tarjeta_amarillo_fuerte), new Etiqueta("21", 'Etiqueta 17', tarjeta_azul_medio), new Etiqueta("21", 'Etiqueta 18', tarjeta_verde_claro)], '29 de febrero de 2024'),
         ];
 
-    getArchivos() {
+    getArchivosFavoritos() {
+        return this.archivos;
+    }
+
+    getArchivosRecientes() {
         return this.archivos;
     }
 
