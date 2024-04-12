@@ -7,6 +7,7 @@ import { Usuario } from "./usuario.model";
 // Cuántas etiquetas puede tener un archivo
 
 export class Archivo {
+    id: string;
     favorito: boolean;
     icono: Icono;
     nombre: string;
@@ -14,7 +15,8 @@ export class Archivo {
     etiquetas: Etiqueta[];
     fecha: string;
   
-    constructor(favorito: boolean, icono: Icono, nombre: string, propietario: Usuario, etiquetas: Etiqueta[], fecha: string) {
+    constructor(id: string, favorito: boolean, icono: Icono, nombre: string, propietario: Usuario, etiquetas: Etiqueta[], fecha: string) {
+        this.id = id;
         this.favorito = favorito;
         this.icono = icono;
         this.nombre = nombre;

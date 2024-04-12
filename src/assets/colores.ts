@@ -11,6 +11,8 @@ export const icono_azul : string = "#1890ff";
 export const icono_verde : string = "#1dff18";
 export const icono_rosa : string = "#ff18cc";
 export const icono_naranja : string = "#ffb018";
+export const icono_amarillo : string = "#FFDA18";
+export const icono_azul_claro : string = "#18D5FF";
 
 export const tarjeta_azul_fuerte : string = "#4d69ff";
 export const tarjeta_azul_medio : string = "#1499b5";

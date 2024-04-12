@@ -1,0 +1,31 @@
+.file-card {
+    width: 100%;
+    border-top: 1px solid var(--bordes);
+    padding: 10px 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+}
+
+.ant-col {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.archivo-icono {
+    font-size: 40px;
+    padding-left: 10px;
+}
+
+.columna-icono {
+    justify-content: center;
+    padding: 0;
+}
+
+.texto {
+    padding-left: 15px;
+}

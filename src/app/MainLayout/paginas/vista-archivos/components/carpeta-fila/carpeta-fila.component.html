@@ -1,0 +1,24 @@
+<div nz-row class="file-card" (click)="onFolderClick()">
+
+    <!-- Nombre de carpeta -->
+    <div nz-col nzFlex="6" class="carpeta" nzOffset="1">
+        <span class="archivo-icono" nz-icon nzType="folder" [ngStyle]="{'color': carpeta.color}" nzTheme="outline"></span>
+        <div class="texto">{{ carpeta.nombre }}</div>
+    </div>
+
+    <div nz-col nzFlex="18"></div>
+
+    <!-- Icono de detalles -->
+    <div nz-col nzFlex="1" nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu" class="columna-icono" >
+        <span class="detalles" nz-icon nzType="more" nzTheme="outline"></span>
+    </div>
+
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu nzSelectable>
+            <li nz-menu-item>1st menu item</li>
+            <li nz-menu-item>2nd menu item</li>
+            <li nz-menu-item>3rd menu item</li>
+            <li nz-menu-item nzDanger>4th danger item</li>
+        </ul>
+    </nz-dropdown-menu>
+</div>
