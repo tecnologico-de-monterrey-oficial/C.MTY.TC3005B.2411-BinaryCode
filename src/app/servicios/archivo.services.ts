@@ -52,4 +52,8 @@ export class ArchivosService {
         return this.archivos;
     }
 
+    getArchivos(idParaAPI: string) {
+        return this.archivos;
+    }
+
 }
