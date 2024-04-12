@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ArchivoFilaComponent } from './componentes/archivo-fila/archivo-fila.component';
-import { ListaArchivosComponent } from './componentes/lista-archivos/lista-archivos.component';
+import { ArchivoFilaComponent } from './components/archivo-fila/archivo-fila.component';
+import { ListaArchivosComponent } from './components/lista-archivos/lista-archivos.component';
 
 import { FavoritosComponent } from './favoritos/favoritos.component';
 import { RecientesComponent } from './recientes/recientes.component';
@@ -14,6 +14,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { ContenidosComponent } from './contenidos/contenidos.component';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+import { CarpetaFilaComponent } from './components/carpeta-fila/carpeta-fila.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,9 @@ import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
   ],
   declarations: [
     ArchivoFilaComponent,
+    CarpetaFilaComponent,
     ListaArchivosComponent,
+
     ContenidosComponent,
     RecientesComponent,
     FavoritosComponent,
