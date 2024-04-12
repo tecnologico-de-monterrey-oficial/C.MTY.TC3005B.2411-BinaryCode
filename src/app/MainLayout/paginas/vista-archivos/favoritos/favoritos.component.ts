@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ArchivosService } from '../../../servicios/archivo.services';
-import { Archivo } from '../../../modelos/archivo.model';
+import { ArchivosService } from '../../../../servicios/archivo.services';
+import { Archivo } from '../../../../modelos/archivo.model';
 
 @Component({
   selector: 'app-favoritos',
