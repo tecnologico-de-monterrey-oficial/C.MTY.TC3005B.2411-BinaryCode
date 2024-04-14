@@ -16,11 +16,10 @@ import { ContenidosComponent } from './contenidos/contenidos.component';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { CarpetaFilaComponent } from './components/carpeta-fila/carpeta-fila.component';
 
-import { VistaArchivosRoutingModule } from './vista-archivos-routing.module';
+//import { VistaArchivosRoutingModule } from './vista-archivos-routing.module';
 
 @NgModule({
   imports: [
-    VistaArchivosRoutingModule,
     CommonModule,
     NzGridModule,
     NzIconModule,
