@@ -15,6 +15,7 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 import { ContenidosComponent } from './contenidos/contenidos.component';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { CarpetaFilaComponent } from './components/carpeta-fila/carpeta-fila.component';
+import {PersonasComponent} from "./personas/personas.component";
 
 import { VistaArchivosRoutingModule } from './vista-archivos-routing.module';
 
@@ -37,11 +38,13 @@ import { VistaArchivosRoutingModule } from './vista-archivos-routing.module';
     ContenidosComponent,
     RecientesComponent,
     FavoritosComponent,
+    PersonasComponent,
   ],
   exports: [
     RecientesComponent,
     FavoritosComponent,
     ContenidosComponent,
+    PersonasComponent,
   ],
 })
 export class VistaArchivosModule { }
