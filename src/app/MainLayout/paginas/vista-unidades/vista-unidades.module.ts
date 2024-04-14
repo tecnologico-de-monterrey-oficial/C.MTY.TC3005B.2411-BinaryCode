@@ -19,6 +19,6 @@ import { UnidadTarjetaComponent } from './components/unidad-tarjeta/unidad-tarje
     UnidadesComponent,
     UnidadTarjetaComponent
   ],
-  exports: [UnidadesComponent],
+    exports: [UnidadesComponent, UnidadTarjetaComponent],
 })
 export class VistaUnidadesModule { }
