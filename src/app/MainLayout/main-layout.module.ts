@@ -13,20 +13,22 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { VistaUnidadesModule } from './paginas/vista-unidades/vista-unidades.module';
+import {VistaProyectosModule} from "./paginas/vista-proyectos/vista-proyectos.module";
 
 
 @NgModule({
-  imports: [
-    MainLayoutRoutingModule,
+    imports: [
+        MainLayoutRoutingModule,
 
-    VistaArchivosModule,
-    VistaUnidadesModule,
+        VistaArchivosModule,
+        VistaUnidadesModule,
 
-    NzIconModule,
-    NzInputModule,
-    NzLayoutModule,
-    NzMenuModule,
-  ],
+        NzIconModule,
+        NzInputModule,
+        NzLayoutModule,
+        NzMenuModule,
+        VistaProyectosModule,
+    ],
   declarations: [
     MainLayoutComponent,
     EncabezadoComponent,
