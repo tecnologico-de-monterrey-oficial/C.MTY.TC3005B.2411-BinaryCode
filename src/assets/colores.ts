@@ -40,3 +40,9 @@ export const unidad_verde : string = "#21B514";
 export const unidad_azul : string = "#1499B5";
 export const unidad_rosa : string = "#FF4DE3";
 
+export const proyecto_celeste : string = "#1499B5";
+export const proyecto_rojo : string = "#FF4D4F";
+export const proyecto_morado : string = "#914DFF";
+export const proyecto_verde : string = "#21B514";
+export const proyecto_amarillo : string = "#FFCD4D";
+export const proyecto_rosa : string = "#FF4DE3";

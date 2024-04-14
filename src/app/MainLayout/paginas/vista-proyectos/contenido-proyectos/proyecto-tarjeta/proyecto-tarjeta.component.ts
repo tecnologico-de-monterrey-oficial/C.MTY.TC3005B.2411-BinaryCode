@@ -1,10 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Proyecto } from '../../../../../modelos/proyectos.model';
 
 @Component({
-  selector: 'app-proyecto-tarjeta',
+  selector: 'app-proyecto',
   templateUrl: './proyecto-tarjeta.component.html',
   styleUrl: './proyecto-tarjeta.component.css'
 })
-export class ProyectoTarjetaComponent {
+
+export class ProyectoTarjetaComponent implements OnInit {
+
+  @Input() proyecto: Proyecto;
+
+  constructor() { }
+
+  ngOnInit() { }
 
 }
