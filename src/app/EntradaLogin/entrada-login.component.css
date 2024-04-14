@@ -29,30 +29,3 @@ body, html {
     display: flex;
     flex-direction: column;
 }
-
-.text {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-button {
-    padding: 10px 70px; 
-    margin: 5px 0;
-    border: 2px solid #FF4D4F; 
-    border-radius: 5px; 
-    background-color: #fff; 
-    color: #FF4D4F; 
-    font-size: 16px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #FF4D4F;
-    color: #F7FAFF; 
-}
