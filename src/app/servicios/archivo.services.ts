@@ -50,15 +50,22 @@ export class ArchivosService {
     contenidos: Contenidos = new Contenidos(this.archivos, this.carpetas);
 
     getArchivosFavoritos() {
+        // TODO: LLAMADA A API
         return this.archivos;
     }
 
     getArchivosRecientes() {
+        // TODO: LLAMADA A API
         return this.archivos;
     }
 
     getArchivos(idParaAPI: string) {
+        // TODO: LLAMADA A API
         return this.contenidos;
+    }
+
+    setFavorito(idArchivo: string, favorito: boolean) {
+        // TODO: LLAMADA A API
     }
 
 }
