@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Archivo } from '../../../../../modelos/archivo.model';
 import { Carpeta } from '../../../../../modelos/carpeta.model';
-import { tarjeta_morado } from '../../../../../../assets/colores';
 
 @Component({
   selector: 'app-lista-archivos',

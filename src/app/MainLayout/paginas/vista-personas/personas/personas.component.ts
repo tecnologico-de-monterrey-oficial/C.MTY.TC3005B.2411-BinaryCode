@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { Persona } from '../../../../modelos/persona.model';
 import { PersonasServices } from '../../../../servicios/personas.services';
-import { Archivo } from '../../../../modelos/archivo.model';
 
 @Component({
   selector: 'app-personas',
@@ -8,9 +8,9 @@ import { Archivo } from '../../../../modelos/archivo.model';
   styleUrl: './personas.component.css'
 })
 export class PersonasComponent {
-  archivos: Archivo[] = [];
+  personas : Persona[] = [];
 
-  constructor(private archivosService: PersonasServices) {
-    this.archivos = archivosService.getArchivosFavoritos();
+  constructor(private personasService: PersonasServices) {
+    this.personas = personasService.getPersonas();
   }
 }

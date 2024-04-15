@@ -7,8 +7,8 @@ import { unidad_amarilla, unidad_azul, unidad_morada, unidad_roja, unidad_rosa, 
 })
 
 // TODO: Parametros que delimitar
-// Cuántas unidades pueden verse a la vez (ponemos paginación?)
-// Cuántas unidades puede haber en total
+// Cuántas personas pueden verse a la vez (ponemos paginación?)
+// Cuántas personas puede haber en total
 
 export class UnidadesService {
 
