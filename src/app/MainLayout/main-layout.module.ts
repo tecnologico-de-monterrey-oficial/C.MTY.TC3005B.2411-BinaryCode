@@ -13,7 +13,9 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { VistaUnidadesModule } from './paginas/vista-unidades/vista-unidades.module';
-import {VistaProyectosModule} from "./paginas/vista-proyectos/vista-proyectos.module";
+import { VistaProyectosModule } from "./paginas/vista-proyectos/vista-proyectos.module";
+
+import { CrearContenidosComponent } from "./paginas/vista-archivos/contenidos/crear_contenidos/crear_contenidos.component";
 
 
 @NgModule({
@@ -33,6 +35,7 @@ import {VistaProyectosModule} from "./paginas/vista-proyectos/vista-proyectos.mo
     MainLayoutComponent,
     EncabezadoComponent,
     SidebarComponent,
+    CrearContenidosComponent,
   ],
   exports: [MainLayoutComponent],
 })
