@@ -1,8 +1,28 @@
 <nz-layout class="whole-layout">
    <app-encabezado></app-encabezado>
    <nz-layout>
-    <nz-sider nzWidth="300px" nzTheme="light" nzCollapsible>
-        <app-sidebar></app-sidebar>
+    <nz-sider nz-icon="" nzWidth="250px" nzTheme="light" nzCollapsible>
+        
+<ul  nz-menu nzMode="inline" class="sider" >
+    
+  <li nz-menu-item routerLink="/">
+      <span nz-icon nzType="folder"></span>
+      <span>  Proyecto</span>
+  </li>
+  <li nz-menu-item routerLink="/">
+      <span nz-icon nzType="star"></span>
+      <span>  Favoritos</span>
+  </li>
+  <li nz-menu-item routerLink="/">
+      <span nz-icon nzType="team"></span>
+      <span>  Personas</span>
+  </li>
+  <li nz-menu-item routerLink="/">
+      <span nz-icon nzType="history"></span>
+      <span>  Documentos recientes</span>
+  </li>
+</ul>
+
     </nz-sider>
     <nz-layout class="inner-layout">
       <nz-content>
