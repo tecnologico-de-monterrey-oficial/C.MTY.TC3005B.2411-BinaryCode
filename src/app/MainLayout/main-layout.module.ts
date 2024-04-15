@@ -40,6 +40,7 @@ import { CrearUnidadComponent } from "./paginas/vista-unidades/components/unidad
     CrearContenidosComponent,
     ProyectoCrearComponent,
     CrearUnidadComponent,
+    CrearContenidosComponent,
   ],
   exports: [MainLayoutComponent],
 })
