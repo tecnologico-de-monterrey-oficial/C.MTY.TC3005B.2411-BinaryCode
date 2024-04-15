@@ -15,6 +15,7 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { VistaUnidadesModule } from './paginas/vista-unidades/vista-unidades.module';
 import {VistaProyectosModule} from "./paginas/vista-proyectos/vista-proyectos.module";
 import {VistaPersonasModule} from "./paginas/vista-personas/vista-persona.module";
+import { CrearContenidosComponent } from "./paginas/vista-archivos/contenidos/crear_contenidos/crear_contenidos.component";
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import {VistaPersonasModule} from "./paginas/vista-personas/vista-persona.module
     MainLayoutComponent,
     EncabezadoComponent,
     SidebarComponent,
+    CrearContenidosComponent,
   ],
   exports: [MainLayoutComponent],
 })
