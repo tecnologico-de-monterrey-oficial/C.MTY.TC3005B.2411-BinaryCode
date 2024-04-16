@@ -1,0 +1,129 @@
+.body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #F7FAFF;
+}
+  
+.tarjeta {
+    width: 80%;
+    max-width: 90%; 
+    margin: 5%;
+    padding: 10px;
+    background-color: #F7FAFF;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); 
+}
+
+
+.container {
+    display: flex;
+    height: 100%;
+}
+
+.left, .right {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+}
+
+.left img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+    border: 2px solid #C5CDD1;
+}
+
+.left .buscador {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #C5CDD1;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #C5CDD1;
+}
+
+.right input[type="text"], .right textarea {
+    width: calc(100% - 10px);
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #C5CDD1;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #C5CDD1;
+    transition: color 0.3s; 
+}
+
+.right input[type="text"]::placeholder, .right textarea::placeholder {
+    color: #C5CDD1;
+}
+
+.right input[type="text"]:focus, .right textarea:focus {
+    color: #070809;
+}
+
+.right label {
+    margin-top: 20px;
+    display: block;
+    font-weight: bold;
+    color: #070809;
+    font-size: 16px;
+}
+
+.label-input-container {
+    display: flex;
+    align-items: center;
+}
+
+.label-input-container label {
+    margin-right: 10px;
+}
+
+.subir-btn {
+  display: inline-block;
+  padding: 10px px;
+  background-color: #F7FAFF;
+  color: #070809;
+  border: 1px solid #C5CDD1;
+  border-radius: 0px;
+  cursor: pointer;
+  width: fit-content; 
+
+}
+
+.subir-btn:hover {
+    background-color: #C5CDD1;
+    border: 2px solid #595959;
+}
+
+.bottom-section {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+button {
+  padding: 5px 60px; 
+  margin: 5px ;
+  border: 2px solid #FF4D4F; 
+  border-radius: 10px; 
+  background-color: #fff; 
+  color: #FF4D4F; 
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #FF4D4F;
+  color: #F7FAFF; 
+}
+
+

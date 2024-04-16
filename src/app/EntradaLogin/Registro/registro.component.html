@@ -1,0 +1,44 @@
+<div class="text">
+    <h2>Registrarse en CarDrive</h2>
+    <img src="../../../assets/images/usuarios_props/perfil_temporal.png" alt="Perfil" class="imagen-circular">
+    <h3>Nombre</h3>
+</div>
+
+<div class="campo">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre">
+</div>
+
+<div class="campo">
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" name="apellido">
+</div>
+
+<p class="texto-color">Selececiona el color</p>
+<div class="fila">
+    <div class="cuadro" [class.seleccionado]="colorSeleccionado === '#4D69FF'" (click)="seleccionarColor('#4D69FF')" style="background-color: #4D69FF;"></div>
+    <div class="cuadro" [class.seleccionado]="colorSeleccionado === '#1499B5'" (click)="seleccionarColor('#1499B5')" style="background-color: #1499B5;"></div>
+    <div class="cuadro" [class.seleccionado]="colorSeleccionado === '#4DFFF4'" (click)="seleccionarColor('#4DFFF4')" style="background-color: #4DFFF4;"></div>
+    <div class="cuadro" [class.seleccionado]="colorSeleccionado === '#CD2F2F'" (click)="seleccionarColor('#CD2F2F')" style="background-color: #CD2F2F;"></div>
+    <div class="cuadro" [class.seleccionado]="colorSeleccionado === '#FF2F2F'" (click)="seleccionarColor('#FF2F2F')" style="background-color: #FF2F2F;"></div>
+    <div class="cuadro" [class.seleccionado]="colorSeleccionado === '#FF4D4F'" (click)="seleccionarColor('#FF4D4F')" style="background-color: #FF4D4F;"></div>
+    <div class="cuadro" [class.seleccionado]="colorSeleccionado === '#7138CC'" (click)="seleccionarColor('#7138CC')" style="background-color: #7138CC;"></div>
+    <div class="cuadro" [class.seleccionado]="colorSeleccionado === '#914DFF'" (click)="seleccionarColor('#914DFF')" style="background-color: #914DFF;"></div>
+    <div class="cuadro" [class.seleccionado]="colorSeleccionado === '#B385FF'" (click)="seleccionarColor('#B385FF')" style="background-color: #B385FF;"></div>
+</div>
+<div class="fila">
+    <div class="cuadro" [class.seleccionado]="colorSeleccionado === '#17820D'" (click)="seleccionarColor('#17820D')" style="background-color: #17820D;"></div>
+    <div class="cuadro" [class.seleccionado]="colorSeleccionado === '#21B514'" (click)="seleccionarColor('#21B514')" style="background-color: #21B514;"></div>
+    <div class="cuadro" [class.seleccionado]="colorSeleccionado === '#75EF6A'" (click)="seleccionarColor('#75EF6A')" style="background-color: #75EF6A;"></div>
+    <div class="cuadro" [class.seleccionado]="colorSeleccionado === '#FBB501'" (click)="seleccionarColor('#FBB501')" style="background-color: #FBB501;"></div>
+    <div class="cuadro" [class.seleccionado]="colorSeleccionado === '#FFCD4D'" (click)="seleccionarColor('#FFCD4D')" style="background-color: #FFCD4D;"></div>
+    <div class="cuadro" [class.seleccionado]="colorSeleccionado === '#FFE298'" (click)="seleccionarColor('#FFE298')" style="background-color: #FFE298;"></div>
+    <div class="cuadro" [class.seleccionado]="colorSeleccionado === '#D000AF'" (click)="seleccionarColor('#D000AF')" style="background-color: #D000AF;"></div>
+    <div class="cuadro" [class.seleccionado]="colorSeleccionado === '#FF4DE3'" (click)="seleccionarColor('#FF4DE3')" style="background-color: #FF4DE3;"></div>
+    <div class="cuadro" [class.seleccionado]="colorSeleccionado === '#FF95EE'" (click)="seleccionarColor('#FF95EE')" style="background-color: #FF95EE;"></div>
+</div>
+
+
+<div class="buttons">
+    <button>Registrarse</button>
+</div>

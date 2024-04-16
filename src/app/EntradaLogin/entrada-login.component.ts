@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'; // Importa solo lo necesario de @angular/forms
+import { NzButtonModule } from 'ng-zorro-antd/button'; // Importa el botón de NG-ZORRO
 
 @Component({
   selector: 'app-entrada-login',
@@ -7,9 +8,11 @@ import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@ang
   styleUrls: ['./entrada-login.component.css']
 })
 export class EntradaLoginComponent implements OnInit {
+  // Declara cualquier propiedad o método necesario
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { } // Usa FormBuilder
 
-  ngOnInit() { }
-
+  ngOnInit() { 
+    // Inicializa cualquier lógica necesaria
+  }
 }

@@ -1,0 +1,72 @@
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+button {
+    padding: 7px 70px; 
+    margin: 5px 0;
+    border: 2px solid #F7FAFF; 
+    border-radius: 5px; 
+    background-color: #FF4D4F; 
+    color: #F7FAFF; 
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #fff;
+    color: #FF4D4F;
+    border: 2px solid #FF4D4F; 
+}
+
+.text {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.imagen-circular {
+    border-radius: 50%;
+    max-width: 125px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+.campo {
+    margin-bottom: 20px;
+}
+
+.campo label {
+    display: inline-block;
+    width: 100px; 
+}
+
+.campo input {
+    width: calc(100% - 100px); 
+}
+
+.fila {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.cuadro {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #070809;
+}
+
+.seleccionado {
+    border-width: 5px;
+    border-style: double;
+    border-color: #070809 #F7FAFF;
+}
+
+.texto-color {
+    font-size: 16px; 
+    color: #595959; 
+    margin: 5px 0; 
+}
