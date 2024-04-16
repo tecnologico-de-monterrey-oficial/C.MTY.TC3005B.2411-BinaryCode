@@ -16,7 +16,8 @@ import { VistaUnidadesModule } from './paginas/vista-unidades/vista-unidades.mod
 import { VistaProyectosModule } from "./paginas/vista-proyectos/vista-proyectos.module";
 
 import { CrearContenidosComponent } from "./paginas/vista-archivos/contenidos/crear_contenidos/crear_contenidos.component";
-
+import { ProyectoCrearComponent } from "./paginas/vista-proyectos/contenido-proyectos/proyecto-crear/proyecto-crear.component";
+import { CrearUnidadComponent } from "./paginas/vista-unidades/components/unidad-tarjeta/crear-unidad/crear-unidad.component";
 
 @NgModule({
     imports: [
@@ -36,6 +37,8 @@ import { CrearContenidosComponent } from "./paginas/vista-archivos/contenidos/cr
     EncabezadoComponent,
     SidebarComponent,
     CrearContenidosComponent,
+    ProyectoCrearComponent,
+    CrearUnidadComponent,
   ],
   exports: [MainLayoutComponent],
 })

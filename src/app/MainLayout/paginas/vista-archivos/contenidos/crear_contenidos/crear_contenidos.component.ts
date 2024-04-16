@@ -6,5 +6,4 @@ import { Component } from "@angular/core";
     styleUrls: ['./crear_contenidos.component.css']
 })
 
-export class CrearContenidosComponent {
-}
+export class CrearContenidosComponent {}
