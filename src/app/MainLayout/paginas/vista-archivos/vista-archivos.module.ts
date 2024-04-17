@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core';
 import { ArchivoFilaComponent } from './components/archivo-fila/archivo-fila.component';
 import { ListaArchivosComponent } from './components/lista-archivos/lista-archivos.component';
 
-import { FavoritosComponent } from './favoritos/favoritos.component';
-import { RecientesComponent } from './recientes/recientes.component';
+import { FavoritosComponent } from './paginas/favoritos/favoritos.component';
+import { RecientesComponent } from './paginas/recientes/recientes.component';
 
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
