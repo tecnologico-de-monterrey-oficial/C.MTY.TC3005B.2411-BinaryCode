@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: 'archivos', loadChildren : () => import('./MainLayout/paginas/vista-archivos/vista-archivos-routing.module').then(m => m.VistaArchivosRoutingModule) },
   {path: 'proyectos', loadChildren: () => import('./MainLayout/paginas/vista-proyectos/vista-proyectos-routing.module').then(m => m.VistaProyectosRoutingModule) },
   {path: 'unidades', loadChildren: () => import('./MainLayout/paginas/vista-unidades/vista-unidades-routing.module').then(m => m.VistaUnidadesRoutingModule) },
-  {path: 'personas', loadChildren: () => import('./MainLayout/paginas/vista-personas/vista-persona.module').then(m => m.VistaPersonasModule) },
+  {path: 'personas', loadChildren: () => import('./MainLayout/paginas/vista-personas/vista-persona-routing.module').then(m => m.VistaPersonasRoutingModule) },
 ];
 
 @NgModule({
