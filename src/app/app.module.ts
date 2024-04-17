@@ -14,14 +14,34 @@ import { AppComponent } from './app.component';
 import { IconsProviderModule } from './icons-provider.module';
 import { MainLayoutModule } from './MainLayout/main-layout.module';
 import { EntradaLoginModule } from './EntradaLogin/entrada-login.module';
+import { EncabezadoComponent } from './components/layout-elements/encabezado/encabezado.component';
+import { SidebarComponent } from './components/layout-elements/sidebar/sidebar.component';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzInputModule } from 'ng-zorro-antd/input';
+
+
+import { CrearContenidosComponent } from "./paginas/vista-archivos/contenidos/crear_contenidos/crear_contenidos.component";
+import { ProyectoCrearComponent } from "./paginas/vista-proyectos/contenido-proyectos/proyecto-crear/proyecto-crear.component";
+import { CrearUnidadComponent } from "./paginas/vista-unidades/components/unidad-tarjeta/crear-unidad/crear-unidad.component";
+import {VistaPersonasModule} from "./paginas/vista-personas/vista-persona.module";
+
 
 registerLocaleData(es);
 
 @NgModule({
   declarations: [
     AppComponent,
+    EncabezadoComponent,
+    SidebarComponent,
+    CrearContenidosComponent,
+    ProyectoCrearComponent,
+    CrearUnidadComponent,
   ],
   imports: [
+    NzIconModule,
+    NzInputModule,
+    NzLayoutModule,
+    NzMenuModule,
     BrowserModule,
     AppRoutingModule,
     IconsProviderModule,
@@ -30,8 +50,8 @@ registerLocaleData(es);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MainLayoutModule,
-    EntradaLoginModule
+    EntradaLoginModule,
+    
   ],
   providers: [
     { provide: NZ_I18N, useValue: es_ES }
