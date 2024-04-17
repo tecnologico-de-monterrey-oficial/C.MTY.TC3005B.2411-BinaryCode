@@ -19,6 +19,9 @@ export class ProyectoCrearComponent {
             alert('Por favor completa todos los campos.');
             return; // Detiene la ejecución si hay campos vacíos
         }
+        else{
+            alert('Proyecto guardado.');
+        }
 
         this.crearProyecto();
     }
