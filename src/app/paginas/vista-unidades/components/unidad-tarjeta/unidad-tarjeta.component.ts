@@ -11,8 +11,16 @@ export class UnidadTarjetaComponent implements OnInit {
 
   @Input() unidad: Unidad;
 
+  showPlaceholder : Boolean = false;
+
   constructor() { }
   
   ngOnInit() { }
+
+  handleImageError() {
+    this.showPlaceholder = true;
+  }
+
+  
 
 }

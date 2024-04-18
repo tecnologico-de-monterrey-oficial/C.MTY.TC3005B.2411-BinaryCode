@@ -9,8 +9,10 @@ import { UnidadesService } from '../../../servicios/unidad.services';
 })
 export class UnidadesComponent {
   unidades : Unidad[] = [];
+  unidadesVacias : boolean = true;
 
   constructor(private unidadesService: UnidadesService) {
     this.unidades = unidadesService.getUnidades();
+    this.unidadesVacias = this.unidades.length == 0;
   }
 }

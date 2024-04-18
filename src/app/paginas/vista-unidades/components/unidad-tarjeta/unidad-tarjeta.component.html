@@ -1,28 +1,32 @@
 <div class="card">
-    <div 
+    <img 
         class="image-container" 
-        [ngStyle]="{ 
-            'background-image': 'url(' + unidad.urlImagen + ')', 
-            'border-color': unidad.color 
-        }"
-    >
-        <div class="options-button">
-            <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
-                <span nz-icon nzType="more" nzTheme="outline"></span>
-            </a>
-            <nz-dropdown-menu #menu="nzDropdownMenu">
-                <ul nz-menu nzSelectable>
-                    <li nz-menu-item>1st menu item</li>
-                    <li nz-menu-item>2nd menu item</li>
-                    <li nz-menu-item>3rd menu item</li>
-                    <li nz-menu-item nzDanger>4th danger item</li>
-                </ul>
-            </nz-dropdown-menu>
-        </div>
+        [src]="unidad.urlImagen"
+        (error)="handleImageError()"
+        [ngStyle]="{'border-color': unidad.color}"
+        *ngIf="!showPlaceholder"/>
+    <nz-empty 
+        class="image-container"
+        [ngStyle]="{'border-color': unidad.color }"
+        nzNotFoundImage="simple" 
+        *ngIf="showPlaceholder"
+        [nzNotFoundContent]="contentTpl">
+        <ng-template #contentTpl>Hubo un problema cargando la imagen</ng-template>
+    </nz-empty>
+    <div class="options-button">
+        <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
+            <span nz-icon nzType="more" nzTheme="outline"></span>
+        </a>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu nzSelectable>
+                <li nz-menu-item>1st menu item</li>
+                <li nz-menu-item>2nd menu item</li>
+                <li nz-menu-item>3rd menu item</li>
+                <li nz-menu-item nzDanger>4th danger item</li>
+            </ul>
+        </nz-dropdown-menu>
     </div>
     <div class="name-label" [ngStyle]="{'color': unidad.color}">
         {{ unidad.nombre }}
     </div>
 </div>
-
-  
