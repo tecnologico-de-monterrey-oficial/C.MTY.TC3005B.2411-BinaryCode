@@ -30,12 +30,13 @@
   background-color: var(--blanco);
 }
 
-.collapsible-sidebar .ant-layout-menu-trigger {
-  color: var(--blanco) !important;
+::ng-deep .ant-layout-sider-trigger {
+  background-color: var(--blanco) !important;
 }
 
-.collapsible-sidebar .ant-layout-trigger:hover {
-  color: var(--blanco) !important;
+/* Cambia el color del texto del trigger */
+::ng-deep .ant-layout-sider-trigger span {
+  color: var(--icono_azul);
 }
 
 
