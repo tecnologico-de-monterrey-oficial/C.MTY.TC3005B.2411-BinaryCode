@@ -1,47 +1,49 @@
-<div nz-row class="file-card" (click)="onFileClick()">
+<a href="javascript:void(0)" (click)="onFileClick()">
+  <div nz-row class="file-card">
 
     <!-- Estrella -->
     <div nz-col nzFlex="1" class="columna-icono hide-on-small-3">
-        <span [class]="archivo.favorito ? 'estrella-llena' : 'estrella-vacia'" nz-icon nzType="star" 
-        [nzTheme]="archivo.favorito ? 'fill' : 'outline'" (click)="onStarClick()">
-        </span>
+            <span [class]="archivo.favorito ? 'estrella-llena' : 'estrella-vacia'" nz-icon nzType="star"
+                  [nzTheme]="archivo.favorito ? 'fill' : 'outline'" (click)="onStarClick()">
+            </span>
     </div>
 
     <!-- Nombre de archivo -->
     <div nz-col nzFlex="6" class="grupo-columna">
-        <span class="archivo-icono" nz-icon [nzType]="archivo.icono.nombre" [ngStyle]="{'color': archivo.icono.color}" nzTheme="outline"></span>
-        <div class="texto">{{ archivo.nombre }}</div>
+      <span class="archivo-icono" nz-icon [nzType]="archivo.icono.nombre" [ngStyle]="{'color': archivo.icono.color}" nzTheme="outline"></span>
+      <div class="texto">{{ archivo.nombre }}</div>
     </div>
 
     <!-- Propietario -->
     <div nz-col nzFlex="6" class="grupo-columna hide-on-small-3">
-        <img class="usuario-imagen" [src]="archivo.propietario.imagenUrl"/>
-        <div class="texto">{{ archivo.propietario.nombre }}</div>
+      <img class="usuario-imagen" [src]="archivo.propietario.imagenUrl"/>
+      <div class="texto">{{ archivo.propietario.nombre }}</div>
     </div>
 
     <!-- Etiquetas -->
     <div nz-col nzFlex="6" class="lista-etiquetas hide-on-small-1">
-        <nz-tag class="etiqueta" *ngFor="let etiqueta of archivo.etiquetas" [nzColor]="etiqueta.color">
-            {{ etiqueta.nombre }}
-        </nz-tag>
+      <nz-tag class="etiqueta" *ngFor="let etiqueta of archivo.etiquetas" [nzColor]="etiqueta.color">
+        {{ etiqueta.nombre }}
+      </nz-tag>
     </div>
 
     <!-- Fecha -->
     <div nz-col nzFlex="6" class="hide-on-small-2">
-        <div class="texto">{{ archivo.fecha }}</div>
+      <div class="texto">{{ archivo.fecha }}</div>
     </div>
 
     <!-- Icono de detalles -->
     <div nz-col nzFlex="1" nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu" class="columna-icono">
-        <span class="detalles" nz-icon nzType="more" nzTheme="outline"></span>
+      <span class="detalles" nz-icon nzType="more" nzTheme="outline"></span>
     </div>
 
     <nz-dropdown-menu #menu="nzDropdownMenu">
-        <ul nz-menu nzSelectable>
-            <li nz-menu-item>1st menu item</li>
-            <li nz-menu-item>2nd menu item</li>
-            <li nz-menu-item>3rd menu item</li>
-            <li nz-menu-item nzDanger>4th danger item</li>
-        </ul>
+      <ul nz-menu nzSelectable>
+        <li nz-menu-item>1st menu item</li>
+        <li nz-menu-item>2nd menu item</li>
+        <li nz-menu-item>3rd menu item</li>
+        <li nz-menu-item nzDanger>4th danger item</li>
+      </ul>
     </nz-dropdown-menu>
-</div>
+  </div>
+</a>

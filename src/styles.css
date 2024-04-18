@@ -10,7 +10,7 @@
     font-family: 'Roboto';
     src: url('assets/fonts/Roboto-Medium.ttf') format('truetype');
     font-weight: 500;
-  
+
 }
 
 body {
@@ -19,8 +19,10 @@ body {
 }
 
 :root {
+    --celeste:#4dfff4;
     --blanco: #f7faff;
     --negro: #070809;
+    --amarillo: #ffcd4d;
     --contentBg: #eef5f8;
     --bordes: #c5cdd1;
     --grisPerfil: #595959;
@@ -48,5 +50,5 @@ body {
     --tarjeta_amarillo_claro: #ffe298;
     --tarjeta_rosa_fuerte: #d000af;
     --tarjeta_rosa: #ff4de3;
-    --tarjeta_rosa_claro: #ff95ee;  
+    --tarjeta_rosa_claro: #ff95ee;
 }

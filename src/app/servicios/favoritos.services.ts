@@ -38,9 +38,4 @@ export class FavoritosServices {
     return this.archivos;
   }
 
-  getArchivosRecientes() {
-    return this.archivos;
-  }
-
-
 }

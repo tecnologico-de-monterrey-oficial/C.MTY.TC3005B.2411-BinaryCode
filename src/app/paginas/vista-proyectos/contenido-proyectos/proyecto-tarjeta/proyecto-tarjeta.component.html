@@ -24,9 +24,11 @@
       </div>
     </div>
   </div>
-  <div class="name-label" [ngStyle]="{'color': proyecto.color}">
-    {{ proyecto.nombre }}
-  </div>
+  <a href="/unidades">
+    <div class="name-label" [ngStyle]="{'color': proyecto.color}">
+      {{ proyecto.nombre }}
+    </div>
+  </a>
   <div class="description">
     {{ proyecto.descripcion }}
   </div>

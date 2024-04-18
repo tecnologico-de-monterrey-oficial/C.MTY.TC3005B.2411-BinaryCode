@@ -1,3 +1,44 @@
+.collapsible-sidebar {
+  --menu-background: var(--blanco); /* Cambia el color de fondo del menú */
+  --menu-text-color: var(--negro); /* Cambia el color del texto del menú */
+  --menu-item-selected-background: var(--amarillo); /* Cambia el color de fondo del elemento seleccionado en el menú */
+  --menu-item-hover-background: var(--blanco); /* Cambia el color de fondo al pasar el ratón sobre un elemento del menú */
+  --layout-sider-background: var(--blanco);
+  --layout-sider-text-color: var(--blanco);
+  --layout-sider-border-color: var(--blanco);
+  --layout-sider-trigger-background: var(--blanco);
+  /* Aplica los estilos personalizados */
+  background-color: var(--blanco);
+  color: var(--blanco);
+  border: 1px solid var(--blanco);
+}
+
+.collapsible-sidebar .ant-menu {
+  background-color: var(--menu-background);
+  color: var(--menu-text-color);
+}
+
+.collapsible-sidebar .ant-menu-item-selected{
+  background-color: var(--blanco);
+}
+
+.collapsible-sidebar .ant-menu-item:hover {
+  background-color: var(--blanco);
+}
+
+.collapsible-sidebar .ant-menu-text-color:hover {
+  background-color: var(--blanco);
+}
+
+.collapsible-sidebar .ant-layout-menu-trigger {
+  color: var(--blanco) !important;
+}
+
+.collapsible-sidebar .ant-layout-trigger:hover {
+  color: var(--blanco) !important;
+}
+
+
 .ant-layout-sider {
     overflow: auto;
     background: var(--blanco);
@@ -8,16 +49,16 @@
   .whole-layout {
     height: 100%;
   }
-  
+
   .ant-layout {
     background: #F7FAFF;
     overflow: auto;
   }
-  
+
   .sider-trigger {
     background: #F7FAFF;
   }
-  
+
   .sider{
     background: #F7FAFF;
   }

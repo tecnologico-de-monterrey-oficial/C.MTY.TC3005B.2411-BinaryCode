@@ -1,14 +1,14 @@
 <div class="card">
-    <img 
-        class="image-container" 
+    <img
+        class="image-container"
         [src]="unidad.urlImagen"
         (error)="handleImageError()"
         [ngStyle]="{'border-color': unidad.color}"
         *ngIf="!showPlaceholder"/>
-    <nz-empty 
+    <nz-empty
         class="image-container"
         [ngStyle]="{'border-color': unidad.color }"
-        nzNotFoundImage="simple" 
+        nzNotFoundImage="simple"
         *ngIf="showPlaceholder"
         [nzNotFoundContent]="contentTpl">
         <ng-template #contentTpl>Hubo un problema cargando la imagen</ng-template>
@@ -26,7 +26,9 @@
             </ul>
         </nz-dropdown-menu>
     </div>
+  <a href="/archivos">
     <div class="name-label" [ngStyle]="{'color': unidad.color}">
         {{ unidad.nombre }}
     </div>
+  </a>
 </div>

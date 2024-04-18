@@ -1,10 +1,10 @@
 <nz-layout class="whole-layout">
     <app-encabezado></app-encabezado>
     <nz-layout>
-     <nz-sider nz-icon="" nzWidth="250px" nzTheme="light" nzCollapsible>
- 
- <ul  nz-menu nzMode="inline" class="sider" >
- 
+      <nz-sider class="collapsible-sidebar" nzTheme="light" nzWidth="250px" nzCollapsible [nzCollapsed]="true">
+
+      <ul  nz-menu nzMode="inline" class="sider" >
+
    <li nz-menu-item routerLink="/proyectos">
        <span nz-icon nzType="folder"></span>
        <span>  Proyecto</span>
@@ -22,7 +22,7 @@
        <span>  Documentos recientes</span>
    </li>
  </ul>
- 
+
      </nz-sider>
      <nz-layout class="inner-layout">
        <nz-content>
@@ -40,4 +40,4 @@
      </nz-layout>
    </nz-layout>
  </nz-layout>
- 
+

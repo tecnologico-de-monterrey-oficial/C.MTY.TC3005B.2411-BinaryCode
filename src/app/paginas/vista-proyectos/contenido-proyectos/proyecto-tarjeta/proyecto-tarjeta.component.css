@@ -5,6 +5,7 @@
   overflow: hidden;
   margin: 10px;
   background-color: var(--blanco);
+  z-index: 0;
 }
 
 .options-button {
@@ -12,6 +13,7 @@
   justify-content: flex-end;
   margin: 2px 3px 0 0;
   font-size: 20px;
+  z-index: 1;
 }
 
 .image-container {
@@ -35,6 +37,7 @@
   padding-top: 10px;
   text-align: left;
   font-size: small;
+  color: var(--negro);
 }
 
 .anticon {
