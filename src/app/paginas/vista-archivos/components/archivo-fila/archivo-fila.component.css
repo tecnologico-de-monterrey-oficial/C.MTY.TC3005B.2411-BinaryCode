@@ -11,7 +11,7 @@
 .estrella-llena {
     font-size: 18px;
     cursor: pointer;
-    color: var(--amarillo);
+    color: var(--negro);
 }
 
 .estrella-vacia {
@@ -21,7 +21,7 @@
 }
 
 .estrella-vacia:hover {
-    color: var(--amarillo);
+    color: var(--negro);
 }
 
 .archivo-icono {
