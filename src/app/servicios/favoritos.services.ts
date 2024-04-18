@@ -35,7 +35,7 @@ export class FavoritosServices {
 
 
   getArchivosFavoritos() {
-    return this.archivos;
+      return this.archivos.filter(archivo => archivo.favorito === true);
   }
 
 }
