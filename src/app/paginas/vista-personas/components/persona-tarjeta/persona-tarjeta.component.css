@@ -38,19 +38,19 @@
 
 .usuario-icono-container {
   /* Establece el tamaño del contenedor */
-  width: 100%; /* Cambia el tamaño según sea necesario */
-  height: 100%; /* Cambia el tamaño según sea necesario */
+  width: 35px; /* Cambia el tamaño según sea necesario */
+  height: 35px; /* Cambia el tamaño según sea necesario */
   border-radius: 50%; /* Hace que el contenedor sea circular */
   border: 2px solid var(--negro); /* Cambia el grosor y color del borde según sea necesario */
-  align-items: center;
    background-color: var(--celeste);
 }
 
 .usuario-icono {
-  width: 35px;
   height: 100%;
+  display: flex;
   overflow: hidden;
-  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 1048px) {
