@@ -17,8 +17,6 @@ import { Archivo } from '../modelos/archivo.model';
 import { Etiqueta } from '../modelos/etiqueta.model';
 import { fileIcons } from '../modelos/icono.model';
 import { Usuario } from '../modelos/usuario.model';
-import { Carpeta } from '../modelos/carpeta.model';
-import { Contenidos } from '../modelos/contenidos.model';
 
 @Injectable({
   providedIn: 'root'
