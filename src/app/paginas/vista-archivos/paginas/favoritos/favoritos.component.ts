@@ -3,14 +3,14 @@ import { FavoritosServices } from '../../../../servicios/favoritos.services';
 import { Archivo } from '../../../../modelos/archivo.model';
 
 @Component({
-  selector: 'app-favoritos',
-  templateUrl: './favoritos.component.html',
-  styleUrl: './favoritos.component.css'
+    selector: 'app-favoritos',
+    templateUrl: './favoritos.component.html',
+    styleUrl: './favoritos.component.css',
 })
 export class FavoritosComponent {
-  archivos: Archivo[] = [];
+    archivos: Archivo[] = [];
 
-  constructor(private archivosService: FavoritosServices) {
-    this.archivos = archivosService.getArchivosFavoritos();
-  }
+    constructor(private archivosService: FavoritosServices) {
+        this.archivos = archivosService.getArchivosFavoritos();
+    }
 }

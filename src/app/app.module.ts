@@ -19,41 +19,38 @@ import { SidebarComponent } from './components/layout-elements/sidebar/sidebar.c
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 
-
-import { CrearContenidosComponent } from "./paginas/vista-archivos/contenidos/crear-contenidos/crear-contenidos.component";
-import { ProyectoCrearComponent } from "./paginas/vista-proyectos/contenido-proyectos/proyecto-crear/proyecto-crear.component";
-import { CrearUnidadComponent } from "./paginas/vista-unidades/components/crear-unidad/crear-unidad.component";
+import { CrearContenidosComponent } from './paginas/vista-archivos/contenidos/crear-contenidos/crear-contenidos.component';
+import { ProyectoCrearComponent } from './paginas/vista-proyectos/contenido-proyectos/proyecto-crear/proyecto-crear.component';
+import { CrearUnidadComponent } from './paginas/vista-unidades/components/crear-unidad/crear-unidad.component';
 
 registerLocaleData(es);
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    EncabezadoComponent,
-    SidebarComponent,
-    CrearContenidosComponent,
-    ProyectoCrearComponent,
-    CrearUnidadComponent,
-  ],
-  imports: [
-    NzIconModule,
-    NzInputModule,
-    NzLayoutModule,
-    NzMenuModule,
-    BrowserModule,
-    AppRoutingModule,
-    IconsProviderModule,
-    NzLayoutModule,
-    NzMenuModule,
-    FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    EntradaLoginModule,
-    MainLayoutModule,
-  ],
-  providers: [
-    { provide: NZ_I18N, useValue: es_ES }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        EncabezadoComponent,
+        SidebarComponent,
+        CrearContenidosComponent,
+        ProyectoCrearComponent,
+        CrearUnidadComponent,
+    ],
+    imports: [
+        NzIconModule,
+        NzInputModule,
+        NzLayoutModule,
+        NzMenuModule,
+        BrowserModule,
+        AppRoutingModule,
+        IconsProviderModule,
+        NzLayoutModule,
+        NzMenuModule,
+        FormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        EntradaLoginModule,
+        MainLayoutModule,
+    ],
+    providers: [{ provide: NZ_I18N, useValue: es_ES }],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

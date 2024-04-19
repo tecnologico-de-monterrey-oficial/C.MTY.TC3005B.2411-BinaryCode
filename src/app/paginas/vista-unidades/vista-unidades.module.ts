@@ -9,18 +9,15 @@ import { UnidadTarjetaComponent } from './components/unidad-tarjeta/unidad-tarje
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    NzGridModule,
-    NzIconModule,
-    NzFlexModule,
-    NzDropDownModule,
-    NzEmptyModule,
-  ],
-  declarations: [
-    UnidadesComponent,
-    UnidadTarjetaComponent
-  ],
+    imports: [
+        CommonModule,
+        NzGridModule,
+        NzIconModule,
+        NzFlexModule,
+        NzDropDownModule,
+        NzEmptyModule,
+    ],
+    declarations: [UnidadesComponent, UnidadTarjetaComponent],
     exports: [UnidadesComponent, UnidadTarjetaComponent],
 })
-export class VistaUnidadesModule { }
+export class VistaUnidadesModule {}

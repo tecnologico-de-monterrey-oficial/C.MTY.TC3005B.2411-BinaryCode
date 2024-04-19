@@ -2,21 +2,18 @@ import { Component, Input } from '@angular/core';
 import { Unidad } from '../../../../modelos/unidad.model';
 
 @Component({
-  selector: 'app-unidad',
-  templateUrl: './unidad-tarjeta.component.html',
-  styleUrl: './unidad-tarjeta.component.css'
+    selector: 'app-unidad',
+    templateUrl: './unidad-tarjeta.component.html',
+    styleUrl: './unidad-tarjeta.component.css',
 })
-
 export class UnidadTarjetaComponent {
+    @Input() unidad: Unidad;
 
-  @Input() unidad: Unidad;
+    showPlaceholder: boolean = false;
 
-  showPlaceholder : boolean = false;
+    constructor() {}
 
-  constructor() { }
-
-  handleImageError() {
-    this.showPlaceholder = true;
-  }
-
+    handleImageError() {
+        this.showPlaceholder = true;
+    }
 }

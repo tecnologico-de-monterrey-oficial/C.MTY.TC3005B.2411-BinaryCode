@@ -3,16 +3,18 @@
         class="image-container"
         [src]="unidad.urlImagen"
         (error)="handleImageError()"
-        [ngStyle]="{'border-color': unidad.color}"
+        [ngStyle]="{ 'border-color': unidad.color }"
         *ngIf="!showPlaceholder"
-        alt="Imagen de unidad"/>
+        alt="Imagen de unidad" />
     <nz-empty
         class="image-container"
-        [ngStyle]="{'border-color': unidad.color }"
+        [ngStyle]="{ 'border-color': unidad.color }"
         nzNotFoundImage="simple"
         *ngIf="showPlaceholder"
         [nzNotFoundContent]="contentTpl">
-        <ng-template #contentTpl>Hubo un problema cargando la imagen</ng-template>
+        <ng-template #contentTpl
+            >Hubo un problema cargando la imagen</ng-template
+        >
     </nz-empty>
     <div class="options-button">
         <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
@@ -27,9 +29,9 @@
             </ul>
         </nz-dropdown-menu>
     </div>
-  <a href="/archivos">
-    <div class="name-label" [ngStyle]="{'color': unidad.color}">
-        {{ unidad.nombre }}
-    </div>
-  </a>
+    <a href="/archivos">
+        <div class="name-label" [ngStyle]="{ color: unidad.color }">
+            {{ unidad.nombre }}
+        </div>
+    </a>
 </div>

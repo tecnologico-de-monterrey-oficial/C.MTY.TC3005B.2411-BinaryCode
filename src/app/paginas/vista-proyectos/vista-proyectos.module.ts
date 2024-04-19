@@ -8,17 +8,14 @@ import { ProyectoTarjetaComponent } from './contenido-proyectos/proyecto-tarjeta
 import { ProyectosComponent } from './contenido-proyectos/proyectos/proyectos.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    NzGridModule,
-    NzIconModule,
-    NzFlexModule,
-    NzDropDownModule,
-  ],
-  declarations: [
-    ProyectosComponent,
-    ProyectoTarjetaComponent,
-  ],
-  exports: [ProyectosComponent, ProyectoTarjetaComponent],
+    imports: [
+        CommonModule,
+        NzGridModule,
+        NzIconModule,
+        NzFlexModule,
+        NzDropDownModule,
+    ],
+    declarations: [ProyectosComponent, ProyectoTarjetaComponent],
+    exports: [ProyectosComponent, ProyectoTarjetaComponent],
 })
-export class VistaProyectosModule { }
+export class VistaProyectosModule {}

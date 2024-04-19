@@ -19,29 +19,29 @@ import { ContenidosComponent } from './contenidos/contenidos.component';
 //import { VistaArchivosRoutingModule } from './vista-archivos-routing.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    NzGridModule,
-    NzIconModule,
-    NzDividerModule,
-    NzDropDownModule,
-    NzTagModule,
-    NzBreadCrumbModule,
-  ],
-  declarations: [
-    ArchivoFilaComponent,
-    CarpetaFilaComponent,
-    ListaArchivosComponent,
+    imports: [
+        CommonModule,
+        NzGridModule,
+        NzIconModule,
+        NzDividerModule,
+        NzDropDownModule,
+        NzTagModule,
+        NzBreadCrumbModule,
+    ],
+    declarations: [
+        ArchivoFilaComponent,
+        CarpetaFilaComponent,
+        ListaArchivosComponent,
 
-    ContenidosComponent,
-    RecientesComponent,
-    FavoritosComponent,
-  ],
-  exports: [
-    RecientesComponent,
-    FavoritosComponent,
-    ContenidosComponent,
-    ListaArchivosComponent,
-  ],
+        ContenidosComponent,
+        RecientesComponent,
+        FavoritosComponent,
+    ],
+    exports: [
+        RecientesComponent,
+        FavoritosComponent,
+        ContenidosComponent,
+        ListaArchivosComponent,
+    ],
 })
-export class VistaArchivosModule { }
+export class VistaArchivosModule {}

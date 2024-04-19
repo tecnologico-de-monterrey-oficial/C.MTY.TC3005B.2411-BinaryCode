@@ -3,17 +3,14 @@ import { Unidad } from '../modelos/unidad.model';
 import { U1, U2, U3, U4, U5, U6 } from '../../assets/mocks/unidades';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
-
 export class UnidadesService {
+    constructor() {}
 
-  constructor() { }
+    unidades: Unidad[] = [U1, U2, U3, U4, U5, U6];
 
-  unidades: Unidad[] = [U1, U2, U3, U4, U5, U6]
-
-  getUnidades() {
-    return this.unidades;
-  }
-
+    getUnidades() {
+        return this.unidades;
+    }
 }

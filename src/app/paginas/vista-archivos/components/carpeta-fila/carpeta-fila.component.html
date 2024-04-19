@@ -1,8 +1,12 @@
 <div nz-row class="file-card" (click)="onFolderClick()">
-
     <!-- Nombre de carpeta -->
     <div nz-col nzFlex="6" class="carpeta" nzOffset="1">
-        <span class="archivo-icono" nz-icon nzType="folder" [ngStyle]="{'color': carpeta.color}" nzTheme="fill"></span>
+        <span
+            class="archivo-icono"
+            nz-icon
+            nzType="folder"
+            [ngStyle]="{ color: carpeta.color }"
+            nzTheme="fill"></span>
         <div class="texto">{{ carpeta.nombre }}</div>
     </div>
 
@@ -11,12 +15,18 @@
     <div nz-col nzFlex="6" class="hide-on-small-1"></div>
 
     <!-- Fecha -->
-    <div nz-col nzFlex="6" class="hide-on-small-2" >
+    <div nz-col nzFlex="6" class="hide-on-small-2">
         <div class="texto">{{ carpeta.fecha }}</div>
     </div>
 
     <!-- Icono de detalles -->
-    <div nz-col nzFlex="1" nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu" class="columna-icono" >
+    <div
+        nz-col
+        nzFlex="1"
+        nz-dropdown
+        nzTrigger="click"
+        [nzDropdownMenu]="menu"
+        class="columna-icono">
         <span class="detalles" nz-icon nzType="more" nzTheme="outline"></span>
     </div>
 

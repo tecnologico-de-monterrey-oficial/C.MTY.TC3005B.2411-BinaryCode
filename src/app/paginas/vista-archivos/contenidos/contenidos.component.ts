@@ -5,17 +5,18 @@ import { Carpeta } from '../../../modelos/carpeta.model';
 import { Contenidos } from '../../../modelos/contenidos.model';
 
 @Component({
-  selector: 'app-contenidos',
-  templateUrl: './contenidos.component.html',
-  styleUrl: './contenidos.component.css'
+    selector: 'app-contenidos',
+    templateUrl: './contenidos.component.html',
+    styleUrl: './contenidos.component.css',
 })
 export class ContenidosComponent {
-  archivos: Archivo[] = [];
-  carpetas: Carpeta[] = [];
+    archivos: Archivo[] = [];
+    carpetas: Carpeta[] = [];
 
-  constructor(private archivosService: ArchivosService) {
-    const contenidos: Contenidos = archivosService.getArchivos("idParaGetArchivos");
-    this.archivos = contenidos.archivos;
-    this.carpetas = contenidos.carpetas;
-  }
+    constructor(private archivosService: ArchivosService) {
+        const contenidos: Contenidos =
+            archivosService.getArchivos('idParaGetArchivos');
+        this.archivos = contenidos.archivos;
+        this.carpetas = contenidos.carpetas;
+    }
 }

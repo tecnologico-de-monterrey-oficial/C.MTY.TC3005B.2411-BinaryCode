@@ -1,40 +1,48 @@
-
 <div nz-row class="file-card">
+    <!-- Nombre de la persona -->
+    <div nz-col nzFlex="6" class="grupo-columna">
+        <div class="usuario-container">
+            <ng-container *ngIf="persona.persona.imagenUrl; else icono">
+                <!-- Mostrar la imagen si la URL de la imagen está presente -->
+                <img
+                    class="usuario-imagen"
+                    [src]="persona.persona.imagenUrl"
+                    alt="Imagen de usuario" />
+            </ng-container>
 
-      <!-- Nombre de la persona -->
-  <div nz-col nzFlex="6" class="grupo-columna">
-    <div class="usuario-container">
-      <ng-container *ngIf="persona.persona.imagenUrl; else icono">
-        <!-- Mostrar la imagen si la URL de la imagen está presente -->
-        <img class="usuario-imagen" [src]="persona.persona.imagenUrl" alt="Imagen de usuario">
-      </ng-container>
-
-      <ng-template #icono>
-        <!-- Mostrar el icono si la URL de la imagen no está presente -->
-        <div class="usuario-icono-container">
-          <span class="usuario-icono" nz-icon nzType="user"></span>
+            <ng-template #icono>
+                <!-- Mostrar el icono si la URL de la imagen no está presente -->
+                <div class="usuario-icono-container">
+                    <span class="usuario-icono" nz-icon nzType="user"></span>
+                </div>
+            </ng-template>
         </div>
-      </ng-template>
+
+        <div class="texto">{{ persona.persona.nombre }}</div>
     </div>
 
-    <div class="texto">{{ persona.persona.nombre }}</div>
-  </div>
+    <!-- Fecha -->
+    <div nz-col nzFlex="6" class="hide-on-small-3">
+        <div class="texto">{{ persona.fecha }}</div>
+    </div>
 
-      <!-- Fecha -->
-  <div nz-col nzFlex="6" class="hide-on-small-3">
-    <div class="texto">{{ persona.fecha }}</div>
-  </div>
+    <!-- Icono de detalles -->
+    <div
+        nz-col
+        nzFlex="1"
+        nz-dropdown
+        nzTrigger="click"
+        [nzDropdownMenu]="menu"
+        class="columna-icono">
+        <span class="detalles" nz-icon nzType="more" nzTheme="outline"></span>
+    </div>
 
-  <!-- Icono de detalles -->
-  <div nz-col nzFlex="1" nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu" class="columna-icono">
-    <span class="detalles" nz-icon nzType="more" nzTheme="outline"></span>
-  </div>
-
-  <nz-dropdown-menu #menu="nzDropdownMenu">
-    <ul nz-menu nzSelectable>
-      <li nz-menu-item nzDanger>Dar permisos de administrador <span nz-icon nzType = "solution"></span></li>
-    </ul>
-  </nz-dropdown-menu>
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu nzSelectable>
+            <li nz-menu-item nzDanger>
+                Dar permisos de administrador
+                <span nz-icon nzType="solution"></span>
+            </li>
+        </ul>
+    </nz-dropdown-menu>
 </div>
-
-

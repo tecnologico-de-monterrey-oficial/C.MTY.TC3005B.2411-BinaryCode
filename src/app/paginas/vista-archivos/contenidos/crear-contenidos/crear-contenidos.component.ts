@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-crear-contenidos',
     templateUrl: './crear-contenidos.component.html',
-    styleUrls: ['./crear-contenidos.component.css']
+    styleUrls: ['./crear-contenidos.component.css'],
 })
 export class CrearContenidosComponent {
     agregar: string = ''; // Propiedad enlazada al input 'agregar'
@@ -14,7 +14,11 @@ export class CrearContenidosComponent {
 
     validarDatos(): void {
         // Validación de los datos ingresados
-        if (this.agregar.trim() === '' || this.nombreArchivo.trim() === '' || this.descripcion.trim() === '') {
+        if (
+            this.agregar.trim() === '' ||
+            this.nombreArchivo.trim() === '' ||
+            this.descripcion.trim() === ''
+        ) {
             alert('Por favor completa todos los campos.');
             return; // Detiene la ejecución si hay campos vacíos
         }

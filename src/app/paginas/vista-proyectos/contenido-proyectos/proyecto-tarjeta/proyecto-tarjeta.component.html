@@ -1,35 +1,51 @@
 <div class="card">
-  <div
-    class="image-container"
-    [ngStyle]="{
+    <div
+        class="image-container"
+        [ngStyle]="{
             'background-image': 'url(' + proyecto.urlImagen + ')',
-            'border-color': proyecto.color,
+            'border-color': proyecto.color
         }"
-    style="position: relative;"
-  >
-    <div [ngStyle]="{'position': 'absolute', 'top': '0', 'left': '0', 'width': '100%', 'height': '100%', 'background-color': proyecto.color, 'opacity': '0.5', 'border-radius': '10px'}">
-      <div
-        class="options-button">
-        <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
-          <span nz-icon nzType="more" nzTheme="outline"></span>
-        </a>
-        <nz-dropdown-menu #menu="nzDropdownMenu">
-          <ul nz-menu nzSelectable>
-            <li nz-menu-item>Editar <span nz-icon nzType = "edit"></span></li>
-            <li nz-menu-item>Archivar <span nz-icon nzType = "folder-open"></span></li>
-            <li nz-menu-item>Dar permisos <span nz-icon nzType = "unlock"></span></li>
-            <li nz-menu-item nzDanger>Borrar <span nz-icon nzType = "delete"></span></li>
-          </ul>
-        </nz-dropdown-menu>
-      </div>
+        style="position: relative">
+        <div
+            [ngStyle]="{
+                position: 'absolute',
+                top: '0',
+                left: '0',
+                width: '100%',
+                height: '100%',
+                'background-color': proyecto.color,
+                opacity: '0.5',
+                'border-radius': '10px'
+            }">
+            <div class="options-button">
+                <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
+                    <span nz-icon nzType="more" nzTheme="outline"></span>
+                </a>
+                <nz-dropdown-menu #menu="nzDropdownMenu">
+                    <ul nz-menu nzSelectable>
+                        <li nz-menu-item>
+                            Editar <span nz-icon nzType="edit"></span>
+                        </li>
+                        <li nz-menu-item>
+                            Archivar <span nz-icon nzType="folder-open"></span>
+                        </li>
+                        <li nz-menu-item>
+                            Dar permisos <span nz-icon nzType="unlock"></span>
+                        </li>
+                        <li nz-menu-item nzDanger>
+                            Borrar <span nz-icon nzType="delete"></span>
+                        </li>
+                    </ul>
+                </nz-dropdown-menu>
+            </div>
+        </div>
     </div>
-  </div>
-  <a href="/unidades">
-    <div class="name-label" [ngStyle]="{'color': proyecto.color}">
-      {{ proyecto.nombre }}
+    <a href="/unidades">
+        <div class="name-label" [ngStyle]="{ color: proyecto.color }">
+            {{ proyecto.nombre }}
+        </div>
+    </a>
+    <div class="description">
+        {{ proyecto.descripcion }}
     </div>
-  </a>
-  <div class="description">
-    {{ proyecto.descripcion }}
-  </div>
 </div>

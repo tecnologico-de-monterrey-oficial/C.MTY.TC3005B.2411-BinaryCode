@@ -1,6 +1,6 @@
-import { Etiqueta } from "./etiqueta.model";
-import { Icono } from "./icono.model";
-import { Usuario } from "./usuario.model";
+import { Etiqueta } from './etiqueta.model';
+import { Icono } from './icono.model';
+import { Usuario } from './usuario.model';
 
 // TODO: Parametros que delimitar
 // Qué tan largo puede ser el título de un archivo
@@ -14,8 +14,16 @@ export class Archivo {
     propietario: Usuario;
     etiquetas: Etiqueta[];
     fecha: string;
-  
-    constructor(id: string, favorito: boolean, icono: Icono, nombre: string, propietario: Usuario, etiquetas: Etiqueta[], fecha: string) {
+
+    constructor(
+        id: string,
+        favorito: boolean,
+        icono: Icono,
+        nombre: string,
+        propietario: Usuario,
+        etiquetas: Etiqueta[],
+        fecha: string
+    ) {
         this.id = id;
         this.favorito = favorito;
         this.icono = icono;
@@ -24,5 +32,4 @@ export class Archivo {
         this.etiquetas = etiquetas;
         this.fecha = fecha;
     }
-
 }

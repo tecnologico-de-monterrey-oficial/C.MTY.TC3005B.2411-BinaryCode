@@ -5,7 +5,7 @@ export class Etiqueta {
     id: string;
     nombre: string;
     color: string | null = null;
-    
+
     constructor(id: string, nombre: string, color?: string) {
         this.id = id;
         this.nombre = nombre;

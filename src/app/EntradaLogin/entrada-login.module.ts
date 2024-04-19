@@ -8,10 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 
 @NgModule({
-  imports: [
-    EntradaLoginRoutingModule,
-  ],
-  declarations: [EntradaLoginComponent, LoginComponent, RegistroComponent],
-  exports: [EntradaLoginComponent],
+    imports: [EntradaLoginRoutingModule],
+    declarations: [EntradaLoginComponent, LoginComponent, RegistroComponent],
+    exports: [EntradaLoginComponent],
 })
-export class EntradaLoginModule { }
+export class EntradaLoginModule {}

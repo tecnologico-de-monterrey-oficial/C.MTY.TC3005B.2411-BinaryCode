@@ -5,7 +5,7 @@ export class Usuario {
     id: string;
     nombre: string;
     imagenUrl: string;
-    
+
     constructor(id: string, imagenUrl: string, nombre: string) {
         this.id = id;
         this.imagenUrl = imagenUrl;
