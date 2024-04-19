@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { navBarData } from './nav-data';
-
 
 @Component({
   selector: 'app-sidebar',
