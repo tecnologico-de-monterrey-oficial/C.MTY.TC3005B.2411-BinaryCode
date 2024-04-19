@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Archivo } from '../../../modelos/archivo.model';
 import { ArchivosService } from '../../../servicios/archivo.services';
 import { Carpeta } from '../../../modelos/carpeta.model';
