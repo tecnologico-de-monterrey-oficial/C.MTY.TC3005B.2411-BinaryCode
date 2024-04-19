@@ -4,7 +4,8 @@
         [src]="unidad.urlImagen"
         (error)="handleImageError()"
         [ngStyle]="{'border-color': unidad.color}"
-        *ngIf="!showPlaceholder"/>
+        *ngIf="!showPlaceholder"
+        alt="Imagen de unidad"/>
     <nz-empty
         class="image-container"
         [ngStyle]="{'border-color': unidad.color }"

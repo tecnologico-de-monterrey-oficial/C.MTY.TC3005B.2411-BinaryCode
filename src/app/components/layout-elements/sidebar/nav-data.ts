@@ -1,4 +1,3 @@
-import { SubscriptionLoggable } from "rxjs/internal/testing/SubscriptionLoggable";
 
 export const navBarData = [
     {

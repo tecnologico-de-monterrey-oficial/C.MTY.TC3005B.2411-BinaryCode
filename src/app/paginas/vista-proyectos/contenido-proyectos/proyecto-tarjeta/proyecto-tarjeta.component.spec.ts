@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProyectoTarjetaComponent } from './proyecto-tarjeta.component';
-import { By } from '@angular/platform-browser';
 import { Proyecto } from '../../../../modelos/proyectos.model';
 
 describe('ProyectoTarjetaComponent', () => {

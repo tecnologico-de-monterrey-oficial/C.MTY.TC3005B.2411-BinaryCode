@@ -61,10 +61,13 @@ export class ArchivosService {
 
     getArchivos(idParaAPI: string) {
         // TODO: LLAMADA A API
+        idParaAPI;
         return this.contenidos;
     }
 
     setFavorito(idArchivo: string, favorito: boolean) {
+        idArchivo;
+        favorito;
         // TODO: LLAMADA A API
     }
 
