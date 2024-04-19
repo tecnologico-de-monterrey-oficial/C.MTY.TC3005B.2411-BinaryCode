@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Persona } from '../../../../modelos/persona.model';
 
 @Component({
@@ -7,12 +7,10 @@ import { Persona } from '../../../../modelos/persona.model';
   styleUrl: './persona-tarjeta.component.css'
 })
 
-export class PersonaTarjetaComponent implements OnInit {
+export class PersonaTarjetaComponent {
 
   @Input() persona: Persona;
 
   constructor() { }
-
-  ngOnInit() { }
 
 }

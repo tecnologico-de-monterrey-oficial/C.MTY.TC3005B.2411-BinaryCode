@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Unidad } from '../../../../modelos/unidad.model';
 
 @Component({
@@ -7,20 +7,16 @@ import { Unidad } from '../../../../modelos/unidad.model';
   styleUrl: './unidad-tarjeta.component.css'
 })
 
-export class UnidadTarjetaComponent implements OnInit {
+export class UnidadTarjetaComponent {
 
   @Input() unidad: Unidad;
 
   showPlaceholder : boolean = false;
 
   constructor() { }
-  
-  ngOnInit() { }
 
   handleImageError() {
     this.showPlaceholder = true;
   }
-
-  
 
 }

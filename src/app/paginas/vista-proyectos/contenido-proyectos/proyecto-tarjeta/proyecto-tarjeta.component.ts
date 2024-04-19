@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Proyecto } from '../../../../modelos/proyectos.model';
 
 @Component({
@@ -7,12 +7,10 @@ import { Proyecto } from '../../../../modelos/proyectos.model';
   styleUrl: './proyecto-tarjeta.component.css'
 })
 
-export class ProyectoTarjetaComponent implements OnInit {
+export class ProyectoTarjetaComponent {
 
   @Input() proyecto: Proyecto;
 
   constructor() { }
-
-  ngOnInit() { }
 
 }
