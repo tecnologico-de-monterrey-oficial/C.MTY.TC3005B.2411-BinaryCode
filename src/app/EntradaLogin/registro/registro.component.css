@@ -1,24 +1,33 @@
-.buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.titulo {
+    font-size: 35px;
+    margin-bottom: 20px;
 }
 
 button {
     padding: 7px 70px;
     margin: 5px 0;
-    border: 2px solid #f7faff;
+    border: 2px solid var(--blanco);
     border-radius: 5px;
-    background-color: #ff4d4f;
-    color: #f7faff;
-    font-size: 16px;
+    background-color: var(--rojoLogin);
+    color: var(--blanco);
+    font-size: 20px;
     cursor: pointer;
+    position: absolute;
+    right: 145px;
 }
 
 button:hover {
-    background-color: #fff;
-    color: #ff4d4f;
-    border: 2px solid #ff4d4f;
+    background-color: var(--blanco);
+    color: var(--rojoLogin);
+    border: 2px solid var(--rojoLogin);
+}
+
+.colores {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px 0;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .text {
@@ -36,32 +45,54 @@ button:hover {
 
 .campo {
     margin-bottom: 20px;
+    width: 100%;
 }
 
 .campo label {
     display: inline-block;
     width: 100px;
+    color: var(--negro);
+    font-size: 20px;
 }
 
 .campo input {
     width: calc(100% - 100px);
+    background: var(--contentBg);
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
 }
 
 .cuadro {
-    width: 10px;
-    height: 30px;
-    margin: 5px;
-    border: 1px solid #070809;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    border: 1px solid var(--negro);
+    border-radius: 5px;
 }
 
 .seleccionado {
-    border-width: 5px;
-    border-style: double;
-    border-color: #070809 #f7faff;
+    border-width: 3px;
 }
 
 .texto-color {
     font-size: 16px;
     color: #595959;
     margin: 5px 0;
+}
+
+.usuario-container {
+    max-width: 100%;
+    max-height: 100%;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.usuario-icono-container {
+    font-size: 110px;
+    width: 175px;
+    height: 175px;
+    border-radius: 50%;
+    border: 2px solid var(--negro);
+    margin: 35px auto;
 }

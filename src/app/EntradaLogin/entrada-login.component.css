@@ -19,6 +19,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .left img {
@@ -29,4 +30,9 @@ html {
 .right {
     display: flex;
     flex-direction: column;
+}
+
+app-registro {
+    width: 100%;
+    padding: 0 120px;
 }

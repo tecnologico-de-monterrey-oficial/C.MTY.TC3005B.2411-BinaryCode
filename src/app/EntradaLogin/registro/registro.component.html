@@ -1,27 +1,30 @@
 <div class="text">
-    <h2>Registrarse en CarDrive</h2>
-    <img
-        src="../../../assets/images/usuarios_props/perfil_temporal.png"
-        alt="Perfil"
-        class="imagen-circular" />
-    <h3>Nombre</h3>
+    <div class="titulo">Registrarse en CarDrive</div>
+    <div
+        class="usuario-icono-container"
+        [style.background-color]="colorSeleccionado">
+        <span class="usuario-icono" nz-icon nzType="user"></span>
+    </div>
 </div>
 
 <div class="campo">
     <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre" />
+    <input nz-input placeholder="Nombre" type="text" formControlName="nombre" />
 </div>
 
 <div class="campo">
     <label for="apellido">Apellido:</label>
-    <input type="text" id="apellido" name="apellido" />
+    <input
+        nz-input
+        placeholder="Apellido"
+        type="text"
+        formControlName="apellido" />
 </div>
 
 <p class="texto-color">Selecciona el color</p>
 
-<nz-row>
+<div class="colores">
     <div
-        nz-col
         *ngFor="let opcionColor of colores"
         nzSpan="2"
         class="cuadro"
@@ -30,8 +33,6 @@
         [style.background-color]="opcionColor">
         {{ color }}
     </div>
-</nz-row>
-
-<div class="buttons">
-    <button>Registrarse</button>
 </div>
+
+<button>Registrarse</button>

@@ -26,8 +26,6 @@ import {
     styleUrls: ['./registro.component.css'],
 })
 export class RegistroComponent {
-    colorSeleccionado: string | null = null;
-
     colores: string[] = [
         tarjeta_azul_fuerte,
         tarjeta_azul_medio,
@@ -48,6 +46,9 @@ export class RegistroComponent {
         tarjeta_rosa,
         tarjeta_rosa_claro,
     ];
+
+    colorSeleccionado: string =
+        this.colores[Math.floor(Math.random() * this.colores.length)];
 
     seleccionarColor(color: string): void {
         this.colorSeleccionado =
