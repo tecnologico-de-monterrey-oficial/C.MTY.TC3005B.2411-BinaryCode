@@ -10,8 +10,6 @@ export class ProyectoCrearComponent {
     descripcion: string = ''; // Propiedad enlazada al textarea 'descripcion'
     colorSeleccionado: string | null = null;
 
-    constructor() {}
-
     validarDatos(): void {
         // Validación de los datos ingresados
         if (
@@ -32,7 +30,7 @@ export class ProyectoCrearComponent {
         console.log('Datos válidos, creando proyecto...');
     }
 
-    seleccionarColor(color: string) {
+    seleccionarColor(color: string): void {
         this.colorSeleccionado =
             this.colorSeleccionado === color ? null : color;
     }

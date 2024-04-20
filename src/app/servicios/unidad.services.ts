@@ -6,11 +6,9 @@ import { U1, U2, U3, U4, U5, U6 } from '../../assets/mocks/unidades';
     providedIn: 'root',
 })
 export class UnidadesService {
-    constructor() {}
-
     unidades: Unidad[] = [U1, U2, U3, U4, U5, U6];
 
-    getUnidades() {
+    getUnidades(): Unidad[] {
         return this.unidades;
     }
 }

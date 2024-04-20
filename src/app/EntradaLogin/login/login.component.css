@@ -5,19 +5,19 @@
 }
 
 button {
-    padding: 10px 70px; 
+    padding: 10px 70px;
     margin: 5px 0;
-    border: 2px solid #FF4D4F; 
-    border-radius: 5px; 
-    background-color: #fff; 
-    color: #FF4D4F; 
+    border: 2px solid #ff4d4f;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #ff4d4f;
     font-size: 16px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #FF4D4F;
-    color: #F7FAFF; 
+    background-color: #ff4d4f;
+    color: #f7faff;
 }
 
 .text {

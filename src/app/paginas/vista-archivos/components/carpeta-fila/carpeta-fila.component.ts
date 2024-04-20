@@ -9,7 +9,7 @@ import { Carpeta } from '../../../../modelos/carpeta.model';
 export class CarpetaFilaComponent {
     @Input() carpeta: Carpeta;
 
-    onFolderClick() {
+    onFolderClick(): void {
         console.log('Carpeta clickeada');
     }
 }

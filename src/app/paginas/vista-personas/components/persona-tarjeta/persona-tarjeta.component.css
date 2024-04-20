@@ -1,72 +1,72 @@
 .file-card {
-  width: 100%;
-  border-top: 1px solid var(--bordes);
-  padding: 10px;
+    width: 100%;
+    border-top: 1px solid var(--bordes);
+    padding: 10px;
 }
 
 .detalles {
-  color: var(--negro);
+    color: var(--negro);
 }
 
 .ant-col {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .columna-icono {
-  justify-content: center;
-  padding: 0;
+    justify-content: center;
+    padding: 0;
 }
 
 .texto {
-  padding-left: 15px;
+    padding-left: 15px;
 }
 
 .usuario-container {
-  max-width: 100%;
-  max-height: 100%;
-  align-items: center;
+    max-width: 100%;
+    max-height: 100%;
+    align-items: center;
 }
 .usuario-imagen {
-  width: 35px;
-  height: 35px;
-  overflow: hidden;
-  border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+    border-radius: 50%;
 }
 
 .usuario-icono-container {
-  /* Establece el tamaño del contenedor */
-  width: 35px; /* Cambia el tamaño según sea necesario */
-  height: 35px; /* Cambia el tamaño según sea necesario */
-  border-radius: 50%; /* Hace que el contenedor sea circular */
-  border: 2px solid var(--negro); /* Cambia el grosor y color del borde según sea necesario */
-   background-color: var(--celeste);
+    /* Establece el tamaño del contenedor */
+    width: 35px; /* Cambia el tamaño según sea necesario */
+    height: 35px; /* Cambia el tamaño según sea necesario */
+    border-radius: 50%; /* Hace que el contenedor sea circular */
+    border: 2px solid var(--negro); /* Cambia el grosor y color del borde según sea necesario */
+    background-color: var(--celeste);
 }
 
 .usuario-icono {
-  height: 100%;
-  display: flex;
-  overflow: hidden;
-  justify-content: center;
-  align-items: center;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
 }
 
 @media (max-width: 1048px) {
-  .hide-on-small-1 {
-    display: none;
-  }
+    .hide-on-small-1 {
+        display: none;
+    }
 }
 
 @media (max-width: 820px) {
-  .hide-on-small-2 {
-    display: none;
-  }
+    .hide-on-small-2 {
+        display: none;
+    }
 }
 
 @media (max-width: 540px) {
-  .hide-on-small-3 {
-    display: none;
-  }
+    .hide-on-small-3 {
+        display: none;
+    }
 }

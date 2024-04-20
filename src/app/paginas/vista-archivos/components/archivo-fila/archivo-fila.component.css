@@ -42,9 +42,9 @@
 }
 
 .lista-etiquetas {
-  justify-content: flex-start;
-  overflow-x: scroll;
-  overflow-y: hidden;
+    justify-content: flex-start;
+    overflow-x: scroll;
+    overflow-y: hidden;
 }
 
 .etiqueta {

@@ -5,17 +5,17 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #F7FAFF;
+    background-color: #f7faff;
 }
-  
+
 .tarjeta {
     width: 80%;
-    max-width: 90%; 
+    max-width: 90%;
     margin: 5%;
     padding: 10px;
-    background-color: #F7FAFF;
+    background-color: #f7faff;
     border-radius: 10px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
 }
 
 .container {
@@ -23,7 +23,8 @@
     height: 100%;
 }
 
-.left, .right {
+.left,
+.right {
     flex: 1;
     padding: 20px;
     display: flex;
@@ -36,33 +37,32 @@
     margin-top: 5px;
     display: flex;
     justify-content: space-between;
-  }
+}
 
-  
 button {
-    padding: 5px 60px; 
-    margin: 5px ;
-    border: 2px solid #FF4D4F; 
-    border-radius: 10px; 
-    background-color: #fff; 
-    color: #FF4D4F; 
+    padding: 5px 60px;
+    margin: 5px;
+    border: 2px solid #ff4d4f;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #ff4d4f;
     font-size: 16px;
     cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #FF4D4F;
-    color: #F7FAFF; 
-  }
-  
-  .right .buscador {
+}
+
+button:hover {
+    background-color: #ff4d4f;
+    color: #f7faff;
+}
+
+.right .buscador {
     margin-top: 20px;
     width: 100%;
     padding: 10px;
-    border: 1px solid #C5CDD1;
+    border: 1px solid #c5cdd1;
     border-radius: 5px;
     font-size: 14px;
-    color: #C5CDD1;
+    color: #c5cdd1;
 }
 
 .fila {
@@ -80,18 +80,18 @@ button {
 .seleccionado {
     border-width: 5px;
     border-style: double;
-    border-color: #070809 #F7FAFF;
+    border-color: #070809 #f7faff;
 }
 
 .texto-color {
-    font-size: 16px; 
-    color: #595959; 
-    margin: 5px 0; 
+    font-size: 16px;
+    color: #595959;
+    margin: 5px 0;
 }
 
 .left img {
     max-width: 100%;
     max-height: 100%;
     border-radius: 10px;
-    border: 2px solid #C5CDD1;
+    border: 2px solid #c5cdd1;
 }

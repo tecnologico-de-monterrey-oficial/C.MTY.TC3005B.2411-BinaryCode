@@ -22,8 +22,6 @@ import { Usuario } from '../modelos/usuario.model';
     providedIn: 'root',
 })
 export class RecientesService {
-    constructor() {}
-
     recientes: Archivo[] = [
         new Archivo(
             '1',

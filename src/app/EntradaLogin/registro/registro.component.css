@@ -5,20 +5,20 @@
 }
 
 button {
-    padding: 7px 70px; 
+    padding: 7px 70px;
     margin: 5px 0;
-    border: 2px solid #F7FAFF; 
-    border-radius: 5px; 
-    background-color: #FF4D4F; 
-    color: #F7FAFF; 
+    border: 2px solid #f7faff;
+    border-radius: 5px;
+    background-color: #ff4d4f;
+    color: #f7faff;
     font-size: 16px;
     cursor: pointer;
 }
 
 button:hover {
     background-color: #fff;
-    color: #FF4D4F;
-    border: 2px solid #FF4D4F; 
+    color: #ff4d4f;
+    border: 2px solid #ff4d4f;
 }
 
 .text {
@@ -40,11 +40,11 @@ button:hover {
 
 .campo label {
     display: inline-block;
-    width: 100px; 
+    width: 100px;
 }
 
 .campo input {
-    width: calc(100% - 100px); 
+    width: calc(100% - 100px);
 }
 
 .fila {
@@ -62,11 +62,11 @@ button:hover {
 .seleccionado {
     border-width: 5px;
     border-style: double;
-    border-color: #070809 #F7FAFF;
+    border-color: #070809 #f7faff;
 }
 
 .texto-color {
-    font-size: 16px; 
-    color: #595959; 
-    margin: 5px 0; 
+    font-size: 16px;
+    color: #595959;
+    margin: 5px 0;
 }

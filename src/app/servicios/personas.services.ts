@@ -5,8 +5,6 @@ import { Persona } from '../modelos/persona.model';
     providedIn: 'root',
 })
 export class PersonasServices {
-    constructor() {}
-
     personas: Persona[] = [
         new Persona(
             new Usuario(
@@ -38,7 +36,7 @@ export class PersonasServices {
         ),
     ];
 
-    getPersonas() {
+    getPersonas(): Persona[] {
         return this.personas;
     }
 }

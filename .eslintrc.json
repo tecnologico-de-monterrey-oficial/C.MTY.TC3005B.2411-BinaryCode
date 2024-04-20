@@ -14,7 +14,6 @@
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates",
         "plugin:prettier/recommended"
-
       ],
       "rules": {
         "@angular-eslint/directive-selector": [
@@ -31,6 +30,14 @@
             "type": "element",
             "prefix": "app",
             "style": "kebab-case"
+          }
+        ],
+        "@typescript-eslint/explicit-function-return-type": "error",
+        "@typescript-eslint/no-useless-constructor": "error",
+        "@typescript-eslint/typedef": [
+          "error",
+          {
+            "variableDeclaration": true
           }
         ]
       }
@@ -59,7 +66,10 @@
         "plugin:prettier/recommended"
       ],
       "rules": {
-        "css-modules/space-indents": ["error", 4]
+        "css-modules/space-indents": [
+          "error",
+          4
+        ]
       }
     }
   ]

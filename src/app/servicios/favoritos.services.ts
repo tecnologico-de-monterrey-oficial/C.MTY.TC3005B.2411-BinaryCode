@@ -21,8 +21,6 @@ import { Usuario } from '../modelos/usuario.model';
     providedIn: 'root',
 })
 export class FavoritosServices {
-    constructor() {}
-
     archivos: Archivo[] = [
         new Archivo(
             '7',
@@ -128,7 +126,7 @@ export class FavoritosServices {
         ),
     ];
 
-    getArchivosFavoritos() {
+    getArchivosFavoritos(): Archivo[] {
         return this.archivos.filter(archivo => archivo.favorito === true);
     }
 }

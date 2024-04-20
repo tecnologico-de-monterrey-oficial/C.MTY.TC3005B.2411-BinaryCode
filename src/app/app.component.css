@@ -1,65 +1,68 @@
 .collapsible-sidebar {
-  --menu-background: var(--blanco); /* Cambia el color de fondo del menú */
-  --menu-text-color: var(--negro); /* Cambia el color del texto del menú */
-  --menu-item-selected-background: var(--amarillo); /* Cambia el color de fondo del elemento seleccionado en el menú */
-  --menu-item-hover-background: var(--blanco); /* Cambia el color de fondo al pasar el ratón sobre un elemento del menú */
-  --layout-sider-background: var(--blanco);
-  --layout-sider-text-color: var(--blanco);
-  --layout-sider-border-color: var(--blanco);
-  --layout-sider-trigger-background: var(--blanco);
-  /* Aplica los estilos personalizados */
-  background-color: var(--blanco);
-  color: var(--blanco);
-  border: 1px solid var(--blanco);
+    --menu-background: var(--blanco); /* Cambia el color de fondo del menú */
+    --menu-text-color: var(--negro); /* Cambia el color del texto del menú */
+    --menu-item-selected-background: var(
+        --amarillo
+    ); /* Cambia el color de fondo del elemento seleccionado en el menú */
+    --menu-item-hover-background: var(
+        --blanco
+    ); /* Cambia el color de fondo al pasar el ratón sobre un elemento del menú */
+    --layout-sider-background: var(--blanco);
+    --layout-sider-text-color: var(--blanco);
+    --layout-sider-border-color: var(--blanco);
+    --layout-sider-trigger-background: var(--blanco);
+    /* Aplica los estilos personalizados */
+    background-color: var(--blanco);
+    color: var(--blanco);
+    border: 1px solid var(--blanco);
 }
 
 .collapsible-sidebar .ant-menu {
-  background-color: var(--menu-background);
-  color: var(--menu-text-color);
+    background-color: var(--menu-background);
+    color: var(--menu-text-color);
 }
 
-.collapsible-sidebar .ant-menu-item-selected{
-  background-color: var(--blanco);
+.collapsible-sidebar .ant-menu-item-selected {
+    background-color: var(--blanco);
 }
 
 .collapsible-sidebar .ant-menu-item:hover {
-  background-color: var(--blanco);
+    background-color: var(--blanco);
 }
 
 .collapsible-sidebar .ant-menu-text-color:hover {
-  background-color: var(--blanco);
+    background-color: var(--blanco);
 }
 
 ::ng-deep .ant-layout-sider-trigger {
-  background-color: var(--blanco) !important;
+    background-color: var(--blanco) !important;
 }
 
 /* Cambia el color del texto del trigger */
 ::ng-deep .ant-layout-sider-trigger span {
-  color: var(--icono_azul);
+    color: var(--icono_azul);
 }
-
 
 .ant-layout-sider {
     overflow: auto;
     background: var(--blanco);
-  }
-  .inner-layout {
+}
+.inner-layout {
     margin: 24px;
-  }
-  .whole-layout {
+}
+.whole-layout {
     height: 100%;
-  }
+}
 
-  .ant-layout {
-    background: #F7FAFF;
+.ant-layout {
+    background: #f7faff;
     overflow: auto;
-  }
+}
 
-  .sider-trigger {
-    background: #F7FAFF;
-  }
+.sider-trigger {
+    background: #f7faff;
+}
 
-  .sider{
-    background: #F7FAFF;
-  }
+.sider {
+    background: #f7faff;
+}

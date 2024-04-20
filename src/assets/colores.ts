@@ -13,6 +13,8 @@ export const icono_rosa: string = '#ff18cc';
 export const icono_naranja: string = '#ffb018';
 export const icono_amarillo: string = '#FFDA18';
 export const icono_azul_claro: string = '#18D5FF';
+export const icono_gris: string = '#919191';
+export const icono_rosa_fuerte: string = '#C5234A';
 
 export const tarjeta_azul_fuerte: string = '#4d69ff';
 export const tarjeta_azul_medio: string = '#1499b5';

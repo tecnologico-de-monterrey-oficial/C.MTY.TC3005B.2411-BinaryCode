@@ -8,6 +8,4 @@ import { Proyecto } from '../../../../modelos/proyectos.model';
 })
 export class ProyectoTarjetaComponent {
     @Input() proyecto: Proyecto;
-
-    constructor() {}
 }

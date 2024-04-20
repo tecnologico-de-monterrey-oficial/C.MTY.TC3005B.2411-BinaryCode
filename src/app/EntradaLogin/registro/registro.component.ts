@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class RegistroComponent {
     colorSeleccionado: string | null = null;
 
-    seleccionarColor(color: string) {
+    seleccionarColor(color: string): void {
         this.colorSeleccionado =
             this.colorSeleccionado === color ? null : color;
     }

@@ -8,6 +8,4 @@ import { Persona } from '../../../../modelos/persona.model';
 })
 export class PersonaTarjetaComponent {
     @Input() persona: Persona;
-
-    constructor() {}
 }

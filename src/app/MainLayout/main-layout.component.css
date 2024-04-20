@@ -1,23 +1,23 @@
 .ant-layout-sider {
-  overflow: auto;
-  background: var(--blanco);
+    overflow: auto;
+    background: var(--blanco);
 }
 .inner-layout {
-  margin: 24px;
+    margin: 24px;
 }
 .whole-layout {
-  height: 100%;
+    height: 100%;
 }
 
 .ant-layout {
-  background: #F7FAFF;
-  overflow: auto;
+    background: #f7faff;
+    overflow: auto;
 }
 
 .sider-trigger {
-  background: #F7FAFF;
+    background: #f7faff;
 }
 
-.sider{
-  background: #F7FAFF;
+.sider {
+    background: #f7faff;
 }

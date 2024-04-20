@@ -15,7 +15,7 @@ export class ContenidosComponent {
 
     constructor(private archivosService: ArchivosService) {
         const contenidos: Contenidos =
-            archivosService.getArchivos('idParaGetArchivos');
+            archivosService.getContenidos('idParaGetArchivos');
         this.archivos = contenidos.archivos;
         this.carpetas = contenidos.carpetas;
     }

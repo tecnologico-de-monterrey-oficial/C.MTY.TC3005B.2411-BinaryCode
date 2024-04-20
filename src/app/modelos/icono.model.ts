@@ -2,10 +2,12 @@ import {
     icono_amarillo,
     icono_azul,
     icono_azul_claro,
+    icono_gris,
     icono_morado,
     icono_naranja,
     icono_rojo,
     icono_rosa,
+    icono_rosa_fuerte,
     icono_verde,
 } from '../../assets/colores';
 
@@ -19,7 +21,11 @@ export class Icono {
     }
 }
 
-export const fileIcons = {
+type DefinitionObject = {
+    [key: string]: Icono;
+};
+
+export const fileIcons: DefinitionObject = {
     excel: new Icono('file-excel', icono_verde),
     jpg: new Icono('file-jpg', icono_morado),
     pdf: new Icono('file-pdf', icono_rojo),
@@ -28,8 +34,6 @@ export const fileIcons = {
     solidWorks: new Icono('code-sandbox', icono_rosa),
     gif: new Icono('file-gif', icono_amarillo),
     image: new Icono('file-image', icono_azul_claro),
-
-    text: 'file-text',
-    unknown: 'file-unknown',
-    empty: 'file',
+    text: new Icono('file-text', icono_gris),
+    unknown: new Icono('file-unknown', icono_rosa_fuerte),
 };

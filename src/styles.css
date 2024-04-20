@@ -10,7 +10,6 @@
     font-family: 'Roboto';
     src: url('assets/fonts/Roboto-Medium.ttf') format('truetype');
     font-weight: 500;
-
 }
 
 body {
@@ -19,7 +18,7 @@ body {
 }
 
 :root {
-    --celeste:#4dfff4;
+    --celeste: #4dfff4;
     --blanco: #f7faff;
     --negro: #070809;
     --amarillo: #ffcd4d;

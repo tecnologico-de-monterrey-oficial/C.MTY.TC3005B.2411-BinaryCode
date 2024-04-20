@@ -7,8 +7,9 @@ import {
     FormOutline,
     DashboardOutline,
 } from '@ant-design/icons-angular/icons';
+import { IconDefinition } from '@ant-design/icons-angular';
 
-const icons = [
+const icons: IconDefinition[] = [
     MenuFoldOutline,
     MenuUnfoldOutline,
     DashboardOutline,

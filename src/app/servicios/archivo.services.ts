@@ -28,8 +28,6 @@ import { Contenidos } from '../modelos/contenidos.model';
 // Cuántos archivos pueden verse a la vez (ponemos paginación?)
 // Cuántos archivos puede haber en total
 export class ArchivosService {
-    constructor() {}
-
     archivos: Archivo[] = [
         new Archivo(
             '1',
@@ -159,23 +157,23 @@ export class ArchivosService {
 
     contenidos: Contenidos = new Contenidos(this.archivos, this.carpetas);
 
-    getArchivosFavoritos() {
+    getArchivosFavoritos(): Archivo[] {
         // TODO: LLAMADA A API
         return this.archivos;
     }
 
-    getArchivosRecientes() {
+    getArchivosRecientes(): Archivo[] {
         // TODO: LLAMADA A API
         return this.archivos;
     }
 
-    getArchivos(idParaAPI: string) {
+    getContenidos(idParaAPI: string): Contenidos {
         // TODO: LLAMADA A API
         idParaAPI;
         return this.contenidos;
     }
 
-    setFavorito(idArchivo: string, favorito: boolean) {
+    setFavorito(idArchivo: string, favorito: boolean): void {
         idArchivo;
         favorito;
         // TODO: LLAMADA A API

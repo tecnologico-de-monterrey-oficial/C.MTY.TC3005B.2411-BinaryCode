@@ -10,8 +10,6 @@ export class CrearContenidosComponent {
     nombreArchivo: string = ''; // Propiedad enlazada al input 'nombre_archivo'
     descripcion: string = ''; // Propiedad enlazada al textarea 'descripcion'
 
-    constructor() {}
-
     validarDatos(): void {
         // Validación de los datos ingresados
         if (

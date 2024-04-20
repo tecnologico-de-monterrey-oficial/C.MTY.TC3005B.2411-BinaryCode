@@ -11,9 +11,7 @@ export class UnidadTarjetaComponent {
 
     showPlaceholder: boolean = false;
 
-    constructor() {}
-
-    handleImageError() {
+    handleImageError(): void {
         this.showPlaceholder = true;
     }
 }

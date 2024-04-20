@@ -13,7 +13,6 @@ import {
     providedIn: 'root',
 })
 export class ProyectoServices {
-    constructor() {}
     // TODO: imagenes
     proyectos: Proyecto[] = [
         new Proyecto(
@@ -98,7 +97,7 @@ export class ProyectoServices {
         ),
     ];
 
-    getProyectos() {
+    getProyectos(): Proyecto[] {
         return this.proyectos;
     }
 }
