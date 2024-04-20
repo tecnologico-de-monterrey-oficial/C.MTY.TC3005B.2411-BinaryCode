@@ -47,15 +47,10 @@ button:hover {
     width: calc(100% - 100px);
 }
 
-.fila {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
 .cuadro {
-    width: 30px;
+    width: 10px;
     height: 30px;
+    margin: 5px;
     border: 1px solid #070809;
 }
 
