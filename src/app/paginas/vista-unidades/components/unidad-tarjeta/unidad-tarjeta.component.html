@@ -1,21 +1,23 @@
 <div class="card">
-    <img
-        class="image-container"
-        [src]="unidad.urlImagen"
-        (error)="handleImageError()"
-        [ngStyle]="{ 'border-color': unidad.color }"
-        *ngIf="!showPlaceholder"
-        alt="Imagen de unidad" />
-    <nz-empty
-        class="image-container"
-        [ngStyle]="{ 'border-color': unidad.color }"
-        nzNotFoundImage="simple"
-        *ngIf="showPlaceholder"
-        [nzNotFoundContent]="contentTpl">
-        <ng-template #contentTpl
-            >Hubo un problema cargando la imagen</ng-template
-        >
-    </nz-empty>
+    <a href="/archivos">
+        <img
+            class="image-container"
+            [src]="unidad.urlImagen"
+            (error)="handleImageError()"
+            [ngStyle]="{ 'border-color': unidad.color }"
+            *ngIf="!showPlaceholder"
+            alt="Imagen de unidad" />
+        <nz-empty
+            class="image-container"
+            [ngStyle]="{ 'border-color': unidad.color }"
+            nzNotFoundImage="simple"
+            *ngIf="showPlaceholder"
+            [nzNotFoundContent]="contentTpl">
+            <ng-template #contentTpl
+                >Hubo un problema cargando la imagen</ng-template
+            >
+        </nz-empty>
+    </a>
     <div class="options-button">
         <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
             <span nz-icon nzType="more" nzTheme="outline"></span>
