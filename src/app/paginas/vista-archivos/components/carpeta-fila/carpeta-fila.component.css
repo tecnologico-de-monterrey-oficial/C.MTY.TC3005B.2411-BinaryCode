@@ -1,12 +1,14 @@
-.file-card {
-    width: 100%;
-    border-top: 1px solid var(--bordes);
-    padding: 10px 0;
-}
+/* General */
 
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
+}
+
+.file-card {
+    width: 100%;
+    border-top: 1px solid var(--bordes);
+    padding: 10px 0;
 }
 
 .ant-col {
@@ -16,9 +18,16 @@ body {
     justify-content: flex-start;
 }
 
+.texto {
+    padding-left: 15px;
+    color: var(--negro);
+}
+
+/* Carpeta */
+
 .archivo-icono {
     font-size: 40px;
-    padding-left: 10px;
+    padding-left: 15px;
 }
 
 .columna-icono {
@@ -26,9 +35,7 @@ body {
     padding: 0;
 }
 
-.texto {
-    padding-left: 15px;
-}
+/* Responsividad */
 
 @media (max-width: 1048px) {
     .hide-on-small-1 {

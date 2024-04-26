@@ -1,12 +1,29 @@
+/* General */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+}
+
 .file-card {
     width: 100%;
     border-top: 1px solid var(--bordes);
     padding: 10px 0;
 }
 
-.detalles {
+.ant-col {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.texto {
+    padding-left: 15px;
     color: var(--negro);
 }
+
+/* Estrella */
 
 .estrella-llena {
     font-size: 18px;
@@ -24,21 +41,28 @@
     color: var(--negro);
 }
 
+/* Archivo - Nombre/Icono */
+
 .archivo-icono {
     font-size: 40px;
     padding-left: 15px;
 }
 
-.ant-col {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
+/* Usuario */
+
+.usuario-imagen {
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+    border-radius: 50%;
 }
 
-.columna-icono {
-    justify-content: center;
-    padding: 0;
+/* Etiquetas */
+
+.etiqueta {
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 0;
 }
 
 .lista-etiquetas {
@@ -47,28 +71,20 @@
     overflow-y: hidden;
 }
 
-.etiqueta {
-    border-radius: 10px;
-    margin-left: 10px;
-    margin-right: 0;
-}
+/* Detalles */
 
-body {
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-}
-
-.texto {
-    padding-left: 15px;
+.detalles {
     color: var(--negro);
 }
 
-.usuario-imagen {
-    width: 35px;
-    height: 35px;
-    overflow: hidden;
-    border-radius: 50%;
+/* Iconos */
+
+.columna-icono {
+    justify-content: center;
+    padding: 0;
 }
+
+/* Responsividad */
 
 @media (max-width: 1048px) {
     .hide-on-small-1 {

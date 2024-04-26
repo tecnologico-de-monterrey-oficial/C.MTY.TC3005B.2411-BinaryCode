@@ -12,7 +12,7 @@
         </div>
 
         <!-- Nombre de archivo -->
-        <div nz-col nzFlex="6" class="grupo-columna">
+        <div nz-col nzFlex="6">
             <span
                 class="archivo-icono"
                 nz-icon
@@ -23,7 +23,7 @@
         </div>
 
         <!-- Propietario -->
-        <div nz-col nzFlex="6" class="grupo-columna hide-on-small-3">
+        <div nz-col nzFlex="6" class="hide-on-small-3">
             <img
                 class="usuario-imagen"
                 [src]="archivo.propietario.imagenUrl"
@@ -61,6 +61,7 @@
                 nzTheme="outline"></span>
         </div>
 
+        <!-- Menu opciones -->
         <nz-dropdown-menu #menu="nzDropdownMenu">
             <ul nz-menu nzSelectable>
                 <li nz-menu-item>1st menu item</li>
