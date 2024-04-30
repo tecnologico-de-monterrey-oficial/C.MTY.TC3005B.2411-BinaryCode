@@ -1,0 +1,7 @@
+.contenedor {
+    background: var(--contentBg);
+    height: 100%;
+    border-radius: 25px;
+    padding: 25px;
+    margin-right: 25px;
+}
