@@ -5,7 +5,6 @@ import { Archivo } from '../../../../modelos/archivo.model';
 @Component({
     selector: 'app-favoritos',
     templateUrl: './favoritos.component.html',
-    styleUrl: './favoritos.component.css',
 })
 export class FavoritosComponent {
     archivos: Archivo[] = [];
