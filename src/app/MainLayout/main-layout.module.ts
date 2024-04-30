@@ -6,6 +6,7 @@ import { VistaArchivosModule } from '../paginas/vista-archivos/vista-archivos.mo
 import { VistaPersonasModule } from '../paginas/vista-personas/vista-persona.module';
 import { VistaProyectosModule } from '../paginas/vista-proyectos/vista-proyectos.module';
 import { VistaUnidadesModule } from '../paginas/vista-unidades/vista-unidades.module';
+import { VistaPermisosModule } from '../paginas/vista-permisos/vista-permisos.module';
 
 @NgModule({
     imports: [
@@ -15,6 +16,7 @@ import { VistaUnidadesModule } from '../paginas/vista-unidades/vista-unidades.mo
         VistaPersonasModule,
         VistaProyectosModule,
         VistaUnidadesModule,
+        VistaPermisosModule,
     ],
     declarations: [],
 })
