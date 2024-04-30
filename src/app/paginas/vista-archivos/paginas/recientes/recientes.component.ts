@@ -5,7 +5,6 @@ import { Archivo } from '../../../../modelos/archivo.model';
 @Component({
     selector: 'app-recientes',
     templateUrl: './recientes.component.html',
-    styleUrl: './recientes.component.css',
 })
 export class RecientesComponent {
     archivos: Archivo[] = [];

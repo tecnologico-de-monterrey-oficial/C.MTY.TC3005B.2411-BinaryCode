@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Archivo } from '../../../modelos/archivo.model';
-import { ArchivosService } from '../../../servicios/archivo.services';
-import { Carpeta } from '../../../modelos/carpeta.model';
-import { Contenidos } from '../../../modelos/contenidos.model';
+import { Archivo } from '../../../../modelos/archivo.model';
+import { ArchivosService } from '../../../../servicios/archivo.services';
+import { Carpeta } from '../../../../modelos/carpeta.model';
+import { Contenidos } from '../../../../modelos/contenidos.model';
 
 @Component({
     selector: 'app-contenidos',
