@@ -8,7 +8,9 @@ import { U1, U2, U3, U4, U5, U6 } from '../../assets/mocks/unidades';
 export class UnidadesService {
     unidades: Unidad[] = [U1, U2, U3, U4, U5, U6];
 
-    getUnidades(): Unidad[] {
-        return this.unidades;
+    getUnidadesPorProyecto(proyectoId: string): Unidad[] {
+        // Filtrar las unidades por el ID del proyecto
+        return this.unidades.filter(unidad => unidad.id === proyectoId);
     }
+    
 }
