@@ -1,0 +1,13 @@
+<div class="fila">
+    <span
+        nz-icon
+        nzType="minus-circle"
+        nzTheme="outline"
+        (click)="removeClick()">
+    </span>
+    <img
+        class="usuario-imagen"
+        [src]="coordinador.imagenUrl"
+        alt="Imagen de usuario" />
+    <div class="nombre">{{ coordinador.nombre }}</div>
+</div>
