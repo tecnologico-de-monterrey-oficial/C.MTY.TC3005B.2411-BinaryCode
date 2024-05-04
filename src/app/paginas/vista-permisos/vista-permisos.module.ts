@@ -6,6 +6,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
 
 import { VistaUnidadesModule } from '../vista-unidades/vista-unidades.module';
+import { VistaProyectosModule } from '../vista-proyectos/vista-proyectos.module';
 
 import { EditoresPermisosComponent } from './components/editores-permisos/editores-permisos.component';
 import { MiniCoordinadorComponent } from './components/mini-coordinador/mini-coordinador.component';
@@ -19,6 +20,7 @@ import { PermisosComponent } from './permisos/permisos.component';
         NzIconModule,
         NzPopoverModule,
         VistaUnidadesModule,
+        VistaProyectosModule,
     ],
     declarations: [
         EditoresPermisosComponent,
