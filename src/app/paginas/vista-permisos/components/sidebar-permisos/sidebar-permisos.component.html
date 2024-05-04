@@ -1,8 +1,16 @@
 <div class="contenedor">
-    <app-unidad [unidad]="unidad" />
-    <div class="titulo">Coordinadores de unidad</div>
+    <app-unidad [unidad]="unidad" *ngIf="unidad" />
+    <div class="titulo" *ngIf="unidad">Coordinadores de unidad</div>
+
+    <app-proyecto
+        [proyecto]="proyecto"
+        [descripcion]="false"
+        *ngIf="proyecto" />
+    <div class="titulo" *ngIf="proyecto">Líderes de proyecto</div>
+
     <div class="subtitulo">
-        <div>Agregar coordinador</div>
+        <div *ngIf="unidad">Agregar coordinador</div>
+        <div *ngIf="proyecto">Agregar líder</div>
         <span
             nz-popover
             nz-icon
