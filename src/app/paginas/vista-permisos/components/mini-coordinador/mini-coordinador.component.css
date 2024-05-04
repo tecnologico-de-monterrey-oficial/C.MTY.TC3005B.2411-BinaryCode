@@ -1,0 +1,24 @@
+.fila {
+    width: 100%;
+    border-top: var(--bordes) solid 1px;
+
+    display: flex;
+    align-items: center;
+}
+
+.usuario-imagen {
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 10px 15px;
+}
+
+.anticon {
+    font-size: 1.3rem;
+    color: var(--rojoLogin);
+}
+
+.nombre {
+    font-size: 1.3rem;
+}
