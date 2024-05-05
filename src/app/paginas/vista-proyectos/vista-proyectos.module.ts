@@ -6,6 +6,7 @@ import { NzFlexModule } from 'ng-zorro-antd/flex';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { ProyectoTarjetaComponent } from './contenido-proyectos/proyecto-tarjeta/proyecto-tarjeta.component';
 import { ProyectosComponent } from './contenido-proyectos/proyectos/proyectos.component';
+import { ProyectoCrearTarjetaComponent } from './contenido-proyectos/proyecto-crear-tarjeta/proyecto-crear-tarjeta.component';
 
 @NgModule({
     imports: [
@@ -15,7 +16,11 @@ import { ProyectosComponent } from './contenido-proyectos/proyectos/proyectos.co
         NzFlexModule,
         NzDropDownModule,
     ],
-    declarations: [ProyectosComponent, ProyectoTarjetaComponent],
+    declarations: [
+        ProyectosComponent,
+        ProyectoTarjetaComponent,
+        ProyectoCrearTarjetaComponent,
+    ],
     exports: [ProyectosComponent, ProyectoTarjetaComponent],
 })
 export class VistaProyectosModule {}
