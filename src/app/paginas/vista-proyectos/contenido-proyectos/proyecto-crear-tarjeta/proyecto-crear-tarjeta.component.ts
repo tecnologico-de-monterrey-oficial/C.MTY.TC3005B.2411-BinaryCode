@@ -5,4 +5,8 @@ import { Component } from '@angular/core';
     templateUrl: './proyecto-crear-tarjeta.component.html',
     styleUrl: './proyecto-crear-tarjeta.component.css',
 })
-export class ProyectoCrearTarjetaComponent {}
+export class ProyectoCrearTarjetaComponent {
+    crearProyecto(): void {
+        console.log('Crear proyecto');
+    }
+}
