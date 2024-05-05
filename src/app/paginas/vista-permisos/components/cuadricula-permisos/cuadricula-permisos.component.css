@@ -1,0 +1,12 @@
+.grid-container {
+    background: var(--contentBg);
+
+    min-height: 100%;
+    border-radius: 25px;
+    padding: 25px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+}

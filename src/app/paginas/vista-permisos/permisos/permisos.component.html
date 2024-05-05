@@ -2,5 +2,7 @@
 
 <div class="contenedor">
     <app-sidebar-permisos [unidad]="unidad" [proyecto]="proyecto" />
-    <app-editores-permisos />
+
+    <app-editores-permisos [unidad]="unidad" *ngIf="unidad" />
+    <app-cuadricula-permisos [proyecto]="proyecto" *ngIf="proyecto" />
 </div>
