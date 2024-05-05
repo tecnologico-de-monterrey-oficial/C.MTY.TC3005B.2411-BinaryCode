@@ -1,0 +1,28 @@
+.card {
+    width: 280px;
+    height: 245px;
+    border-radius: 10px;
+    margin: 10px;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='10' ry='10' stroke='%23c5cdd1' stroke-width='8' stroke-dasharray='25' stroke-dashoffset='28' stroke-linecap='round'/%3e%3c/svg%3e");
+}
+
+.icono {
+    font-size: 8rem;
+    color: var(--bordes);
+
+    height: 45%;
+
+    margin-bottom: 30px;
+}
+
+.mensaje {
+    font-size: 1.8rem;
+    color: var(--bordes);
+    height: 20%;
+}
