@@ -11,7 +11,6 @@ export class MiniCoordinadorComponent {
     @Output() removeItemClick = new EventEmitter<string>();
 
     removeClick(): void {
-        console.log('Se elimina coordinador ' + this.coordinador.nombre);
         this.removeItemClick.emit(this.coordinador.id);
     }
 }

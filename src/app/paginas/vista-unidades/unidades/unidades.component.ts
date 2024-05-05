@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Unidad } from '../../../modelos/unidad.model';
 import { UnidadesService } from '../../../servicios/unidad.services';
 
@@ -7,12 +7,14 @@ import { UnidadesService } from '../../../servicios/unidad.services';
     templateUrl: './unidades.component.html',
     styleUrl: './unidades.component.css',
 })
-export class UnidadesComponent {
+export class UnidadesComponent implements OnInit {
     unidades: Unidad[] = [];
     unidadesVacias: boolean = true;
 
-    constructor(private unidadesService: UnidadesService) {
-        this.unidades = unidadesService.getUnidades();
+    ngOnInit(): void {
+        this.unidades = this.unidadesService.getUnidades('idProyecto');
         this.unidadesVacias = this.unidades.length == 0;
     }
+
+    constructor(private unidadesService: UnidadesService) {}
 }

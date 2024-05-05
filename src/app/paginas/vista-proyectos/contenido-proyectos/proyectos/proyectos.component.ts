@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Proyecto } from '../../../../modelos/proyectos.model';
-import { ProyectoServices } from '../../../../servicios/proyecto.services';
+import { ProyectosService } from '../../../../servicios/proyecto.services';
 
 @Component({
     selector: 'app-proyectos',
@@ -10,7 +10,7 @@ import { ProyectoServices } from '../../../../servicios/proyecto.services';
 export class ProyectosComponent {
     proyectos: Proyecto[] = [];
 
-    constructor(private proyectoServices: ProyectoServices) {
+    constructor(private proyectoServices: ProyectosService) {
         this.proyectos = proyectoServices.getProyectos();
     }
 }

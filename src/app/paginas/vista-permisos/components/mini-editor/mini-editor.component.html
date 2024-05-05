@@ -1,0 +1,15 @@
+<div class="fila">
+    <div class="usuario">
+        <img
+            class="usuario-imagen"
+            [src]="editor.imagenUrl"
+            alt="Imagen de usuario" />
+        <div class="nombre">{{ editor.nombre }}</div>
+    </div>
+    <span
+        nz-icon
+        nzType="minus-circle"
+        nzTheme="outline"
+        (click)="removeClick()">
+    </span>
+</div>
