@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 import { registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -49,6 +50,7 @@ registerLocaleData(es);
         BrowserAnimationsModule,
         EntradaLoginModule,
         MainLayoutModule,
+        RouterModule.forRoot([]),
     ],
     providers: [{ provide: NZ_I18N, useValue: es_ES }],
     bootstrap: [AppComponent],

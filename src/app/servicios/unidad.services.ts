@@ -9,8 +9,9 @@ export class UnidadesService {
     unidades: Unidad[] = [U1, U2, U3, U4, U5, U6];
 
     getUnidadesPorProyecto(proyectoId: string): Unidad[] {
+        console.log(proyectoId);
         // Filtrar las unidades por el ID del proyecto
-        return this.unidades.filter(unidad => unidad.id === proyectoId);
+        return this.unidades.filter(unidad => unidad.proyectoId === proyectoId);
     }
     
 }

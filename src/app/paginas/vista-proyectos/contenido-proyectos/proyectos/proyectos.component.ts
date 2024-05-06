@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Proyecto } from '../../../../modelos/proyectos.model';
 import { ProyectoServices } from '../../../../servicios/proyecto.services';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 
@@ -14,10 +14,12 @@ export class ProyectosComponent {
     
     proyectos: Proyecto[] = [];
 
-    constructor(private proyectoServices: ProyectoServices, private router: Router) {
+    constructor(private proyectoServices: ProyectoServices, private router: Router, private route: ActivatedRoute) {
         this.proyectos = proyectoServices.getProyectos();
     }
-    navigateToUnidades(id: number) {
-        this.router.navigate(['/proyecto', id, 'unidades']);
+    navigateToUnidades(id: string) {
+        console.log("Hola")
+        console.log("ID del proyecto:", id); // Verifica si el id se está pasando correctamente
+        this.router.navigate(['/proyectos', id, 'unidades'], { relativeTo: this.route });
       }
 }

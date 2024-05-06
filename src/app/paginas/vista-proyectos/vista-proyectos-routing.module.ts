@@ -5,7 +5,7 @@ import { UnidadesComponent } from  '../vista-unidades/unidades/unidades.componen
 
 const routes: Routes = [
     { path: '', component: ProyectosComponent },
-    { path: 'proyecto/:id/unidades', component: UnidadesComponent } // Agregamos el parámetro de id
+    { path: ':id/unidades', component: UnidadesComponent } // Agregamos el parámetro de id
   ];
 
 @NgModule({

@@ -3,6 +3,7 @@ import { Archivo } from '../../../modelos/archivo.model';
 import { ArchivosService } from '../../../servicios/archivo.services';
 import { Carpeta } from '../../../modelos/carpeta.model';
 import { Contenidos } from '../../../modelos/contenidos.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-contenidos',
@@ -13,10 +14,12 @@ export class ContenidosComponent {
     archivos: Archivo[] = [];
     carpetas: Carpeta[] = [];
 
-    constructor(private archivosService: ArchivosService) {
-        const contenidos: Contenidos =
-            archivosService.getContenidos('idParaGetArchivos');
-        this.archivos = contenidos.archivos;
-        this.carpetas = contenidos.carpetas;
+    constructor(private archivosService: ArchivosService, private route: ActivatedRoute) {
+        this.route.params.subscribe(params => {
+            const unidadId = params['unidadId'];
+            const contenidos: Contenidos = archivosService.getContenidos(unidadId);
+            this.archivos = contenidos.archivos;
+            this.carpetas = contenidos.carpetas;
+        });
     }
 }

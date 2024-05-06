@@ -16,7 +16,7 @@ export class ProyectoServices {
     // TODO: imagenes
     proyectos: Proyecto[] = [
         new Proyecto(
-            '1',
+            'p1',
             'Proyecto 1',
             'assets/images/proyectos_props/p1.png',
             proyecto_celeste,
@@ -28,7 +28,7 @@ export class ProyectoServices {
         ),
 
         new Proyecto(
-            '2',
+            'p2',
             'Proyecto 2',
             'assets/images/proyectos_props/p2.png',
             proyecto_rojo,

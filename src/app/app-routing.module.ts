@@ -25,13 +25,13 @@ const routes: Routes = [
                 './paginas/vista-proyectos/vista-proyectos-routing.module'
             ).then(m => m.VistaProyectosRoutingModule),
     },
-    {
-        path: 'unidades',
-        loadChildren: () =>
-            import(
-                './paginas/vista-unidades/vista-unidades-routing.module'
-            ).then(m => m.VistaUnidadesRoutingModule),
-    },
+    // {
+    //     path: 'unidades',
+    //     loadChildren: () =>
+    //         import(
+    //             './paginas/vista-unidades/vista-unidades-routing.module'
+    //         ).then(m => m.VistaUnidadesRoutingModule),
+    // },
     {
         path: 'personas',
         loadChildren: () =>
