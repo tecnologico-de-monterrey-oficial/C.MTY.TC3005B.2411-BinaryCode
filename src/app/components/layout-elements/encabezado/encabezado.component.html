@@ -12,12 +12,23 @@
             nzType="bell"
             nzTheme="outline"
             class="header-icon"></span>
-        <div
-            class="usuario-icono-container"
-            nz-dropdown
-            [nzDropdownMenu]="menu">
-            <span class="usuario-icono" nz-icon nzType="user"></span>
-        </div>
+        <ng-container *ngIf="!showPlaceholderUsuario; else icono">
+            <!-- Mostrar la imagen si la URL de la imagen está presente -->
+            <img
+                class="usuario-imagen"
+                (error)="handleImageError()"
+                [src]="usuario.imagenUrl"
+                alt="Imagen de usuario" />
+        </ng-container>
+
+        <ng-template #icono>
+            <div
+                class="usuario-icono-container"
+                nz-dropdown
+                [nzDropdownMenu]="menu">
+                <span class="usuario-icono" nz-icon nzType="user"></span>
+            </div>
+        </ng-template>
     </div>
 
     <nz-dropdown-menu #menu="nzDropdownMenu">

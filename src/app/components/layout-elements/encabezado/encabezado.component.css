@@ -48,6 +48,15 @@
     background-color: var(--celeste);
 }
 
+.usuario-imagen {
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    margin-right: 30px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
 .ant-menu-title-content {
     width: 100%;
     display: flex;
