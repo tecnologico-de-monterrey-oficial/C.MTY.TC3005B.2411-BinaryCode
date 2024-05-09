@@ -11,10 +11,59 @@
     line-height: 64px;
     background: var(--blanco);
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 
 .ant-input-affix-wrapper {
     width: 40%;
+}
+
+.header-icon {
+    font-size: 1.8rem;
+}
+
+.derecha {
+    display: flex;
+    align-items: center;
+}
+
+.usuario-icono {
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.4rem;
+}
+
+.usuario-icono-container {
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    margin-right: 30px;
+    border-radius: 50%;
+    border: 2px solid var(--negro);
+    background-color: var(--celeste);
+}
+
+.usuario-imagen {
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    margin-right: 30px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.ant-menu-title-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icono-opcion {
+    margin-left: 10px;
 }

@@ -22,6 +22,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { CrearContenidosComponent } from './paginas/vista-archivos/components/crear-contenidos/crear-contenidos.component';
 import { ProyectoCrearComponent } from './paginas/vista-proyectos/contenido-proyectos/proyecto-crear/proyecto-crear.component';
 import { CrearUnidadComponent } from './paginas/vista-unidades/components/crear-unidad/crear-unidad.component';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 
 registerLocaleData(es);
 
@@ -39,6 +40,7 @@ registerLocaleData(es);
         NzInputModule,
         NzLayoutModule,
         NzMenuModule,
+        NzDropDownModule,
         BrowserModule,
         AppRoutingModule,
         IconsProviderModule,

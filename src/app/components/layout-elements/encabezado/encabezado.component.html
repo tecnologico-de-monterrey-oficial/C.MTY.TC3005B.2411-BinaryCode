@@ -4,9 +4,51 @@
         <input type="text" nz-input placeholder="input search text" />
     </nz-input-group>
     <ng-template #suffixIconSearch>
-        <span nz-icon nzType="search"></span>
+        <span nz-icon nzType="search" class="header-icon"></span>
     </ng-template>
-    <button nz-button nz-col nzSpan="1" nzType="primary" nzShape="round">
-        Usuario yeei
-    </button>
+    <div class="derecha">
+        <span
+            nz-icon
+            nzType="bell"
+            nzTheme="outline"
+            class="header-icon"></span>
+        <ng-container *ngIf="!showPlaceholderUsuario; else icono">
+            <!-- Mostrar la imagen si la URL de la imagen está presente -->
+            <img
+                class="usuario-imagen"
+                (error)="handleImageError()"
+                [src]="usuario.imagenUrl"
+                alt="Imagen de usuario" />
+        </ng-container>
+
+        <ng-template #icono>
+            <div
+                class="usuario-icono-container"
+                nz-dropdown
+                [nzDropdownMenu]="menu">
+                <span class="usuario-icono" nz-icon nzType="user"></span>
+            </div>
+        </ng-template>
+    </div>
+
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu nzSelectable>
+            <li nz-menu-item>
+                Editar perfil
+                <span
+                    nz-icon
+                    nzType="edit"
+                    nzTheme="outline"
+                    class="icono-opcion"></span>
+            </li>
+            <li nz-menu-item nzDanger>
+                Cerrar sesión
+                <span
+                    nz-icon
+                    nzType="logout"
+                    nzTheme="outline"
+                    class="icono-opcion"></span>
+            </li>
+        </ul>
+    </nz-dropdown-menu>
 </nz-header>
