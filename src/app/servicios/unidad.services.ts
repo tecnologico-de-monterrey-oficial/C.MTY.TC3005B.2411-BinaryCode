@@ -12,9 +12,9 @@ export class UnidadesService {
     coordinadores: Usuario[] = [US4, US5, US6];
     editores: Usuario[] = [US1, US2, US3, US4, US5, US6];
 
-    getUnidades(idProyecto: string): Unidad[] {
-        idProyecto;
-        return this.unidades;
+    getUnidadesPorProyecto(proyectoId: string): Unidad[] {
+        // Filtrar las unidades por el ID del proyecto
+        return this.unidades.filter(unidad => unidad.proyectoId === proyectoId);
     }
 
     getCoordinadores(idUnidad: string): Usuario[] {

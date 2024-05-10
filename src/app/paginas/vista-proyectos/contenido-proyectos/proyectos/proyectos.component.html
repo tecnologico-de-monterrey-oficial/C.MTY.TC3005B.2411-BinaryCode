@@ -2,8 +2,7 @@
 
 <nz-flex class="grid-container">
     <app-proyecto
-        *ngFor="let proyecto of proyectos"
-        [proyecto]="proyecto"></app-proyecto>
-    <!-- TODO: If admin -->
-    <app-proyecto-crear-tarjeta />
+    *ngFor="let proyecto of proyectos"
+    [proyecto]="proyecto"
+    (click)="navigateToUnidades(proyecto.id)"></app-proyecto>  
 </nz-flex>

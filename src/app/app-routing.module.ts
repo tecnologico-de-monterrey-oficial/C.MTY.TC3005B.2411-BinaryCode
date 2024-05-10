@@ -26,13 +26,6 @@ const routes: Routes = [
             ).then(m => m.VistaProyectosRoutingModule),
     },
     {
-        path: 'unidades',
-        loadChildren: () =>
-            import(
-                './paginas/vista-unidades/vista-unidades-routing.module'
-            ).then(m => m.VistaUnidadesRoutingModule),
-    },
-    {
         path: 'personas',
         loadChildren: () =>
             import(
