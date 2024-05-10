@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ContenidosComponent } from './contenidos/contenidos.component'; // Importar el componente
+import { ContenidosComponent } from './paginas/contenidos/contenidos.component'; // Importar el componente
 import { FavoritosComponent } from './paginas/favoritos/favoritos.component';
 import { RecientesComponent } from './paginas/recientes/recientes.component';
 

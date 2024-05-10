@@ -32,6 +32,13 @@ const routes: Routes = [
                 './paginas/vista-personas/vista-persona-routing.module'
             ).then(m => m.VistaPersonasRoutingModule),
     },
+    {
+        path: 'permisos',
+        loadChildren: () =>
+            import(
+                './paginas/vista-permisos/vista-permisos-routing.module'
+            ).then(m => m.VistaPermisosRoutingModule),
+    },
 ];
 
 @NgModule({

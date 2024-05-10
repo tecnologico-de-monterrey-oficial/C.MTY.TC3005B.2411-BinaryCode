@@ -1,12 +1,12 @@
 .collapsible-sidebar {
-    --menu-background: var(--blanco); /* Cambia el color de fondo del menú */
-    --menu-text-color: var(--negro); /* Cambia el color del texto del menú */
-    --menu-item-selected-background: var(
-        --amarillo
-    ); /* Cambia el color de fondo del elemento seleccionado en el menú */
-    --menu-item-hover-background: var(
-        --blanco
-    ); /* Cambia el color de fondo al pasar el ratón sobre un elemento del menú */
+    --menu-background: var(--blanco);
+    /* Cambia el color de fondo del menú */
+    --menu-text-color: var(--negro);
+    /* Cambia el color del texto del menú */
+    --menu-item-selected-background: var(--amarillo);
+    /* Cambia el color de fondo del elemento seleccionado en el menú */
+    --menu-item-hover-background: var(--blanco);
+    /* Cambia el color de fondo al pasar el ratón sobre un elemento del menú */
     --layout-sider-background: var(--blanco);
     --layout-sider-text-color: var(--blanco);
     --layout-sider-border-color: var(--blanco);
@@ -40,16 +40,18 @@
 
 /* Cambia el color del texto del trigger */
 ::ng-deep .ant-layout-sider-trigger span {
-    color: var(--icono_azul);
+    color: var(--negro);
 }
 
 .ant-layout-sider {
     overflow: auto;
     background: var(--blanco);
 }
+
 .inner-layout {
     margin: 24px;
 }
+
 .whole-layout {
     height: 100%;
 }
@@ -65,4 +67,11 @@
 
 .sider {
     background: #f7faff;
+}
+
+::ng-deep .ant-menu-title-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

@@ -1,0 +1,35 @@
+.contenedor {
+    background: var(--contentBg);
+    height: 100%;
+    border-radius: 25px;
+    padding: 25px;
+    margin-right: 25px;
+    min-width: 330px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo {
+    width: 100%;
+    font-size: 1.9rem;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.subtitulo {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 25px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+app-mini-coordinador {
+    width: 100%;
+}

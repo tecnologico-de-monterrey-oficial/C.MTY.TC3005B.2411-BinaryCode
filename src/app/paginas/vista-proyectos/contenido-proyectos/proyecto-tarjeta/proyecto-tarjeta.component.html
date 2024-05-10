@@ -1,4 +1,4 @@
-<div class="card">
+<div [class]="descripcion ? 'card' : 'card-resumida'">
     <div
         class="image-container"
         [ngStyle]="{
@@ -45,7 +45,7 @@
             {{ proyecto.nombre }}
         </div>
     </a>
-    <div class="description">
+    <div class="description" *ngIf="descripcion">
         {{ proyecto.descripcion }}
     </div>
 </div>

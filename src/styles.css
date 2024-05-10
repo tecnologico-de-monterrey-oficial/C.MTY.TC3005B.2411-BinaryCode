@@ -51,3 +51,11 @@ body {
     --tarjeta_rosa: #ff4de3;
     --tarjeta_rosa_claro: #ff95ee;
 }
+
+.ant-popover {
+    padding-top: 10px;
+}
+
+.ant-popover-arrow {
+    display: none;
+}
