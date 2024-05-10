@@ -14,8 +14,8 @@ export class ContenidosComponent {
     archivos: Archivo[] = [];
     carpetas: Carpeta[] = [];
 
-    constructor(private archivosService: ArchivosService, private route: ActivatedRoute) {
-        this.route.params.subscribe(params => {
+    constructor(archivosService: ArchivosService, route: ActivatedRoute) {
+        route.params.subscribe(params => {
             const unidadId = params['unidadId'];
             const contenidos: Contenidos = archivosService.getContenidos(unidadId);
             this.archivos = contenidos.archivos;

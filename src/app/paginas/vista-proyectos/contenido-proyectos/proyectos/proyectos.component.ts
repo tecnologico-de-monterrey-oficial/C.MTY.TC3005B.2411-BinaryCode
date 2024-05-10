@@ -14,12 +14,10 @@ export class ProyectosComponent {
     
     proyectos: Proyecto[] = [];
 
-    constructor(private proyectoServices: ProyectoServices, private router: Router, private route: ActivatedRoute) {
+    constructor(proyectoServices: ProyectoServices, private router: Router, private route: ActivatedRoute) {
         this.proyectos = proyectoServices.getProyectos();
     }
     navigateToUnidades(id: string) {
-        console.log("Hola")
-        console.log("ID del proyecto:", id); // Verifica si el id se está pasando correctamente
         this.router.navigate(['/proyectos', id, 'unidades'], { relativeTo: this.route });
       }
 }

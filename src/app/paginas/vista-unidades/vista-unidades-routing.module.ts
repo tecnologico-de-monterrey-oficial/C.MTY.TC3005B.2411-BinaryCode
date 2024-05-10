@@ -4,9 +4,7 @@ import { UnidadesComponent } from './unidades/unidades.component'; // Importar e
 import { ContenidosComponent } from '../vista-archivos/contenidos/contenidos.component';
 
 const routes: Routes = [
-    { path: '', component: UnidadesComponent, children: [
-      { path: ':unidadId/archivos', component: ContenidosComponent }
-    ]},
+    { path: 'unidades/:id', component: UnidadesComponent },
   ];
   
 
