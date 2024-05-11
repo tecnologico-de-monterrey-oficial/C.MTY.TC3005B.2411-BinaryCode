@@ -9,7 +9,13 @@ export class Unidad {
     color: string;
     proyectoId: string; // Nueva propiedad proyectoId
 
-    constructor(id: string, nombre: string, urlImagen: string, color: string, proyectoId: string) {
+    constructor(
+        id: string,
+        nombre: string,
+        urlImagen: string,
+        color: string,
+        proyectoId: string
+    ) {
         this.id = id;
         this.nombre = nombre;
         this.urlImagen = urlImagen;
