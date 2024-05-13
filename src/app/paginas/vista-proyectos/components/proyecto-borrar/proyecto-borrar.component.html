@@ -1,0 +1,26 @@
+<div class="titulo">
+    <span nz-icon nzType="warning" nzTheme="fill" class="warning-icon"></span>
+    ¿Estas seguro de que deseas borrarlo?
+</div>
+
+<div>
+    Esto va a borrar todo el proyecto incluyendo sus archivos y versiones, si se
+    acabó el proyecto se recomienda archivarlo para mantener el historial. Si
+    estás seguro que quieres borrarlo, por favor reescribe el nombre del
+    proyecto
+    <strong>{{ proyecto.nombre }}</strong
+    >.
+</div>
+
+<input
+    nz-input
+    placeholder="Nombre del proyecto"
+    [(ngModel)]="value"
+    type="text"
+    class="inputNombre" />
+
+<button nz-button (click)="handleCancel()">Cancelar</button>
+
+<button nz-button (click)="handleOk()" [nzLoading]="isConfirmLoading">
+    Borrar
+</button>

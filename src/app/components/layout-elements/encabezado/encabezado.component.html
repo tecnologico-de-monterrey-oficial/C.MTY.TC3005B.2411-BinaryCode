@@ -16,6 +16,8 @@
             <!-- Mostrar la imagen si la URL de la imagen está presente -->
             <img
                 class="usuario-imagen"
+                nz-dropdown
+                [nzDropdownMenu]="menu"
                 (error)="handleImageError()"
                 [src]="usuario.imagenUrl"
                 alt="Imagen de usuario" />

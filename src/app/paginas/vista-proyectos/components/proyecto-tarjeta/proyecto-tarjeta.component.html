@@ -32,8 +32,9 @@
                         <li nz-menu-item>
                             Dar permisos <span nz-icon nzType="unlock"></span>
                         </li>
-                        <li nz-menu-item nzDanger>
-                            Borrar <span nz-icon nzType="delete"></span>
+                        <li nz-menu-item nzDanger (click)="showModal()">
+                            Borrar
+                            <span nz-icon nzType="delete"></span>
                         </li>
                     </ul>
                 </nz-dropdown-menu>
@@ -49,3 +50,17 @@
         {{ proyecto.descripcion }}
     </div>
 </div>
+
+<nz-modal
+    [(nzVisible)]="isVisible"
+    [nzContent]="modalContent"
+    [nzFooter]="null"
+    (nzOnCancel)="handleCancel()">
+    <ng-template #modalContent>
+        <app-proyecto-borrar
+            [proyecto]="proyecto"
+            [isConfirmLoading]="isConfirmLoading"
+            (deleteProject)="handleOk()"
+            (cancelModal)="handleCancel()" />
+    </ng-template>
+</nz-modal>
