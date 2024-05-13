@@ -52,3 +52,16 @@
 .anticon {
     color: #595959;
 }
+
+.icono-opcion {
+    margin-left: 10px;
+}
+
+.icono-borrar {
+    color: var(--rojoLogin);
+}
+
+.ant-dropdown-menu-item-danger:hover .icono-borrar {
+    color: var(--blanco);
+    transition: all 0.3s;
+}
