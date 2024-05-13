@@ -3,7 +3,6 @@
 <nz-flex class="grid-container">
     <app-proyecto
         *ngFor="let proyecto of proyectos"
-        [proyecto]="proyecto"
-        (click)="navigateToUnidades(proyecto.id)"></app-proyecto>
+        [proyecto]="proyecto"></app-proyecto>
     <app-proyecto-crear-tarjeta></app-proyecto-crear-tarjeta>
 </nz-flex>
