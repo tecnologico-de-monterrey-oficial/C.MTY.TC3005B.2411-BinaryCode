@@ -38,6 +38,8 @@ app-registro {
     width: 100%;
     max-width: 500px;
     padding: 0 20px;
+    height: fit-content;
+    overflow: auto;
 }
 
 /* Media queries para pantallas pequeñas */
