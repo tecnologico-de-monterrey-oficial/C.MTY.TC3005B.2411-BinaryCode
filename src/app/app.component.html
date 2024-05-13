@@ -1,7 +1,8 @@
 <nz-layout class="whole-layout">
-    <app-encabezado></app-encabezado>
+    <app-encabezado *ngIf="showHeader"></app-encabezado>
     <nz-layout>
         <nz-sider
+            *ngIf="showSidebar"
             class="collapsible-sidebar"
             nzWidth="250px"
             nzCollapsible
@@ -28,15 +29,6 @@
         <nz-layout class="inner-layout">
             <nz-content>
                 <router-outlet></router-outlet>
-                <!--
-           app-crear_contenidos
-           app-crear-unidad
-           app-proyecto-crear
-           app-personas
-           app-proyectos
-           app-unidades
-           app-contenidos
-         -->
             </nz-content>
         </nz-layout>
     </nz-layout>

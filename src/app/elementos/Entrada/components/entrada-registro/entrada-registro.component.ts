@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import {
     tarjeta_amarillo,
     tarjeta_amarillo_claro,
@@ -25,7 +27,8 @@ import {
     templateUrl: './entrada-registro.component.html',
     styleUrls: ['./entrada-registro.component.css'],
 })
-export class EntradaRegistroComponent {
+export class EntradaRegistroComponent implements OnInit {
+    registroForm: FormGroup;
     colores: string[] = [
         tarjeta_azul_fuerte,
         tarjeta_azul_medio,
@@ -47,11 +50,31 @@ export class EntradaRegistroComponent {
         tarjeta_rosa_claro,
     ];
 
-    colorSeleccionado: string =
-        this.colores[Math.floor(Math.random() * this.colores.length)];
+    colorSeleccionado: string;
+
+    constructor(private fb: FormBuilder) {}
+
+    ngOnInit(): void {
+        this.colorSeleccionado =
+            this.colores[Math.floor(Math.random() * this.colores.length)];
+
+        this.registroForm = this.fb.group({
+            nombre: ['', Validators.required],
+            apellido: ['', Validators.required],
+            color: [this.colorSeleccionado, Validators.required],
+        });
+    }
 
     seleccionarColor(color: string): void {
         this.colorSeleccionado =
             this.colorSeleccionado === color ? null : color;
+        this.registroForm.patchValue({ color: this.colorSeleccionado });
+    }
+
+    onSubmit(): void {
+        if (this.registroForm.valid) {
+            console.log('Form values:', this.registroForm.value);
+            // Aqui poner lo de la Enviar los datos a la base de datos
+        }
     }
 }
