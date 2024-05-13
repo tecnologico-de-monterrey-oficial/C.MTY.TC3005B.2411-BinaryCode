@@ -5,6 +5,7 @@
         *ngFor="let unidad of unidades"
         [unidad]="unidad"
         (click)="navigateToArchivos(unidad.id)"></app-unidad>
+    <app-unidad-crear-tarjeta />
 </nz-flex>
 
 <nz-flex class="grid-container-empty" *ngIf="unidadesVacias">
