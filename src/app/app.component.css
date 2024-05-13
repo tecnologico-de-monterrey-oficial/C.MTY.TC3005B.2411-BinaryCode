@@ -75,3 +75,14 @@
     justify-content: space-between;
     align-items: center;
 }
+
+::ng-deep .ant-modal-content {
+    border-radius: 10px;
+}
+
+::ng-deep span.ant-modal-close-x {
+    padding: 38px;
+    width: auto;
+    height: auto;
+    line-height: normal;
+}

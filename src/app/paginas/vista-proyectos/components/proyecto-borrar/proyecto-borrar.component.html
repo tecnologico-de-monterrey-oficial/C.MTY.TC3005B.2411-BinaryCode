@@ -3,7 +3,7 @@
     ¿Estas seguro de que deseas borrarlo?
 </div>
 
-<div>
+<div class="descripcion">
     Esto va a borrar todo el proyecto incluyendo sus archivos y versiones, si se
     acabó el proyecto se recomienda archivarlo para mantener el historial. Si
     estás seguro que quieres borrarlo, por favor reescribe el nombre del
@@ -19,8 +19,17 @@
     type="text"
     class="inputNombre" />
 
-<button nz-button (click)="handleCancel()">Cancelar</button>
+<div class="botones">
+    <button class="boton-cancelar" nz-button (click)="handleCancel()">
+        Cancelar
+    </button>
 
-<button nz-button (click)="handleOk()" [nzLoading]="isConfirmLoading">
-    Borrar
-</button>
+    <button
+        class="boton-borrar"
+        nz-button
+        (click)="handleOk()"
+        [nzLoading]="isConfirmLoading"
+        [disabled]="value !== proyecto.nombre">
+        Borrar
+    </button>
+</div>

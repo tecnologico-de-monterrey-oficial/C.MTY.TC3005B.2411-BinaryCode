@@ -52,3 +52,11 @@
 .anticon {
     color: #595959;
 }
+
+.anticon-delete {
+    color: var(--rojoLogin);
+}
+
+.ant-dropdown-menu-item:hover .anticon-delete {
+    color: var(--blanco);
+}

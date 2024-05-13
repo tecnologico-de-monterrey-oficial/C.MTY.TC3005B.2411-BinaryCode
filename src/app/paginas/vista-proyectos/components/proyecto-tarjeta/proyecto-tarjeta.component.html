@@ -30,7 +30,7 @@
                             Archivar <span nz-icon nzType="folder-open"></span>
                         </li>
                         <li nz-menu-item>
-                            Dar permisos <span nz-icon nzType="unlock"></span>
+                            Permisos <span nz-icon nzType="unlock"></span>
                         </li>
                         <li nz-menu-item nzDanger (click)="showModal()">
                             Borrar
@@ -52,6 +52,7 @@
 </div>
 
 <nz-modal
+    class="modal-borrar"
     [(nzVisible)]="isVisible"
     [nzContent]="modalContent"
     [nzFooter]="null"
