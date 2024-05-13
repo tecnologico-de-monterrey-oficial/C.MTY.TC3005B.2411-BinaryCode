@@ -12,6 +12,9 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 @NgModule({
     imports: [
         EntradaLoginRoutingModule,
@@ -20,6 +23,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
         NzInputModule,
         NzFormModule,
         NzIconModule,
+        ReactiveFormsModule,
     ],
     declarations: [EntradaLoginComponent, LoginComponent, RegistroComponent],
     exports: [EntradaLoginComponent],
