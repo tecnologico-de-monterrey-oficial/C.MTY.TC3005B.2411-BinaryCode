@@ -24,17 +24,32 @@
                 <nz-dropdown-menu #menu="nzDropdownMenu">
                     <ul nz-menu nzSelectable>
                         <li nz-menu-item>
-                            Editar <span nz-icon nzType="edit"></span>
+                            Editar
+                            <span
+                                class="icono-opcion"
+                                nz-icon
+                                nzType="edit"></span>
                         </li>
                         <li nz-menu-item>
-                            Archivar <span nz-icon nzType="folder-open"></span>
+                            Archivar
+                            <span
+                                class="icono-opcion"
+                                nz-icon
+                                nzType="folder-open"></span>
                         </li>
                         <li nz-menu-item>
-                            Permisos <span nz-icon nzType="unlock"></span>
+                            Permisos
+                            <span
+                                class="icono-opcion"
+                                nz-icon
+                                nzType="unlock"></span>
                         </li>
                         <li nz-menu-item nzDanger (click)="showModal()">
                             Borrar
-                            <span nz-icon nzType="delete"></span>
+                            <span
+                                class="icono-opcion icono-borrar"
+                                nz-icon
+                                nzType="delete"></span>
                         </li>
                     </ul>
                 </nz-dropdown-menu>

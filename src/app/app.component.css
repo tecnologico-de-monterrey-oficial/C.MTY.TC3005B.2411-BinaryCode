@@ -76,6 +76,10 @@
     align-items: center;
 }
 
+::ng-deep .ant-menu-item .ant-menu-title-content {
+    justify-content: flex-start;
+}
+
 ::ng-deep .ant-modal-content {
     border-radius: 10px;
 }
