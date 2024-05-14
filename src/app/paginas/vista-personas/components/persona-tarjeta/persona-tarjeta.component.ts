@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Persona } from '../../../../modelos/persona.model';
+import { Usuario } from '../../../../modelos/usuario.model';
 
 @Component({
     selector: 'app-persona',
@@ -7,5 +7,5 @@ import { Persona } from '../../../../modelos/persona.model';
     styleUrl: './persona-tarjeta.component.css',
 })
 export class PersonaTarjetaComponent {
-    @Input() persona: Persona;
+    @Input() usuario: Usuario;
 }
