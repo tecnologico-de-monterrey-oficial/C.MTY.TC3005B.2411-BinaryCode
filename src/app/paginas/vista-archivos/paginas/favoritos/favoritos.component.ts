@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FavoritosServices } from '../../../../servicios/favoritos.services';
 import { Archivo } from '../../../../modelos/archivo.model';
+import { ArchivosService } from '../../../../servicios/archivo.services';
 
 @Component({
     selector: 'app-favoritos',
@@ -9,7 +9,7 @@ import { Archivo } from '../../../../modelos/archivo.model';
 export class FavoritosComponent {
     archivos: Archivo[] = [];
 
-    constructor(private archivosService: FavoritosServices) {
+    constructor(archivosService: ArchivosService) {
         this.archivos = archivosService.getArchivosFavoritos();
     }
 }

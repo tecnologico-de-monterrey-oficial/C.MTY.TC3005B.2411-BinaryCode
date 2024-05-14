@@ -13,7 +13,7 @@ export class ContenidosComponent {
     archivos: Archivo[] = [];
     carpetas: Carpeta[] = [];
 
-    constructor(private archivosService: ArchivosService) {
+    constructor(archivosService: ArchivosService) {
         const contenidos: Contenidos =
             archivosService.getContenidos('idParaGetArchivos');
         this.archivos = contenidos.archivos;

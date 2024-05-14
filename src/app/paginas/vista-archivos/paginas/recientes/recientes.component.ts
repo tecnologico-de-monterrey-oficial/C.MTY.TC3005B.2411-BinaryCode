@@ -9,7 +9,7 @@ import { Archivo } from '../../../../modelos/archivo.model';
 export class RecientesComponent {
     archivos: Archivo[] = [];
 
-    constructor(private archivosService: ArchivosService) {
+    constructor(archivosService: ArchivosService) {
         this.archivos = archivosService.getArchivosRecientes();
     }
 }
