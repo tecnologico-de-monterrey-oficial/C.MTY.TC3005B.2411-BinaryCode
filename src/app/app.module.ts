@@ -12,7 +12,6 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { IconsProviderModule } from './icons-provider.module';
 import { MainLayoutModule } from './MainLayout/main-layout.module';
 import { EntradaLoginModule } from './EntradaLogin/entrada-login.module';
 import { EncabezadoComponent } from './components/encabezado/encabezado.component';
@@ -42,7 +41,6 @@ registerLocaleData(es);
         NzDropDownModule,
         BrowserModule,
         AppRoutingModule,
-        IconsProviderModule,
         NzLayoutModule,
         NzMenuModule,
         FormsModule,
