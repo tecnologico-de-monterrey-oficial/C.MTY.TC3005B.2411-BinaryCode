@@ -15,8 +15,8 @@ import { AppComponent } from './app.component';
 import { IconsProviderModule } from './icons-provider.module';
 import { MainLayoutModule } from './MainLayout/main-layout.module';
 import { EntradaLoginModule } from './EntradaLogin/entrada-login.module';
-import { EncabezadoComponent } from './components/layout-elements/encabezado/encabezado.component';
-import { SidebarComponent } from './components/layout-elements/sidebar/sidebar.component';
+import { EncabezadoComponent } from './components/encabezado/encabezado.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 

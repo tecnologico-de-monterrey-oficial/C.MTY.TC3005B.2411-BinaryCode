@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Usuario } from '../../../modelos/usuario.model';
-import { US1 } from '../../../../assets/mocks/usuarios';
+import { Usuario } from '../../modelos/usuario.model';
+import { US1 } from '../../../assets/mocks/usuarios';
 
 @Component({
     selector: 'app-encabezado',
