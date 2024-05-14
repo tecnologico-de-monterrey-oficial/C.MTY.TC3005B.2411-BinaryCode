@@ -44,7 +44,7 @@
                                 nz-icon
                                 nzType="unlock"></span>
                         </li>
-                        <li nz-menu-item nzDanger>
+                        <li nz-menu-item nzDanger (click)="showModal()">
                             Borrar
                             <span
                                 class="icono-opcion icono-borrar"
@@ -65,3 +65,18 @@
         {{ proyecto.descripcion }}
     </div>
 </div>
+
+<nz-modal
+    class="modal-borrar"
+    [(nzVisible)]="isVisible"
+    [nzContent]="modalContent"
+    [nzFooter]="null"
+    (nzOnCancel)="handleCancel()">
+    <ng-template #modalContent>
+        <app-proyecto-borrar
+            [proyecto]="proyecto"
+            [isConfirmLoading]="isConfirmLoading"
+            (deleteProject)="handleOk()"
+            (cancelModal)="handleCancel()" />
+    </ng-template>
+</nz-modal>

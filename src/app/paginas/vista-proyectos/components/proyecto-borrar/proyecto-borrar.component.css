@@ -1,0 +1,66 @@
+.warning-icon {
+    color: var(--rojoLogin);
+    padding: 10px;
+    padding-left: 0;
+}
+
+.titulo {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.descripcion {
+    margin-top: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.inputNombre {
+    border-radius: 15px;
+    background: var(--contentBg);
+
+    margin: 10px 5px 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 98%;
+
+    border: none;
+    box-shadow: none;
+}
+
+.botones {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 0 5px;
+}
+
+.boton-cancelar {
+    font-size: 1rem;
+    height: auto;
+
+    background-color: var(--blanco);
+    border: 2px solid var(--rojoLogin);
+    color: var(--rojoLogin);
+
+    border-radius: 20px;
+}
+
+.boton-borrar {
+    font-size: 1rem;
+    height: auto;
+
+    background-color: var(--rojoLogin);
+    border: 2px solid var(--rojoLogin);
+    color: var(--blanco);
+
+    border-radius: 20px;
+}
+
+.boton-borrar[disabled] {
+    color: var(--bordes);
+    border-color: var(--bordes);
+    background: var(--contentBg);
+}
