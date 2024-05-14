@@ -1,37 +1,37 @@
 import { Usuario } from '../../app/modelos/usuario.model';
 
-export const US1: Usuario = new Usuario(
-    'U1',
-    'assets/images/usuarios_props/kraken.png',
-    'Kraken Dominguez'
-);
+export const US1: Usuario = {
+    id: 'U1',
+    nombre: 'Kraken Dominguez',
+    imagenUrl: 'assets/images/usuarios_props/kraken.png',
+};
 
-export const US2: Usuario = new Usuario(
-    'U2',
-    'assets/images/usuarios_props/chihuahua.png',
-    'Luis A Escudero'
-);
+export const US2: Usuario = {
+    id: 'U2',
+    nombre: 'Luis A Escudero',
+    imagenUrl: 'assets/images/usuarios_props/chihuahua.png',
+};
 
-export const US3: Usuario = new Usuario(
-    'U3',
-    'assets/images/usuarios_props/quetzalpollo.jpeg',
-    'Samantha Bautista'
-);
+export const US3: Usuario = {
+    id: 'U3',
+    nombre: 'Samantha Bautista',
+    imagenUrl: 'assets/images/usuarios_props/quetzalpollo.jpeg',
+};
 
-export const US4: Usuario = new Usuario(
-    'U4',
-    'assets/images/usuarios_props/anya.png',
-    'Angel Garcia'
-);
+export const US4: Usuario = {
+    id: 'U4',
+    nombre: 'Angel Garcia',
+    imagenUrl: 'assets/images/usuarios_props/anya.png',
+};
 
-export const US5: Usuario = new Usuario(
-    'U5',
-    'assets/images/usuarios_props/smalldoggo.jpg',
-    'Carlos Mallén'
-);
+export const US5: Usuario = {
+    id: 'U5',
+    nombre: 'Carlos Mallén',
+    imagenUrl: 'assets/images/usuarios_props/smalldoggo.jpg',
+};
 
-export const US6: Usuario = new Usuario(
-    'U6',
-    'assets/images/usuarios_props/corrin.png',
-    'Presno Gonzalez'
-);
+export const US6: Usuario = {
+    id: 'U6',
+    nombre: 'Presno Gonzalez',
+    imagenUrl: 'assets/images/usuarios_props/corrin.png',
+};

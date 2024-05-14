@@ -29,7 +29,10 @@ export class ArchivosService {
 
     carpetas: Carpeta[] = [C1, C2, C3];
 
-    contenidos: Contenidos = new Contenidos(this.archivos, this.carpetas);
+    contenidos: Contenidos = {
+        archivos: this.archivos,
+        carpetas: this.carpetas,
+    };
 
     getArchivosFavoritos(): Archivo[] {
         // TODO: LLAMADA A API
