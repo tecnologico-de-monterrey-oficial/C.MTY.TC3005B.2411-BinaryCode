@@ -1,39 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Usuario } from '../modelos/usuario.model';
 import { Persona } from '../modelos/persona.model';
+import { US1, US2, US3, US4 } from '../../assets/mocks/usuarios';
 @Injectable({
     providedIn: 'root',
 })
 export class PersonasServices {
     personas: Persona[] = [
-        new Persona(
-            new Usuario(
-                '34',
-                'assets/images/usuarios_props/anya.png',
-                'Angel Garcia'
-            ),
-            '29 de febrero de 2024'
-        ),
-        new Persona(
-            new Usuario(
-                '32',
-                'assets/images/usuarios_props/chihuahua.png',
-                'Luis A Escudero'
-            ),
-            '29 de febrero de 2024'
-        ),
-        new Persona(
-            new Usuario('31', '', 'Kraken Dominguez'),
-            '29 de febrero de 2024'
-        ),
-        new Persona(
-            new Usuario(
-                '33',
-                'assets/images/usuarios_props/quetzalpollo.jpeg',
-                'Samantha Bautista'
-            ),
-            '29 de febrero de 2024'
-        ),
+        new Persona(US1, '29 de febrero de 2024'),
+        new Persona(US2, '29 de febrero de 2024'),
+        new Persona(US3, '29 de febrero de 2024'),
+        new Persona(US4, '29 de febrero de 2024'),
     ];
 
     getPersonas(): Persona[] {

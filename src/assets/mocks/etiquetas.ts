@@ -20,102 +20,110 @@ import {
     tarjeta_verde_medio,
 } from '../colores';
 
-export const E1: Etiqueta = new Etiqueta(
-    'E1',
-    'Etiqueta 1',
-    tarjeta_azul_fuerte
-);
+export const E1: Etiqueta = {
+    id: 'E1',
+    nombre: 'Etiqueta 1',
+    color: tarjeta_azul_fuerte,
+};
 
-export const E2: Etiqueta = new Etiqueta(
-    'E2',
-    'Etiqueta 2',
-    tarjeta_azul_medio
-);
+export const E2: Etiqueta = {
+    id: 'E2',
+    nombre: 'Etiqueta 2',
+    color: tarjeta_azul_medio,
+};
 
-export const E3: Etiqueta = new Etiqueta(
-    'E3',
-    'Etiqueta 3',
-    tarjeta_azul_claro
-);
+export const E3: Etiqueta = {
+    id: 'E3',
+    nombre: 'Etiqueta 3',
+    color: tarjeta_azul_claro,
+};
 
-export const E4: Etiqueta = new Etiqueta(
-    'E4',
-    'Etiqueta 4',
-    tarjeta_rojo_fuerte
-);
+export const E4: Etiqueta = {
+    id: 'E4',
+    nombre: 'Etiqueta 4',
+    color: tarjeta_rojo_fuerte,
+};
 
-export const E5: Etiqueta = new Etiqueta(
-    'E5',
-    'Etiqueta 5',
-    tarjeta_rojo_medio
-);
+export const E5: Etiqueta = {
+    id: 'E5',
+    nombre: 'Etiqueta 5',
+    color: tarjeta_rojo_medio,
+};
 
-export const E6: Etiqueta = new Etiqueta(
-    'E6',
-    'Etiqueta 6',
-    tarjeta_rojo_claro
-);
+export const E6: Etiqueta = {
+    id: 'E6',
+    nombre: 'Etiqueta 6',
+    color: tarjeta_rojo_claro,
+};
 
-export const E7: Etiqueta = new Etiqueta(
-    'E7',
-    'Etiqueta 7',
-    tarjeta_morado_fuerte
-);
+export const E7: Etiqueta = {
+    id: 'E7',
+    nombre: 'Etiqueta 7',
+    color: tarjeta_morado_fuerte,
+};
 
-export const E8: Etiqueta = new Etiqueta('E8', 'Etiqueta 8', tarjeta_morado);
+export const E8: Etiqueta = {
+    id: 'E8',
+    nombre: 'Etiqueta 8',
+    color: tarjeta_morado,
+};
 
-export const E9: Etiqueta = new Etiqueta(
-    'E9',
-    'Etiqueta 9',
-    tarjeta_morado_claro
-);
+export const E9: Etiqueta = {
+    id: 'E9',
+    nombre: 'Etiqueta 9',
+    color: tarjeta_morado_claro,
+};
 
-export const E10: Etiqueta = new Etiqueta(
-    'E10',
-    'Etiqueta 10',
-    tarjeta_verde_fuerte
-);
+export const E10: Etiqueta = {
+    id: 'E10',
+    nombre: 'Etiqueta 10',
+    color: tarjeta_verde_fuerte,
+};
 
-export const E11: Etiqueta = new Etiqueta(
-    'E11',
-    'Etiqueta 11',
-    tarjeta_verde_medio
-);
+export const E11: Etiqueta = {
+    id: 'E11',
+    nombre: 'Etiqueta 11',
+    color: tarjeta_verde_medio,
+};
 
-export const E12: Etiqueta = new Etiqueta(
-    'E12',
-    'Etiqueta 12',
-    tarjeta_verde_claro
-);
+export const E12: Etiqueta = {
+    id: 'E12',
+    nombre: 'Etiqueta 12',
+    color: tarjeta_verde_claro,
+};
 
-export const E13: Etiqueta = new Etiqueta(
-    'E13',
-    'Etiqueta 13',
-    tarjeta_amarillo_fuerte
-);
+export const E13: Etiqueta = {
+    id: 'E13',
+    nombre: 'Etiqueta 13',
+    color: tarjeta_amarillo_fuerte,
+};
 
-export const E14: Etiqueta = new Etiqueta(
-    'E14',
-    'Etiqueta 14',
-    tarjeta_amarillo
-);
+export const E14: Etiqueta = {
+    id: 'E14',
+    nombre: 'Etiqueta 14',
+    color: tarjeta_amarillo,
+};
 
-export const E15: Etiqueta = new Etiqueta(
-    'E15',
-    'Etiqueta 15',
-    tarjeta_amarillo_claro
-);
+export const E15: Etiqueta = {
+    id: 'E15',
+    nombre: 'Etiqueta 15',
+    color: tarjeta_amarillo_claro,
+};
 
-export const E16: Etiqueta = new Etiqueta(
-    'E16',
-    'Etiqueta 16',
-    tarjeta_rosa_fuerte
-);
+export const E16: Etiqueta = {
+    id: 'E16',
+    nombre: 'Etiqueta 16',
+    color: tarjeta_rosa_fuerte,
+};
 
-export const E17: Etiqueta = new Etiqueta('E17', 'Etiqueta 17', tarjeta_rosa);
+export const E17: Etiqueta = {
+    id: 'E17',
+    nombre: 'Etiqueta 17',
+    color: tarjeta_rosa,
+};
 
-export const E18: Etiqueta = new Etiqueta(
-    'E18',
-    'Etiqueta 18',
-    tarjeta_rosa_claro
-);
+export const E18: Etiqueta = {
+    id: 'E18',
+    nombre: 'Etiqueta 18',
+    color: tarjeta_rosa_claro,
+};

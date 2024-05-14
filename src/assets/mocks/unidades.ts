@@ -10,95 +10,100 @@ import {
 
 // Datos para mockup de Unidades - agregar a la base de datos
 
-export const UN1: Unidad = new Unidad(
-    'u1',
-    'Marketing',
-    'assets/images/unidades_props/marketing_temporal_prop.png',
-    unidad_roja,
-    'P1'
-);
-export const UN2: Unidad = new Unidad(
-    'u2',
-    'Finanzas',
-    'assets/images/unidades_props/finanzas_temporal_prop.png',
-    unidad_morada,
-    'P1'
-);
-export const UN3: Unidad = new Unidad(
-    'u3',
-    'Mecánica',
-    'assets/images/unidades_props/mecanica_temporal_prop.png',
-    unidad_amarilla,
-    'P1'
-);
-export const UN4: Unidad = new Unidad(
-    'u4',
-    'Sistemas',
-    'assets/images/unidades_props/sistemas_temporal_prop.png',
-    unidad_verde,
-    'P2'
-);
-export const UN5: Unidad = new Unidad(
-    'u5',
-    'Chasis',
-    'assets/images/unidades_props/chasis_temporal_prop.png',
-    unidad_azul,
-    'P2'
-);
-export const UN6: Unidad = new Unidad(
-    'u6',
-    'Batería',
-    'assets/images/unidades_props/bateria_temporal_prop.png',
-    unidad_rosa,
-    'P2'
-);
+export const UN1: Unidad = {
+    id: 'u1',
+    nombre: 'Marketing',
+    urlImagen: 'assets/images/unidades_props/marketing_temporal_prop.png',
+    color: unidad_roja,
+    proyectoId: 'P1',
+};
+
+export const UN2: Unidad = {
+    id: 'u2',
+    nombre: 'Finanzas',
+    urlImagen: 'assets/images/unidades_props/finanzas_temporal_prop.png',
+    color: unidad_morada,
+    proyectoId: 'P1',
+};
+
+export const UN3: Unidad = {
+    id: 'u3',
+    nombre: 'Mecánica',
+    urlImagen: 'assets/images/unidades_props/mecanica_temporal_prop.png',
+    color: unidad_amarilla,
+    proyectoId: 'P1',
+};
+
+export const UN4: Unidad = {
+    id: 'u4',
+    nombre: 'Sistemas',
+    urlImagen: 'assets/images/unidades_props/sistemas_temporal_prop.png',
+    color: unidad_verde,
+    proyectoId: 'P2',
+};
+
+export const UN5: Unidad = {
+    id: 'u5',
+    nombre: 'Chasis',
+    urlImagen: 'assets/images/unidades_props/chasis_temporal_prop.png',
+    color: unidad_azul,
+    proyectoId: 'P2',
+};
+
+export const UN6: Unidad = {
+    id: 'u6',
+    nombre: 'Batería',
+    urlImagen: 'assets/images/unidades_props/bateria_temporal_prop.png',
+    color: unidad_rosa,
+    proyectoId: 'P2',
+};
 
 // Datos para pruebas - NO agregar a la base de datos
 
-export const UNT1: Unidad = new Unidad(
-    'u6',
-    'A',
-    'assets/images/unidades_props/bateria_temporal_prop.png',
-    '#FF4D4F',
-    'p2'
-);
+export const UNT1: Unidad = {
+    id: 'u6',
+    nombre: 'A',
+    urlImagen: 'assets/images/unidades_props/bateria_temporal_prop.png',
+    color: '#FF4D4F',
+    proyectoId: 'p2',
+};
 
-export const UNT2: Unidad = new Unidad(
-    'u6',
-    'ABCDEFGHIJKMNLO',
-    '',
-    '#914DFF',
-    'p2'
-);
+export const UNT2: Unidad = {
+    id: 'u6',
+    nombre: 'ABCDEFGHIJKMNLO',
+    urlImagen: '',
+    color: '#914DFF',
+    proyectoId: 'p2',
+};
 
-export const UNT3: Unidad = new Unidad(
-    'u6',
-    '123áüñ !”#→😀$®™',
-    'assets/images/unidades_props/bateria_temporal_prop.png',
-    '#FFCD4D',
-    'p2'
-);
+export const UNT3: Unidad = {
+    id: 'u6',
+    nombre: '123áüñ !”#→😀$®™',
+    urlImagen: 'assets/images/unidades_props/bateria_temporal_prop.png',
+    color: '#FFCD4D',
+    proyectoId: 'p2',
+};
 
-export const UNT4: Unidad = new Unidad(
-    'u6',
-    'Marketing',
-    'assets/images/unidades_props/bateria_temporal_prop.png',
-    '#21B514',
-    'p1'
-);
+export const UNT4: Unidad = {
+    id: 'u6',
+    nombre: 'Marketing',
+    urlImagen: 'assets/images/unidades_props/bateria_temporal_prop.png',
+    color: '#21B514',
+    proyectoId: 'p1',
+};
 
-export const UNT5: Unidad = new Unidad(
-    'u6',
-    'Marketing',
-    'assets/images/unidades_props/bateria_temporal_prop.png',
-    '#1499B5',
-    'p1'
-);
+export const UNT5: Unidad = {
+    id: 'u6',
+    nombre: 'Marketing',
+    urlImagen: 'assets/images/unidades_props/bateria_temporal_prop.png',
+    color: '#1499B5',
+    proyectoId: 'p1',
+};
 
-export const UNT6: Unidad = new Unidad(
-    'u6',
-    'Marketing',
-    'assets/images/unidades_props/bateria_temporal_prop.png',
-    '#FF4DE3',
-    'p1'
-);
+export const UNT6: Unidad = {
+    id: 'u6',
+    nombre: 'Marketing',
+    urlImagen: 'assets/images/unidades_props/bateria_temporal_prop.png',
+    color: '#FF4DE3',
+    proyectoId: 'p1',
+};
