@@ -20,11 +20,12 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 
 // Imports locales
-import { EntradaModule } from './elementos/Entrada/entrada.module';
 import { MainLayoutModule } from './MainLayout/main-layout.module';
 import { AppRoutingModule } from './app-routing.module';
+import { EntradaModule } from './elementos/Entrada/entrada.module';
 
 @NgModule({
     declarations: [
@@ -46,6 +47,7 @@ import { AppRoutingModule } from './app-routing.module';
         NzInputModule,
         NzLayoutModule,
         NzMenuModule,
+        NzModalModule,
 
         EntradaModule,
         MainLayoutModule,
