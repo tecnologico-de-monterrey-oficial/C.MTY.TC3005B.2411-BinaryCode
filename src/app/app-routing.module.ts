@@ -7,8 +7,8 @@ const routes: Routes = [
     {
         path: 'entrada',
         loadChildren: () =>
-            import('./elementos/Entrada/entrada.module').then(
-                m => m.EntradaModule
+            import('./elementos/Entrada/entrada-routing.module').then(
+                m => m.EntradaRoutingModule
             ),
     },
     {
