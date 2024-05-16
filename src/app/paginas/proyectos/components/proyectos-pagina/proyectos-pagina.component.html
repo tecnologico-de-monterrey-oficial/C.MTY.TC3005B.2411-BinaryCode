@@ -1,0 +1,8 @@
+<h1>Proyectos</h1>
+
+<nz-flex class="grid-container">
+    <app-proyectos-tarjeta
+        *ngFor="let proyecto of proyectos"
+        [proyecto]="proyecto" />
+    <app-proyectos-crear-tarjeta />
+</nz-flex>

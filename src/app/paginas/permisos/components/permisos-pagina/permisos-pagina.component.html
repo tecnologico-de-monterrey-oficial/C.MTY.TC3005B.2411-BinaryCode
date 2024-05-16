@@ -1,0 +1,8 @@
+<h1>Permisos</h1>
+
+<div class="contenedor">
+    <app-permisos-sidebar [unidad]="unidad" [proyecto]="proyecto" />
+
+    <app-permisos-editores [unidad]="unidad" *ngIf="unidad" />
+    <app-permisos-cuadricula [proyecto]="proyecto" *ngIf="proyecto" />
+</div>

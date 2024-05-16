@@ -1,0 +1,15 @@
+<h1>Unidades</h1>
+
+<nz-flex class="grid-container" *ngIf="!unidadesVacias">
+    <app-unidades-tarjeta
+        *ngFor="let unidad of unidades"
+        [unidad]="unidad"
+        (click)="navigateToArchivos(unidad.id)" />
+    <app-unidades-crear-tarjeta />
+</nz-flex>
+
+<nz-flex class="grid-container-empty" *ngIf="unidadesVacias">
+    <nz-empty [nzNotFoundContent]="contentTpl">
+        <ng-template #contentTpl>No hay unidades</ng-template>
+    </nz-empty>
+</nz-flex>

@@ -1,25 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { EntradaLoginRoutingModule } from './entrada-login-routing.module';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzInputModule } from 'ng-zorro-antd/input';
 
 import { EntradaLoginComponent } from './entrada-login.component';
-
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
-import { NzGridModule } from 'ng-zorro-antd/grid';
-import { NzInputModule } from 'ng-zorro-antd/input';
-import { NzFormModule } from 'ng-zorro-antd/form';
-import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @NgModule({
     imports: [
-        EntradaLoginRoutingModule,
         CommonModule,
-        NzGridModule,
-        NzInputModule,
         NzFormModule,
+        NzGridModule,
         NzIconModule,
+        NzInputModule,
     ],
     declarations: [EntradaLoginComponent, LoginComponent, RegistroComponent],
     exports: [EntradaLoginComponent],

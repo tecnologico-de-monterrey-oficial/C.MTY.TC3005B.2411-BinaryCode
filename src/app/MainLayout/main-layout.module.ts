@@ -2,21 +2,20 @@ import { NgModule } from '@angular/core';
 
 import { MainLayoutRoutingModule } from './main-layout-routing.module';
 
-import { VistaArchivosModule } from '../paginas/vista-archivos/vista-archivos.module';
-import { VistaPersonasModule } from '../paginas/vista-personas/vista-persona.module';
-import { VistaProyectosModule } from '../paginas/vista-proyectos/vista-proyectos.module';
-import { VistaUnidadesModule } from '../paginas/vista-unidades/vista-unidades.module';
-import { VistaPermisosModule } from '../paginas/vista-permisos/vista-permisos.module';
+import { ArchivosModule } from '../paginas/archivos/archivos.module';
+import { PermisosModule } from '../paginas/permisos/permisos.module';
+import { PersonasModule } from '../paginas/personas/personas.module';
+import { ProyectosModule } from '../paginas/proyectos/proyectos.module';
+import { UnidadesModule } from '../paginas/unidades/unidades.module';
 
 @NgModule({
     imports: [
         MainLayoutRoutingModule,
-
-        VistaArchivosModule,
-        VistaPersonasModule,
-        VistaProyectosModule,
-        VistaUnidadesModule,
-        VistaPermisosModule,
+        ArchivosModule,
+        PermisosModule,
+        PersonasModule,
+        ProyectosModule,
+        UnidadesModule,
     ],
     declarations: [],
 })
