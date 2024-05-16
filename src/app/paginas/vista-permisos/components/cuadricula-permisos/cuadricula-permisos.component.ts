@@ -13,6 +13,7 @@ export class CuadriculaPermisosComponent implements OnInit {
     constructor(private unidadesService: UnidadesService) {}
 
     ngOnInit(): void {
-        this.unidades = this.unidadesService.getUnidades('idProyecto');
+        this.unidades =
+            this.unidadesService.getUnidadesPorProyecto('idProyecto');
     }
 }

@@ -1,7 +1,10 @@
 <h1>Unidades</h1>
 
 <nz-flex class="grid-container" *ngIf="!unidadesVacias">
-    <app-unidad *ngFor="let unidad of unidades" [unidad]="unidad"></app-unidad>
+    <app-unidad
+        *ngFor="let unidad of unidades"
+        [unidad]="unidad"
+        (click)="navigateToArchivos(unidad.id)"></app-unidad>
     <app-unidad-crear-tarjeta />
 </nz-flex>
 

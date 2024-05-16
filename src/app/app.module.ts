@@ -3,25 +3,28 @@ import { BrowserModule } from '@angular/platform-browser';
 import { registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import es from '@angular/common/locales/es';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NZ_I18N, es_ES } from 'ng-zorro-antd/i18n';
+import { RouterModule } from '@angular/router';
+
+// Imports ng-zorro
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { IconsProviderModule } from './icons-provider.module';
-import { MainLayoutModule } from './MainLayout/main-layout.module';
+
+// Imports locales
 import { EntradaLoginModule } from './EntradaLogin/entrada-login.module';
 import { EncabezadoComponent } from './components/layout-elements/encabezado/encabezado.component';
 import { SidebarComponent } from './components/layout-elements/sidebar/sidebar.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
+
 import { CrearContenidosComponent } from './paginas/vista-archivos/components/crear-contenidos/crear-contenidos.component';
 import { ProyectoCrearComponent } from './paginas/vista-proyectos/contenido-proyectos/proyecto-crear/proyecto-crear.component';
 import { CrearUnidadComponent } from './paginas/vista-unidades/components/crear-unidad/crear-unidad.component';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
-import { NzModalModule } from 'ng-zorro-antd/modal';
 
 registerLocaleData(es);
 
@@ -29,29 +32,27 @@ registerLocaleData(es);
     declarations: [
         AppComponent,
         EncabezadoComponent,
-        SidebarComponent,
         CrearContenidosComponent,
         ProyectoCrearComponent,
         CrearUnidadComponent,
     ],
     imports: [
+        NzIconModule,
+        NzInputModule,
+        NzLayoutModule,
+        NzMenuModule,
+        NzDropDownModule,
         BrowserModule,
         AppRoutingModule,
         IconsProviderModule,
         NzLayoutModule,
         NzMenuModule,
         FormsModule,
-        ReactiveFormsModule,
         HttpClientModule,
         BrowserAnimationsModule,
         EntradaLoginModule,
         MainLayoutModule,
-        NzIconModule,
-        NzInputModule,
-        NzDropDownModule,
-        NzModalModule,
     ],
-    providers: [{ provide: NZ_I18N, useValue: es_ES }],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

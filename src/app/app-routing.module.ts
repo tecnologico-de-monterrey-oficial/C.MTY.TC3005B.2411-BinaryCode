@@ -14,37 +14,38 @@ const routes: Routes = [
     {
         path: 'archivos',
         loadChildren: () =>
-            import('./paginas/vista-archivos/vista-archivos-routing.module').then(
-                m => m.VistaArchivosRoutingModule
-            ),
+            import(
+                './paginas/vista-archivos/vista-archivos-routing.module'
+            ).then(m => m.VistaArchivosRoutingModule),
     },
     {
         path: 'proyectos',
         loadChildren: () =>
-            import('./paginas/vista-proyectos/vista-proyectos-routing.module').then(
-                m => m.VistaProyectosRoutingModule
-            ),
+            import(
+                './paginas/vista-proyectos/vista-proyectos-routing.module'
+            ).then(m => m.VistaProyectosRoutingModule),
+
     },
     {
         path: 'unidades',
         loadChildren: () =>
-            import('./paginas/vista-unidades/vista-unidades-routing.module').then(
-                m => m.VistaUnidadesRoutingModule
-            ),
+            import(
+                './paginas/vista-unidades/vista-unidades-routing.module'
+            ).then(m => m.VistaUnidadesRoutingModule),
     },
     {
         path: 'personas',
         loadChildren: () =>
-            import('./paginas/vista-personas/vista-persona-routing.module').then(
-                m => m.VistaPersonasRoutingModule
-            ),
+            import(
+                './paginas/vista-personas/vista-persona-routing.module'
+            ).then(m => m.VistaPersonasRoutingModule),
     },
     {
         path: 'permisos',
         loadChildren: () =>
-            import('./paginas/vista-permisos/vista-permisos-routing.module').then(
-                m => m.VistaPermisosRoutingModule
-            ),
+            import(
+                './paginas/vista-permisos/vista-permisos-routing.module'
+            ).then(m => m.VistaPermisosRoutingModule),
     },
 ];
 

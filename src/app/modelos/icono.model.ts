@@ -11,29 +11,24 @@ import {
     icono_verde,
 } from '../../assets/colores';
 
-export class Icono {
+export type Icono = {
     nombre: string;
     color: string;
-
-    constructor(nombre: string, color: string) {
-        this.nombre = nombre;
-        this.color = color;
-    }
-}
+};
 
 type DefinitionObject = {
     [key: string]: Icono;
 };
 
 export const fileIcons: DefinitionObject = {
-    excel: new Icono('file-excel', icono_verde),
-    jpg: new Icono('file-jpg', icono_morado),
-    pdf: new Icono('file-pdf', icono_rojo),
-    ppt: new Icono('file-ppt', icono_naranja),
-    word: new Icono('file-word', icono_azul),
-    solidWorks: new Icono('code-sandbox', icono_rosa),
-    gif: new Icono('file-gif', icono_amarillo),
-    image: new Icono('file-image', icono_azul_claro),
-    text: new Icono('file-text', icono_gris),
-    unknown: new Icono('file-unknown', icono_rosa_fuerte),
+    excel: { nombre: 'file-excel', color: icono_verde },
+    jpg: { nombre: 'file-jpg', color: icono_morado },
+    pdf: { nombre: 'file-pdf', color: icono_rojo },
+    ppt: { nombre: 'file-ppt', color: icono_naranja },
+    word: { nombre: 'file-word', color: icono_azul },
+    solidWorks: { nombre: 'code-sandbox', color: icono_rosa },
+    gif: { nombre: 'file-gif', color: icono_amarillo },
+    image: { nombre: 'file-image', color: icono_azul_claro },
+    text: { nombre: 'file-text', color: icono_gris },
+    unknown: { nombre: 'file-unknown', color: icono_rosa_fuerte },
 };

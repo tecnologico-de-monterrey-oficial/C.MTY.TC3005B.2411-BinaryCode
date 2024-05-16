@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Persona } from '../../../modelos/persona.model';
-import { PersonasServices } from '../../../servicios/personas.services';
+import { Usuario } from '../../../modelos/usuario.model';
+import { UsuariosServices } from '../../../servicios/usuarios.services';
 
 @Component({
     selector: 'app-personas',
@@ -8,9 +8,9 @@ import { PersonasServices } from '../../../servicios/personas.services';
     styleUrl: './personas.component.css',
 })
 export class PersonasComponent {
-    personas: Persona[] = [];
+    usuarios: Usuario[] = [];
 
-    constructor(private personasService: PersonasServices) {
-        this.personas = personasService.getPersonas();
+    constructor(private usuariosService: UsuariosServices) {
+        this.usuarios = usuariosService.getUsuarios();
     }
 }
