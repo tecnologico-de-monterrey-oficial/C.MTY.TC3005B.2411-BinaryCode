@@ -7,35 +7,35 @@ const routes: Routes = [
     {
         path: 'entrada',
         loadChildren: () =>
-            import('./EntradaLogin/entrada-login.module').then(
-                m => m.EntradaLoginModule
+            import('./elementos/Entrada/entrada.module').then(
+                m => m.EntradaModule
             ),
     },
     {
         path: 'archivos',
         loadChildren: () =>
-            import('./paginas/archivos/archivos-routing.module').then(
+            import('./elementos/archivos/archivos-routing.module').then(
                 m => m.ArchivosRoutingModule
             ),
     },
     {
         path: 'proyectos',
         loadChildren: () =>
-            import('./paginas/proyectos/proyectos-routing.module').then(
+            import('./elementos/proyectos/proyectos-routing.module').then(
                 m => m.ProyectosRoutingModule
             ),
     },
     {
         path: 'personas',
         loadChildren: () =>
-            import('./paginas/personas/personas-routing.module').then(
+            import('./elementos/personas/personas-routing.module').then(
                 m => m.PersonasRoutingModule
             ),
     },
     {
         path: 'permisos',
         loadChildren: () =>
-            import('./paginas/permisos/permisos-routing.module').then(
+            import('./elementos/permisos/permisos-routing.module').then(
                 m => m.PermisosRoutingModule
             ),
     },

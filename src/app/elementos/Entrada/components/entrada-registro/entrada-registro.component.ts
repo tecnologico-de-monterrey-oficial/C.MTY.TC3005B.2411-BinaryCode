@@ -18,14 +18,14 @@ import {
     tarjeta_verde_claro,
     tarjeta_verde_fuerte,
     tarjeta_verde_medio,
-} from '../../../assets/colores';
+} from '../../../../../assets/colores';
 
 @Component({
-    selector: 'app-registro',
-    templateUrl: './registro.component.html',
-    styleUrls: ['./registro.component.css'],
+    selector: 'app-entrada-registro',
+    templateUrl: './entrada-registro.component.html',
+    styleUrls: ['./entrada-registro.component.css'],
 })
-export class RegistroComponent {
+export class EntradaRegistroComponent {
     colores: string[] = [
         tarjeta_azul_fuerte,
         tarjeta_azul_medio,
