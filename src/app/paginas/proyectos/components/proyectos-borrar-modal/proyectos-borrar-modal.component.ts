@@ -2,9 +2,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Proyecto } from '../../../../modelos/proyectos.model';
 
 @Component({
-    selector: 'app-proyecto-borrar-modal',
-    templateUrl: './proyecto-borrar-modal.component.html',
-    styleUrl: './proyecto-borrar-modal.component.css',
+    selector: 'app-proyectos-borrar-modal',
+    templateUrl: './proyectos-borrar-modal.component.html',
+    styleUrl: './proyectos-borrar-modal.component.css',
 })
 export class ProyectosBorrarModalComponent {
     @Input() proyecto: Proyecto;

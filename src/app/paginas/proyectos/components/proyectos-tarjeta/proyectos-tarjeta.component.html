@@ -73,7 +73,7 @@
     [nzFooter]="null"
     (nzOnCancel)="handleCancel()">
     <ng-template #modalContent>
-        <app-proyecto-borrar
+        <app-proyectos-borrar-modal
             [proyecto]="proyecto"
             [isConfirmLoading]="isConfirmLoading"
             (deleteProject)="handleOk()"

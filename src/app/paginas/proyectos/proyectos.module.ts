@@ -13,7 +13,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 
 // Declarations
-import { ProyectosBorrarModalComponent } from './components/proyectos-borrar-modal/proyecto-borrar-modal.component';
+import { ProyectosBorrarModalComponent } from './components/proyectos-borrar-modal/proyectos-borrar-modal.component';
 import { ProyectosCrearTarjetaComponent } from './components/proyectos-crear-tarjeta/proyectos-crear-tarjeta.component';
 import { ProyectosPaginaComponent } from './components/proyectos-pagina/proyectos-pagina.component';
 import { ProyectosTarjetaComponent } from './components/proyectos-tarjeta/proyectos-tarjeta.component';
