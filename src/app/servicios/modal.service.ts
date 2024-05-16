@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
-import { ProyectoCrearComponent } from '../paginas/vista-proyectos/contenido-proyectos/proyecto-crear/proyecto-crear.component';
+import { ProyectoCrearComponent } from '../paginas/vista-proyectos/components/proyecto-crear/proyecto-crear.component';
 
 @Injectable({
   providedIn: 'root'
