@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 
 // Declarations
 import { AppComponent } from './app.component';
-import { EncabezadoComponent } from './components/encabezado/encabezado.component';
-import { CrearContenidosComponent } from './paginas/vista-archivos/components/crear-contenidos/crear-contenidos.component';
-import { ProyectoCrearComponent } from './paginas/vista-proyectos/components/proyecto-crear/proyecto-crear.component';
-import { CrearUnidadComponent } from './paginas/vista-unidades/components/crear-unidad/crear-unidad.component';
+import { EncabezadoComponent } from './elementos/Encabezado/encabezado.component';
+import { ArchivosCrearModalComponent } from './elementos/archivos/components/archivos-crear-modal/archivos-crear-modal.component';
+import { ProyectosCrearModalComponent } from './elementos/proyectos/components/proyectos-crear-modal/proyectos-crear-modal.component';
+import { UnidadesCrearModalComponent } from './elementos/unidades/components/unidades-crear-modal/unidades-crear-modal.component';
 
 // Imports angular
 import { HttpClientModule } from '@angular/common/http';
@@ -22,7 +22,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 
 // Imports locales
-import { EntradaLoginModule } from './EntradaLogin/entrada-login.module';
+import { EntradaModule } from './elementos/Entrada/entrada.module';
 import { MainLayoutModule } from './MainLayout/main-layout.module';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -30,9 +30,9 @@ import { AppRoutingModule } from './app-routing.module';
     declarations: [
         AppComponent,
         EncabezadoComponent,
-        CrearContenidosComponent,
-        ProyectoCrearComponent,
-        CrearUnidadComponent,
+        ArchivosCrearModalComponent,
+        ProyectosCrearModalComponent,
+        UnidadesCrearModalComponent,
     ],
     imports: [
         HttpClientModule,
@@ -47,7 +47,7 @@ import { AppRoutingModule } from './app-routing.module';
         NzLayoutModule,
         NzMenuModule,
 
-        EntradaLoginModule,
+        EntradaModule,
         MainLayoutModule,
         AppRoutingModule,
     ],

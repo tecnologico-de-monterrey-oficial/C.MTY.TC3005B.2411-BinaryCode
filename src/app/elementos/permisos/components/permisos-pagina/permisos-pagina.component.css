@@ -1,0 +1,12 @@
+.contenedor {
+    min-height: 90%;
+    display: flex;
+}
+
+app-permisos-permisos {
+    flex: 0 0 30%;
+}
+
+app-permisos-editores {
+    flex: 1;
+}

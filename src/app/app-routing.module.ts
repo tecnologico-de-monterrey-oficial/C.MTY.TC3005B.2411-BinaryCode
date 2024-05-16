@@ -7,37 +7,37 @@ const routes: Routes = [
     {
         path: 'entrada',
         loadChildren: () =>
-            import('./EntradaLogin/entrada-login.module').then(
-                m => m.EntradaLoginModule
+            import('./elementos/Entrada/entrada-routing.module').then(
+                m => m.EntradaRoutingModule
             ),
     },
     {
         path: 'archivos',
         loadChildren: () =>
-            import(
-                './paginas/vista-archivos/vista-archivos-routing.module'
-            ).then(m => m.VistaArchivosRoutingModule),
+            import('./elementos/archivos/archivos-routing.module').then(
+                m => m.ArchivosRoutingModule
+            ),
     },
     {
         path: 'proyectos',
         loadChildren: () =>
-            import(
-                './paginas/vista-proyectos/vista-proyectos-routing.module'
-            ).then(m => m.VistaProyectosRoutingModule),
+            import('./elementos/proyectos/proyectos-routing.module').then(
+                m => m.ProyectosRoutingModule
+            ),
     },
     {
         path: 'personas',
         loadChildren: () =>
-            import(
-                './paginas/vista-personas/vista-persona-routing.module'
-            ).then(m => m.VistaPersonasRoutingModule),
+            import('./elementos/personas/personas-routing.module').then(
+                m => m.PersonasRoutingModule
+            ),
     },
     {
         path: 'permisos',
         loadChildren: () =>
-            import(
-                './paginas/vista-permisos/vista-permisos-routing.module'
-            ).then(m => m.VistaPermisosRoutingModule),
+            import('./elementos/permisos/permisos-routing.module').then(
+                m => m.PermisosRoutingModule
+            ),
     },
 ];
 
