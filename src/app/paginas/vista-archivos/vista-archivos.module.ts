@@ -1,47 +1,48 @@
-import { CommonModule } from '@angular/common';
+// Imports angular
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-import { ArchivoFilaComponent } from './components/archivo-fila/archivo-fila.component';
-import { ListaArchivosComponent } from './components/lista-archivos/lista-archivos.component';
-
-import { FavoritosComponent } from './paginas/favoritos/favoritos.component';
-import { RecientesComponent } from './paginas/recientes/recientes.component';
-
+// Imports ng-zorro
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzTagModule } from 'ng-zorro-antd/tag';
+
+// Declarations
+import { ArchivoFilaComponent } from './components/archivo-fila/archivo-fila.component';
 import { CarpetaFilaComponent } from './components/carpeta-fila/carpeta-fila.component';
+import { ListaArchivosComponent } from './components/lista-archivos/lista-archivos.component';
 import { ContenidosComponent } from './paginas/contenidos/contenidos.component';
+import { FavoritosComponent } from './paginas/favoritos/favoritos.component';
+import { RecientesComponent } from './paginas/recientes/recientes.component';
 
 //import { VistaArchivosRoutingModule } from './vista-archivos-routing.module';
 
 @NgModule({
     imports: [
         CommonModule,
-        NzGridModule,
-        NzIconModule,
+        NzBreadCrumbModule,
         NzDividerModule,
         NzDropDownModule,
+        NzGridModule,
+        NzIconModule,
         NzTagModule,
-        NzBreadCrumbModule,
     ],
     declarations: [
         ArchivoFilaComponent,
         CarpetaFilaComponent,
         ListaArchivosComponent,
-
         ContenidosComponent,
-        RecientesComponent,
         FavoritosComponent,
+        RecientesComponent,
     ],
     exports: [
-        RecientesComponent,
-        FavoritosComponent,
-        ContenidosComponent,
         ListaArchivosComponent,
+        ContenidosComponent,
+        FavoritosComponent,
+        RecientesComponent,
     ],
 })
 export class VistaArchivosModule {}

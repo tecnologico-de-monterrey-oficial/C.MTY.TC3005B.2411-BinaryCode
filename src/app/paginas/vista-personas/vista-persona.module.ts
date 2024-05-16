@@ -1,27 +1,32 @@
+// Imports angular
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+// Imports ng-zorro
+import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzFlexDirective } from 'ng-zorro-antd/flex';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzIconModule } from 'ng-zorro-antd/icon';
-import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
-import { PersonasComponent } from './personas/personas.component';
-import { PersonaTarjetaComponent } from './components/persona-tarjeta/persona-tarjeta.component';
-import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzTagModule } from 'ng-zorro-antd/tag';
-import { NzDividerModule } from 'ng-zorro-antd/divider';
-import { NzFlexDirective } from 'ng-zorro-antd/flex';
+
+// Declarations
+import { PersonaTarjetaComponent } from './components/persona-tarjeta/persona-tarjeta.component';
+import { PersonasComponent } from './personas/personas.component';
 
 @NgModule({
     imports: [
         CommonModule,
-        NzGridModule,
-        NzIconModule,
+        NzBreadCrumbModule,
         NzDividerModule,
         NzDropDownModule,
-        NzTagModule,
-        NzBreadCrumbModule,
         NzFlexDirective,
+        NzGridModule,
+        NzIconModule,
+        NzTagModule,
     ],
-    declarations: [PersonasComponent, PersonaTarjetaComponent],
-    exports: [PersonasComponent, PersonaTarjetaComponent],
+    declarations: [PersonaTarjetaComponent, PersonasComponent],
+    exports: [PersonaTarjetaComponent, PersonasComponent],
 })
 export class VistaPersonasModule {}
