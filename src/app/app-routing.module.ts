@@ -14,30 +14,30 @@ const routes: Routes = [
     {
         path: 'archivos',
         loadChildren: () =>
-            import(
-                './paginas/vista-archivos/vista-archivos-routing.module'
-            ).then(m => m.VistaArchivosRoutingModule),
+            import('./paginas/archivos/archivos-routing.module').then(
+                m => m.ArchivosRoutingModule
+            ),
     },
     {
         path: 'proyectos',
         loadChildren: () =>
-            import(
-                './paginas/vista-proyectos/vista-proyectos-routing.module'
-            ).then(m => m.VistaProyectosRoutingModule),
+            import('./paginas/proyectos/proyectos-routing.module').then(
+                m => m.ProyectosRoutingModule
+            ),
     },
     {
         path: 'personas',
         loadChildren: () =>
-            import(
-                './paginas/vista-personas/vista-persona-routing.module'
-            ).then(m => m.VistaPersonasRoutingModule),
+            import('./paginas/personas/personas-routing.module').then(
+                m => m.PersonasRoutingModule
+            ),
     },
     {
         path: 'permisos',
         loadChildren: () =>
-            import(
-                './paginas/vista-permisos/vista-permisos-routing.module'
-            ).then(m => m.VistaPermisosRoutingModule),
+            import('./paginas/permisos/permisos-routing.module').then(
+                m => m.PermisosRoutingModule
+            ),
     },
 ];
 

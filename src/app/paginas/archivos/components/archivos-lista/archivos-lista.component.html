@@ -1,0 +1,14 @@
+<div class="grid-container">
+    <div class="encabezado" nz-row>
+        <div class="titulo hide-on-small-3" nz-col nzFlex="1"></div>
+        <div class="titulo" nz-col nzFlex="6">Nombre</div>
+        <div class="titulo hide-on-small-3" nz-col nzFlex="6">Propietario</div>
+        <div class="titulo hide-on-small-1" nz-col nzFlex="6">Etiquetas</div>
+        <div class="titulo hide-on-small-2" nz-col nzFlex="6">
+            Última modificación
+        </div>
+        <div class="titulo" nz-col nzFlex="1"></div>
+    </div>
+    <app-carpetas-fila *ngFor="let carpeta of carpetas" [carpeta]="carpeta" />
+    <app-archivos-fila *ngFor="let archivo of archivos" [archivo]="archivo" />
+</div>
