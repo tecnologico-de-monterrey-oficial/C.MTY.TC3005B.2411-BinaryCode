@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Unidad } from '../../../modelos/unidad.model';
 import { UnidadesService } from '../../../servicios/unidad.services';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-unidades',
@@ -14,22 +14,15 @@ export class UnidadesComponent implements OnInit {
 
     constructor(
         private unidadesService: UnidadesService,
-        private router: Router,
         private route: ActivatedRoute
     ) {}
 
     ngOnInit(): void {
         this.route.params.subscribe(params => {
             const proyectoId: string = params['id'];
-            this.unidadesService.getUnidadesPorProyecto(proyectoId).subscribe({
-                next: data => {
-                    this.unidades = data;
-                    this.unidadesVacias = this.unidades.length === 0;
-                    console.log('Units fetched successfully:', this.unidades);
-                },
-                error: err => console.error('Error fetching units:', err),
-                complete: () => console.log('Fetching units complete'),
-            });
+            this.unidades =
+                this.unidadesService.getUnidadesPorProyecto(proyectoId);
+            this.unidadesVacias = this.unidades.length === 0;
         });
     }
 }

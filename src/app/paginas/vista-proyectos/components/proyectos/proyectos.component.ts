@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Proyecto } from '../../../../modelos/proyectos.model';
 import { ProyectosService } from '../../../../servicios/proyecto.services';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -6,25 +6,18 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
     selector: 'app-proyectos',
     templateUrl: './proyectos.component.html',
-    styleUrls: ['./proyectos.component.css'],
+    styleUrl: './proyectos.component.css',
 })
-export class ProyectosComponent implements OnInit {
+export class ProyectosComponent {
     proyectos: Proyecto[] = [];
 
     constructor(
-        private proyectoService: ProyectosService, // Use private to correctly inject the service
+        proyectoServices: ProyectosService,
         private router: Router,
         private route: ActivatedRoute
-    ) {}
-
-    ngOnInit(): void {
-        this.proyectoService.getProyectos().subscribe({
-            next: data => (this.proyectos = data),
-            error: err => console.error('Error fetching projects:', err),
-            complete: () => console.log('Fetching projects complete'),
-        });
+    ) {
+        this.proyectos = proyectoServices.getProyectos();
     }
-
     navigateToUnidades(id: string): void {
         this.router.navigate(['/proyectos', id, 'unidades'], {
             relativeTo: this.route,
