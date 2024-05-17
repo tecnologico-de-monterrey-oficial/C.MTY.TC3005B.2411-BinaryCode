@@ -11,6 +11,10 @@ export class UnidadTarjetaComponent {
 
     showPlaceholder: boolean = false;
 
+    // ngOnInit(): void {
+    //     console.log('Imagen URL:', this.unidad.urlImagen);
+    // }
+
     handleImageError(): void {
         this.showPlaceholder = true;
     }

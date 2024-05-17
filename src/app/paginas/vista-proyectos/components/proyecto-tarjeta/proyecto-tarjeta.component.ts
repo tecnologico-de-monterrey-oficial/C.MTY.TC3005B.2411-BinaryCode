@@ -1,17 +1,23 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Proyecto } from '../../../../modelos/proyectos.model';
 
 @Component({
     selector: 'app-proyecto',
     templateUrl: './proyecto-tarjeta.component.html',
-    styleUrl: './proyecto-tarjeta.component.css',
+    styleUrls: ['./proyecto-tarjeta.component.css'],
 })
-export class ProyectoTarjetaComponent {
+export class ProyectoTarjetaComponent implements OnChanges {
     @Input() proyecto: Proyecto;
     @Input() descripcion: boolean = true;
 
     isVisible = false;
     isConfirmLoading = false;
+
+    // ngOnChanges(changes: SimpleChanges) {
+    //     if (changes.proyecto) {
+    //         console.log('Proyecto data:', this.proyecto);
+    //     }
+    // }
 
     showModal(): void {
         this.isVisible = true;
