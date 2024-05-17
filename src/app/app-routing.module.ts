@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: '/proyectos' },
-    //{ path: 'inicio', loadChildren: () => import('./MainLayout/main-layout.module').then(m => m.MainLayoutModule) },
+    // { path: 'inicio', loadChildren: () => import('./MainLayout/main-layout.module').then(m => m.MainLayoutModule) },
     {
         path: 'entrada',
         loadChildren: () =>
@@ -24,6 +24,14 @@ const routes: Routes = [
             import(
                 './paginas/vista-proyectos/vista-proyectos-routing.module'
             ).then(m => m.VistaProyectosRoutingModule),
+
+    },
+    {
+        path: 'unidades',
+        loadChildren: () =>
+            import(
+                './paginas/vista-unidades/vista-unidades-routing.module'
+            ).then(m => m.VistaUnidadesRoutingModule),
     },
     {
         path: 'personas',
