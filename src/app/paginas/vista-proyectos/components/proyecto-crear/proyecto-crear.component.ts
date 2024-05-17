@@ -50,36 +50,51 @@ export class ProyectoCrearComponent implements OnInit {
         tarjeta_rosa_claro,
     ];
     colorSeleccionado: string;
+    imagenURL: string | ArrayBuffer | null = null;
 
     constructor(private fb: FormBuilder) {}
 
     ngOnInit(): void {
-        this.colorSeleccionado =
-            this.colores[Math.floor(Math.random() * this.colores.length)];
+        this.colorSeleccionado = this.colores[Math.floor(Math.random() * this.colores.length)];
 
         this.proyectoForm = this.fb.group({
             nombreProyecto: ['', Validators.required],
             descripcion: ['', Validators.required],
             color: [this.colorSeleccionado, Validators.required],
+            imagen: [null, Validators.required], 
         });
     }
 
     seleccionarColor(color: string): void {
-        this.colorSeleccionado =
-            this.colorSeleccionado === color ? null : color;
+        this.colorSeleccionado = this.colorSeleccionado === color ? null : color;
         this.proyectoForm.patchValue({ color: this.colorSeleccionado });
+    }
+
+    onFileSelected(event: Event): void {
+        const file = (event.target as HTMLInputElement).files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = e => {
+                this.imagenURL = e.target.result;
+                this.proyectoForm.patchValue({ imagen: this.imagenURL }); 
+            };
+            reader.readAsDataURL(file);
+        }
     }
 
     validarDatos(): void {
         if (this.proyectoForm.valid) {
             console.log('Datos válidos, creando proyecto...');
-            alert('Proyecto guardado.');
+            this.crearProyecto(); 
         } else {
             alert('Por favor completa todos los campos.');
         }
     }
 
     crearProyecto(): void {
-        // Lógica para guardar los datos del proyecto
+        const datosProyecto = this.proyectoForm.value;
+        console.log('Datos del Proyecto:', datosProyecto);
+        // Enviar datos a la base de datos
+        alert('Proyecto guardado con éxito.'); 
     }
 }
