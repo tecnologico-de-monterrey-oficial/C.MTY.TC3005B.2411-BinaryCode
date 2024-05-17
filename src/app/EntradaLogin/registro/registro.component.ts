@@ -66,7 +66,8 @@ export class RegistroComponent implements OnInit {
     }
 
     seleccionarColor(color: string): void {
-        this.colorSeleccionado = this.colorSeleccionado === color ? null : color;
+        this.colorSeleccionado =
+            this.colorSeleccionado === color ? null : color;
         this.registroForm.patchValue({ color: this.colorSeleccionado });
     }
 

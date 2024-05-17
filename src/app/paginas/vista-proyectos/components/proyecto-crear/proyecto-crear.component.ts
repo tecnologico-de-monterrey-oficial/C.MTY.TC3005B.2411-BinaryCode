@@ -65,7 +65,8 @@ export class ProyectoCrearComponent implements OnInit {
     }
 
     seleccionarColor(color: string): void {
-        this.colorSeleccionado = this.colorSeleccionado === color ? null : color;
+        this.colorSeleccionado =
+            this.colorSeleccionado === color ? null : color;
         this.proyectoForm.patchValue({ color: this.colorSeleccionado });
     }
 

@@ -53,6 +53,6 @@ registerLocaleData(es);
         MainLayoutModule,
     ],
     providers: [{ provide: NZ_I18N, useValue: es_ES }],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
 })
 export class AppModule {}
