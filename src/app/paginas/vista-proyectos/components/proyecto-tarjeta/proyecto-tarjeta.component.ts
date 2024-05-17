@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Proyecto } from '../../../../modelos/proyectos.model';
 
 @Component({
@@ -6,7 +6,7 @@ import { Proyecto } from '../../../../modelos/proyectos.model';
     templateUrl: './proyecto-tarjeta.component.html',
     styleUrls: ['./proyecto-tarjeta.component.css'],
 })
-export class ProyectoTarjetaComponent implements OnChanges {
+export class ProyectoTarjetaComponent {
     @Input() proyecto: Proyecto;
     @Input() descripcion: boolean = true;
 
