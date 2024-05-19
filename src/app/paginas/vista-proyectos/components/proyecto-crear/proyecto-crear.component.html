@@ -48,7 +48,7 @@
         </div>
     </div>
 
-    <div class="bottom-section">
-        <button type="button" (click)="validarDatos()">Crear proyecto</button>
-    </div>
+    <button type="button" (click)="validarDatos()">
+        {{ modo === 'editar' ? 'Editar proyecto' : 'Crear proyecto' }}
+    </button>    
 </div>
