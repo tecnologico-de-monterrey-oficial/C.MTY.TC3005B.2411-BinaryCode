@@ -25,6 +25,9 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { EntradaLoginModule } from './EntradaLogin/entrada-login.module';
 import { AppRoutingModule } from './app-routing.module';
 import { VistaProyectosModule } from './paginas/vista-proyectos/vista-proyectos.module';
+import { VistaPersonasModule } from './paginas/vista-personas/vista-persona.module';
+import { VistaUnidadesModule } from './paginas/vista-unidades/vista-unidades.module';
+import { VistaArchivosModule } from './paginas/vista-archivos/vista-archivos.module';
 
 @NgModule({
     declarations: [
@@ -47,6 +50,9 @@ import { VistaProyectosModule } from './paginas/vista-proyectos/vista-proyectos.
         NzLayoutModule,
         NzMenuModule,
         VistaProyectosModule,
+        VistaPersonasModule,
+        VistaUnidadesModule,
+        VistaArchivosModule,
 
         EntradaLoginModule,
         AppRoutingModule,
