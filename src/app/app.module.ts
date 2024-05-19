@@ -23,9 +23,13 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 
 // Imports locales
-import { MainLayoutModule } from './MainLayout/main-layout.module';
 import { AppRoutingModule } from './app-routing.module';
 import { EntradaModule } from './elementos/Entrada/entrada.module';
+import { ArchivosModule } from './elementos/archivos/archivos.module';
+import { PermisosModule } from './elementos/permisos/permisos.module';
+import { PersonasModule } from './elementos/personas/personas.module';
+import { ProyectosModule } from './elementos/proyectos/proyectos.module';
+import { UnidadesModule } from './elementos/unidades/unidades.module';
 
 @NgModule({
     declarations: [
@@ -49,8 +53,12 @@ import { EntradaModule } from './elementos/Entrada/entrada.module';
         NzMenuModule,
         NzModalModule,
 
+        ArchivosModule,
+        PermisosModule,
+        PersonasModule,
+        ProyectosModule,
+        UnidadesModule,
         EntradaModule,
-        MainLayoutModule,
         AppRoutingModule,
     ],
     bootstrap: [AppComponent],
