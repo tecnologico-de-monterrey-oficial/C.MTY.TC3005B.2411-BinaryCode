@@ -1,3 +1,20 @@
+/* Estilos para el contenedor principal y contenido */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+}
+
 /* Estilos para la barra lateral colapsable */
 .collapsible-sidebar {
     --menu-background: var(--blanco);
@@ -63,8 +80,16 @@
 
 .sider {
     background: #f7faff;
+    border-right: 0;
+    font-size: 16px;
 }
 
+.ant-menu-item .anticon {
+    font-size: 16px;
+    line-height: normal;
+}
+
+/* Estilos para menus */
 ::ng-deep .ant-menu-title-content {
     width: 100%;
     display: flex;
@@ -85,32 +110,6 @@
     width: auto;
     height: auto;
     line-height: normal;
-}
-
-/* Estilos para el contenedor principal y contenido */
-.app-container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-}
-
-.main-content {
-    display: flex;
-    flex: 1;
-}
-
-.content {
-    flex: 1;
-    padding: 20px;
-}
-
-.no-sidebar {
-    margin-left: 0;
-}
-
-app-sidebar {
-    width: 250px;
-    background-color: #f8f9fa;
 }
 
 /* Media queries para responsividad */

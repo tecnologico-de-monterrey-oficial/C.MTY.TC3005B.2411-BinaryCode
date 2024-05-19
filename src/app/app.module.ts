@@ -3,9 +3,6 @@ import { NgModule } from '@angular/core';
 // Declarations
 import { AppComponent } from './app.component';
 import { EncabezadoComponent } from './elementos/Encabezado/encabezado.component';
-import { ArchivosCrearModalComponent } from './elementos/archivos/components/archivos-crear-modal/archivos-crear-modal.component';
-import { ProyectosCrearModalComponent } from './elementos/proyectos/components/proyectos-crear-modal/proyectos-crear-modal.component';
-import { UnidadesCrearModalComponent } from './elementos/unidades/components/unidades-crear-modal/unidades-crear-modal.component';
 
 // Imports angular
 import { HttpClientModule } from '@angular/common/http';
@@ -32,13 +29,7 @@ import { ProyectosModule } from './elementos/proyectos/proyectos.module';
 import { UnidadesModule } from './elementos/unidades/unidades.module';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        EncabezadoComponent,
-        ArchivosCrearModalComponent,
-        ProyectosCrearModalComponent,
-        UnidadesCrearModalComponent,
-    ],
+    declarations: [AppComponent, EncabezadoComponent],
     imports: [
         HttpClientModule,
         FormsModule,

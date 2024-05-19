@@ -6,7 +6,17 @@ import { Component } from '@angular/core';
     styleUrl: './proyectos-crear-tarjeta.component.css',
 })
 export class ProyectosCrearTarjetaComponent {
+    modalVisible: boolean = false;
+
     crearProyecto(): void {
-        console.log('Crear proyecto');
+        this.modalVisible = true;
+    }
+
+    handleCancel(): void {
+        this.modalVisible = false;
+    }
+
+    handleOk(): void {
+        this.modalVisible = false;
     }
 }

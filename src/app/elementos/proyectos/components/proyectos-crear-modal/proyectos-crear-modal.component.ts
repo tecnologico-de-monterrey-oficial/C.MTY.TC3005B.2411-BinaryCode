@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+    FormControl,
+    FormGroup,
+    NonNullableFormBuilder,
+    Validators,
+} from '@angular/forms';
+
 import {
     tarjeta_amarillo,
     tarjeta_amarillo_claro,
@@ -24,10 +30,18 @@ import {
 @Component({
     selector: 'app-proyectos-crear-modal',
     templateUrl: './proyectos-crear-modal.component.html',
-    styleUrls: ['./proyectos-crear-modal.component.css'],
+    styleUrl: './proyectos-crear-modal.component.css',
 })
 export class ProyectosCrearModalComponent implements OnInit {
-    proyectoForm: FormGroup;
+    @Output() cancelModal = new EventEmitter();
+
+    validateForm: FormGroup<{
+        nombreProyecto: FormControl<string>;
+        descripcion: FormControl<string>;
+    }>;
+
+    colorSeleccionado: string;
+
     colores: string[] = [
         tarjeta_azul_fuerte,
         tarjeta_azul_medio,
@@ -48,37 +62,39 @@ export class ProyectosCrearModalComponent implements OnInit {
         tarjeta_rosa,
         tarjeta_rosa_claro,
     ];
-    colorSeleccionado: string;
-
-    constructor(private fb: FormBuilder) {}
 
     ngOnInit(): void {
         this.colorSeleccionado =
             this.colores[Math.floor(Math.random() * this.colores.length)];
 
-        this.proyectoForm = this.fb.group({
-            nombreProyecto: ['', Validators.required],
-            descripcion: ['', Validators.required],
-            color: [this.colorSeleccionado, Validators.required],
+        this.validateForm = this.fb.group({
+            nombreProyecto: ['', [Validators.required]],
+            descripcion: ['', [Validators.required]],
         });
     }
 
     seleccionarColor(color: string): void {
         this.colorSeleccionado =
             this.colorSeleccionado === color ? null : color;
-        this.proyectoForm.patchValue({ color: this.colorSeleccionado });
     }
 
-    validarDatos(): void {
-        if (this.proyectoForm.valid) {
-            console.log('Datos válidos, creando proyecto...');
-            alert('Proyecto guardado.');
-        } else {
-            alert('Por favor completa todos los campos.');
-        }
+    handleCancel(): void {
+        this.cancelModal.emit();
     }
 
     crearProyecto(): void {
-        // Lógica para guardar los datos del proyecto
+        this.cancelModal.emit();
+        if (this.validateForm.valid) {
+            console.log('Proyecto creado?', this.validateForm.value);
+        } else {
+            Object.values(this.validateForm.controls).forEach(control => {
+                if (control.invalid) {
+                    control.markAsDirty();
+                    control.updateValueAndValidity({ onlySelf: true });
+                }
+            });
+        }
     }
+
+    constructor(private fb: NonNullableFormBuilder) {}
 }

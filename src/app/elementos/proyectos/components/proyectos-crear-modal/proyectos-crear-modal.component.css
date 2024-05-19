@@ -5,101 +5,128 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f7faff;
 }
 
 .tarjeta {
-    width: 80%;
-    max-width: 90%;
-    margin: 5%;
-    padding: 10px;
-    background-color: #f7faff;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: auto;
     border-radius: 10px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
 .container {
     display: flex;
-    height: 100%;
+    flex-grow: 1;
 }
 
-.left,
-.right {
+.left {
     flex: 1;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    justify-content: center;
-}
-
-.bottom-section {
-    margin-top: 5px;
-    display: flex;
-    justify-content: space-between;
-}
-
-button {
-    padding: 5px 60px;
-    margin: 5px;
-    border: 2px solid #ff4d4f;
-    border-radius: 10px;
-    background-color: #fff;
-    color: #ff4d4f;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #ff4d4f;
-    color: #f7faff;
-}
-
-.right .buscador {
-    margin-top: 20px;
-    width: 100%;
     padding: 10px;
-    border: 1px solid #c5cdd1;
-    border-radius: 5px;
-    font-size: 14px;
-    color: #c5cdd1;
-}
-
-.fila {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-.cuadro {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #070809;
-}
-
-.seleccionado {
-    border-width: 5px;
-    border-style: double;
-    border-color: #070809 #f7faff;
-}
-
-.texto-color {
-    font-size: 16px;
-    color: #595959;
-    margin: 5px 0;
+    justify-content: center;
 }
 
 .left img {
     max-width: 100%;
-    max-height: 100%;
-    border-radius: 10px;
-    border: 2px solid #c5cdd1;
+    max-height: 50%;
 }
 
-textarea {
+.right {
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.right input,
+.right textarea {
     width: 100%;
     padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #c5cdd1;
     border-radius: 5px;
+    font-size: 16px;
+}
+
+nz-form-control {
+    width: 100%;
+}
+
+nz-form-label {
+    font-size: 16px;
+    padding-bottom: 5px;
+    color: var(--negro);
+}
+
+nz-form-item {
+    padding-bottom: 15px;
+}
+
+.colores {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.cuadro {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    border: 1px solid #070809;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.seleccionado {
+    border: 3px solid #070809;
+}
+
+.botones {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 0 5px;
+}
+
+.boton-cancelar {
+    font-size: 1rem;
+    height: auto;
+
+    background-color: var(--blanco);
+    border: 2px solid var(--rojoLogin);
+    color: var(--rojoLogin);
+
+    border-radius: 20px;
+}
+
+.boton-crear {
+    font-size: 1rem;
+    height: auto;
+
+    background-color: var(--rojoLogin);
+    border: 2px solid var(--rojoLogin);
+    color: var(--blanco);
+
+    border-radius: 20px;
+}
+
+.texto-indicador {
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+/* Media queries para responsivo */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .left,
+    .right {
+        flex: none;
+        width: 100%;
+        padding: 10px;
+    }
 }

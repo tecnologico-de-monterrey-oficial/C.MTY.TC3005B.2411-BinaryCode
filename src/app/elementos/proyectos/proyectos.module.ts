@@ -1,7 +1,7 @@
 // Imports angular
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Imports ng-zorro
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -14,6 +14,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 
 // Declarations
 import { ProyectosBorrarModalComponent } from './components/proyectos-borrar-modal/proyectos-borrar-modal.component';
+import { ProyectosCrearModalComponent } from './components/proyectos-crear-modal/proyectos-crear-modal.component';
 import { ProyectosCrearTarjetaComponent } from './components/proyectos-crear-tarjeta/proyectos-crear-tarjeta.component';
 import { ProyectosPaginaComponent } from './components/proyectos-pagina/proyectos-pagina.component';
 import { ProyectosTarjetaComponent } from './components/proyectos-tarjeta/proyectos-tarjeta.component';
@@ -22,6 +23,7 @@ import { ProyectosTarjetaComponent } from './components/proyectos-tarjeta/proyec
     imports: [
         CommonModule,
         FormsModule,
+        ReactiveFormsModule,
         NzButtonModule,
         NzDropDownModule,
         NzFlexModule,
@@ -32,6 +34,7 @@ import { ProyectosTarjetaComponent } from './components/proyectos-tarjeta/proyec
     ],
     declarations: [
         ProyectosBorrarModalComponent,
+        ProyectosCrearModalComponent,
         ProyectosCrearTarjetaComponent,
         ProyectosPaginaComponent,
         ProyectosTarjetaComponent,
