@@ -81,11 +81,15 @@ export class ProyectoCrearComponent implements OnInit, OnDestroy {
     }
 
     onFileSelected(event: Event): void {
+        // eslint-disable-next-line @typescript-eslint/typedef
         const file = (event.target as HTMLInputElement).files[0];
         if (file) {
+            // eslint-disable-next-line @typescript-eslint/typedef
             const reader = new FileReader();
+            // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
             reader.onload = e => {
                 this.imagenURL = e.target.result;
+                this.proyectoForm.patchValue({ imagen: this.imagenURL });
                 this.proyectoForm.patchValue({ imagen: this.imagenURL });
             };
             reader.readAsDataURL(file);

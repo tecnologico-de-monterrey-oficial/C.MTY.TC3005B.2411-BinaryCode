@@ -26,7 +26,7 @@
 
 .left .image-upload-placeholder {
     width: 100%;
-    height: 200px; 
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,12 +40,12 @@
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 10px; 
+    border-radius: 10px;
 }
 
 .image-container {
     position: relative;
-    display: inline-block; 
+    display: inline-block;
 }
 
 .left {
