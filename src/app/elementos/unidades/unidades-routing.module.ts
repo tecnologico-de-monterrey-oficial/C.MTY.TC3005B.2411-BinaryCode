@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UnidadesPaginaComponent } from './components/unidades-pagina/unidades-pagina.component'; // Importar el componente
+import { UnidadesPaginaComponent } from './unidades-pagina/unidades-pagina.component';
 
 const routes: Routes = [
     { path: 'unidades/:id', component: UnidadesPaginaComponent },

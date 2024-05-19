@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PersonasListaComponent } from './components/personas-lista/personas-lista.component'; // Importar el componente
+import { PersonasListaComponent } from './personas-lista/personas-lista.component';
 
-const routes: Routes = [
-    { path: '', component: PersonasListaComponent }, // Esta es la ruta por defecto
-];
+const routes: Routes = [{ path: '', component: PersonasListaComponent }];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

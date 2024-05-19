@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { UnidadesPaginaComponent } from '../unidades/components/unidades-pagina/unidades-pagina.component'; //Importar el componente
-import { ProyectosPaginaComponent } from './components/proyectos-pagina/proyectos-pagina.component'; // Importar el componente
+import { UnidadesPaginaComponent } from '../unidades/unidades-pagina/unidades-pagina.component';
+import { ProyectosPaginaComponent } from './proyectos-pagina/proyectos-pagina.component';
 
 const routes: Routes = [
     { path: '', component: ProyectosPaginaComponent },
-    { path: ':id/unidades', component: UnidadesPaginaComponent }, // Agregamos el parámetro de id
+    { path: ':id/unidades', component: UnidadesPaginaComponent },
 ];
 
 @NgModule({

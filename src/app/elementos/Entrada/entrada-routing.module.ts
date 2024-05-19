@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { EntradaPaginaComponent } from './components/entrada-pagina/entrada-pagina.component';
+import { EntradaPaginaComponent } from './entrada-pagina/entrada-pagina.component';
 
 const routes: Routes = [{ path: '', component: EntradaPaginaComponent }];
 

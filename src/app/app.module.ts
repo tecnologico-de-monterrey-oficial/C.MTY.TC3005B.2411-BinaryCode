@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 
 // Declarations
 import { AppComponent } from './app.component';
-import { EncabezadoComponent } from './elementos/Encabezado/encabezado.component';
 
 // Imports angular
 import { HttpClientModule } from '@angular/common/http';
@@ -21,15 +20,10 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 
 // Imports locales
 import { AppRoutingModule } from './app-routing.module';
-import { EntradaModule } from './elementos/Entrada/entrada.module';
-import { ArchivosModule } from './elementos/archivos/archivos.module';
-import { PermisosModule } from './elementos/permisos/permisos.module';
-import { PersonasModule } from './elementos/personas/personas.module';
-import { ProyectosModule } from './elementos/proyectos/proyectos.module';
-import { UnidadesModule } from './elementos/unidades/unidades.module';
+import { ElementosModule } from './elementos/elementos.module';
 
 @NgModule({
-    declarations: [AppComponent, EncabezadoComponent],
+    declarations: [AppComponent],
     imports: [
         HttpClientModule,
         FormsModule,
@@ -44,12 +38,7 @@ import { UnidadesModule } from './elementos/unidades/unidades.module';
         NzMenuModule,
         NzModalModule,
 
-        ArchivosModule,
-        PermisosModule,
-        PersonasModule,
-        ProyectosModule,
-        UnidadesModule,
-        EntradaModule,
+        ElementosModule,
         AppRoutingModule,
     ],
     bootstrap: [AppComponent],
