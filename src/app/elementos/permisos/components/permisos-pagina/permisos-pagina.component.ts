@@ -8,7 +8,7 @@ import { Proyecto } from '../../../../modelos/proyectos.model';
     templateUrl: './permisos-pagina.component.html',
     styleUrl: './permisos-pagina.component.css',
 })
-export class PermisosComponent {
+export class PermisosPaginaComponent {
     @Input() unidad: Unidad = UN1;
     @Input() proyecto: Proyecto = null;
 }

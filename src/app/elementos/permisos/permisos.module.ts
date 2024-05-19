@@ -18,7 +18,7 @@ import { PermisosEditoresComponent } from './components/permisos-editores/permis
 import { PermisosMiniCoordinadorComponent } from './components/permisos-mini-coordinador/permisos-mini-coordinador.component';
 import { PermisosMiniEditorComponent } from './components/permisos-mini-editor/permisos-mini-editor.component';
 import { PermisosSidebarComponent } from './components/permisos-sidebar/permisos-sidebar.component';
-import { PermisosComponent } from './components/permisos-pagina/permisos-pagina.component';
+import { PermisosPaginaComponent } from './components/permisos-pagina/permisos-pagina.component';
 
 @NgModule({
     imports: [
@@ -36,8 +36,8 @@ import { PermisosComponent } from './components/permisos-pagina/permisos-pagina.
         PermisosMiniCoordinadorComponent,
         PermisosMiniEditorComponent,
         PermisosSidebarComponent,
-        PermisosComponent,
+        PermisosPaginaComponent,
     ],
-    exports: [PermisosComponent],
+    exports: [PermisosPaginaComponent],
 })
 export class PermisosModule {}
