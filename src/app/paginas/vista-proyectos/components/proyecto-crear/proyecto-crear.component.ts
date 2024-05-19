@@ -66,11 +66,12 @@ export class ProyectoCrearComponent implements OnInit, OnDestroy {
         this.subscription = this.modalDataService.proyectoData.subscribe(data => {
             this.modo = data ? data.modo : 'crear'; 
             this.colorSeleccionado = data && data.color ? data.color : this.colores[0];
+            this.imagenURL = data && data.imagen ? data.imagen : null;
             this.proyectoForm = this.fb.group({
                 nombreProyecto: [data ? data.nombreProyecto : '', Validators.required],
                 descripcion: [data ? data.descripcion : '', Validators.required],
                 color: [this.colorSeleccionado, Validators.required],
-                imagen: [data ? data.imagen : null, Validators.required],
+                imagen: [this.imagenURL, Validators.required],
             });
         });
     }
@@ -81,15 +82,11 @@ export class ProyectoCrearComponent implements OnInit, OnDestroy {
     }
 
     onFileSelected(event: Event): void {
-        // eslint-disable-next-line @typescript-eslint/typedef
         const file = (event.target as HTMLInputElement).files[0];
         if (file) {
-            // eslint-disable-next-line @typescript-eslint/typedef
             const reader = new FileReader();
-            // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
             reader.onload = e => {
                 this.imagenURL = e.target.result;
-                this.proyectoForm.patchValue({ imagen: this.imagenURL });
                 this.proyectoForm.patchValue({ imagen: this.imagenURL });
             };
             reader.readAsDataURL(file);
@@ -100,6 +97,7 @@ export class ProyectoCrearComponent implements OnInit, OnDestroy {
         if (this.proyectoForm.valid) {
             const proyectoData = this.proyectoForm.value;
             console.log('Datos del Proyecto:', proyectoData);
+            // Lógica para enviar datos al servidor puede ser agregada aquí
             this.modalRef.close(proyectoData);
             alert('Proyecto ' + (this.modo === 'editar' ? 'actualizado' : 'creado') + ' con éxito.');
         } else {
