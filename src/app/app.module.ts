@@ -23,8 +23,8 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 
 // Imports locales
 import { EntradaLoginModule } from './EntradaLogin/entrada-login.module';
-import { MainLayoutModule } from './MainLayout/main-layout.module';
 import { AppRoutingModule } from './app-routing.module';
+import { VistaProyectosModule } from './paginas/vista-proyectos/vista-proyectos.module';
 
 @NgModule({
     declarations: [
@@ -46,9 +46,9 @@ import { AppRoutingModule } from './app-routing.module';
         NzInputModule,
         NzLayoutModule,
         NzMenuModule,
+        VistaProyectosModule,
 
         EntradaLoginModule,
-        MainLayoutModule,
         AppRoutingModule,
     ],
     bootstrap: [AppComponent],
