@@ -1,9 +1,15 @@
 <div class="tarjeta">
     <div class="container">
         <div class="left">
-            <img
-                src="../../../../../../assets/images/proyectos_props/p1.png"
-                alt="Imagen para el proyecto" />
+            <div
+                class="contenedor-imagen"
+                [ngStyle]="{ 'background-color': colorSeleccionado }">
+                <img
+                    class="imagen-proyecto"
+                    src="../../../../assets/images/proyectos_props/p1.png"
+                    alt="Imagen de proyecto" />
+            </div>
+            <app-permisos-lideres />
         </div>
 
         <form
@@ -12,23 +18,24 @@
             [formGroup]="validateForm"
             (ngSubmit)="crearProyecto()">
             <nz-form-item>
-                <nz-form-label nzFor="nombreProyecto"
-                    >Nombre para el proyecto</nz-form-label
-                >
-                <nz-form-control nzErrorTip="Se necesita agregar un nombre">
-                    <nz-input-group class="campo">
-                        <input
-                            type="text"
-                            class="buscador"
-                            nz-input
-                            formControlName="nombreProyecto"
-                            placeholder="Nombre del proyecto" />
-                    </nz-input-group>
+                <nz-form-label nzFor="nombreProyecto">
+                    Nombre para el proyecto
+                </nz-form-label>
+                <nz-form-control [nzErrorTip]="nombreProyectoErrorTpl">
+                    <input
+                        class="campo-texto"
+                        type="text"
+                        nz-input
+                        formControlName="nombreProyecto"
+                        placeholder="Nombre del proyecto" />
+                    <ng-template #nombreProyectoErrorTpl>
+                        Se necesita agregar un nombre
+                    </ng-template>
                 </nz-form-control>
             </nz-form-item>
-            <nz-form-label nzFor="nombreProyecto"
-                >Selecciona un color</nz-form-label
-            >
+            <nz-form-label nzFor="nombreProyecto">
+                Selecciona un color
+            </nz-form-label>
             <nz-form-item>
                 <div class="colores">
                     <div
@@ -41,18 +48,19 @@
                 </div>
             </nz-form-item>
             <nz-form-item>
-                <nz-form-label nzFor="nombreProyecto"
-                    >Descripción</nz-form-label
-                >
-                <nz-form-control nzErrorTip="Añade una descripción">
-                    <nz-input-group class="campo">
-                        <textarea
-                            type="text"
-                            nz-input
-                            rows="4"
-                            formControlName="descripcion"
-                            placeholder="Añade una descripción breve del proyecto"></textarea>
-                    </nz-input-group>
+                <nz-form-label nzFor="nombreProyecto">
+                    Descripción
+                </nz-form-label>
+                <nz-form-control [nzErrorTip]="descripcionErrorTpl">
+                    <textarea
+                        class="campo-texto"
+                        nz-input
+                        rows="4"
+                        formControlName="descripcion"
+                        placeholder="Añade una descripción breve del proyecto"></textarea>
+                    <ng-template #descripcionErrorTpl>
+                        Añade una descripción
+                    </ng-template>
                 </nz-form-control>
             </nz-form-item>
         </form>

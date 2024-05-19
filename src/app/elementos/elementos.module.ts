@@ -16,6 +16,8 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzTagModule } from 'ng-zorro-antd/tag';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { NzFormModule } from 'ng-zorro-antd/form';
 
 // Declaraciones - Archivos
 import { ArchivosCrearModalComponent } from './archivos/archivos-crear-modal/archivos-crear-modal.component';
@@ -72,6 +74,7 @@ import { UnidadesPaginaComponent } from './unidades/unidades-pagina/unidades-pag
         NzEmptyModule,
         NzDividerModule,
         NzDropDownModule,
+        NzFormModule,
         NzFlexDirective,
         NzFlexModule,
         NzGridModule,
@@ -80,6 +83,7 @@ import { UnidadesPaginaComponent } from './unidades/unidades-pagina/unidades-pag
         NzModalModule,
         NzPopoverModule,
         NzTagModule,
+        NzToolTipModule,
     ],
     declarations: [
         ArchivosCrearModalComponent,

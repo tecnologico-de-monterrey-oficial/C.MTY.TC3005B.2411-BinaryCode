@@ -83,10 +83,11 @@ export class ProyectosCrearModalComponent implements OnInit {
     }
 
     crearProyecto(): void {
-        this.cancelModal.emit();
         if (this.validateForm.valid) {
             console.log('Proyecto creado?', this.validateForm.value);
+            this.cancelModal.emit();
         } else {
+            console.log('Formulario inválido');
             Object.values(this.validateForm.controls).forEach(control => {
                 if (control.invalid) {
                     control.markAsDirty();
