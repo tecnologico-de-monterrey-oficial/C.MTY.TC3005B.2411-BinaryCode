@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Proyecto } from '../modelos/proyectos.model';
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
 export class ModalDataService {
-  private proyectoSource = new BehaviorSubject<any>(null);
-  proyectoData = this.proyectoSource.asObservable();
+    private proyectoSource = new BehaviorSubject<Proyecto>(null);
+    proyectoData = this.proyectoSource.asObservable();
 
-  constructor() {}
+    setProyectoData(data: Proyecto): void {
+        this.proyectoSource.next(data);
+    }
 
-  setProyectoData(data: any) {
-    this.proyectoSource.next(data);
-  }
-
-  clearData() {
-    this.proyectoSource.next(null);
-  }
+    clearData(): void {
+        this.proyectoSource.next(null);
+    }
 }

@@ -2,7 +2,7 @@
     <a href="/archivos">
         <img
             class="image-container"
-            [src]="unidad.urlImagen"
+            [src]="unidad.imagen"
             (error)="handleImageError()"
             [ngStyle]="{ 'border-color': unidad.color }"
             *ngIf="!showPlaceholder"

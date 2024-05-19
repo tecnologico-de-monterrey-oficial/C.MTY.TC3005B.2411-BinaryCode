@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalService } from '../../../../servicios/modal.service'; 
+import { ModalService } from '../../../../servicios/modal.service';
 
 @Component({
     selector: 'app-proyecto-crear-tarjeta',
@@ -11,6 +11,5 @@ export class ProyectoCrearTarjetaComponent {
 
     crearProyecto(): void {
         this.modalService.openProyectoModal();
-
     }
 }

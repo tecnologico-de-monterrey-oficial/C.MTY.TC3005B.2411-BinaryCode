@@ -5,7 +5,7 @@
 export type Unidad = {
     id: string;
     nombre: string;
-    urlImagen: string;
+    imagen: string;
     color: string;
     proyectoId: string; // Nueva propiedad proyectoId
 };

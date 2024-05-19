@@ -1,13 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { ModalService } from '../../../../servicios/modal.service'; 
+import { ModalService } from '../../../../servicios/modal.service';
 import { Proyecto } from '../../../../modelos/proyectos.model';
 
 @Component({
-    selector: 'app-proyecto-tarjeta',
+    selector: 'app-proyecto',
     templateUrl: './proyecto-tarjeta.component.html',
-    styleUrls: ['./proyecto-tarjeta.component.css']  
+    styleUrls: ['./proyecto-tarjeta.component.css'],
 })
-
 export class ProyectoTarjetaComponent {
     @Input() proyecto: Proyecto;
     @Input() descripcion: boolean = true;
@@ -15,7 +14,9 @@ export class ProyectoTarjetaComponent {
     isVisible = false;
     isConfirmLoading = false;
 
-    constructor(private modalService: ModalService) {}  
+    constructor(private modalService: ModalService) {
+        console.log(this.proyecto);
+    }
 
     showModal(): void {
         this.isVisible = true;
@@ -34,6 +35,6 @@ export class ProyectoTarjetaComponent {
     }
 
     editarProyecto(): void {
-        this.modalService.openProyectoModal(this.proyecto);  
+        this.modalService.openProyectoModal(this.proyecto);
     }
 }
