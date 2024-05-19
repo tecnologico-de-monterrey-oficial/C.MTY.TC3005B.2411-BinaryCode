@@ -24,6 +24,7 @@ import { ProyectosTarjetaComponent } from './components/proyectos-tarjeta/proyec
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+
         NzButtonModule,
         NzDropDownModule,
         NzFlexModule,

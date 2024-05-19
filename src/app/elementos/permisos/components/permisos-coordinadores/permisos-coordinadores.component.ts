@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Unidad } from '../../../../modelos/unidad.model';
-import { UN1 } from '../../../../../assets/mocks/unidades';
+import { Usuario } from '../../../../modelos/usuario.model';
+import { US1, US2, US3 } from '../../../../../assets/mocks/usuarios';
 
 @Component({
     selector: 'app-permisos-coordinadores',
@@ -8,5 +8,12 @@ import { UN1 } from '../../../../../assets/mocks/unidades';
     styleUrl: './permisos-coordinadores.component.css',
 })
 export class PermisosCoordinadoresComponent {
-    unidad: Unidad = UN1;
+    coordinadores: Usuario[] = [US1, US2, US3];
+
+    onRemoveItemClick(idEliminado: string): void {
+        // TODO: Implementar eliminación de usuario API
+        this.coordinadores = this.coordinadores.filter(
+            coordinador => coordinador.id !== idEliminado
+        );
+    }
 }

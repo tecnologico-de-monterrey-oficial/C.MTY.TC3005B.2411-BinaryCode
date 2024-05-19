@@ -1,1 +1,18 @@
-<p>permisos-editores works!</p>
+<div class="subtitulo">
+    <div>Agregar líder</div>
+    <span
+        nz-popover
+        nz-icon
+        [nzPopoverContent]="contentTemplate"
+        nzPopoverTrigger="click"
+        nzPopoverPlacement="bottomLeft"
+        nzType="plus-circle"
+        nzTheme="fill">
+    </span>
+</div>
+<app-permisos-mini-coordinador
+    *ngFor="let lider of lideres"
+    [coordinador]="lider"
+    (removeItemClick)="onRemoveItemClick($event)" />
+
+<ng-template #contentTemplate> Buscador sisisi </ng-template>

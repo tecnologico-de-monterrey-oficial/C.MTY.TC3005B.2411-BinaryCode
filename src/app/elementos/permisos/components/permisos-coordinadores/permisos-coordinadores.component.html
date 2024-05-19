@@ -1,1 +1,18 @@
-<div class="titulo" *ngIf="unidad">Coordinadores de unidad</div>
+<div class="subtitulo">
+    <div>Agregar coordinador</div>
+    <span
+        nz-popover
+        nz-icon
+        [nzPopoverContent]="contentTemplate"
+        nzPopoverTrigger="click"
+        nzPopoverPlacement="bottomLeft"
+        nzType="plus-circle"
+        nzTheme="fill">
+    </span>
+</div>
+<app-permisos-mini-coordinador
+    *ngFor="let coordinador of coordinadores"
+    [coordinador]="coordinador"
+    (removeItemClick)="onRemoveItemClick($event)" />
+
+<ng-template #contentTemplate> Buscador sisisi </ng-template>
