@@ -50,6 +50,7 @@ export class ProyectoCrearComponent implements OnInit {
         tarjeta_rosa_claro,
     ];
     colorSeleccionado: string;
+    imagenURL: string | ArrayBuffer | null = null;
 
     constructor(private fb: FormBuilder) {}
 
@@ -61,24 +62,45 @@ export class ProyectoCrearComponent implements OnInit {
             nombreProyecto: ['', Validators.required],
             descripcion: ['', Validators.required],
             color: [this.colorSeleccionado, Validators.required],
+            imagen: [null, Validators.required],
         });
     }
 
     seleccionarColor(color: string): void {
-        this.colorSeleccionado = this.colorSeleccionado === color ? null : color;
+        this.colorSeleccionado =
+            this.colorSeleccionado === color ? null : color;
         this.proyectoForm.patchValue({ color: this.colorSeleccionado });
+    }
+
+    onFileSelected(event: Event): void {
+        // eslint-disable-next-line @typescript-eslint/typedef
+        const file = (event.target as HTMLInputElement).files[0];
+        if (file) {
+            // eslint-disable-next-line @typescript-eslint/typedef
+            const reader = new FileReader();
+            // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+            reader.onload = e => {
+                this.imagenURL = e.target.result;
+                this.proyectoForm.patchValue({ imagen: this.imagenURL });
+            };
+            reader.readAsDataURL(file);
+        }
     }
 
     validarDatos(): void {
         if (this.proyectoForm.valid) {
             console.log('Datos válidos, creando proyecto...');
-            alert('Proyecto guardado.');
+            this.crearProyecto();
         } else {
             alert('Por favor completa todos los campos.');
         }
     }
 
     crearProyecto(): void {
-        // Lógica para guardar los datos del proyecto
+        // eslint-disable-next-line @typescript-eslint/typedef
+        const dataproyecto = this.proyectoForm.value;
+        console.log('Datos del Proyecto:', dataproyecto);
+        // Enviar datos a la base de datos
+        alert('Proyecto guardado con éxito.');
     }
 }

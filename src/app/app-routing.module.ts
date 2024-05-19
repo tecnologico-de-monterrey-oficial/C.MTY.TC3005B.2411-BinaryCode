@@ -24,7 +24,6 @@ const routes: Routes = [
             import(
                 './paginas/vista-proyectos/vista-proyectos-routing.module'
             ).then(m => m.VistaProyectosRoutingModule),
-
     },
     {
         path: 'unidades',
