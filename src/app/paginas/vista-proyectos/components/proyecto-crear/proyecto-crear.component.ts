@@ -109,7 +109,6 @@ export class ProyectoCrearComponent implements OnInit, OnDestroy {
 
     validarDatos(): void {
         if (this.modo === 'crear') {
-            console.log(this.proyectoForm);
             if (this.proyectoForm.valid) {
                 // eslint-disable-next-line @typescript-eslint/typedef
                 const proyectoData = {
@@ -154,8 +153,6 @@ export class ProyectoCrearComponent implements OnInit, OnDestroy {
                 activo: true,
                 creator: 1, //TODO
             };
-            console.log(proyectoEdit);
-            console.log(this.idProyecto);
             fetch(`http://127.0.0.1:8000/api/proyectos/${this.idProyecto}/`, {
                 // Reemplaza con tu URL de la API
                 method: 'PUT',

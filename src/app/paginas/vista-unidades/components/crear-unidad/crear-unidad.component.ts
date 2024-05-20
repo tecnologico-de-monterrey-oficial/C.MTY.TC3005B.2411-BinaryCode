@@ -92,7 +92,6 @@ export class CrearUnidadComponent {
                 id_proyecto: idProyecto,
                 id_usuario: 1, //TODO se debe sacar desde que se inicia la app
             };
-            console.log(unidadData);
             fetch('http://127.0.0.1:8000/api/apartados/', {
                 method: 'POST',
                 headers: {
