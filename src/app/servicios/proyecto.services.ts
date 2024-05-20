@@ -5,7 +5,6 @@ import { Usuario } from '../modelos/usuario.model';
 import { US4, US5, US6 } from '../../assets/mocks/usuarios';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { HttpHeaders } from '@angular/common/http';
 
 interface RespuestaServidor {
     mensaje: string;
@@ -33,10 +32,10 @@ export class ProyectosService {
     }
 
     createProyecto(proyecto: Proyecto): Observable<Proyecto> {
-        const headers: HttpHeaders = new HttpHeaders({
-            'Content-Type': 'application/json',
-        });
-        return this.http.post<Proyecto>(this.baseUrl, proyecto, { headers });
+        // const headers: HttpHeaders = new HttpHeaders({
+        //   'Content-Type': 'application/json',
+        //});
+        return this.http.post<Proyecto>(this.baseUrl, proyecto);
     }
 
     getLideres(idProyecto: number): Usuario[] {
