@@ -19,9 +19,12 @@ export class ProyectosPaginaComponent implements OnInit {
 
     ngOnInit(): void {
         this.proyectoServices.getProyectos().subscribe({
-            next: data => (this.proyectos = data),
+            next: data =>
+                (this.proyectos = data.map(proyecto => {
+                    proyecto.color = '#' + proyecto.color;
+                    return proyecto;
+                })),
             error: err => console.error('Error fetching projects:', err),
-            complete: () => console.log('Fetching projects complete'),
         });
     }
 
