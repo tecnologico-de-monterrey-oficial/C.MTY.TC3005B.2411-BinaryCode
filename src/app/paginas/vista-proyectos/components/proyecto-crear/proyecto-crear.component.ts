@@ -2,8 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { Subscription } from 'rxjs';
+import { ProyectosService } from '../../../../servicios/proyecto.services';
 import { ModalDataService } from '../../../../servicios/modal-data.service';
-import { Proyecto } from '../../../../modelos/proyectos.model';
 import {
     tarjeta_amarillo,
     tarjeta_amarillo_claro,
@@ -24,6 +24,7 @@ import {
     tarjeta_verde_fuerte,
     tarjeta_verde_medio,
 } from '../../../../../assets/colores';
+import { Proyecto } from '../../../../modelos/proyectos.model';
 
 @Component({
     selector: 'app-proyecto-crear',
@@ -55,33 +56,38 @@ export class ProyectoCrearComponent implements OnInit, OnDestroy {
     ];
     colorSeleccionado: string;
     imagenURL: string | ArrayBuffer | null = null;
-    modo: string;
+    modo: string = 'crear';
 
     constructor(
         private fb: FormBuilder,
         public modalRef: NzModalRef,
-        private modalDataService: ModalDataService
-    ) {}
+        private modalDataService: ModalDataService,
+        private proyectosService: ProyectosService
+    ) {
+        this.proyectoForm = this.fb.group({
+            nombreProyecto: ['', Validators.required],
+            descripcion: ['', Validators.required],
+            color: ['', Validators.required],
+            imagen: [null, Validators.required],
+        });
+    }
 
     ngOnInit(): void {
         this.subscription = this.modalDataService.proyectoData.subscribe(
             data => {
-                this.modo = 'crear';
-                this.colorSeleccionado =
-                    data && data.color ? data.color : this.colores[0];
-                this.imagenURL = data && data.imagen ? data.imagen : null;
-                this.proyectoForm = this.fb.group({
-                    nombreProyecto: [
-                        data ? data.nombre : '',
-                        Validators.required,
-                    ],
-                    descripcion: [
-                        data ? data.descripcion : '',
-                        Validators.required,
-                    ],
-                    color: [this.colorSeleccionado, Validators.required],
-                    imagen: [this.imagenURL, Validators.required],
-                });
+                if (data) {
+                    this.modo = 'editar';
+                    this.colorSeleccionado = data.color;
+                    this.imagenURL = data.imagen;
+                    this.proyectoForm.patchValue({
+                        nombreProyecto: data.nombre,
+                        descripcion: data.descripcion,
+                        color: data.color,
+                        imagen: data.imagen,
+                    });
+                } else {
+                    this.colorSeleccionado = this.colores[0];
+                }
             }
         );
     }
@@ -105,15 +111,26 @@ export class ProyectoCrearComponent implements OnInit, OnDestroy {
 
     validarDatos(): void {
         if (this.proyectoForm.valid) {
-            const proyectoData: { [key: string]: Proyecto } =
-                this.proyectoForm.value;
-            console.log('Datos del Proyecto:', proyectoData);
-            // Lógica para enviar datos al servidor puede ser agregada aquí
-            this.modalRef.close(proyectoData);
-            alert(
-                'Proyecto ' +
-                    (this.modo === 'editar' ? 'actualizado' : 'creado') +
-                    ' con éxito.'
+            const proyectoData: Proyecto = {
+                id: '24',
+                nombre: this.proyectoForm.get('nombreProyecto').value,
+                descripcion: this.proyectoForm.get('descripcion').value,
+                color: this.proyectoForm.get('color').value,
+                imagen: this.proyectoForm.get('imagen').value,
+                activo: true,
+                creator: '1', // Adjust this according to your authentication logic
+            };
+
+            this.proyectosService.createProyecto(proyectoData).subscribe(
+                response => {
+                    console.log('Proyecto creado:', response);
+                    this.modalRef.close(response);
+                    alert('Proyecto creado con éxito.');
+                },
+                error => {
+                    console.error('Error al crear el proyecto:', error);
+                    alert('Error al crear el proyecto.');
+                }
             );
         } else {
             alert('Por favor completa todos los campos.');

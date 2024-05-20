@@ -4,4 +4,5 @@ export type Proyecto = {
     imagen: string;
     color: string;
     descripcion: string;
+    activo: boolean;
 };
