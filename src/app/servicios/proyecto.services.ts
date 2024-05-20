@@ -6,6 +6,11 @@ import { US4, US5, US6 } from '../../assets/mocks/usuarios';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+interface RespuestaServidor {
+    mensaje: string;
+    exito: boolean;
+}
+
 @Injectable({
     providedIn: 'root',
 })
@@ -18,10 +23,15 @@ export class ProyectosService {
     constructor(private http: HttpClient) {}
 
     getProyectos(): Observable<Proyecto[]> {
-        return this.http.get<Proyecto[]>(`${this.baseUrl}`);
+        return this.http.get<Proyecto[]>(this.baseUrl);
     }
 
-    getLideres(idProyecto: string): Usuario[] {
+    eliminarProyecto(proyectoId: number): Observable<RespuestaServidor> {
+        const url: string = `${this.baseUrl}${proyectoId}/`;
+        return this.http.delete<RespuestaServidor>(url);
+    }
+
+    getLideres(idProyecto: number): Usuario[] {
         idProyecto;
         return this.lideres;
     }

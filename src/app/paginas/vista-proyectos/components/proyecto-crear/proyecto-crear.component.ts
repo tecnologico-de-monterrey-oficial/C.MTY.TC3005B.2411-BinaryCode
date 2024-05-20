@@ -66,13 +66,13 @@ export class ProyectoCrearComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.subscription = this.modalDataService.proyectoData.subscribe(
             data => {
-                this.modo = data ? data.modo : 'crear';
+                this.modo = 'crear';
                 this.colorSeleccionado =
                     data && data.color ? data.color : this.colores[0];
                 this.imagenURL = data && data.imagen ? data.imagen : null;
                 this.proyectoForm = this.fb.group({
                     nombreProyecto: [
-                        data ? data.nombreProyecto : '',
+                        data ? data.nombre : '',
                         Validators.required,
                     ],
                     descripcion: [

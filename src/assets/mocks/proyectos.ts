@@ -9,7 +9,7 @@ import {
 } from '../colores';
 
 export const P1: Proyecto = {
-    id: 'P1',
+    id: 1,
     nombre: 'Proyecto 1',
     imagen: 'assets/images/proyectos_props/p1.png',
     color: proyecto_celeste,
@@ -18,7 +18,7 @@ export const P1: Proyecto = {
 };
 
 export const P2: Proyecto = {
-    id: 'P2',
+    id: 2,
     nombre: 'Proyecto 2',
     imagen: 'assets/images/proyectos_props/p2.png',
     color: proyecto_rojo,
@@ -27,7 +27,7 @@ export const P2: Proyecto = {
 };
 
 export const P3: Proyecto = {
-    id: 'P3',
+    id: 3,
     nombre: 'Proyecto 3',
     imagen: 'assets/images/proyectos_props/p3.png',
     color: proyecto_amarillo,
@@ -36,7 +36,7 @@ export const P3: Proyecto = {
 };
 
 export const P4: Proyecto = {
-    id: 'P4',
+    id: 4,
     nombre: 'Proyecto 4',
     imagen: 'assets/images/proyectos_props/p4.png',
     color: proyecto_morado,
@@ -45,7 +45,7 @@ export const P4: Proyecto = {
 };
 
 export const P5: Proyecto = {
-    id: 'P5',
+    id: 5,
     nombre: 'Proyecto 5',
     imagen: 'assets/images/proyectos_props/p5.png',
     color: proyecto_rosa,
@@ -54,7 +54,7 @@ export const P5: Proyecto = {
 };
 
 export const P6: Proyecto = {
-    id: 'P6',
+    id: 6,
     nombre: 'Proyecto 6',
     imagen: 'assets/images/proyectos_props/p6.png',
     color: proyecto_verde,
