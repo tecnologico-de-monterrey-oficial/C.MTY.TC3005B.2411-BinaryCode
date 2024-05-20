@@ -16,18 +16,16 @@ export class UnidadesService {
 
     constructor(private http: HttpClient) {}
 
-    getUnidadesPorProyecto(proyectoId: string): Observable<Unidad[]> {
-        return this.http.get<Unidad[]>(
-            `${this.baseUrl}/?Id_proyecto=${proyectoId}`
-        );
+    getUnidadesPorProyecto(proyectoId: number): Observable<Unidad[]> {
+        return this.http.get<Unidad[]>(`${this.baseUrl}/?search=${proyectoId}`);
     }
 
-    getCoordinadores(idUnidad: string): Usuario[] {
+    getCoordinadores(idUnidad: number): Usuario[] {
         idUnidad;
         return this.coordinadores;
     }
 
-    getEditores(idUnidad: string): Usuario[] {
+    getEditores(idUnidad: number): Usuario[] {
         idUnidad;
         return this.editores;
     }

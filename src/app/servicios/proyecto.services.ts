@@ -31,11 +31,9 @@ export class ProyectosService {
         return this.http.delete<RespuestaServidor>(url);
     }
 
-    createProyecto(proyecto: Proyecto): Observable<Proyecto> {
-        // const headers: HttpHeaders = new HttpHeaders({
-        //   'Content-Type': 'application/json',
-        //});
-        return this.http.post<Proyecto>(this.baseUrl, proyecto);
+    actualizarProyecto(proyecto: Proyecto): Observable<Proyecto> {
+        const url: string = `${this.baseUrl}${proyecto.id}/`;
+        return this.http.put<Proyecto>(url, proyecto);
     }
 
     getLideres(idProyecto: number): Usuario[] {

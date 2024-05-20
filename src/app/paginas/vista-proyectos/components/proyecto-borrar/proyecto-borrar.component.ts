@@ -37,5 +37,8 @@ export class ProyectoBorrarComponent {
                 },
             });
         }
+        setTimeout(function () {
+            location.reload();
+        }, 1000);
     }
 }

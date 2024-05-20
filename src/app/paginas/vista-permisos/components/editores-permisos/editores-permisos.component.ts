@@ -20,7 +20,7 @@ export class EditoresPermisosComponent implements OnInit {
         }
     }
 
-    onRemoveItemClick(idEliminado: string): void {
+    onRemoveItemClick(idEliminado: number): void {
         // TODO: Implementar eliminación de usuario API
         this.editores = this.editores.filter(
             editor => editor.id !== idEliminado

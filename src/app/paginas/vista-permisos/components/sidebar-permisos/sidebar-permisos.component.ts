@@ -33,7 +33,7 @@ export class SidebarPermisosComponent implements OnInit {
         private proyectosService: ProyectosService
     ) {}
 
-    onRemoveItemClick(idEliminado: string): void {
+    onRemoveItemClick(idEliminado: number): void {
         // TODO: Implementar eliminación de usuario API
         this.coordinadores = this.coordinadores.filter(
             coordinador => coordinador.id !== idEliminado

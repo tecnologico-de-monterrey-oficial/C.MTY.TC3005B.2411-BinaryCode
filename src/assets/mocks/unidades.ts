@@ -1,23 +1,23 @@
 import { Unidad } from '../../app/modelos/unidad.model';
 import {
-    unidad_amarilla,
-    unidad_azul,
-    unidad_morada,
+    //unidad_amarilla,
+    //unidad_azul,
+    //unidad_morada,
     unidad_roja,
-    unidad_rosa,
-    unidad_verde,
+    //unidad_rosa,
+    //unidad_verde,
 } from '../colores';
 
 // Datos para mockup de Unidades - agregar a la base de datos
 
 export const UN1: Unidad = {
-    id: 'u1',
+    id: 1,
     nombre: 'Marketing',
     imagen: 'assets/images/unidades_props/marketing_temporal_prop.png',
     color: unidad_roja,
-    proyectoId: 'P1',
+    proyectoId: 1,
 };
-
+/*
 export const UN2: Unidad = {
     id: 'u2',
     nombre: 'Finanzas',
@@ -89,11 +89,11 @@ export const UNT4: Unidad = {
     nombre: 'Marketing',
     imagen: 'assets/images/unidades_props/bateria_temporal_prop.png',
     color: '#21B514',
-    proyectoId: 'p1',
+    proyectoId: 1,
 };
 
 export const UNT5: Unidad = {
-    id: 'u6',
+    id: 6,
     nombre: 'Marketing',
     imagen: 'assets/images/unidades_props/bateria_temporal_prop.png',
     color: '#1499B5',
@@ -101,9 +101,10 @@ export const UNT5: Unidad = {
 };
 
 export const UNT6: Unidad = {
-    id: 'u6',
+    id: 6,
     nombre: 'Marketing',
     imagen: 'assets/images/unidades_props/bateria_temporal_prop.png',
     color: '#FF4DE3',
     proyectoId: 'p1',
 };
+*/
