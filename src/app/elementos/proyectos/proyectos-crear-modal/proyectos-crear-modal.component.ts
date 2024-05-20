@@ -85,8 +85,8 @@ export class ProyectosCrearModalComponent implements OnInit {
     }
 
     crearProyecto(): void {
-        console.log('Creando proyecto: 3');
         if (this.validateForm.valid) {
+            console.log(this.validateForm.value);
             const nuevoProyecto: Proyecto = {
                 id: '',
                 nombre: this.validateForm.value.nombreProyecto,

@@ -32,7 +32,6 @@ export class ProyectosPaginaComponent implements OnInit {
     }
 
     crearProyecto(proyecto: Proyecto): void {
-        console.log('Creando proyecto: 1');
         this.proyectos.push(proyecto);
     }
 }

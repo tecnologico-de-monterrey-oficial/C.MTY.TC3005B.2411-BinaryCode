@@ -12,7 +12,6 @@ export class ProyectosCrearTarjetaComponent {
     modalVisible: boolean = false;
 
     crearProyecto(proyectoACrear: Proyecto): void {
-        console.log('Creando proyecto: 2');
         this.modalVisible = false;
         this.crearProyectoImportado.emit(proyectoACrear);
     }
