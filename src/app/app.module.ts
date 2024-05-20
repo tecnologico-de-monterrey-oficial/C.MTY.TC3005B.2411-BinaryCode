@@ -19,11 +19,12 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 
 // Imports locales
-import { AppRoutingModule } from './app-routing.module';
 import { ElementosModule } from './elementos/elementos.module';
+import { AppRoutingModule } from './app-routing.module';
+import { EncabezadoComponent } from './elementos/encabezado/encabezado.component';
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [AppComponent, EncabezadoComponent],
     imports: [
         HttpClientModule,
         FormsModule,

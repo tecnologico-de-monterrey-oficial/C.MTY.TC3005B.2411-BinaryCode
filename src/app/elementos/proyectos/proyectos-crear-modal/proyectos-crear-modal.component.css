@@ -73,7 +73,7 @@ nz-form-item {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin: 0;
+    margin: 0 0 15px;
 }
 
 .ant-form-horizontal .ant-form-item-control .ant-form-item-control-input {

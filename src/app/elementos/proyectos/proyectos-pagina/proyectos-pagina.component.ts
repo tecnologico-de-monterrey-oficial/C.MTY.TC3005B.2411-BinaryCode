@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Proyecto } from '../../../modelos/proyectos.model';
 import { ProyectosService } from '../../../servicios/proyecto.services';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -8,19 +8,31 @@ import { Router, ActivatedRoute } from '@angular/router';
     templateUrl: './proyectos-pagina.component.html',
     styleUrl: './proyectos-pagina.component.css',
 })
-export class ProyectosPaginaComponent {
+export class ProyectosPaginaComponent implements OnInit {
     proyectos: Proyecto[] = [];
 
     constructor(
-        proyectoServices: ProyectosService,
+        private proyectoServices: ProyectosService,
         private router: Router,
         private route: ActivatedRoute
-    ) {
-        this.proyectos = proyectoServices.getProyectos();
+    ) {}
+
+    ngOnInit(): void {
+        this.proyectoServices.getProyectos().subscribe({
+            next: data => (this.proyectos = data),
+            error: err => console.error('Error fetching projects:', err),
+            complete: () => console.log('Fetching projects complete'),
+        });
     }
+
     navigateToUnidades(id: string): void {
         this.router.navigate(['/proyectos', id, 'unidades'], {
             relativeTo: this.route,
         });
+    }
+
+    crearProyecto(proyecto: Proyecto): void {
+        console.log('Creando proyecto: 1');
+        this.proyectos.push(proyecto);
     }
 }

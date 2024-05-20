@@ -4,5 +4,6 @@
     <app-proyectos-tarjeta
         *ngFor="let proyecto of proyectos"
         [proyecto]="proyecto" />
-    <app-proyectos-crear-tarjeta />
+    <app-proyectos-crear-tarjeta
+        (crearProyectoImportado)="crearProyecto($event)" />
 </nz-flex>

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Proyecto } from '../../../modelos/proyectos.model';
 
 @Component({
     selector: 'app-proyectos-crear-tarjeta',
@@ -6,17 +7,21 @@ import { Component } from '@angular/core';
     styleUrl: './proyectos-crear-tarjeta.component.css',
 })
 export class ProyectosCrearTarjetaComponent {
+    @Output() crearProyectoImportado = new EventEmitter<Proyecto>();
+
     modalVisible: boolean = false;
 
-    crearProyecto(): void {
-        this.modalVisible = true;
+    crearProyecto(proyectoACrear: Proyecto): void {
+        console.log('Creando proyecto: 2');
+        this.modalVisible = false;
+        this.crearProyectoImportado.emit(proyectoACrear);
     }
 
     handleCancel(): void {
         this.modalVisible = false;
     }
 
-    handleOk(): void {
-        this.modalVisible = false;
+    abrirModal(): void {
+        this.modalVisible = true;
     }
 }

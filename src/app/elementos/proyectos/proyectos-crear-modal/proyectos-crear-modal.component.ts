@@ -26,6 +26,8 @@ import {
     tarjeta_verde_fuerte,
     tarjeta_verde_medio,
 } from '../../../../assets/colores';
+import { Proyecto } from '../../../modelos/proyectos.model';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
     selector: 'app-proyectos-crear-modal',
@@ -34,13 +36,13 @@ import {
 })
 export class ProyectosCrearModalComponent implements OnInit {
     @Output() cancelModal = new EventEmitter();
+    @Output() crearProyectoImportado = new EventEmitter<Proyecto>();
 
     validateForm: FormGroup<{
         nombreProyecto: FormControl<string>;
         descripcion: FormControl<string>;
+        colorSeleccionado: FormControl<string>;
     }>;
-
-    colorSeleccionado: string;
 
     colores: string[] = [
         tarjeta_azul_fuerte,
@@ -64,18 +66,18 @@ export class ProyectosCrearModalComponent implements OnInit {
     ];
 
     ngOnInit(): void {
-        this.colorSeleccionado =
-            this.colores[Math.floor(Math.random() * this.colores.length)];
-
         this.validateForm = this.fb.group({
             nombreProyecto: ['', [Validators.required]],
             descripcion: ['', [Validators.required]],
+            colorSeleccionado: [
+                this.colores[Math.floor(Math.random() * this.colores.length)],
+                [Validators.required],
+            ],
         });
     }
 
     seleccionarColor(color: string): void {
-        this.colorSeleccionado =
-            this.colorSeleccionado === color ? null : color;
+        this.validateForm.controls.colorSeleccionado.setValue(color);
     }
 
     handleCancel(): void {
@@ -83,9 +85,29 @@ export class ProyectosCrearModalComponent implements OnInit {
     }
 
     crearProyecto(): void {
+        console.log('Creando proyecto: 3');
         if (this.validateForm.valid) {
-            console.log('Proyecto creado?', this.validateForm.value);
-            this.cancelModal.emit();
+            const nuevoProyecto: Proyecto = {
+                id: '',
+                nombre: this.validateForm.value.nombreProyecto,
+                descripcion: this.validateForm.value.descripcion,
+                color: this.validateForm.value.colorSeleccionado,
+                imagen: '../../../../assets/images/proyectos_props/p1.png',
+            };
+
+            // API para crear proyecto
+            const successAPI: boolean = true;
+
+            if (successAPI) {
+                this.message.success('El proyecto se creó exitosamente', {
+                    nzDuration: 10000,
+                });
+                this.crearProyectoImportado.emit(nuevoProyecto);
+            } else {
+                this.message.error('Hubo un error al crear el proyecto', {
+                    nzDuration: 10000,
+                });
+            }
         } else {
             console.log('Formulario inválido');
             Object.values(this.validateForm.controls).forEach(control => {
@@ -97,5 +119,8 @@ export class ProyectosCrearModalComponent implements OnInit {
         }
     }
 
-    constructor(private fb: NonNullableFormBuilder) {}
+    constructor(
+        private fb: NonNullableFormBuilder,
+        private message: NzMessageService
+    ) {}
 }

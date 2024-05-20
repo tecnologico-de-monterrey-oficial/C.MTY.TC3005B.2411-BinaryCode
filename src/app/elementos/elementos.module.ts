@@ -18,6 +18,7 @@ import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 // Declaraciones - Archivos
 import { ArchivosCrearModalComponent } from './archivos/archivos-crear-modal/archivos-crear-modal.component';
@@ -29,7 +30,7 @@ import { ArchivosPaginaRecientesComponent } from './archivos/archivos-pagina-rec
 import { CarpetasFilaComponent } from './archivos/carpetas-fila/carpetas-fila.component';
 
 // Declaraciones - Encabezado
-import { EncabezadoComponent } from './encabezado/encabezado.component';
+// import { EncabezadoComponent } from './encabezado/encabezado.component';
 
 // Declaraciones - Entrada
 import { EntradaLoginComponent } from './entrada/entrada-login/entrada-login.component';
@@ -62,6 +63,7 @@ import { UnidadesCrearModalComponent } from './unidades/unidades-crear-modal/uni
 import { UnidadesCrearTarjetaComponent } from './unidades/unidades-crear-tarjeta/unidades-crear-tarjeta.component';
 import { UnidadesTarjetaComponent } from './unidades/unidades-tarjeta/unidades-tarjeta.component';
 import { UnidadesPaginaComponent } from './unidades/unidades-pagina/unidades-pagina.component';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
 
 @NgModule({
     imports: [
@@ -84,6 +86,8 @@ import { UnidadesPaginaComponent } from './unidades/unidades-pagina/unidades-pag
         NzPopoverModule,
         NzTagModule,
         NzToolTipModule,
+        NzMessageModule,
+        NzLayoutModule,
     ],
     declarations: [
         ArchivosCrearModalComponent,
@@ -94,7 +98,7 @@ import { UnidadesPaginaComponent } from './unidades/unidades-pagina/unidades-pag
         ArchivosPaginaRecientesComponent,
         CarpetasFilaComponent,
 
-        EncabezadoComponent,
+        // EncabezadoComponent,
 
         EntradaPaginaComponent,
         EntradaLoginComponent,
