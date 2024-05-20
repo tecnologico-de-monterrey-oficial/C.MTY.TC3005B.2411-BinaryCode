@@ -36,15 +36,12 @@
 
             <div class="campo">
                 <p class="texto-indicador">Selecciona el color</p>
-                <div class="colores">
-                    <div
-                        *ngFor="let opcionColor of colores"
-                        nzSpan="2"
-                        class="cuadro"
-                        [class.seleccionado]="colorSeleccionado === opcionColor"
-                        (click)="seleccionarColor(opcionColor)"
-                        [style.background-color]="opcionColor"></div>
-                </div>
+                <input
+                    [(colorPicker)]="colorSeleccionado"
+                    [style.background]="colorSeleccionado"
+                    [cpOutputFormat]="'hex'"
+                    [cpPresetColors]="colores"
+                    class="color-picker-input" />
             </div>
 
             <div class="campo">
