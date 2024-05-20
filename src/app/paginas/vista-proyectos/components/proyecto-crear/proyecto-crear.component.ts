@@ -50,7 +50,7 @@ export class ProyectoCrearComponent implements OnInit, OnDestroy {
         tarjeta_verde_fuerte,
         tarjeta_verde_medio,
     ];
-    colorSeleccionado: string;
+    color: string = '#000000';
     imagenURL: string | ArrayBuffer | null = null;
     modo: string = 'crear';
     imagenOriginal: string;
@@ -63,7 +63,7 @@ export class ProyectoCrearComponent implements OnInit, OnDestroy {
         this.proyectoForm = this.fb.group({
             nombreProyecto: ['', Validators.required],
             descripcion: ['', Validators.required],
-            color: ['', Validators.required],
+            color: ['#000000', Validators.required],
             imagen: [null, Validators.required],
         });
     }
@@ -74,7 +74,7 @@ export class ProyectoCrearComponent implements OnInit, OnDestroy {
                 if (data) {
                     this.idProyecto = data.id;
                     this.modo = 'editar';
-                    this.colorSeleccionado = data.color;
+                    this.color = data.color;
                     this.imagenURL = data.imagen;
                     this.imagenOriginal = data.imagen;
                     this.proyectoForm.patchValue({
@@ -84,15 +84,15 @@ export class ProyectoCrearComponent implements OnInit, OnDestroy {
                         imagen: data.imagen,
                     });
                 } else {
-                    this.colorSeleccionado = this.colores[0];
+                    this.color = this.colores[0];
                 }
             }
         );
     }
 
     seleccionarColor(color: string): void {
-        this.colorSeleccionado = color;
-        this.proyectoForm.patchValue({ color: this.colorSeleccionado });
+        this.color = color;
+        this.proyectoForm.patchValue({ color: this.color });
     }
 
     onFileSelected(event: Event): void {
@@ -109,6 +109,7 @@ export class ProyectoCrearComponent implements OnInit, OnDestroy {
 
     validarDatos(): void {
         if (this.modo === 'crear') {
+            console.log(this.proyectoForm);
             if (this.proyectoForm.valid) {
                 // eslint-disable-next-line @typescript-eslint/typedef
                 const proyectoData = {

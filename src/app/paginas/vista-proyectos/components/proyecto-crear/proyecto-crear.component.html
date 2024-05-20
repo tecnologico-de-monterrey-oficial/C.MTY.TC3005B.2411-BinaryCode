@@ -15,7 +15,7 @@
                 <div class="image-container">
                     <div
                         class="image-overlay"
-                        [style.background-color]="colorSeleccionado"
+                        [style.background-color]="color"
                         [style.opacity]="0.5"></div>
                     <img [src]="imagenURL" alt="Vista previa de la imagen" />
                 </div>
@@ -37,11 +37,16 @@
             <div class="campo">
                 <p class="texto-indicador">Selecciona el color</p>
                 <input
-                    [(colorPicker)]="colorSeleccionado"
-                    [style.background]="colorSeleccionado"
+                    [colorPicker]="color"
+                    (colorPickerChange)="
+                        color = $event;
+                        proyectoForm.controls['color'].setValue($event)
+                    "
+                    [style.background]="color"
                     [cpOutputFormat]="'hex'"
                     [cpPresetColors]="colores"
-                    class="color-picker-input" />
+                    class="color-picker-input"
+                    formControlName="color" />
             </div>
 
             <div class="campo">
