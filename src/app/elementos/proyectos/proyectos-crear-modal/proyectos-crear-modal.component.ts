@@ -38,10 +38,13 @@ export class ProyectosCrearModalComponent implements OnInit {
     @Output() cancelModal = new EventEmitter();
     @Output() crearProyectoImportado = new EventEmitter<Proyecto>();
 
+    loading = false;
+
     validateForm: FormGroup<{
         nombreProyecto: FormControl<string>;
         descripcion: FormControl<string>;
         colorSeleccionado: FormControl<string>;
+        imagen: FormControl<string>;
     }>;
 
     colores: string[] = [
@@ -73,6 +76,7 @@ export class ProyectosCrearModalComponent implements OnInit {
                 this.colores[Math.floor(Math.random() * this.colores.length)],
                 [Validators.required],
             ],
+            imagen: ['', [Validators.required]],
         });
     }
 
@@ -92,7 +96,7 @@ export class ProyectosCrearModalComponent implements OnInit {
                 nombre: this.validateForm.value.nombreProyecto,
                 descripcion: this.validateForm.value.descripcion,
                 color: this.validateForm.value.colorSeleccionado,
-                imagen: '../../../../assets/images/proyectos_props/p1.png',
+                imagen: this.validateForm.value.imagen,
             };
 
             // API para crear proyecto
@@ -116,6 +120,21 @@ export class ProyectosCrearModalComponent implements OnInit {
                     control.updateValueAndValidity({ onlySelf: true });
                 }
             });
+        }
+    }
+
+    onFileSelected(event: Event): void {
+        const file: File = (event.target as HTMLInputElement).files[0];
+        if (file) {
+            const reader: FileReader = new FileReader();
+            reader.onload = (e: ProgressEvent<FileReader>): void => {
+                const imagen: string | ArrayBuffer = e.target.result;
+                console.log(imagen);
+                if (typeof imagen === 'string') {
+                    this.validateForm.controls.imagen.setValue(imagen);
+                }
+            };
+            reader.readAsDataURL(file);
         }
     }
 

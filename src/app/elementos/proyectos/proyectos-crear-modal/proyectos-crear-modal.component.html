@@ -1,15 +1,35 @@
 <div class="tarjeta">
     <div class="container">
         <div class="left">
-            <div
-                class="contenedor-imagen"
-                [ngStyle]="{
-                    'background-color': validateForm.value.colorSeleccionado
-                }">
-                <img
-                    class="imagen-proyecto"
-                    src="../../../../assets/images/proyectos_props/p1.png"
-                    alt="Imagen de proyecto" />
+            <div class="left">
+                <div (click)="fileInput.click()">
+                    <input
+                        type="file"
+                        #fileInput
+                        (change)="onFileSelected($event)"
+                        hidden />
+                    <div
+                        *ngIf="
+                            validateForm.value.imagen === '';
+                            else imagenPreview
+                        "
+                        class="imagen-upload">
+                        <span nz-icon nzType="upload" nzTheme="outline"></span>
+                        <div>Añadir imagen</div>
+                    </div>
+                    <ng-template #imagenPreview>
+                        <div
+                            class="contenedor-imagen"
+                            [style.background-color]="
+                                validateForm.value.colorSeleccionado
+                            ">
+                            <img
+                                [src]="validateForm.value.imagen"
+                                alt="Vista previa de la imagen"
+                                class="imagen-proyecto" />
+                        </div>
+                    </ng-template>
+                </div>
             </div>
             <app-permisos-lideres />
         </div>

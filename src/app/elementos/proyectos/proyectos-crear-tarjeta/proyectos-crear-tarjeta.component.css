@@ -28,3 +28,7 @@
     color: var(--bordes);
     height: 20%;
 }
+
+::ng-deep .ant-modal-content {
+    background-color: var(--blanco);
+}
