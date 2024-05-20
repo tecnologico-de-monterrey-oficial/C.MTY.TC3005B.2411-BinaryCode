@@ -84,6 +84,18 @@
     flex: auto;
 }
 
+.ant-input-status-error:not(.ant-input-disabled):not(
+        .ant-input-borderless
+    ).ant-input,
+.ant-input-status-error:not(.ant-input-disabled):not(
+        .ant-input-borderless
+    ).ant-input:hover,
+.ant-input-status-error:not(.ant-input-disabled):not(
+        .ant-input-borderless
+    ).ant-input:focus {
+    background-color: var(--contentBg);
+}
+
 nz-form-label {
     font-size: 16px;
     color: var(--negro);

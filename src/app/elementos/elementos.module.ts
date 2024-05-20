@@ -19,7 +19,6 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzMessageModule } from 'ng-zorro-antd/message';
-import { NzUploadModule } from 'ng-zorro-antd/upload';
 
 // Declaraciones - Archivos
 import { ArchivosCrearModalComponent } from './archivos/archivos-crear-modal/archivos-crear-modal.component';
@@ -89,7 +88,6 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
         NzToolTipModule,
         NzMessageModule,
         NzLayoutModule,
-        NzUploadModule,
     ],
     declarations: [
         ArchivosCrearModalComponent,
