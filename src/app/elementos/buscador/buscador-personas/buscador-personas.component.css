@@ -1,0 +1,49 @@
+.ant-input-affix-wrapper {
+    max-width: 100%;
+    border-radius: 20px;
+    margin: 10px 0;
+    background-color: var(--contentBg);
+}
+
+.ant-input-affix-wrapper > input.ant-input {
+    background-color: var(--contentBg);
+}
+
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper:hover {
+    border: solid 1px var(--bordes);
+}
+
+.personas {
+    height: 200px;
+    overflow: scroll;
+}
+
+.botones {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 15px 5px;
+}
+
+.boton-cancelar {
+    font-size: 1rem;
+    height: auto;
+
+    background-color: var(--blanco);
+    border: 2px solid var(--rojoLogin);
+    color: var(--rojoLogin);
+
+    border-radius: 20px;
+}
+
+.boton-borrar {
+    font-size: 1rem;
+    height: auto;
+
+    background-color: var(--rojoLogin);
+    border: 2px solid var(--rojoLogin);
+    color: var(--blanco);
+
+    border-radius: 20px;
+}

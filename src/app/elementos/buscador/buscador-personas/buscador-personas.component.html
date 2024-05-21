@@ -1,0 +1,25 @@
+<div>
+    <nz-input-group nz-col nzSpan="3" [nzSuffix]="suffixIconSearch">
+        <input type="text" nz-input placeholder="Buscador" />
+    </nz-input-group>
+    <ng-template #suffixIconSearch>
+        <span nz-icon nzType="search" class="header-icon"></span>
+    </ng-template>
+
+    <div class="personas">
+        <app-buscador-mini-personas
+            *ngFor="let persona of seleccionados"
+            [persona]="persona"
+            (addItemClick)="handleSeleccionar($event)" />
+    </div>
+
+    <div class="botones">
+        <button class="boton-cancelar" nz-button (click)="handleCancel()">
+            Cancelar
+        </button>
+
+        <button class="boton-borrar" nz-button (click)="handleAgregar()">
+            Agregar líder
+        </button>
+    </div>
+</div>

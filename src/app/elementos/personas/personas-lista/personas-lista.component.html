@@ -9,7 +9,5 @@
         <div class="titulo" nz-col nzFlex="1"></div>
     </div>
 
-    <app-personas-linea
-        *ngFor="let usuarios of usuarios"
-        [usuario]="usuarios" />
+    <app-personas-linea *ngFor="let usuario of usuarios" [usuario]="usuario" />
 </div>

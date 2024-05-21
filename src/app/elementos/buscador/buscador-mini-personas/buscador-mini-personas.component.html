@@ -1,0 +1,16 @@
+<div class="fila">
+    <div class="usuario">
+        <img
+            class="usuario-imagen"
+            [src]="persona.imagenUrl"
+            alt="Imagen de usuario" />
+        <div class="nombre">{{ persona.nombre }}</div>
+    </div>
+    <span
+        nz-icon
+        nzType="check-circle"
+        nzTheme="outline"
+        (click)="addClick()"
+        [style.color]="persona.seleccionado ? verde : gris">
+    </span>
+</div>

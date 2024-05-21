@@ -29,8 +29,9 @@ import { ArchivosPaginaFavoritosComponent } from './archivos/archivos-pagina-fav
 import { ArchivosPaginaRecientesComponent } from './archivos/archivos-pagina-recientes/archivos-pagina-recientes.component';
 import { CarpetasFilaComponent } from './archivos/carpetas-fila/carpetas-fila.component';
 
-// Declaraciones - Encabezado
-// import { EncabezadoComponent } from './encabezado/encabezado.component';
+// Declaraciones - Buscador
+import { BuscadorPersonasComponent } from './buscador/buscador-personas/buscador-personas.component';
+import { BuscadorMiniPersonasComponent } from './buscador/buscador-mini-personas/buscador-mini-personas.component';
 
 // Declaraciones - Entrada
 import { EntradaLoginComponent } from './entrada/entrada-login/entrada-login.component';
@@ -98,8 +99,6 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
         ArchivosPaginaRecientesComponent,
         CarpetasFilaComponent,
 
-        // EncabezadoComponent,
-
         EntradaPaginaComponent,
         EntradaLoginComponent,
         EntradaRegistroComponent,
@@ -113,6 +112,8 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
         PermisosPaginaComponent,
         PermisosSidebarComponent,
 
+        BuscadorPersonasComponent,
+        BuscadorMiniPersonasComponent,
         PersonasLineaComponent,
         PersonasListaComponent,
 
