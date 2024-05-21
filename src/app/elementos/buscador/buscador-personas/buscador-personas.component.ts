@@ -1,9 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import Fuse, { FuseResult } from 'fuse.js';
+import { Usuario } from '../../../modelos/usuario.model';
 import { UsuariosServices } from '../../../servicios/usuarios.services';
 import { personaBuscador } from '../buscador-mini-personas/buscador-mini-personas.component';
-import { Usuario } from '../../../modelos/usuario.model';
-import { FuseResult } from 'fuse.js';
-import Fuse from 'fuse.js';
 
 @Component({
     selector: 'app-buscador-personas',
@@ -28,13 +27,13 @@ export class BuscadorPersonasComponent {
         this.usuariosTotales = usuariosService
             .getUsuarios()
             .map(usuario => ({ ...usuario, seleccionado: false }));
-        this.sort();
+        this.sortTotales();
 
         this.usuariosFiltrados = this.usuariosTotales;
         this.fuse = new Fuse(this.usuariosTotales, this.parametrosBusqueda);
     }
 
-    sort(): void {
+    sortTotales(): void {
         this.usuariosTotales.sort((a, b) => {
             if (a.seleccionado === b.seleccionado) {
                 return a.nombre.localeCompare(b.nombre);
@@ -51,7 +50,17 @@ export class BuscadorPersonasComponent {
         this.usuariosTotales = this.usuariosTotales.map(p =>
             p === persona ? { ...p, seleccionado: !p.seleccionado } : p
         );
-        this.sort();
+
+        this.sortTotales();
+        this.fuse.setCollection(this.usuariosTotales);
+
+        this.usuariosFiltrados = this.usuariosFiltrados
+            .map(p =>
+                p === persona ? { ...p, seleccionado: !p.seleccionado } : p
+            )
+            .sort(
+                (a, b) => (b.seleccionado ? 1 : 0) - (a.seleccionado ? 1 : 0)
+            );
     }
 
     handleAgregar(): void {
