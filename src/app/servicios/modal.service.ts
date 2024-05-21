@@ -6,6 +6,7 @@ import { Proyecto } from '../modelos/proyectos.model';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { Unidad } from '../modelos/unidad.model';
 import { CrearUnidadComponent } from '../paginas/vista-unidades/components/crear-unidad/crear-unidad.component';
+import { CrearContenidosComponent } from '../paginas/vista-archivos/components/crear-contenidos/crear-contenidos.component';
 
 @Injectable({
     providedIn: 'root',
@@ -39,6 +40,14 @@ export class ModalService {
         });
         modalRef.afterClose.subscribe(() => {
             this.modalDataService.clearData();
+        });
+    }
+    openCrearContenidosModal(): void {
+        this.modalService.create({
+            nzTitle: 'Crear Contenido',
+            nzContent: CrearContenidosComponent,
+            nzFooter: null,
+            nzWidth: '80%',
         });
     }
 }

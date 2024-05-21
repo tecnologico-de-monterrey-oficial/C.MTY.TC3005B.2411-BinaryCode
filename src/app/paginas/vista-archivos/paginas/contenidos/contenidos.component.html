@@ -4,4 +4,17 @@
     <nz-breadcrumb-item>Finanzas</nz-breadcrumb-item>
 </nz-breadcrumb>
 
-<app-lista-archivos [archivos]="archivos" [carpetas]="carpetas" />
+<app-lista-archivos
+    [archivos]="archivos"
+    [carpetas]="carpetas"></app-lista-archivos>
+
+<div class="button-container">
+    <button
+        nz-button
+        nzType="primary"
+        nzShape="circle"
+        class="nz-float-button"
+        (click)="abrirCrearContenidosModal()">
+        <i nz-icon nzType="plus"></i>
+    </button>
+</div>

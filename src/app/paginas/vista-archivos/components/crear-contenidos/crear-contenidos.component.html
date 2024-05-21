@@ -1,35 +1,44 @@
-<div class="tarjeta">
+<div class="tarjeta" [formGroup]="contenidoForm">
     <div class="container">
-        <div class="left">
-            <img
-                src="../../../../../../assets/images/Ejemplos_tarjeta/FSAE_Ejemplo.jpg"
-                alt="Archivo Pre_cargado" />
+        <div class="left" (click)="fileInput.click()">
             <input
-                type="text"
-                class="buscador"
-                placeholder="Buscar etiquetas" />
+                type="file"
+                #fileInput
+                (change)="onFileSelected($event)"
+                hidden />
+            <div
+                *ngIf="!archivoURL; else archivoPreview"
+                class="file-upload-placeholder">
+                Clic para añadir archivo
+            </div>
+            <ng-template #archivoPreview>
+                <div class="file-container">
+                    <span>{{ nombreArchivo }}</span>
+                </div>
+            </ng-template>
         </div>
 
         <div class="right">
-            <div class="label-input-container">
-                <label for="agregar">Agregar:</label>
-                <input type="text" id="agregar" name="agregar" />
+            <div class="campo">
+                <p class="texto-indicador">
+                    Escribe un título para el contenido
+                </p>
+                <input
+                    type="text"
+                    class="buscador"
+                    placeholder="Título del contenido"
+                    formControlName="tituloContenido" />
             </div>
-            <div class="label-input-container">
-                <label for="nombre_archivo">Nombre del archivo:</label>
-                <input type="text" id="nombre_archivo" name="nombre_archivo" />
+
+            <div class="campo">
+                <p class="texto-indicador">Añade una descripción</p>
+                <textarea
+                    formControlName="descripcion"
+                    rows="4"
+                    cols="50"></textarea>
             </div>
-            <label for="descripcion">Descripción:</label>
-            <textarea id="descripcion" name="descripcion" rows="4"></textarea>
-            <br />
-            <button class="subir-btn" (click)="validarDatos()">
-                Subir archivo
-            </button>
         </div>
     </div>
 
-    <div class="bottom-section">
-        <button>Cancelar</button>
-        <button>Guardar archivo</button>
-    </div>
+    <button type="button" (click)="validarDatos()">Crear contenido</button>
 </div>

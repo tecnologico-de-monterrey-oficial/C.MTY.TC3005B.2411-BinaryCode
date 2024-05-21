@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'; // Elimina OnInit si no lo usas
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NzModalRef } from 'ng-zorro-antd/modal';
 
 @Component({
     selector: 'app-crear-contenidos',
@@ -6,27 +8,48 @@ import { Component } from '@angular/core';
     styleUrls: ['./crear-contenidos.component.css'],
 })
 export class CrearContenidosComponent {
-    agregar: string = ''; // Propiedad enlazada al input 'agregar'
-    nombreArchivo: string = ''; // Propiedad enlazada al input 'nombre_archivo'
-    descripcion: string = ''; // Propiedad enlazada al textarea 'descripcion'
+    contenidoForm: FormGroup;
+    archivoURL: string | ArrayBuffer | null = null;
+    nombreArchivo: string | null = null;
 
-    validarDatos(): void {
-        // Validación de los datos ingresados
-        if (
-            this.agregar.trim() === '' ||
-            this.nombreArchivo.trim() === '' ||
-            this.descripcion.trim() === ''
-        ) {
-            alert('Por favor completa todos los campos.');
-            return; // Detiene la ejecución si hay campos vacíos
-        }
-
-        // Si los datos son válidos, realizar la acción correspondiente
-        this.subirArchivo();
+    constructor(
+        private fb: FormBuilder,
+        private modalRef: NzModalRef
+    ) {
+        this.contenidoForm = this.fb.group({
+            tituloContenido: ['', Validators.required],
+            descripcion: ['', Validators.required],
+            archivo: [null, Validators.required],
+        });
     }
 
-    subirArchivo(): void {
-        // Aquí puedes escribir la lógica para subir el archivo al servidor
-        console.log('Datos válidos, subiendo archivo...');
+    onFileSelected(event: Event): void {
+        const element: HTMLInputElement =
+            event.currentTarget as HTMLInputElement;
+        const file: File | null = element.files ? element.files[0] : null;
+        if (file) {
+            this.nombreArchivo = file.name;
+            const reader: FileReader = new FileReader();
+            reader.onload = (e): void => {
+                this.archivoURL = e.target.result;
+                this.contenidoForm.patchValue({ archivo: this.archivoURL });
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    validarDatos(): void {
+        if (this.contenidoForm.valid) {
+            console.log('Contenido a crear:', this.contenidoForm.value);
+            alert('El Contenido ha sido creado exitosamente');
+            // Debes implementar la lógica para guardar el contenido
+            this.cerrarModal();
+        } else {
+            alert('Por favor completa todos los campos requeridos.');
+        }
+    }
+
+    cerrarModal(): void {
+        this.modalRef.close();
     }
 }

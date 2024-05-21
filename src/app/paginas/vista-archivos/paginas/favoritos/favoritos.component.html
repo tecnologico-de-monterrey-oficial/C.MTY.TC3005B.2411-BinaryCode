@@ -1,3 +1,14 @@
 <h1>Favoritos</h1>
 
 <app-lista-archivos [archivos]="archivos" />
+
+<div class="button-container">
+    <button
+        nz-button
+        nzType="primary"
+        nzShape="circle"
+        class="nz-float-button"
+        (click)="abrirCrearContenidosModal()">
+        <i nz-icon nzType="plus"></i>
+    </button>
+</div>
