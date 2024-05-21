@@ -11,10 +11,9 @@ export class UnidadTarjetaComponent {
     @Input() unidad: Unidad;
 
     isVisible = false;
-    constructor(private modalService: ModalService) {
-        console.log(this.unidad);
-    }
+    constructor(private modalService: ModalService) {}
     showPlaceholder: boolean = false;
+    isConfirmLoading = false;
 
     handleImageError(): void {
         this.showPlaceholder = true;
@@ -25,5 +24,17 @@ export class UnidadTarjetaComponent {
 
     showModal(): void {
         this.isVisible = true;
+    }
+
+    handleOk(): void {
+        this.isConfirmLoading = true;
+        setTimeout(() => {
+            this.isVisible = false;
+            this.isConfirmLoading = false;
+        }, 1000);
+    }
+
+    handleCancel(): void {
+        this.isVisible = false;
     }
 }

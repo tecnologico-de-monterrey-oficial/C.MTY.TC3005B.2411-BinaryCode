@@ -142,36 +142,43 @@ export class ProyectoCrearComponent implements OnInit, OnDestroy {
                 alert('Por favor completa todos los campos.');
             }
         } else {
-            // eslint-disable-next-line @typescript-eslint/typedef
-            const proyectoEdit = {
-                nombre: this.proyectoForm.get('nombreProyecto').value,
-                descripcion: this.proyectoForm.get('descripcion').value,
-                color: this.proyectoForm.get('color').value,
-                imagen: this.imagenEditada()
-                    ? this.proyectoForm.get('imagen').value
-                    : undefined,
-                activo: true,
-                creator: 1, //TODO
-            };
-            fetch(`http://127.0.0.1:8000/api/proyectos/${this.idProyecto}/`, {
-                // Reemplaza con tu URL de la API
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(proyectoEdit),
-            })
-                .then(response => response.json())
-                .then(proyectoData => {
-                    console.log('Success:', proyectoData);
-                    setTimeout(function () {
-                        location.reload();
-                    }, 500);
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Error al editar el proyecto.');
-                });
+            if (this.proyectoForm.valid) {
+                // eslint-disable-next-line @typescript-eslint/typedef
+                const proyectoEdit = {
+                    nombre: this.proyectoForm.get('nombreProyecto').value,
+                    descripcion: this.proyectoForm.get('descripcion').value,
+                    color: this.proyectoForm.get('color').value,
+                    imagen: this.imagenEditada()
+                        ? this.proyectoForm.get('imagen').value
+                        : undefined,
+                    activo: true,
+                    creator: 1, //TODO
+                };
+                fetch(
+                    `http://127.0.0.1:8000/api/proyectos/${this.idProyecto}/`,
+                    {
+                        // Reemplaza con tu URL de la API
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(proyectoEdit),
+                    }
+                )
+                    .then(response => response.json())
+                    .then(proyectoData => {
+                        console.log('Success:', proyectoData);
+                        setTimeout(function () {
+                            location.reload();
+                        }, 500);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Error al editar el proyecto.');
+                    });
+            } else {
+                alert('Por favor completa todos los campos.');
+            }
         }
     }
 
