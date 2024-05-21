@@ -19,5 +19,6 @@
 <ng-template #buscador>
     <app-buscador-personas
         (agregarCoordinadores)="addCoordinadores($event)"
-        (cancelar)="cancelarBuscador()" />
+        (cancelar)="cancelarBuscador()"
+        [usuariosActuales]="coordinadores" />
 </ng-template>

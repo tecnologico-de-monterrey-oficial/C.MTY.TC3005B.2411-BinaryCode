@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import Fuse, { FuseResult } from 'fuse.js';
 import { Usuario } from '../../../modelos/usuario.model';
 import { UsuariosServices } from '../../../servicios/usuarios.services';
@@ -9,13 +9,15 @@ import { personaBuscador } from '../buscador-mini-personas/buscador-mini-persona
     templateUrl: './buscador-personas.component.html',
     styleUrl: './buscador-personas.component.css',
 })
-export class BuscadorPersonasComponent {
+export class BuscadorPersonasComponent implements OnInit {
     @Output() agregarCoordinadores = new EventEmitter<Usuario[]>();
     @Output() cancelar = new EventEmitter<void>();
+    @Input() usuariosActuales: Usuario[];
 
     fuse: Fuse<personaBuscador>;
     usuariosTotales: personaBuscador[];
     usuariosFiltrados: personaBuscador[];
+    modalConfirmaciónVisible: boolean = false;
 
     parametrosBusqueda = {
         threshold: 0.3,
@@ -23,9 +25,15 @@ export class BuscadorPersonasComponent {
         keys: ['nombre'],
     };
 
-    constructor(usuariosService: UsuariosServices) {
-        this.usuariosTotales = usuariosService
+    ngOnInit(): void {
+        this.usuariosTotales = this.usuariosService
             .getUsuarios()
+            .filter(
+                usuario =>
+                    !this.usuariosActuales.some(
+                        actual => actual.id === usuario.id
+                    )
+            )
             .map(usuario => ({ ...usuario, seleccionado: false }));
         this.sortTotales();
 
@@ -64,6 +72,12 @@ export class BuscadorPersonasComponent {
     }
 
     handleAgregar(): void {
+        this.modalConfirmaciónVisible = true;
+        this.handleConfirmacion();
+    }
+
+    handleConfirmacion(): void {
+        this.modalConfirmaciónVisible = false;
         const finales: Usuario[] = this.usuariosTotales
             .filter(p => p.seleccionado)
             .map(p => ({
@@ -84,4 +98,6 @@ export class BuscadorPersonasComponent {
             this.usuariosFiltrados = result.map(resultado => resultado.item);
         }
     }
+
+    constructor(private usuariosService: UsuariosServices) {}
 }
