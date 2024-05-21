@@ -20,7 +20,7 @@ export class UnidadesComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.params.subscribe(params => {
-            const proyectoId: string = params['id'];
+            const proyectoId: number = params['id'];
             this.unidadesService.getUnidadesPorProyecto(proyectoId).subscribe({
                 next: data => {
                     this.unidades = data;

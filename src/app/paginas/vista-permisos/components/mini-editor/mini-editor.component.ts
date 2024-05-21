@@ -8,7 +8,7 @@ import { Usuario } from '../../../../modelos/usuario.model';
 })
 export class MiniEditorComponent {
     @Input() editor: Usuario;
-    @Output() removeItemClick = new EventEmitter<string>();
+    @Output() removeItemClick = new EventEmitter<number>();
 
     removeClick(): void {
         this.removeItemClick.emit(this.editor.id);

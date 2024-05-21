@@ -9,89 +9,134 @@
 }
 
 .tarjeta {
-    width: 80%;
-    max-width: 90%;
-    margin: 5%;
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: auto;
     background-color: #f7faff;
     border-radius: 10px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
 .container {
     display: flex;
-    height: 100%;
+    flex-grow: 1;
 }
 
-.left,
+.left .image-upload-placeholder {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.left {
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.left img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 .right {
     flex: 1;
-    padding: 20px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
-    align-items: left;
-    justify-content: center;
+    justify-content: flex-start;
+}
+
+.right input,
+.right textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #c5cdd1;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.colores {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.cuadro {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    border: 1px solid #070809;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.seleccionado {
+    border: 3px solid #070809;
 }
 
 .bottom-section {
-    margin-top: 5px;
+    padding: 10px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 button {
-    padding: 5px 60px;
-    margin: 5px;
-    border: 2px solid #ff4d4f;
-    border-radius: 10px;
-    background-color: #fff;
-    color: #ff4d4f;
+    padding: 10px 50px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--rojoLogin);
+    color: var(--blanco);
     font-size: 16px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #ff4d4f;
-    color: #f7faff;
+    background-color: var(--blanco);
+    color: var(--rojoLogin);
+    border: 2px solid var(--rojoLogin);
 }
 
-.right .buscador {
+.texto-indicador {
     margin-top: 20px;
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #c5cdd1;
-    border-radius: 5px;
-    font-size: 14px;
-    color: #c5cdd1;
+    margin-bottom: 5px;
 }
 
-.fila {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
+/* Media queries para responsivo */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
 
-.cuadro {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #070809;
-}
-
-.seleccionado {
-    border-width: 5px;
-    border-style: double;
-    border-color: #070809 #f7faff;
-}
-
-.texto-color {
-    font-size: 16px;
-    color: #595959;
-    margin: 5px 0;
-}
-
-.left img {
-    max-width: 100%;
-    max-height: 100%;
-    border-radius: 10px;
-    border: 2px solid #c5cdd1;
+    .left,
+    .right {
+        flex: none;
+        width: 100%;
+        padding: 10px;
+    }
 }

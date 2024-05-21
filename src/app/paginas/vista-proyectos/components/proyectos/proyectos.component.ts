@@ -12,7 +12,7 @@ export class ProyectosComponent implements OnInit {
     proyectos: Proyecto[] = [];
 
     constructor(
-        private proyectoService: ProyectosService, // Use private to correctly inject the service
+        private proyectoService: ProyectosService,
         private router: Router,
         private route: ActivatedRoute
     ) {}

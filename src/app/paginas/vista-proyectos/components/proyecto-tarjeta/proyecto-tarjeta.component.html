@@ -17,19 +17,25 @@
                 opacity: '0.5',
                 'border-radius': '10px'
             }">
+            <!-- Botón de opciones ajustado -->
             <div class="options-button">
                 <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
-                    <span nz-icon nzType="more" nzTheme="outline"></span>
+                    <span
+                        nz-icon
+                        nzType="more"
+                        nzTheme="outline"
+                        [ngStyle]="{ color: 'white' }"></span>
                 </a>
                 <nz-dropdown-menu #menu="nzDropdownMenu">
                     <ul nz-menu nzSelectable>
-                        <li nz-menu-item>
+                        <li nz-menu-item (click)="editarProyecto()">
                             Editar
                             <span
                                 class="icono-opcion"
                                 nz-icon
                                 nzType="edit"></span>
                         </li>
+
                         <li nz-menu-item>
                             Archivar
                             <span

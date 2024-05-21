@@ -15,7 +15,7 @@
                 <div class="image-container">
                     <div
                         class="image-overlay"
-                        [style.background-color]="colorSeleccionado"
+                        [style.background-color]="color"
                         [style.opacity]="0.5"></div>
                     <img [src]="imagenURL" alt="Vista previa de la imagen" />
                 </div>
@@ -36,15 +36,17 @@
 
             <div class="campo">
                 <p class="texto-indicador">Selecciona el color</p>
-                <div class="colores">
-                    <div
-                        *ngFor="let opcionColor of colores"
-                        nzSpan="2"
-                        class="cuadro"
-                        [class.seleccionado]="colorSeleccionado === opcionColor"
-                        (click)="seleccionarColor(opcionColor)"
-                        [style.background-color]="opcionColor"></div>
-                </div>
+                <input
+                    [colorPicker]="color"
+                    (colorPickerChange)="
+                        color = $event;
+                        proyectoForm.controls['color'].setValue($event)
+                    "
+                    [style.background]="color"
+                    [cpOutputFormat]="'hex'"
+                    [cpPresetColors]="colores"
+                    class="color-picker-input"
+                    formControlName="color" />
             </div>
 
             <div class="campo">
@@ -57,7 +59,7 @@
         </div>
     </div>
 
-    <div class="bottom-section">
-        <button type="button" (click)="validarDatos()">Crear proyecto</button>
-    </div>
+    <button type="button" (click)="validarDatos()">
+        {{ modo === 'editar' ? 'Editar proyecto' : 'Crear proyecto' }}
+    </button>
 </div>

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { Subscription } from 'rxjs';
+import { ModalDataService } from '../../../../servicios/modal-data.service';
 import {
     tarjeta_amarillo,
     tarjeta_amarillo_claro,
@@ -21,65 +22,84 @@ import {
     tarjeta_verde_fuerte,
     tarjeta_verde_medio,
 } from '../../../../../assets/colores';
-
 @Component({
     selector: 'app-proyecto-crear',
     templateUrl: './proyecto-crear.component.html',
     styleUrls: ['./proyecto-crear.component.css'],
 })
-export class ProyectoCrearComponent implements OnInit {
+export class ProyectoCrearComponent implements OnInit, OnDestroy {
     proyectoForm: FormGroup;
+    subscription: Subscription;
     colores: string[] = [
-        tarjeta_azul_fuerte,
-        tarjeta_azul_medio,
-        tarjeta_azul_claro,
-        tarjeta_rojo_fuerte,
-        tarjeta_rojo_medio,
-        tarjeta_rojo_claro,
-        tarjeta_morado_fuerte,
-        tarjeta_morado,
-        tarjeta_morado_claro,
-        tarjeta_verde_fuerte,
-        tarjeta_verde_medio,
-        tarjeta_verde_claro,
-        tarjeta_amarillo_fuerte,
         tarjeta_amarillo,
         tarjeta_amarillo_claro,
-        tarjeta_rosa_fuerte,
+        tarjeta_amarillo_fuerte,
+        tarjeta_azul_claro,
+        tarjeta_azul_fuerte,
+        tarjeta_azul_medio,
+        tarjeta_morado,
+        tarjeta_morado_claro,
+        tarjeta_morado_fuerte,
+        tarjeta_rojo_claro,
+        tarjeta_rojo_fuerte,
+        tarjeta_rojo_medio,
         tarjeta_rosa,
         tarjeta_rosa_claro,
+        tarjeta_rosa_fuerte,
+        tarjeta_verde_claro,
+        tarjeta_verde_fuerte,
+        tarjeta_verde_medio,
     ];
-    colorSeleccionado: string;
+    color: string = '#000000';
     imagenURL: string | ArrayBuffer | null = null;
+    modo: string = 'crear';
+    imagenOriginal: string;
+    idProyecto: number;
 
-    constructor(private fb: FormBuilder) {}
-
-    ngOnInit(): void {
-        this.colorSeleccionado =
-            this.colores[Math.floor(Math.random() * this.colores.length)];
-
+    constructor(
+        private fb: FormBuilder,
+        private modalDataService: ModalDataService
+    ) {
         this.proyectoForm = this.fb.group({
             nombreProyecto: ['', Validators.required],
             descripcion: ['', Validators.required],
-            color: [this.colorSeleccionado, Validators.required],
+            color: ['#000000', Validators.required],
             imagen: [null, Validators.required],
         });
     }
 
+    ngOnInit(): void {
+        this.subscription = this.modalDataService.proyectoData.subscribe(
+            data => {
+                if (data) {
+                    this.idProyecto = data.id;
+                    this.modo = 'editar';
+                    this.color = data.color;
+                    this.imagenURL = data.imagen;
+                    this.imagenOriginal = data.imagen;
+                    this.proyectoForm.patchValue({
+                        nombreProyecto: data.nombre,
+                        descripcion: data.descripcion,
+                        color: data.color,
+                        imagen: data.imagen,
+                    });
+                } else {
+                    this.color = this.colores[0];
+                }
+            }
+        );
+    }
+
     seleccionarColor(color: string): void {
-        this.colorSeleccionado =
-            this.colorSeleccionado === color ? null : color;
-        this.proyectoForm.patchValue({ color: this.colorSeleccionado });
+        this.color = color;
+        this.proyectoForm.patchValue({ color: this.color });
     }
 
     onFileSelected(event: Event): void {
-        // eslint-disable-next-line @typescript-eslint/typedef
-        const file = (event.target as HTMLInputElement).files[0];
+        const file: File = (event.target as HTMLInputElement).files[0];
         if (file) {
-            // eslint-disable-next-line @typescript-eslint/typedef
-            const reader = new FileReader();
-            // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-            reader.onload = e => {
+            const reader: FileReader = new FileReader();
+            reader.onload = (e: ProgressEvent<FileReader>): void => {
                 this.imagenURL = e.target.result;
                 this.proyectoForm.patchValue({ imagen: this.imagenURL });
             };
@@ -88,19 +108,81 @@ export class ProyectoCrearComponent implements OnInit {
     }
 
     validarDatos(): void {
-        if (this.proyectoForm.valid) {
-            console.log('Datos válidos, creando proyecto...');
-            this.crearProyecto();
+        if (this.modo === 'crear') {
+            if (this.proyectoForm.valid) {
+                // eslint-disable-next-line @typescript-eslint/typedef
+                const proyectoData = {
+                    nombre: this.proyectoForm.get('nombreProyecto').value,
+                    descripcion: this.proyectoForm.get('descripcion').value,
+                    color: this.proyectoForm.get('color').value,
+                    imagen: this.proyectoForm.get('imagen').value,
+                    activo: true,
+                    creator: 1,
+                };
+                fetch('http://127.0.0.1:8000/api/proyectos/', {
+                    // Reemplaza con tu URL de la API
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(proyectoData),
+                })
+                    .then(response => response.json())
+                    .then(proyectoData => {
+                        console.log('Success:', proyectoData);
+                        setTimeout(function () {
+                            location.reload();
+                        }, 500);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Error al crear el proyecto.');
+                    });
+            } else {
+                alert('Por favor completa todos los campos.');
+            }
         } else {
-            alert('Por favor completa todos los campos.');
+            // eslint-disable-next-line @typescript-eslint/typedef
+            const proyectoEdit = {
+                nombre: this.proyectoForm.get('nombreProyecto').value,
+                descripcion: this.proyectoForm.get('descripcion').value,
+                color: this.proyectoForm.get('color').value,
+                imagen: this.imagenEditada()
+                    ? this.proyectoForm.get('imagen').value
+                    : undefined,
+                activo: true,
+                creator: 1, //TODO
+            };
+            fetch(`http://127.0.0.1:8000/api/proyectos/${this.idProyecto}/`, {
+                // Reemplaza con tu URL de la API
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(proyectoEdit),
+            })
+                .then(response => response.json())
+                .then(proyectoData => {
+                    console.log('Success:', proyectoData);
+                    setTimeout(function () {
+                        location.reload();
+                    }, 500);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error al editar el proyecto.');
+                });
         }
     }
 
-    crearProyecto(): void {
-        // eslint-disable-next-line @typescript-eslint/typedef
-        const dataproyecto = this.proyectoForm.value;
-        console.log('Datos del Proyecto:', dataproyecto);
-        // Enviar datos a la base de datos
-        alert('Proyecto guardado con éxito.');
+    imagenEditada(): boolean {
+        // Comprueba si la URL actual de la imagen es diferente de la URL original
+        return this.proyectoForm.get('imagen').value !== this.imagenOriginal;
+    }
+
+    ngOnDestroy(): void {
+        if (this.subscription) {
+            this.subscription.unsubscribe();
+        }
     }
 }

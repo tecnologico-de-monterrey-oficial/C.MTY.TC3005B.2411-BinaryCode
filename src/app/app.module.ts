@@ -13,6 +13,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { ColorPickerModule } from 'ngx-color-picker';
+import { enableRipple } from '@syncfusion/ej2-base';
 
 // Imports ng-zorro
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
@@ -29,6 +31,9 @@ import { VistaArchivosModule } from './paginas/vista-archivos/vista-archivos.mod
 import { VistaPersonasModule } from './paginas/vista-personas/vista-persona.module';
 import { VistaUnidadesModule } from './paginas/vista-unidades/vista-unidades.module';
 import { VistaPermisosModule } from './paginas/vista-permisos/vista-permisos.module';
+import { NzColDirective, NzRowDirective } from 'ng-zorro-antd/grid';
+
+enableRipple(true);
 
 @NgModule({
     declarations: [
@@ -44,7 +49,7 @@ import { VistaPermisosModule } from './paginas/vista-permisos/vista-permisos.mod
         BrowserModule,
         BrowserAnimationsModule,
         RouterModule,
-
+        ColorPickerModule,
         NzDropDownModule,
         NzIconModule,
         NzInputModule,
@@ -55,10 +60,13 @@ import { VistaPermisosModule } from './paginas/vista-permisos/vista-permisos.mod
         VistaProyectosModule,
         VistaUnidadesModule,
         VistaPermisosModule,
+        ReactiveFormsModule,
 
         EntradaLoginModule,
         AppRoutingModule,
         ReactiveFormsModule,
+        NzColDirective,
+        NzRowDirective,
     ],
     bootstrap: [AppComponent],
 })
