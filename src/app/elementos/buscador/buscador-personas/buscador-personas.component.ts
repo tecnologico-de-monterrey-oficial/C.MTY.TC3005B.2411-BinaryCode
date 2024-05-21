@@ -17,6 +17,7 @@ export class BuscadorPersonasComponent implements OnInit {
     fuse: Fuse<personaBuscador>;
     usuariosTotales: personaBuscador[];
     usuariosFiltrados: personaBuscador[];
+    terminoBusqueda?: string;
     modalConfirmaciónVisible: boolean = false;
 
     parametrosBusqueda = {
@@ -62,13 +63,8 @@ export class BuscadorPersonasComponent implements OnInit {
         this.sortTotales();
         this.fuse.setCollection(this.usuariosTotales);
 
-        this.usuariosFiltrados = this.usuariosFiltrados
-            .map(p =>
-                p === persona ? { ...p, seleccionado: !p.seleccionado } : p
-            )
-            .sort(
-                (a, b) => (b.seleccionado ? 1 : 0) - (a.seleccionado ? 1 : 0)
-            );
+        this.usuariosFiltrados = this.usuariosTotales;
+        this.terminoBusqueda = '';
     }
 
     handleAgregar(): void {
@@ -89,12 +85,13 @@ export class BuscadorPersonasComponent implements OnInit {
         this.agregarCoordinadores.emit(finales);
     }
 
-    handleSearch(termino: string): void {
-        if (!termino) {
+    handleSearch(): void {
+        if (!this.terminoBusqueda) {
             this.usuariosFiltrados = this.usuariosTotales;
         } else {
-            const result: FuseResult<personaBuscador>[] =
-                this.fuse.search(termino);
+            const result: FuseResult<personaBuscador>[] = this.fuse.search(
+                this.terminoBusqueda
+            );
             this.usuariosFiltrados = result.map(resultado => resultado.item);
         }
     }

@@ -4,7 +4,8 @@
             type="text"
             nz-input
             placeholder="Buscador"
-            (input)="handleSearch($event.target.value)" />
+            [(ngModel)]="terminoBusqueda"
+            (input)="handleSearch()" />
     </nz-input-group>
     <ng-template #suffixIconSearch>
         <span nz-icon nzType="search" class="header-icon"></span>

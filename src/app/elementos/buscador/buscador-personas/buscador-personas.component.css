@@ -10,8 +10,10 @@
 }
 
 .ant-input-affix-wrapper:focus,
-.ant-input-affix-wrapper:hover {
+.ant-input-affix-wrapper:hover,
+.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
     border: solid 1px var(--bordes);
+    box-shadow: 0 0 0;
 }
 
 .personas {

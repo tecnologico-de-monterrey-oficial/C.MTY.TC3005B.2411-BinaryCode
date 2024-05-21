@@ -13,3 +13,7 @@
 app-permisos-mini-coordinador {
     width: 100%;
 }
+
+::ng-deep .ant-popover-inner {
+    border-radius: 20px;
+}
