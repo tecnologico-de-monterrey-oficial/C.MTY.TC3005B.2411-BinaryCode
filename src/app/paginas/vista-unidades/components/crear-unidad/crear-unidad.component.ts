@@ -124,8 +124,8 @@ export class CrearUnidadComponent implements OnInit {
                     body: JSON.stringify(unidadData),
                 })
                     .then(response => response.json())
-                    .then(proyectoData => {
-                        console.log('Success:', proyectoData);
+                    .then(unidadData => {
+                        console.log('Success:', unidadData);
                         setTimeout(function () {
                             location.reload();
                         }, 500);
@@ -138,35 +138,39 @@ export class CrearUnidadComponent implements OnInit {
                 alert('Por favor completa todos los campos.');
             }
         } else {
-            // eslint-disable-next-line @typescript-eslint/typedef
-            const unidadEdit = {
-                nombre: this.unidadForm.get('nombreUnidad').value,
-                color: this.unidadForm.get('color').value,
-                imagen: this.imagenEditada()
-                    ? this.unidadForm.get('imagen').value
-                    : undefined,
-                id_usuario: 1, //TODO
-                id_proyecto: idProyecto,
-            };
-            fetch(`http://127.0.0.1:8000/api/apartados/${this.unidadId}/`, {
-                // Reemplaza con tu URL de la API
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(unidadEdit),
-            })
-                .then(response => response.json())
-                .then(proyectoData => {
-                    console.log('Success:', proyectoData);
-                    /* setTimeout(function () {
-                        location.reload();
-                    }, 500);*/
+            if (this.unidadForm.valid) {
+                // eslint-disable-next-line @typescript-eslint/typedef
+                const unidadEdit = {
+                    nombre: this.unidadForm.get('nombreUnidad').value,
+                    color: this.unidadForm.get('color').value,
+                    imagen: this.imagenEditada()
+                        ? this.unidadForm.get('imagen').value
+                        : undefined,
+                    id_usuario: 1, //TODO
+                    id_proyecto: idProyecto,
+                };
+                fetch(`http://127.0.0.1:8000/api/apartados/${this.unidadId}/`, {
+                    // Reemplaza con tu URL de la API
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(unidadEdit),
                 })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Error al editar la unidad.');
-                });
+                    .then(response => response.json())
+                    .then(unidadData => {
+                        console.log('Success:', unidadData);
+                        setTimeout(function () {
+                            location.reload();
+                        }, 500);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Error al editar la unidad.');
+                    });
+            } else {
+                alert('No puedes dejar estos campos vacios!');
+            }
         }
     }
 

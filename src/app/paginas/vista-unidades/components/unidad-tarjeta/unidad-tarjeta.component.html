@@ -56,3 +56,18 @@
         </div>
     </a>
 </div>
+
+<nz-modal
+    class="modal-borrar"
+    [(nzVisible)]="isVisible"
+    [nzContent]="modalContent"
+    [nzFooter]="null"
+    (nzOnCancel)="handleCancel()">
+    <ng-template #modalContent>
+        <app-unidad-borrar
+            [unidad]="unidad"
+            [isConfirmLoading]="isConfirmLoading"
+            (deleteProject)="handleOk()"
+            (cancelModal)="handleCancel()" />
+    </ng-template>
+</nz-modal>

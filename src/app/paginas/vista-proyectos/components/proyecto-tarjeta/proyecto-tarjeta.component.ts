@@ -14,9 +14,7 @@ export class ProyectoTarjetaComponent {
     isVisible = false;
     isConfirmLoading = false;
 
-    constructor(private modalService: ModalService) {
-        console.log(this.proyecto);
-    }
+    constructor(private modalService: ModalService) {}
 
     showModal(): void {
         this.isVisible = true;

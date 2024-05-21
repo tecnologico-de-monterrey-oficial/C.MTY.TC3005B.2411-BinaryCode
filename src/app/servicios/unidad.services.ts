@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
     providedIn: 'root',
 })
 export class UnidadesService {
-    private baseUrl = 'http://127.0.0.1:8000/api/apartados';
+    private baseUrl = 'http://127.0.0.1:8000/api/apartados/';
     // unidades: Unidad[] = [UN1, UN2, UN3, UN4, UN5, UN6];
     coordinadores: Usuario[] = [US4, US5, US6];
     editores: Usuario[] = [US1, US2, US3, US4, US5, US6];
@@ -17,7 +17,7 @@ export class UnidadesService {
     constructor(private http: HttpClient) {}
 
     getUnidadesPorProyecto(proyectoId: number): Observable<Unidad[]> {
-        return this.http.get<Unidad[]>(`${this.baseUrl}/?search=${proyectoId}`);
+        return this.http.get<Unidad[]>(`${this.baseUrl}?search=${proyectoId}`);
     }
 
     getCoordinadores(idUnidad: number): Usuario[] {
@@ -28,5 +28,10 @@ export class UnidadesService {
     getEditores(idUnidad: number): Usuario[] {
         idUnidad;
         return this.editores;
+    }
+
+    eliminarUnidad(unidadId: number): Observable<Unidad> {
+        const url: string = `${this.baseUrl}${unidadId}/`;
+        return this.http.delete<Unidad>(url);
     }
 }

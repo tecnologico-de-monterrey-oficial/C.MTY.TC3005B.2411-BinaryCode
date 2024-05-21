@@ -10,9 +10,15 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
 // Declarations
+import { UnidadBorrarComponent } from './components/unidad-borrar/unidad-borrar.component';
 import { UnidadCrearTarjetaComponent } from './components/unidad-crear-tarjeta/unidad-crear-tarjeta.component';
 import { UnidadTarjetaComponent } from './components/unidad-tarjeta/unidad-tarjeta.component';
 import { UnidadesComponent } from './unidades/unidades.component';
+import { NzButtonComponent } from 'ng-zorro-antd/button';
+import { FormsModule } from '@angular/forms';
+import { NzInputDirective } from 'ng-zorro-antd/input';
+import { NzModalComponent } from 'ng-zorro-antd/modal';
+import { VistaProyectosModule } from '../vista-proyectos/vista-proyectos.module';
 
 @NgModule({
     imports: [
@@ -22,8 +28,14 @@ import { UnidadesComponent } from './unidades/unidades.component';
         NzFlexModule,
         NzGridModule,
         NzIconModule,
+        NzButtonComponent,
+        FormsModule,
+        NzInputDirective,
+        NzModalComponent,
+        VistaProyectosModule,
     ],
     declarations: [
+        UnidadBorrarComponent,
         UnidadCrearTarjetaComponent,
         UnidadTarjetaComponent,
         UnidadesComponent,
