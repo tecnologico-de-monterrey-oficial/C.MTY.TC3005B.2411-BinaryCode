@@ -1,6 +1,10 @@
 <div>
     <nz-input-group nz-col nzSpan="3" [nzSuffix]="suffixIconSearch">
-        <input type="text" nz-input placeholder="Buscador" />
+        <input
+            type="text"
+            nz-input
+            placeholder="Buscador"
+            (input)="handleSearch($event.target.value)" />
     </nz-input-group>
     <ng-template #suffixIconSearch>
         <span nz-icon nzType="search" class="header-icon"></span>
@@ -8,7 +12,7 @@
 
     <div class="personas">
         <app-buscador-mini-personas
-            *ngFor="let persona of seleccionados"
+            *ngFor="let persona of usuariosFiltrados"
             [persona]="persona"
             (addItemClick)="handleSeleccionar($event)" />
     </div>
