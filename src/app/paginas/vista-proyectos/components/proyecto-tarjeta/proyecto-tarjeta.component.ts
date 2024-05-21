@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
+import { ModalService } from '../../../../servicios/modal.service';
 import { Proyecto } from '../../../../modelos/proyectos.model';
 
 @Component({
     selector: 'app-proyecto',
     templateUrl: './proyecto-tarjeta.component.html',
-    styleUrl: './proyecto-tarjeta.component.css',
+    styleUrls: ['./proyecto-tarjeta.component.css'],
 })
 export class ProyectoTarjetaComponent {
     @Input() proyecto: Proyecto;
@@ -12,6 +13,10 @@ export class ProyectoTarjetaComponent {
 
     isVisible = false;
     isConfirmLoading = false;
+
+    constructor(private modalService: ModalService) {
+        console.log(this.proyecto);
+    }
 
     showModal(): void {
         this.isVisible = true;
@@ -27,5 +32,9 @@ export class ProyectoTarjetaComponent {
 
     handleCancel(): void {
         this.isVisible = false;
+    }
+
+    editarProyecto(): void {
+        this.modalService.openProyectoModal(this.proyecto);
     }
 }

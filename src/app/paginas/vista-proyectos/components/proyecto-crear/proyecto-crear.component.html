@@ -1,31 +1,65 @@
-<div class="tarjeta">
+<div class="tarjeta" [formGroup]="proyectoForm">
     <div class="container">
-        <div class="left">
-            <img src="../../../../../../assets/images/proyectos_props/p1.png" alt="Imagen para el proyecto" />
+        <div class="left" (click)="fileInput.click()">
+            <input
+                type="file"
+                #fileInput
+                (change)="onFileSelected($event)"
+                hidden />
+            <div
+                *ngIf="!imagenURL; else imagenPreview"
+                class="image-upload-placeholder">
+                Clic para añadir imagen
+            </div>
+            <ng-template #imagenPreview>
+                <div class="image-container">
+                    <div
+                        class="image-overlay"
+                        [style.background-color]="color"
+                        [style.opacity]="0.5"></div>
+                    <img [src]="imagenURL" alt="Vista previa de la imagen" />
+                </div>
+            </ng-template>
         </div>
 
         <div class="right">
             <div class="campo">
-                <p class="texto-indicador">Escribe un nombre para el proyecto</p>
-                <input type="text" class="buscador" placeholder="Nombre del proyecto">
+                <p class="texto-indicador">
+                    Escribe un nombre para el proyecto
+                </p>
+                <input
+                    type="text"
+                    class="buscador"
+                    placeholder="Nombre del proyecto"
+                    formControlName="nombreProyecto" />
             </div>
 
             <div class="campo">
                 <p class="texto-indicador">Selecciona el color</p>
-                <div class="colores">
-                    <div *ngFor="let opcionColor of colores" nzSpan="2" class="cuadro" [class.seleccionado]="colorSeleccionado === opcionColor" (click)="seleccionarColor(opcionColor)" [style.background-color]="opcionColor"></div>
-                </div>
+                <input
+                    [colorPicker]="color"
+                    (colorPickerChange)="
+                        color = $event;
+                        proyectoForm.controls['color'].setValue($event)
+                    "
+                    [style.background]="color"
+                    [cpOutputFormat]="'hex'"
+                    [cpPresetColors]="colores"
+                    class="color-picker-input"
+                    formControlName="color" />
             </div>
 
             <div class="campo">
                 <p class="texto-indicador">Añade una descripción</p>
-                <textarea id="descripcion" name="descripcion" rows="4" cols="50"></textarea>
+                <textarea
+                    formControlName="descripcion"
+                    rows="4"
+                    cols="50"></textarea>
             </div>
         </div>
     </div>
 
-    <div class="bottom-section">
-        <button>Cancelar</button>
-        <button (click)="validarDatos()">Crear proyecto</button>
-    </div>
+    <button type="button" (click)="validarDatos()">
+        {{ modo === 'editar' ? 'Editar proyecto' : 'Crear proyecto' }}
+    </button>
 </div>

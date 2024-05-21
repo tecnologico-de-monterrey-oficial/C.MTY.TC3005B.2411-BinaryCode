@@ -10,7 +10,11 @@
 <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
     <div class="campo">
         <label for="nombre">Nombre:</label>
-        <input nz-input placeholder="Nombre" type="text" formControlName="nombre" />
+        <input
+            nz-input
+            placeholder="Nombre"
+            type="text"
+            formControlName="nombre" />
     </div>
 
     <div class="campo">
@@ -31,8 +35,7 @@
             class="cuadro"
             [class.seleccionado]="colorSeleccionado === opcionColor"
             (click)="seleccionarColor(opcionColor)"
-            [style.background-color]="opcionColor">
-        </div>
+            [style.background-color]="opcionColor"></div>
     </div>
 
     <button type="submit">Registrarse</button>

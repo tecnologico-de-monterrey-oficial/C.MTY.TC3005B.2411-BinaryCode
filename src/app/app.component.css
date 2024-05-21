@@ -8,7 +8,7 @@
     --layout-sider-text-color: var(--blanco);
     --layout-sider-border-color: var(--blanco);
     --layout-sider-trigger-background: var(--blanco);
-    
+
     background-color: var(--blanco);
     color: var(--blanco);
     border: 1px solid var(--blanco);
@@ -45,7 +45,7 @@
 }
 
 .inner-layout {
-    margin: 24px;
+    margin-left: 24px;
 }
 
 .whole-layout {
@@ -68,6 +68,6 @@
 ::ng-deep .ant-menu-title-content {
     width: 100%;
     display: flex;
-    /*justify-content: space-between; Lo que causaba error en el sidebar*/ 
+    /*justify-content: space-between; Lo que causaba error en el sidebar*/
     align-items: center;
 }

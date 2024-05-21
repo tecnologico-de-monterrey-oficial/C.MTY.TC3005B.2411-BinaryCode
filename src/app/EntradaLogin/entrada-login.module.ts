@@ -14,7 +14,6 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
-
 @NgModule({
     imports: [
         EntradaLoginRoutingModule,

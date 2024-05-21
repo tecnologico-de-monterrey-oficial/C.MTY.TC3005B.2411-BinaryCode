@@ -1,7 +1,9 @@
 export type Proyecto = {
-    id: string;
+    id: number;
     nombre: string;
-    urlImagen: string;
-    color: string;
     descripcion: string;
+    color: string;
+    imagen: string;
+    activo: boolean;
+    creator: number;
 };

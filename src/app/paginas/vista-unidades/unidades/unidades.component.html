@@ -7,8 +7,8 @@
         (click)="navigateToArchivos(unidad.id)"></app-unidad>
     <app-unidad-crear-tarjeta />
 </nz-flex>
-
 <nz-flex class="grid-container-empty" *ngIf="unidadesVacias">
+    <app-unidad-crear-tarjeta />
     <nz-empty [nzNotFoundContent]="contentTpl">
         <ng-template #contentTpl>No hay unidades</ng-template>
     </nz-empty>
