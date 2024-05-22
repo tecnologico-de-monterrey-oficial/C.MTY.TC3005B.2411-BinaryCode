@@ -4,8 +4,11 @@
         nz-popover
         nz-icon
         [(nzPopoverVisible)]="buscadorVisible"
+        (click)="abrirBuscador()"
+        (nzPopoverVisibleChange)="change($event)"
         [nzPopoverContent]="buscador"
-        nzPopoverTrigger="click"
+        [nzPopoverTrigger]="null"
+        nzTrigger="manual"
         nzPopoverPlacement="bottomLeft"
         nzType="plus-circle"
         nzTheme="fill">

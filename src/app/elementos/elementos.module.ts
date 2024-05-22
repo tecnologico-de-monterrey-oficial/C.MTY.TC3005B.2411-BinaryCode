@@ -32,6 +32,7 @@ import { CarpetasFilaComponent } from './archivos/carpetas-fila/carpetas-fila.co
 // Declaraciones - Buscador
 import { BuscadorPersonasComponent } from './buscador/buscador-personas/buscador-personas.component';
 import { BuscadorMiniPersonasComponent } from './buscador/buscador-mini-personas/buscador-mini-personas.component';
+import { BuscadorConfirmarModalComponent } from './buscador/buscador-confirmar-modal/buscador-confirmar-modal.component';
 
 // Declaraciones - Entrada
 import { EntradaLoginComponent } from './entrada/entrada-login/entrada-login.component';
@@ -99,6 +100,10 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
         ArchivosPaginaRecientesComponent,
         CarpetasFilaComponent,
 
+        BuscadorPersonasComponent,
+        BuscadorMiniPersonasComponent,
+        BuscadorConfirmarModalComponent,
+
         EntradaPaginaComponent,
         EntradaLoginComponent,
         EntradaRegistroComponent,
@@ -112,8 +117,6 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
         PermisosPaginaComponent,
         PermisosSidebarComponent,
 
-        BuscadorPersonasComponent,
-        BuscadorMiniPersonasComponent,
         PersonasLineaComponent,
         PersonasListaComponent,
 

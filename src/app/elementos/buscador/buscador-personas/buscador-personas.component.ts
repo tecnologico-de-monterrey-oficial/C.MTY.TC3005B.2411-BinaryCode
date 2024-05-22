@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import Fuse, { FuseResult } from 'fuse.js';
 import { Usuario } from '../../../modelos/usuario.model';
 import { UsuariosServices } from '../../../servicios/usuarios.services';
+import { nivelPermiso } from '../buscador-confirmar-modal/buscador-confirmar-modal.component';
 import { personaBuscador } from '../buscador-mini-personas/buscador-mini-personas.component';
 
 @Component({
@@ -13,12 +14,13 @@ export class BuscadorPersonasComponent implements OnInit {
     @Output() agregarCoordinadores = new EventEmitter<Usuario[]>();
     @Output() cancelar = new EventEmitter<void>();
     @Input() usuariosActuales: Usuario[];
+    @Input() permiso: nivelPermiso = 'coordinador';
 
     fuse: Fuse<personaBuscador>;
     usuariosTotales: personaBuscador[];
     usuariosFiltrados: personaBuscador[];
     terminoBusqueda?: string;
-    modalConfirmaciónVisible: boolean = false;
+    modalConfirmacionVisible = false;
 
     parametrosBusqueda = {
         threshold: 0.3,
@@ -27,6 +29,7 @@ export class BuscadorPersonasComponent implements OnInit {
     };
 
     ngOnInit(): void {
+        this.modalConfirmacionVisible = false;
         this.usuariosTotales = this.usuariosService
             .getUsuarios()
             .filter(
@@ -67,13 +70,8 @@ export class BuscadorPersonasComponent implements OnInit {
         this.terminoBusqueda = '';
     }
 
-    handleAgregar(): void {
-        this.modalConfirmaciónVisible = true;
-        this.handleConfirmacion();
-    }
-
     handleConfirmacion(): void {
-        this.modalConfirmaciónVisible = false;
+        this.modalConfirmacionVisible = false;
         const finales: Usuario[] = this.usuariosTotales
             .filter(p => p.seleccionado)
             .map(p => ({
@@ -83,6 +81,14 @@ export class BuscadorPersonasComponent implements OnInit {
                 fecha: p.fecha,
             }));
         this.agregarCoordinadores.emit(finales);
+    }
+
+    handleAgregar(): void {
+        this.modalConfirmacionVisible = true;
+    }
+
+    handleCloseModal(): void {
+        this.modalConfirmacionVisible = false;
     }
 
     handleSearch(): void {

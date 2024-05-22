@@ -47,5 +47,13 @@ export class PermisosCoordinadoresComponent {
         this.buscadorVisible = false;
     }
 
+    abrirBuscador(): void {
+        this.buscadorVisible = true;
+    }
+
+    change(value: boolean): void {
+        console.log(value);
+    }
+
     constructor(private message: NzMessageService) {}
 }

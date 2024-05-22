@@ -28,3 +28,17 @@
         </button>
     </div>
 </div>
+
+<nz-modal
+    class="modal-borrar"
+    [(nzVisible)]="modalConfirmacionVisible"
+    [nzContent]="modalContent"
+    [nzFooter]="null"
+    (nzOnCancel)="handleCloseModal()">
+    <ng-template #modalContent>
+        <app-buscador-confirmar-modal
+            [nivel]="permiso"
+            (regresar)="handleCloseModal()"
+            (agregarUsuarios)="handleConfirmacion()" />
+    </ng-template>
+</nz-modal>
