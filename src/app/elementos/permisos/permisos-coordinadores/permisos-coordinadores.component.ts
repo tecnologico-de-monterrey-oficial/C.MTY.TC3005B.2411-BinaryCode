@@ -51,9 +51,5 @@ export class PermisosCoordinadoresComponent {
         this.buscadorVisible = true;
     }
 
-    change(value: boolean): void {
-        console.log(value);
-    }
-
     constructor(private message: NzMessageService) {}
 }

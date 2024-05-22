@@ -1,5 +1,6 @@
 .fila {
     width: 100%;
+    height: 60px;
     border-top: var(--bordes) solid 1px;
     border-bottom: var(--bordes) solid 1px;
     margin-top: -1px;
@@ -22,12 +23,51 @@
     margin: 15px 15px;
 }
 
-.anticon {
+.derecha {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.remove-icon {
     font-size: 1.3rem;
     color: var(--rojoLogin);
-    margin-right: 20px;
+    cursor: pointer;
+}
+
+.add-icon {
+    font-size: 1.3rem;
+    color: var(--tarjeta_verde_medio);
+    cursor: pointer;
 }
 
 .nombre {
     font-size: 1.3rem;
+}
+
+.confirmation {
+    background-color: var(--rojoLogin);
+    color: transparent;
+    margin-left: 5px;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition:
+        width 700ms ease-in-out,
+        color 1000ms ease-out;
+    width: 0;
+}
+
+.confirmation.confirmado {
+    color: var(--blanco);
+    width: 60px;
+}
+
+.borrar-vacio {
+    width: 0;
 }

@@ -6,10 +6,30 @@
             alt="Imagen de usuario" />
         <div class="nombre">{{ editor.nombre }}</div>
     </div>
-    <span
-        nz-icon
-        nzType="minus-circle"
-        nzTheme="outline"
-        (click)="removeClick()">
-    </span>
+    <div class="derecha">
+        <span
+            class="remove-icon"
+            nz-icon
+            nzType="minus-circle"
+            nzTheme="outline"
+            (click)="deleteClick()"
+            *ngIf="!showDeleteConfirmation">
+        </span>
+        <span
+            class="add-icon"
+            nz-icon
+            nzType="right-circle"
+            nzTheme="outline"
+            (click)="deleteClick()"
+            *ngIf="showDeleteConfirmation">
+        </span>
+        <div
+            class="confirmation"
+            [class.confirmado]="showDeleteConfirmation"
+            (click)="confirmDelete()">
+            <span [class]="showDeleteConfirmation ? '' : 'borrar-vacio'"
+                >Borrar</span
+            >
+        </div>
+    </div>
 </div>

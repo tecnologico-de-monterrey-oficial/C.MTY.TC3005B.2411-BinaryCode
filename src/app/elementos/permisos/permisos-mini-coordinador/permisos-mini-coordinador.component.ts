@@ -10,7 +10,13 @@ export class PermisosMiniCoordinadorComponent {
     @Input() coordinador: Usuario;
     @Output() removeItemClick = new EventEmitter<string>();
 
-    removeClick(): void {
+    showDeleteConfirmation: boolean = false;
+
+    deleteClick(): void {
+        this.showDeleteConfirmation = !this.showDeleteConfirmation;
+    }
+
+    confirmDelete(): void {
         this.removeItemClick.emit(this.coordinador.id);
     }
 }

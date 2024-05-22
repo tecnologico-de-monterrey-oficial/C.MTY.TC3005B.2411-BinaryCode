@@ -10,7 +10,13 @@ export class PermisosMiniEditorComponent {
     @Input() editor: Usuario;
     @Output() removeItemClick = new EventEmitter<string>();
 
-    removeClick(): void {
+    showDeleteConfirmation: boolean = false;
+
+    deleteClick(): void {
+        this.showDeleteConfirmation = !this.showDeleteConfirmation;
+    }
+
+    confirmDelete(): void {
         this.removeItemClick.emit(this.editor.id);
     }
 }

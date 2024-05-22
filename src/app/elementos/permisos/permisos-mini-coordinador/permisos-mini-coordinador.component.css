@@ -1,11 +1,41 @@
 .fila {
     width: 100%;
+    height: 60px;
     border-top: var(--bordes) solid 1px;
     border-bottom: var(--bordes) solid 1px;
     margin-top: -1px;
 
     display: flex;
     align-items: center;
+}
+
+.confirmation {
+    background-color: var(--rojoLogin);
+    color: transparent;
+    margin-right: 5px;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: width 700ms ease-in-out;
+    width: 0;
+}
+
+.confirmation.confirmado {
+    color: var(--blanco);
+    width: 60px;
+}
+
+.fila-principal {
+    transition: transform 0.3s ease-in-out;
+}
+
+.fila-principal.movimiento {
+    transform: translateX(0);
 }
 
 .usuario-imagen {
@@ -16,9 +46,16 @@
     margin: 10px 15px;
 }
 
-.anticon {
+.remove-icon {
     font-size: 1.3rem;
     color: var(--rojoLogin);
+    cursor: pointer;
+}
+
+.add-icon {
+    font-size: 1.3rem;
+    color: var(--tarjeta_verde_medio);
+    cursor: pointer;
 }
 
 .nombre {

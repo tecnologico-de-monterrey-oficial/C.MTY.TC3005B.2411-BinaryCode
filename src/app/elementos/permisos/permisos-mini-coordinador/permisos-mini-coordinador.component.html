@@ -1,9 +1,22 @@
 <div class="fila">
+    <div class="confirmation" [class.confirmado]="showDeleteConfirmation">
+        <span (click)="confirmDelete()">Borrar</span>
+    </div>
     <span
+        class="remove-icon"
         nz-icon
         nzType="minus-circle"
         nzTheme="outline"
-        (click)="removeClick()">
+        (click)="deleteClick()"
+        *ngIf="!showDeleteConfirmation">
+    </span>
+    <span
+        class="add-icon"
+        nz-icon
+        nzType="left-circle"
+        nzTheme="outline"
+        (click)="deleteClick()"
+        *ngIf="showDeleteConfirmation">
     </span>
     <img
         class="usuario-imagen"
