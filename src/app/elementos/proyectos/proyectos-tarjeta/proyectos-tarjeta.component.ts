@@ -11,20 +11,32 @@ export class ProyectosTarjetaComponent {
     @Input() descripcion: boolean = true;
 
     @Output() eliminarProyecto = new EventEmitter<number>();
+    @Output() actualizarProyecto = new EventEmitter<Proyecto>();
 
-    isVisible = false;
+    borrarVisible = false;
+    actualizarVisible = false;
     isConfirmLoading = false;
 
-    showModal(): void {
-        this.isVisible = true;
+    showBorrarModal(): void {
+        this.borrarVisible = true;
+    }
+
+    showActualizarModal(): void {
+        this.actualizarVisible = true;
     }
 
     handleDelete(): void {
-        this.isVisible = false;
+        this.borrarVisible = false;
         this.eliminarProyecto.emit(this.proyecto.id);
     }
 
     handleCancel(): void {
-        this.isVisible = false;
+        this.borrarVisible = false;
+        this.actualizarVisible = false;
+    }
+
+    handleActualizar(proyectoAActualizar: Proyecto): void {
+        this.actualizarVisible = false;
+        this.actualizarProyecto.emit(proyectoAActualizar);
     }
 }

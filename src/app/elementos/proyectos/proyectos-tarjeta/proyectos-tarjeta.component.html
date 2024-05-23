@@ -23,7 +23,7 @@
                 </a>
                 <nz-dropdown-menu #menu="nzDropdownMenu">
                     <ul nz-menu nzSelectable>
-                        <li nz-menu-item>
+                        <li nz-menu-item (click)="showActualizarModal()">
                             Editar
                             <span
                                 class="icono-opcion"
@@ -44,7 +44,7 @@
                                 nz-icon
                                 nzType="unlock"></span>
                         </li>
-                        <li nz-menu-item nzDanger (click)="showModal()">
+                        <li nz-menu-item nzDanger (click)="showBorrarModal()">
                             Borrar
                             <span
                                 class="icono-opcion icono-borrar"
@@ -68,15 +68,31 @@
 
 <nz-modal
     class="modal-borrar"
-    [(nzVisible)]="isVisible"
-    [nzContent]="modalContent"
+    [(nzVisible)]="borrarVisible"
+    [nzContent]="modalborrarContent"
     [nzFooter]="null"
     (nzOnCancel)="handleCancel()">
-    <ng-template #modalContent>
+    <ng-template #modalborrarContent>
         <app-proyectos-borrar-modal
             [proyecto]="proyecto"
             [isConfirmLoading]="isConfirmLoading"
             (deleteProject)="handleDelete()"
             (cancelModal)="handleCancel()" />
+    </ng-template>
+</nz-modal>
+
+<nz-modal
+    class="proyecto-crear-modal"
+    [(nzVisible)]="actualizarVisible"
+    [nzContent]="modalActualizarContent"
+    [nzFooter]="null"
+    [nzClosable]="false"
+    (nzOnCancel)="handleCancel()"
+    [nzWidth]="1380">
+    <ng-template #modalActualizarContent>
+        <app-proyectos-crear-modal
+            (cancelModal)="handleCancel()"
+            (actualizarProyectoImportado)="handleActualizar($event)"
+            [proyectoOriginal]="proyecto" />
     </ng-template>
 </nz-modal>

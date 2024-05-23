@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
     FormControl,
     FormGroup,
@@ -41,10 +41,13 @@ import {
 export class ProyectosCrearModalComponent implements OnInit {
     @Output() cancelModal = new EventEmitter();
     @Output() crearProyectoImportado = new EventEmitter<Proyecto>();
+    @Output() actualizarProyectoImportado = new EventEmitter<Proyecto>();
 
-    loading = false;
+    loading: boolean = false;
+    nuevoProyecto: boolean;
 
     validateForm: FormGroup<{
+        id: FormControl<number>;
         nombreProyecto: FormControl<string>;
         descripcion: FormControl<string>;
         colorSeleccionado: FormControl<string>;
@@ -72,15 +75,33 @@ export class ProyectosCrearModalComponent implements OnInit {
         tarjeta_rosa_claro,
     ];
 
+    @Input() proyectoOriginal: Proyecto = {
+        id: null,
+        nombre: '',
+        descripcion: '',
+        color: this.colores[Math.floor(Math.random() * this.colores.length)],
+        imagen: '',
+        activo: true,
+        creator: 1,
+    };
+
     ngOnInit(): void {
+        this.nuevoProyecto = !this.proyectoOriginal.id;
         this.validateForm = this.fb.group({
-            nombreProyecto: ['', [Validators.required]],
-            descripcion: ['', [Validators.required]],
-            colorSeleccionado: [
-                this.colores[Math.floor(Math.random() * this.colores.length)],
+            id: [this.proyectoOriginal.id],
+            nombreProyecto: [
+                this.proyectoOriginal.nombre,
                 [Validators.required],
             ],
-            imagen: ['', [Validators.required]],
+            descripcion: [
+                this.proyectoOriginal.descripcion,
+                [Validators.required],
+            ],
+            colorSeleccionado: [
+                this.proyectoOriginal.color,
+                [Validators.required],
+            ],
+            imagen: [this.proyectoOriginal.imagen, [Validators.required]],
         });
     }
 
@@ -96,35 +117,58 @@ export class ProyectosCrearModalComponent implements OnInit {
         this.loading = true;
         if (this.validateForm.valid) {
             console.log(this.validateForm.value);
-            const nuevoProyecto: Proyecto = {
-                nombre: this.validateForm.value.nombreProyecto,
-                descripcion: this.validateForm.value.descripcion,
-                color: this.validateForm.value.colorSeleccionado,
-                imagen: this.validateForm.value.imagen,
-                activo: true,
-                creator: 1,
-            };
+
+            this.proyectoOriginal.nombre =
+                this.validateForm.value.nombreProyecto;
+            this.proyectoOriginal.descripcion =
+                this.validateForm.value.descripcion;
+            this.proyectoOriginal.color =
+                this.validateForm.value.colorSeleccionado;
+            this.proyectoOriginal.imagen = this.validateForm.value.imagen;
+
+            let respuestaAPI: RespuestaProyectoServidor;
 
             // API para crear proyecto
-            const respuestaAPI: RespuestaProyectoServidor =
-                await this.proyectoService.createProyecto(nuevoProyecto);
+            if (this.nuevoProyecto) {
+                respuestaAPI = await this.proyectoService.createProyecto(
+                    this.proyectoOriginal
+                );
+            } else {
+                respuestaAPI = await this.proyectoService.actualizarProyecto(
+                    this.proyectoOriginal
+                );
+            }
 
             console.log('Proyecto creado:', respuestaAPI);
 
             if (respuestaAPI.exito) {
-                this.message.success('El proyecto se creó exitosamente', {
-                    nzDuration: 10000,
-                });
+                this.message.success(
+                    this.nuevoProyecto
+                        ? 'El proyecto se creó exitosamente'
+                        : 'El proyecto se actualizó exitosamente',
+                    {
+                        nzDuration: 10000,
+                    }
+                );
                 if (
                     typeof respuestaAPI.mensaje !== 'string' &&
                     !Array.isArray(respuestaAPI.mensaje) &&
                     'id' in respuestaAPI.mensaje
                 ) {
-                    this.crearProyectoImportado.emit(respuestaAPI.mensaje);
+                    if (this.nuevoProyecto) {
+                        this.crearProyectoImportado.emit(respuestaAPI.mensaje);
+                    } else {
+                        this.actualizarProyectoImportado.emit(
+                            respuestaAPI.mensaje
+                        );
+                    }
                 }
             } else {
                 this.message.error(
-                    'Hubo un error al crear el proyecto: ' + respuestaAPI,
+                    this.nuevoProyecto
+                        ? 'Hubo un error al crear el proyecto: ' + respuestaAPI
+                        : 'Hubo un error al actualizar el proyecto: ' +
+                              respuestaAPI,
                     {
                         nzDuration: 10000,
                     }

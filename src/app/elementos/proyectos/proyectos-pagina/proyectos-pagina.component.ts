@@ -11,7 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class ProyectosPaginaComponent implements OnInit {
     proyectos: Proyecto[] = [];
     esqueleto: boolean = true;
-    numbers: number[] = [1, 2, 3, 4, 5, 6];
+    numbers: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
 
     constructor(
         private proyectoServices: ProyectosService,
@@ -37,5 +37,12 @@ export class ProyectosPaginaComponent implements OnInit {
 
     borrarProyecto(id: number): void {
         this.proyectos = this.proyectos.filter(p => p.id !== id);
+    }
+
+    actualizarProyecto(proyecto: Proyecto): void {
+        const index: number = this.proyectos.findIndex(
+            p => p.id === proyecto.id
+        );
+        this.proyectos[index] = proyecto;
     }
 }

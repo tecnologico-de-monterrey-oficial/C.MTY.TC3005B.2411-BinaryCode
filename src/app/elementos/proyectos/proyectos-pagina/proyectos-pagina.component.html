@@ -8,7 +8,8 @@
     <app-proyectos-tarjeta
         *ngFor="let proyecto of proyectos"
         [proyecto]="proyecto"
-        (eliminarProyecto)="borrarProyecto($event)" />
+        (eliminarProyecto)="borrarProyecto($event)"
+        (actualizarProyecto)="actualizarProyecto($event)" />
     <app-proyectos-crear-tarjeta
         (crearProyectoImportado)="crearProyecto($event)" />
 </nz-flex>

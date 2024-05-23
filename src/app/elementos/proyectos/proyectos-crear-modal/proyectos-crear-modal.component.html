@@ -99,7 +99,7 @@
             nz-button
             [nzLoading]="loading"
             (click)="crearProyecto()">
-            Crear proyecto
+            {{ nuevoProyecto ? 'Crear proyecto' : 'Actualizar proyecto' }}
         </button>
     </div>
 </div>
