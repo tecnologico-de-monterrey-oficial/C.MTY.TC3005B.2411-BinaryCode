@@ -11,7 +11,7 @@ export class PermisosCoordinadoresComponent {
     coordinadores: Usuario[] = [];
     buscadorVisible: boolean = false;
 
-    onRemoveItemClick(idEliminado: string): void {
+    onRemoveItemClick(idEliminado: number): void {
         // TODO: Implementar eliminación de usuario API
         this.coordinadores = this.coordinadores.filter(
             coordinador => coordinador.id !== idEliminado

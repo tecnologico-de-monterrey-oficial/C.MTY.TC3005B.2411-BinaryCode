@@ -3,9 +3,9 @@
 // Hay límites en el tamaño de la imagen?
 
 export type Unidad = {
-    id: string;
+    id: number;
     nombre: string;
-    urlImagen: string;
     color: string;
-    proyectoId: string; // Nueva propiedad proyectoId
+    imagen: string;
+    proyectoId: number;
 };

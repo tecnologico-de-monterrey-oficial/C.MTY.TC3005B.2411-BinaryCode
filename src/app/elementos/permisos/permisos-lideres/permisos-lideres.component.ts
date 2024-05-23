@@ -14,7 +14,7 @@ export class PermisosLideresComponent {
 
     constructor(private message: NzMessageService) {}
 
-    onRemoveItemClick(idEliminado: string): void {
+    onRemoveItemClick(idEliminado: number): void {
         // TODO: Implementar eliminación de usuario API
         this.lideres = this.lideres.filter(líder => líder.id !== idEliminado);
     }

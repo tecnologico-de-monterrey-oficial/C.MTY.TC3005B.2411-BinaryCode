@@ -8,7 +8,7 @@ import { Usuario } from '../../../modelos/usuario.model';
 })
 export class PermisosMiniEditorComponent {
     @Input() editor: Usuario;
-    @Output() removeItemClick = new EventEmitter<string>();
+    @Output() removeItemClick = new EventEmitter<number>();
 
     showDeleteConfirmation: boolean = false;
 

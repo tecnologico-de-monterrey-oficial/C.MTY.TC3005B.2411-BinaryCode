@@ -28,6 +28,7 @@ import {
 } from '../../../../assets/colores';
 import { Proyecto } from '../../../modelos/proyectos.model';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { ProyectosService } from '../../../servicios/proyecto.services';
 
 @Component({
     selector: 'app-proyectos-crear-modal',
@@ -88,19 +89,23 @@ export class ProyectosCrearModalComponent implements OnInit {
         this.cancelModal.emit();
     }
 
-    crearProyecto(): void {
+    async crearProyecto(): Promise<void> {
         if (this.validateForm.valid) {
             console.log(this.validateForm.value);
             const nuevoProyecto: Proyecto = {
-                id: '',
                 nombre: this.validateForm.value.nombreProyecto,
                 descripcion: this.validateForm.value.descripcion,
                 color: this.validateForm.value.colorSeleccionado,
                 imagen: this.validateForm.value.imagen,
+                activo: true,
+                creator: 1,
             };
 
             // API para crear proyecto
-            const successAPI: boolean = true;
+            const successAPI: boolean =
+                await this.proyectoService.createProyecto(nuevoProyecto);
+
+            console.log('Proyecto creado:', successAPI);
 
             if (successAPI) {
                 this.message.success('El proyecto se creó exitosamente', {
@@ -129,7 +134,6 @@ export class ProyectosCrearModalComponent implements OnInit {
             const reader: FileReader = new FileReader();
             reader.onload = (e: ProgressEvent<FileReader>): void => {
                 const imagen: string | ArrayBuffer = e.target.result;
-                console.log(imagen);
                 if (typeof imagen === 'string') {
                     this.validateForm.controls.imagen.setValue(imagen);
                 }
@@ -140,6 +144,7 @@ export class ProyectosCrearModalComponent implements OnInit {
 
     constructor(
         private fb: NonNullableFormBuilder,
-        private message: NzMessageService
+        private message: NzMessageService,
+        private proyectoService: ProyectosService
     ) {}
 }

@@ -13,7 +13,7 @@ export class PermisosCuadriculaUnidadesComponent implements OnInit {
     constructor(private unidadesService: UnidadesService) {}
 
     ngOnInit(): void {
-        this.unidadesService.getUnidadesPorProyecto('idProyecto').subscribe({
+        this.unidadesService.getUnidadesPorProyecto(0).subscribe({
             next: data => (this.unidades = data),
             error: err => console.error('Error fetching units:', err),
             complete: () => console.log('Fetching units complete'),
