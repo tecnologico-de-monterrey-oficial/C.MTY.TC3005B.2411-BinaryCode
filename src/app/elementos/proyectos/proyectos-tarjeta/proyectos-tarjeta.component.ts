@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Proyecto } from '../../../modelos/proyectos.model';
 
 @Component({
@@ -10,6 +10,8 @@ export class ProyectosTarjetaComponent {
     @Input() proyecto: Proyecto;
     @Input() descripcion: boolean = true;
 
+    @Output() eliminarProyecto = new EventEmitter<number>();
+
     isVisible = false;
     isConfirmLoading = false;
 
@@ -17,12 +19,9 @@ export class ProyectosTarjetaComponent {
         this.isVisible = true;
     }
 
-    handleOk(): void {
-        this.isConfirmLoading = true;
-        setTimeout(() => {
-            this.isVisible = false;
-            this.isConfirmLoading = false;
-        }, 1000);
+    handleDelete(): void {
+        this.isVisible = false;
+        this.eliminarProyecto.emit(this.proyecto.id);
     }
 
     handleCancel(): void {

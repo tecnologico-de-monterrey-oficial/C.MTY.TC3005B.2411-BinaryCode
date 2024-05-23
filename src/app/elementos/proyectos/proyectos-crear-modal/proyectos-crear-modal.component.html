@@ -94,7 +94,11 @@
         <button class="boton-cancelar" nz-button (click)="handleCancel()">
             Cancelar
         </button>
-        <button class="boton-crear" nz-button (click)="crearProyecto()">
+        <button
+            class="boton-crear"
+            nz-button
+            [nzLoading]="loading"
+            (click)="crearProyecto()">
             Crear proyecto
         </button>
     </div>

@@ -28,7 +28,10 @@ import {
 } from '../../../../assets/colores';
 import { Proyecto } from '../../../modelos/proyectos.model';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { ProyectosService } from '../../../servicios/proyecto.services';
+import {
+    ProyectosService,
+    RespuestaProyectoServidor,
+} from '../../../servicios/proyecto.services';
 
 @Component({
     selector: 'app-proyectos-crear-modal',
@@ -90,6 +93,7 @@ export class ProyectosCrearModalComponent implements OnInit {
     }
 
     async crearProyecto(): Promise<void> {
+        this.loading = true;
         if (this.validateForm.valid) {
             console.log(this.validateForm.value);
             const nuevoProyecto: Proyecto = {
@@ -102,20 +106,29 @@ export class ProyectosCrearModalComponent implements OnInit {
             };
 
             // API para crear proyecto
-            const successAPI: boolean =
+            const respuestaAPI: RespuestaProyectoServidor =
                 await this.proyectoService.createProyecto(nuevoProyecto);
 
-            console.log('Proyecto creado:', successAPI);
+            console.log('Proyecto creado:', respuestaAPI);
 
-            if (successAPI) {
+            if (respuestaAPI.exito) {
                 this.message.success('El proyecto se creó exitosamente', {
                     nzDuration: 10000,
                 });
-                this.crearProyectoImportado.emit(nuevoProyecto);
+                if (
+                    typeof respuestaAPI.mensaje !== 'string' &&
+                    !Array.isArray(respuestaAPI.mensaje) &&
+                    'id' in respuestaAPI.mensaje
+                ) {
+                    this.crearProyectoImportado.emit(respuestaAPI.mensaje);
+                }
             } else {
-                this.message.error('Hubo un error al crear el proyecto', {
-                    nzDuration: 10000,
-                });
+                this.message.error(
+                    'Hubo un error al crear el proyecto: ' + respuestaAPI,
+                    {
+                        nzDuration: 10000,
+                    }
+                );
             }
         } else {
             console.log('Formulario inválido');
@@ -126,6 +139,7 @@ export class ProyectosCrearModalComponent implements OnInit {
                 }
             });
         }
+        this.loading = false;
     }
 
     onFileSelected(event: Event): void {

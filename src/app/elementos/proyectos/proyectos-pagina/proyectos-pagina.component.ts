@@ -10,6 +10,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ProyectosPaginaComponent implements OnInit {
     proyectos: Proyecto[] = [];
+    esqueleto: boolean = true;
+    numbers: number[] = [1, 2, 3, 4, 5, 6];
 
     constructor(
         private proyectoServices: ProyectosService,
@@ -17,11 +19,10 @@ export class ProyectosPaginaComponent implements OnInit {
         private route: ActivatedRoute
     ) {}
 
-    ngOnInit(): void {
-        this.proyectoServices.getProyectos().subscribe({
-            next: data => (this.proyectos = data),
-            error: err => console.error('Error fetching projects:', err),
-        });
+    async ngOnInit(): Promise<void> {
+        this.esqueleto = true;
+        this.proyectos = await this.proyectoServices.getProyectos();
+        this.esqueleto = false;
     }
 
     navigateToUnidades(id: string): void {
@@ -32,5 +33,9 @@ export class ProyectosPaginaComponent implements OnInit {
 
     crearProyecto(proyecto: Proyecto): void {
         this.proyectos.push(proyecto);
+    }
+
+    borrarProyecto(id: number): void {
+        this.proyectos = this.proyectos.filter(p => p.id !== id);
     }
 }

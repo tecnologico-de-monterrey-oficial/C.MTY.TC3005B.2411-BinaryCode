@@ -5,8 +5,8 @@ import { US4, US5, US6 } from '../../assets/mocks/usuarios';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-interface RespuestaServidor {
-    mensaje: string;
+export interface RespuestaProyectoServidor {
+    mensaje?: Proyecto | Proyecto[] | string;
     exito: boolean;
 }
 
@@ -20,13 +20,34 @@ export class ProyectosService {
 
     constructor(private http: HttpClient) {}
 
-    getProyectos(): Observable<Proyecto[]> {
-        return this.http.get<Proyecto[]>(this.baseUrl);
+    async getProyectos(): Promise<Proyecto[]> {
+        try {
+            const response: Response = await fetch(this.baseUrl);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const proyectos: Proyecto[] = await response.json();
+            return proyectos;
+        } catch (error) {
+            console.error('Error obteniendo los proyectos', error);
+            return [];
+        }
     }
 
-    eliminarProyecto(proyectoId: number): Observable<RespuestaServidor> {
-        const url: string = `${this.baseUrl}${proyectoId}/`;
-        return this.http.delete<RespuestaServidor>(url);
+    async eliminarProyecto(proyectoId: number): Promise<boolean> {
+        try {
+            const url: string = `${this.baseUrl}${proyectoId}/`;
+            const response: Response = await fetch(url, {
+                method: 'DELETE',
+            });
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return true;
+        } catch (error) {
+            console.error('Error al eliminar el proyecto', error);
+            return false;
+        }
     }
 
     actualizarProyecto(proyecto: Proyecto): Observable<Proyecto> {
@@ -39,7 +60,9 @@ export class ProyectosService {
         return this.lideres;
     }
 
-    async createProyecto(proyecto: Proyecto): Promise<boolean> {
+    async createProyecto(
+        proyecto: Proyecto
+    ): Promise<RespuestaProyectoServidor> {
         try {
             const response: Response = await fetch(this.baseUrl, {
                 method: 'POST',
@@ -51,11 +74,19 @@ export class ProyectosService {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            await response.json();
-            return true;
+            const responseJSON: Proyecto = await response.json();
+            const respuesta: RespuestaProyectoServidor = {
+                mensaje: responseJSON,
+                exito: true,
+            };
+            return respuesta;
         } catch (error) {
-            console.error('Error creando el proyecto', error);
-            return false;
+            console.error('Error al crear el proyecto', error);
+            const respuesta: RespuestaProyectoServidor = {
+                mensaje: error,
+                exito: false,
+            };
+            return respuesta;
         }
     }
 }

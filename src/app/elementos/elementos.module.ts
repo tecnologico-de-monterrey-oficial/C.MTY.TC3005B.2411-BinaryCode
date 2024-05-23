@@ -10,15 +10,17 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzFlexDirective, NzFlexModule } from 'ng-zorro-antd/flex';
+import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
+import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
-import { NzFormModule } from 'ng-zorro-antd/form';
-import { NzMessageModule } from 'ng-zorro-antd/message';
 
 // Declaraciones - Archivos
 import { ArchivosCrearModalComponent } from './archivos/archivos-crear-modal/archivos-crear-modal.component';
@@ -30,9 +32,9 @@ import { ArchivosPaginaRecientesComponent } from './archivos/archivos-pagina-rec
 import { CarpetasFilaComponent } from './archivos/carpetas-fila/carpetas-fila.component';
 
 // Declaraciones - Buscador
-import { BuscadorPersonasComponent } from './buscador/buscador-personas/buscador-personas.component';
-import { BuscadorMiniPersonasComponent } from './buscador/buscador-mini-personas/buscador-mini-personas.component';
 import { BuscadorConfirmarModalComponent } from './buscador/buscador-confirmar-modal/buscador-confirmar-modal.component';
+import { BuscadorMiniPersonasComponent } from './buscador/buscador-mini-personas/buscador-mini-personas.component';
+import { BuscadorPersonasComponent } from './buscador/buscador-personas/buscador-personas.component';
 
 // Declaraciones - Entrada
 import { EntradaLoginComponent } from './entrada/entrada-login/entrada-login.component';
@@ -58,14 +60,14 @@ import { ProyectosBorrarModalComponent } from './proyectos/proyectos-borrar-moda
 import { ProyectosCrearModalComponent } from './proyectos/proyectos-crear-modal/proyectos-crear-modal.component';
 import { ProyectosCrearTarjetaComponent } from './proyectos/proyectos-crear-tarjeta/proyectos-crear-tarjeta.component';
 import { ProyectosPaginaComponent } from './proyectos/proyectos-pagina/proyectos-pagina.component';
+import { ProyectosTarjetaEsqueletoComponent } from './proyectos/proyectos-tarjeta-esqueleto/proyectos-tarjeta-esqueleto.component';
 import { ProyectosTarjetaComponent } from './proyectos/proyectos-tarjeta/proyectos-tarjeta.component';
 
 // Declaraciones - Unidades
 import { UnidadesCrearModalComponent } from './unidades/unidades-crear-modal/unidades-crear-modal.component';
 import { UnidadesCrearTarjetaComponent } from './unidades/unidades-crear-tarjeta/unidades-crear-tarjeta.component';
-import { UnidadesTarjetaComponent } from './unidades/unidades-tarjeta/unidades-tarjeta.component';
 import { UnidadesPaginaComponent } from './unidades/unidades-pagina/unidades-pagina.component';
-import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { UnidadesTarjetaComponent } from './unidades/unidades-tarjeta/unidades-tarjeta.component';
 
 @NgModule({
     imports: [
@@ -75,21 +77,22 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 
         NzBreadCrumbModule,
         NzButtonModule,
-        NzEmptyModule,
         NzDividerModule,
         NzDropDownModule,
-        NzFormModule,
+        NzEmptyModule,
         NzFlexDirective,
         NzFlexModule,
+        NzFormModule,
         NzGridModule,
         NzIconModule,
         NzInputModule,
+        NzLayoutModule,
+        NzMessageModule,
         NzModalModule,
         NzPopoverModule,
+        NzSkeletonModule,
         NzTagModule,
         NzToolTipModule,
-        NzMessageModule,
-        NzLayoutModule,
     ],
     declarations: [
         ArchivosCrearModalComponent,
@@ -124,6 +127,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
         ProyectosCrearModalComponent,
         ProyectosCrearTarjetaComponent,
         ProyectosPaginaComponent,
+        ProyectosTarjetaEsqueletoComponent,
         ProyectosTarjetaComponent,
 
         UnidadesCrearModalComponent,
