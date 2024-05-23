@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { US1, US2, US3, US4, US5, US6 } from '../../assets/mocks/usuarios';
+import { US1, US2, US4, US5, US6 } from '../../assets/mocks/usuarios';
 import { Unidad } from '../modelos/unidad.model';
 import { Usuario } from '../modelos/usuario.model';
 
@@ -12,7 +12,7 @@ export class UnidadesService {
     private baseUrl = 'http://127.0.0.1:8000/api/apartados';
 
     coordinadores: Usuario[] = [US4, US5, US6];
-    editores: Usuario[] = [US1, US2, US3, US4, US5, US6];
+    editores: Usuario[] = [US1, US2, US6];
 
     constructor(private http: HttpClient) {}
 

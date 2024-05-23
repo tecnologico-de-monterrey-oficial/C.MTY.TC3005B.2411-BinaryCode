@@ -11,16 +11,18 @@ import { personaBuscador } from '../buscador-mini-personas/buscador-mini-persona
     styleUrl: './buscador-personas.component.css',
 })
 export class BuscadorPersonasComponent implements OnInit {
-    @Output() agregarCoordinadores = new EventEmitter<Usuario[]>();
+    @Output() agregarUsuarios = new EventEmitter<Usuario[]>();
     @Output() cancelar = new EventEmitter<void>();
     @Input() usuariosActuales: Usuario[];
-    @Input() permiso: nivelPermiso = 'coordinador';
+    @Input() permiso: nivelPermiso;
 
     fuse: Fuse<personaBuscador>;
     usuariosTotales: personaBuscador[];
     usuariosFiltrados: personaBuscador[];
     terminoBusqueda?: string;
-    modalConfirmacionVisible = false;
+    modalConfirmacionVisible: boolean = false;
+    agregarHabilitado: boolean = false;
+    botonString: string;
 
     parametrosBusqueda = {
         threshold: 0.3,
@@ -29,7 +31,6 @@ export class BuscadorPersonasComponent implements OnInit {
     };
 
     ngOnInit(): void {
-        this.modalConfirmacionVisible = false;
         this.usuariosTotales = this.usuariosService
             .getUsuarios()
             .filter(
@@ -43,6 +44,14 @@ export class BuscadorPersonasComponent implements OnInit {
 
         this.usuariosFiltrados = this.usuariosTotales;
         this.fuse = new Fuse(this.usuariosTotales, this.parametrosBusqueda);
+
+        if (this.permiso === 'lider') {
+            this.botonString = 'Agregar líder(es)';
+        } else if (this.permiso === 'coordinador') {
+            this.botonString = 'Agregar coordinador(es)';
+        } else if (this.permiso === 'editor') {
+            this.botonString = 'Agregar editor(es)';
+        }
     }
 
     sortTotales(): void {
@@ -65,6 +74,7 @@ export class BuscadorPersonasComponent implements OnInit {
 
         this.sortTotales();
         this.fuse.setCollection(this.usuariosTotales);
+        this.agregarHabilitado = this.usuariosTotales.some(u => u.seleccionado);
 
         this.usuariosFiltrados = this.usuariosTotales;
         this.terminoBusqueda = '';
@@ -80,7 +90,7 @@ export class BuscadorPersonasComponent implements OnInit {
                 imagenUrl: p.imagenUrl,
                 fecha: p.fecha,
             }));
-        this.agregarCoordinadores.emit(finales);
+        this.agregarUsuarios.emit(finales);
     }
 
     handleAgregar(): void {

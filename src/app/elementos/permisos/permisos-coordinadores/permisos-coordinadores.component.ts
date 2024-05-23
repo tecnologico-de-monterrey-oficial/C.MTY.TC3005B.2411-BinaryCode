@@ -23,19 +23,14 @@ export class PermisosCoordinadoresComponent {
         const successAPI: boolean = true;
 
         if (successAPI) {
-            personas.forEach(persona => {
-                if (
-                    !this.coordinadores.some(
-                        coordinador => coordinador.id === persona.id
-                    )
-                ) {
-                    this.coordinadores.push(persona);
-                }
-            });
+            personas.forEach(persona => this.coordinadores.push(persona));
             this.cancelarBuscador();
-            this.message.success('Los líderes se agregaron exitosamente', {
-                nzDuration: 10000,
-            });
+            this.message.success(
+                'Los coordinadores se agregaron exitosamente',
+                {
+                    nzDuration: 10000,
+                }
+            );
         } else {
             this.message.error('Hubo un error al agregar los datos', {
                 nzDuration: 10000,

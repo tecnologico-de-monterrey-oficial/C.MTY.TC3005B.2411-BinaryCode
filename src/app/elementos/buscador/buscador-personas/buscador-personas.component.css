@@ -39,7 +39,7 @@
     border-radius: 20px;
 }
 
-.boton-borrar {
+.boton-agregar {
     font-size: 1rem;
     height: auto;
 
@@ -47,5 +47,12 @@
     border: 2px solid var(--rojoLogin);
     color: var(--blanco);
 
+    margin-left: 30px;
     border-radius: 20px;
+}
+
+.boton-agregar[disabled] {
+    color: var(--bordes);
+    border-color: var(--bordes);
+    background: var(--contentBg);
 }

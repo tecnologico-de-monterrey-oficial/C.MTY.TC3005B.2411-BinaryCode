@@ -5,9 +5,12 @@
         <span
             nz-popover
             nz-icon
-            [nzPopoverContent]="contentTemplate"
-            nzPopoverTrigger="click"
-            nzPopoverPlacement="bottomLeft"
+            [(nzPopoverVisible)]="buscadorVisible"
+            (click)="abrirBuscador()"
+            [nzPopoverContent]="buscador"
+            [nzPopoverTrigger]="null"
+            nzTrigger="manual"
+            nzPopoverPlacement="bottomRight"
             nzType="plus-circle"
             nzTheme="fill">
         </span>
@@ -18,4 +21,10 @@
         (removeItemClick)="onRemoveItemClick($event)" />
 </div>
 
-<ng-template #contentTemplate> Buscador sisisi </ng-template>
+<ng-template #buscador>
+    <app-buscador-personas
+        (agregarUsuarios)="addEditores($event)"
+        (cancelar)="cancelarBuscador()"
+        [usuariosActuales]="editores"
+        permiso="editor" />
+</ng-template>

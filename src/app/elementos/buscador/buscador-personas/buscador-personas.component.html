@@ -23,14 +23,17 @@
             Cancelar
         </button>
 
-        <button class="boton-borrar" nz-button (click)="handleAgregar()">
-            Agregar líder
+        <button
+            class="boton-agregar"
+            nz-button
+            (click)="handleAgregar()"
+            [disabled]="!agregarHabilitado">
+            {{ botonString }}
         </button>
     </div>
 </div>
 
 <nz-modal
-    class="modal-borrar"
     [(nzVisible)]="modalConfirmacionVisible"
     [nzContent]="modalContent"
     [nzFooter]="null"

@@ -3,8 +3,11 @@
     <span
         nz-popover
         nz-icon
-        [nzPopoverContent]="contentTemplate"
-        nzPopoverTrigger="click"
+        [(nzPopoverVisible)]="buscadorVisible"
+        (click)="abrirBuscador()"
+        [nzPopoverContent]="buscador"
+        [nzPopoverTrigger]="null"
+        nzTrigger="manual"
         nzPopoverPlacement="bottomLeft"
         nzType="plus-circle"
         nzTheme="fill">
@@ -15,6 +18,10 @@
     [coordinador]="lider"
     (removeItemClick)="onRemoveItemClick($event)" />
 
-<ng-template #contentTemplate>
-    <app-personas-buscador />
+<ng-template #buscador>
+    <app-buscador-personas
+        (agregarUsuarios)="addCoordinadores($event)"
+        (cancelar)="cancelarBuscador()"
+        [usuariosActuales]="lideres"
+        permiso="lider" />
 </ng-template>
