@@ -4,9 +4,11 @@
             <div class="left">
                 <div (click)="fileInput.click()">
                     <input
+                        nz-input
                         type="file"
                         #fileInput
                         (change)="onFileSelected($event)"
+                        accept=".png, .jpg, .jpeg"
                         hidden />
                     <div
                         *ngIf="
@@ -98,6 +100,7 @@
             class="boton-crear"
             nz-button
             [nzLoading]="loading"
+            [disabled]="loading"
             (click)="crearProyecto()">
             {{ nuevoProyecto ? 'Crear proyecto' : 'Actualizar proyecto' }}
         </button>

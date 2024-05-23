@@ -19,17 +19,25 @@ export class ProyectosService {
 
     constructor(private http: HttpClient) {}
 
-    async getProyectos(): Promise<Proyecto[]> {
+    async getProyectos(): Promise<RespuestaProyectoServidor> {
         try {
             const response: Response = await fetch(this.baseUrl);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const proyectos: Proyecto[] = await response.json();
-            return proyectos;
+            const respuesta: RespuestaProyectoServidor = {
+                mensaje: proyectos,
+                exito: true,
+            };
+            return respuesta;
         } catch (error) {
             console.error('Error obteniendo los proyectos', error);
-            return [];
+            const respuesta: RespuestaProyectoServidor = {
+                mensaje: error.message,
+                exito: false,
+            };
+            return respuesta;
         }
     }
 
@@ -73,7 +81,7 @@ export class ProyectosService {
         } catch (error) {
             console.error('Error al crear el proyecto', error);
             const respuesta: RespuestaProyectoServidor = {
-                mensaje: error,
+                mensaje: error.message,
                 exito: false,
             };
             return respuesta;
@@ -108,7 +116,7 @@ export class ProyectosService {
         } catch (error) {
             console.error('Error al crear el proyecto', error);
             const respuesta: RespuestaProyectoServidor = {
-                mensaje: error,
+                mensaje: error.message,
                 exito: false,
             };
             return respuesta;

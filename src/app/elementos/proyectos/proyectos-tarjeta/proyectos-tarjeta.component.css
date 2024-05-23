@@ -50,7 +50,7 @@
 }
 
 .anticon {
-    color: #595959;
+    color: var(--negro);
 }
 
 .anticon-delete {

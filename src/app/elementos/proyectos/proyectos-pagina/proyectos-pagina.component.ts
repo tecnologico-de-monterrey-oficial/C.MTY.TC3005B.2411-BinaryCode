@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Proyecto } from '../../../modelos/proyectos.model';
-import { ProyectosService } from '../../../servicios/proyecto.services';
+import {
+    ProyectosService,
+    RespuestaProyectoServidor,
+} from '../../../servicios/proyecto.services';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
     selector: 'app-proyectos-pagina',
@@ -11,18 +15,32 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class ProyectosPaginaComponent implements OnInit {
     proyectos: Proyecto[] = [];
     esqueleto: boolean = true;
-    numbers: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
+    numbers: number[] = [1, 2, 3, 4];
+
+    respuesta: RespuestaProyectoServidor;
 
     constructor(
         private proyectoServices: ProyectosService,
         private router: Router,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private message: NzMessageService
     ) {}
 
     async ngOnInit(): Promise<void> {
         this.esqueleto = true;
-        this.proyectos = await this.proyectoServices.getProyectos();
-        this.esqueleto = false;
+        this.respuesta = await this.proyectoServices.getProyectos();
+
+        if (this.respuesta.exito && Array.isArray(this.respuesta.mensaje)) {
+            this.proyectos = this.respuesta.mensaje;
+            this.esqueleto = false;
+        } else {
+            this.message.error(
+                'Hubo un error al obtener los proyectos, por favor intente más tarde',
+                {
+                    nzDuration: 10000,
+                }
+            );
+        }
     }
 
     navigateToUnidades(id: string): void {

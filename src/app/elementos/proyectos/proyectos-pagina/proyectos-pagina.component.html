@@ -11,5 +11,6 @@
         (eliminarProyecto)="borrarProyecto($event)"
         (actualizarProyecto)="actualizarProyecto($event)" />
     <app-proyectos-crear-tarjeta
+        *ngIf="!esqueleto"
         (crearProyectoImportado)="crearProyecto($event)" />
 </nz-flex>

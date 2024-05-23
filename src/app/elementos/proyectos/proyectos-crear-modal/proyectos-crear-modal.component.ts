@@ -121,8 +121,6 @@ export class ProyectosCrearModalComponent implements OnInit {
     async crearProyecto(): Promise<void> {
         this.loading = true;
         if (this.validateForm.valid) {
-            console.log(this.validateForm.value);
-
             this.proyectoEnProceso.nombre =
                 this.validateForm.value.nombreProyecto;
             this.proyectoEnProceso.descripcion =
@@ -134,53 +132,10 @@ export class ProyectosCrearModalComponent implements OnInit {
                     ? this.validateForm.value.imagen
                     : undefined;
 
-            let respuestaAPI: RespuestaProyectoServidor;
-
-            // API para crear proyecto
             if (this.nuevoProyecto) {
-                respuestaAPI = await this.proyectoService.createProyecto(
-                    this.proyectoEnProceso
-                );
+                await this.llamadaAPICrearProyecto();
             } else {
-                respuestaAPI = await this.proyectoService.actualizarProyecto(
-                    this.proyectoEnProceso
-                );
-            }
-
-            console.log('Proyecto creado:', respuestaAPI);
-
-            if (respuestaAPI.exito) {
-                this.message.success(
-                    this.nuevoProyecto
-                        ? 'El proyecto se creó exitosamente'
-                        : 'El proyecto se actualizó exitosamente',
-                    {
-                        nzDuration: 10000,
-                    }
-                );
-                if (
-                    typeof respuestaAPI.mensaje !== 'string' &&
-                    !Array.isArray(respuestaAPI.mensaje) &&
-                    'id' in respuestaAPI.mensaje
-                ) {
-                    if (this.nuevoProyecto) {
-                        this.crearProyectoImportado.emit(respuestaAPI.mensaje);
-                    } else {
-                        this.actualizarProyectoImportado.emit(
-                            respuestaAPI.mensaje
-                        );
-                    }
-                }
-            } else {
-                this.message.error(
-                    this.nuevoProyecto
-                        ? 'Hubo un error al crear el proyecto: ' + respuestaAPI
-                        : 'Hubo un error al actualizar el proyecto: ' +
-                              respuestaAPI,
-                    {
-                        nzDuration: 10000,
-                    }
-                );
+                await this.llamadaAPIActualizarProyecto();
             }
         } else {
             console.log('Formulario inválido');
@@ -192,6 +147,52 @@ export class ProyectosCrearModalComponent implements OnInit {
             });
         }
         this.loading = false;
+    }
+
+    async llamadaAPICrearProyecto(): Promise<void> {
+        const respuestaAPI: RespuestaProyectoServidor =
+            await this.proyectoService.createProyecto(this.proyectoEnProceso);
+
+        if (respuestaAPI.exito) {
+            this.message.success('El proyecto se creó exitosamente', {
+                nzDuration: 10000,
+            });
+            if (
+                typeof respuestaAPI.mensaje !== 'string' &&
+                !Array.isArray(respuestaAPI.mensaje) &&
+                'id' in respuestaAPI.mensaje
+            ) {
+                this.crearProyectoImportado.emit(respuestaAPI.mensaje);
+            }
+        } else {
+            this.message.error('Hubo un error al crear el proyecto:', {
+                nzDuration: 10000,
+            });
+        }
+    }
+
+    async llamadaAPIActualizarProyecto(): Promise<void> {
+        const respuestaAPI: RespuestaProyectoServidor =
+            await this.proyectoService.actualizarProyecto(
+                this.proyectoEnProceso
+            );
+
+        if (respuestaAPI.exito) {
+            this.message.success('El proyecto se actualizó exitosamente', {
+                nzDuration: 10000,
+            });
+            if (
+                typeof respuestaAPI.mensaje !== 'string' &&
+                !Array.isArray(respuestaAPI.mensaje) &&
+                'id' in respuestaAPI.mensaje
+            ) {
+                this.actualizarProyectoImportado.emit(respuestaAPI.mensaje);
+            }
+        } else {
+            this.message.error('Hubo un error al actualizar el proyecto: ', {
+                nzDuration: 10000,
+            });
+        }
     }
 
     onFileSelected(event: Event): void {
