@@ -75,33 +75,38 @@ export class ProyectosCrearModalComponent implements OnInit {
         tarjeta_rosa_claro,
     ];
 
-    @Input() proyectoOriginal: Proyecto = {
-        id: null,
-        nombre: '',
-        descripcion: '',
-        color: this.colores[Math.floor(Math.random() * this.colores.length)],
-        imagen: '',
-        activo: true,
-        creator: 1,
-    };
+    @Input() proyectoOriginal: Proyecto;
+
+    proyectoEnProceso: Proyecto;
 
     ngOnInit(): void {
-        this.nuevoProyecto = !this.proyectoOriginal.id;
+        this.proyectoEnProceso = this.proyectoOriginal || {
+            nombre: '',
+            descripcion: '',
+            color: this.colores[
+                Math.floor(Math.random() * this.colores.length)
+            ],
+            imagen: '',
+            activo: true,
+            creator: 1,
+        };
+
+        this.nuevoProyecto = this.proyectoOriginal === undefined;
         this.validateForm = this.fb.group({
-            id: [this.proyectoOriginal.id],
+            id: [this.proyectoEnProceso.id],
             nombreProyecto: [
-                this.proyectoOriginal.nombre,
+                this.proyectoEnProceso.nombre,
                 [Validators.required],
             ],
             descripcion: [
-                this.proyectoOriginal.descripcion,
+                this.proyectoEnProceso.descripcion,
                 [Validators.required],
             ],
             colorSeleccionado: [
-                this.proyectoOriginal.color,
+                this.proyectoEnProceso.color,
                 [Validators.required],
             ],
-            imagen: [this.proyectoOriginal.imagen, [Validators.required]],
+            imagen: [this.proyectoEnProceso.imagen, [Validators.required]],
         });
     }
 
@@ -118,14 +123,14 @@ export class ProyectosCrearModalComponent implements OnInit {
         if (this.validateForm.valid) {
             console.log(this.validateForm.value);
 
-            this.proyectoOriginal.nombre =
+            this.proyectoEnProceso.nombre =
                 this.validateForm.value.nombreProyecto;
-            this.proyectoOriginal.descripcion =
+            this.proyectoEnProceso.descripcion =
                 this.validateForm.value.descripcion;
-            this.proyectoOriginal.color =
+            this.proyectoEnProceso.color =
                 this.validateForm.value.colorSeleccionado;
-            this.proyectoOriginal.imagen =
-                this.proyectoOriginal.imagen.startsWith('data:image')
+            this.proyectoEnProceso.imagen =
+                this.proyectoEnProceso.imagen !== this.proyectoOriginal?.imagen
                     ? this.validateForm.value.imagen
                     : undefined;
 
@@ -134,11 +139,11 @@ export class ProyectosCrearModalComponent implements OnInit {
             // API para crear proyecto
             if (this.nuevoProyecto) {
                 respuestaAPI = await this.proyectoService.createProyecto(
-                    this.proyectoOriginal
+                    this.proyectoEnProceso
                 );
             } else {
                 respuestaAPI = await this.proyectoService.actualizarProyecto(
-                    this.proyectoOriginal
+                    this.proyectoEnProceso
                 );
             }
 
