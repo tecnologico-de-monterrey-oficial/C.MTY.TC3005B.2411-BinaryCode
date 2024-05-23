@@ -124,7 +124,10 @@ export class ProyectosCrearModalComponent implements OnInit {
                 this.validateForm.value.descripcion;
             this.proyectoOriginal.color =
                 this.validateForm.value.colorSeleccionado;
-            this.proyectoOriginal.imagen = this.validateForm.value.imagen;
+            this.proyectoOriginal.imagen =
+                this.proyectoOriginal.imagen.startsWith('data:image')
+                    ? this.validateForm.value.imagen
+                    : undefined;
 
             let respuestaAPI: RespuestaProyectoServidor;
 
