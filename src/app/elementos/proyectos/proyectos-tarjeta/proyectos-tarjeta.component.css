@@ -8,15 +8,6 @@
     z-index: 0;
 }
 
-.card-resumida {
-    width: 350px;
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 10px;
-    background-color: var(--blanco);
-    z-index: 0;
-}
-
 .options-button {
     display: flex;
     justify-content: flex-end;

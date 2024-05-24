@@ -1,4 +1,4 @@
-<div [class]="descripcion ? 'card' : 'card-resumida'">
+<div class="card">
     <div
         class="image-container"
         [ngStyle]="{
@@ -30,8 +30,14 @@
                                 nz-icon
                                 nzType="edit"></span>
                         </li>
-                        <li nz-menu-item>
-                            Archivar
+                        <li
+                            nz-menu-item
+                            (click)="
+                                proyecto.activo
+                                    ? showArchivarModal()
+                                    : showActivarModal()
+                            ">
+                            {{ proyecto.activo ? 'Archivar' : 'Activar' }}
                             <span
                                 class="icono-opcion"
                                 nz-icon
@@ -61,7 +67,7 @@
             {{ proyecto.nombre }}
         </div>
     </a>
-    <div class="description" *ngIf="descripcion">
+    <div class="description">
         {{ proyecto.descripcion }}
     </div>
 </div>
@@ -69,20 +75,51 @@
 <nz-modal
     class="modal-borrar"
     [(nzVisible)]="borrarVisible"
-    [nzContent]="modalborrarContent"
+    [nzContent]="modalBorrarContent"
     [nzFooter]="null"
-    (nzOnCancel)="handleCancel()">
-    <ng-template #modalborrarContent>
-        <app-proyectos-borrar-modal
-            [proyecto]="proyecto"
-            [isConfirmLoading]="isConfirmLoading"
-            (deleteProject)="handleDelete()"
+    (nzOnCancel)="handleCancel()"
+    [nzClosable]="false">
+    <ng-template #modalBorrarContent>
+        <app-modal-borrar-input
+            [loading]="isLoading"
+            [entrada]="textoBorrarProyecto"
+            [nombre]="proyecto.nombre"
+            (okModal)="handleDelete($event)"
             (cancelModal)="handleCancel()" />
     </ng-template>
 </nz-modal>
 
 <nz-modal
-    class="proyecto-crear-modal"
+    [(nzVisible)]="archivarVisible"
+    [nzContent]="modalArchivarContent"
+    [nzFooter]="null"
+    (nzOnCancel)="handleCancel()"
+    [nzClosable]="false">
+    <ng-template #modalArchivarContent>
+        <app-modal-generico
+            [loading]="isLoading"
+            [entrada]="textoArchivarProyecto"
+            (okModal)="handleArchivar($event)"
+            (cancelModal)="handleCancel()" />
+    </ng-template>
+</nz-modal>
+
+<nz-modal
+    [(nzVisible)]="activarVisible"
+    [nzContent]="modalActivarContent"
+    [nzFooter]="null"
+    (nzOnCancel)="handleCancel()"
+    [nzClosable]="false">
+    <ng-template #modalActivarContent>
+        <app-modal-generico
+            [loading]="isLoading"
+            [entrada]="textoActivarProyecto"
+            (okModal)="handleActivar($event)"
+            (cancelModal)="handleCancel()" />
+    </ng-template>
+</nz-modal>
+
+<nz-modal
     [(nzVisible)]="actualizarVisible"
     [nzContent]="modalActualizarContent"
     [nzFooter]="null"
@@ -90,9 +127,12 @@
     (nzOnCancel)="handleCancel()"
     [nzWidth]="1380">
     <ng-template #modalActualizarContent>
-        <app-proyectos-crear-modal
+        <app-modal-crear-proyecto
+            [loading]="isLoading"
             (cancelModal)="handleCancel()"
-            (actualizarProyectoImportado)="handleActualizar($event)"
+            (actualizarProyectoImportado)="
+                handleActualizar($event.proyecto, $event.funcion)
+            "
             [proyectoOriginal]="proyecto" />
     </ng-template>
 </nz-modal>

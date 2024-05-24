@@ -18,6 +18,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
+import { NzSegmentedModule } from 'ng-zorro-antd/segmented';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
@@ -41,6 +42,11 @@ import { EntradaLoginComponent } from './entrada/entrada-login/entrada-login.com
 import { EntradaPaginaComponent } from './entrada/entrada-pagina/entrada-pagina.component';
 import { EntradaRegistroComponent } from './entrada/entrada-registro/entrada-registro.component';
 
+// Declaraciones - Modales
+import { ModalBorrarInputComponent } from './modales/modal-borrar-input/modal-borrar-input.component';
+import { ModalCrearProyectoComponent } from './modales/modal-crear-proyecto/modal-crear-proyecto.component';
+import { ModalGenericoComponent } from './modales/modal-generico/modal-generico.component';
+
 // Declaraciones - Permisos
 import { PermisosCoordinadoresComponent } from './permisos/permisos-coordinadores/permisos-coordinadores.component';
 import { PermisosCuadriculaUnidadesComponent } from './permisos/permisos-cuadricula-unidades/permisos-cuadricula-unidades.component';
@@ -56,8 +62,6 @@ import { PersonasLineaComponent } from './personas/personas-linea/personas-linea
 import { PersonasListaComponent } from './personas/personas-lista/personas-lista.component';
 
 // Declaraciones - Proyectos
-import { ProyectosBorrarModalComponent } from './proyectos/proyectos-borrar-modal/proyectos-borrar-modal.component';
-import { ProyectosCrearModalComponent } from './proyectos/proyectos-crear-modal/proyectos-crear-modal.component';
 import { ProyectosCrearTarjetaComponent } from './proyectos/proyectos-crear-tarjeta/proyectos-crear-tarjeta.component';
 import { ProyectosPaginaComponent } from './proyectos/proyectos-pagina/proyectos-pagina.component';
 import { ProyectosTarjetaEsqueletoComponent } from './proyectos/proyectos-tarjeta-esqueleto/proyectos-tarjeta-esqueleto.component';
@@ -90,6 +94,7 @@ import { UnidadesTarjetaComponent } from './unidades/unidades-tarjeta/unidades-t
         NzMessageModule,
         NzModalModule,
         NzPopoverModule,
+        NzSegmentedModule,
         NzSkeletonModule,
         NzTagModule,
         NzToolTipModule,
@@ -111,6 +116,10 @@ import { UnidadesTarjetaComponent } from './unidades/unidades-tarjeta/unidades-t
         EntradaLoginComponent,
         EntradaRegistroComponent,
 
+        ModalBorrarInputComponent,
+        ModalCrearProyectoComponent,
+        ModalGenericoComponent,
+
         PermisosCoordinadoresComponent,
         PermisosCuadriculaUnidadesComponent,
         PermisosEditoresComponent,
@@ -123,8 +132,6 @@ import { UnidadesTarjetaComponent } from './unidades/unidades-tarjeta/unidades-t
         PersonasLineaComponent,
         PersonasListaComponent,
 
-        ProyectosBorrarModalComponent,
-        ProyectosCrearModalComponent,
         ProyectosCrearTarjetaComponent,
         ProyectosPaginaComponent,
         ProyectosTarjetaEsqueletoComponent,

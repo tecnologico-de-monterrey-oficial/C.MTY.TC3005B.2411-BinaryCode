@@ -12,8 +12,10 @@
     (nzOnCancel)="handleCancel()"
     [nzWidth]="1380">
     <ng-template #modalContent>
-        <app-proyectos-crear-modal
+        <app-modal-crear-proyecto
             (cancelModal)="handleCancel()"
-            (crearProyectoImportado)="crearProyecto($event)" />
+            (crearProyectoImportado)="
+                handleCrear($event.proyecto, $event.funcion)
+            " />
     </ng-template>
 </nz-modal>

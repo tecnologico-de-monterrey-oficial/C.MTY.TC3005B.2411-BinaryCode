@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Proyecto } from '../../../modelos/proyectos.model';
-import {
-    ProyectosService,
-    RespuestaProyectoServidor,
-} from '../../../servicios/proyecto.services';
+import { ProyectosService } from '../../../servicios/proyecto.services';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { obtenerProyectos } from '../../../servicios/proyecto.util';
 
 @Component({
     selector: 'app-proyectos-pagina',
@@ -13,11 +11,14 @@ import { NzMessageService } from 'ng-zorro-antd/message';
     styleUrl: './proyectos-pagina.component.css',
 })
 export class ProyectosPaginaComponent implements OnInit {
-    proyectos: Proyecto[] = [];
+    proyectosActivos: Proyecto[] = [];
+    proyectosInactivos: Proyecto[] = [];
     esqueleto: boolean = true;
+    admin: boolean = true;
     numbers: number[] = [1, 2, 3, 4];
+    inactivo: boolean = false;
 
-    respuesta: RespuestaProyectoServidor;
+    proyectosRespuesta: Proyecto[];
 
     constructor(
         private proyectoServices: ProyectosService,
@@ -28,18 +29,19 @@ export class ProyectosPaginaComponent implements OnInit {
 
     async ngOnInit(): Promise<void> {
         this.esqueleto = true;
-        this.respuesta = await this.proyectoServices.getProyectos();
+        this.proyectosRespuesta = await obtenerProyectos(
+            this.proyectoServices,
+            this.message
+        );
 
-        if (this.respuesta.exito && Array.isArray(this.respuesta.mensaje)) {
-            this.proyectos = this.respuesta.mensaje;
-            this.esqueleto = false;
-        } else {
-            this.message.error(
-                'Hubo un error al obtener los proyectos, por favor intente más tarde',
-                {
-                    nzDuration: 10000,
-                }
+        if (this.proyectosRespuesta) {
+            this.proyectosActivos = this.proyectosRespuesta.filter(
+                proyecto => proyecto.activo
             );
+            this.proyectosInactivos = this.proyectosRespuesta.filter(
+                proyecto => !proyecto.activo
+            );
+            this.esqueleto = false;
         }
     }
 
@@ -50,17 +52,40 @@ export class ProyectosPaginaComponent implements OnInit {
     }
 
     crearProyecto(proyecto: Proyecto): void {
-        this.proyectos.push(proyecto);
+        this.proyectosActivos.push(proyecto);
     }
 
     borrarProyecto(id: number): void {
-        this.proyectos = this.proyectos.filter(p => p.id !== id);
+        this.proyectosActivos = this.proyectosActivos.filter(p => p.id !== id);
+        this.proyectosInactivos = this.proyectosInactivos.filter(
+            p => p.id !== id
+        );
     }
 
     actualizarProyecto(proyecto: Proyecto): void {
-        const index: number = this.proyectos.findIndex(
-            p => p.id === proyecto.id
+        this.proyectosActivos = this.proyectosActivos.map(p =>
+            p.id === proyecto.id ? proyecto : p
         );
-        this.proyectos[index] = proyecto;
+        this.proyectosInactivos = this.proyectosInactivos.map(p =>
+            p.id === proyecto.id ? proyecto : p
+        );
+    }
+
+    archivarProyecto(proyecto: Proyecto): void {
+        this.proyectosInactivos.push(proyecto);
+        this.proyectosActivos = this.proyectosActivos.filter(
+            p => p.id !== proyecto.id
+        );
+    }
+
+    activarProyecto(proyecto: Proyecto): void {
+        this.proyectosActivos.push(proyecto);
+        this.proyectosInactivos = this.proyectosInactivos.filter(
+            p => p.id !== proyecto.id
+        );
+    }
+
+    handleActivoChange(id: number): void {
+        this.inactivo = id === 1 ? true : false;
     }
 }

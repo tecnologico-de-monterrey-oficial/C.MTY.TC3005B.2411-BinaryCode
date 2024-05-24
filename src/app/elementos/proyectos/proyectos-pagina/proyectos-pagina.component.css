@@ -1,3 +1,28 @@
+.titulo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+}
+
+h1 {
+    margin: unset;
+}
+
+.activo {
+    border-radius: 20px;
+}
+
+.ant-segmented {
+    background-color: var(--contentBg);
+}
+
+::ng-deep .ant-segmented-item {
+    border-radius: 20px;
+}
+
 .grid-container {
     background: var(--contentBg);
     padding: 24px;

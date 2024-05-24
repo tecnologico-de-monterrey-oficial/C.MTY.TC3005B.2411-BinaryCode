@@ -99,10 +99,14 @@
         <button
             class="boton-crear"
             nz-button
-            [nzLoading]="loading"
-            [disabled]="loading"
+            [nzLoading]="isLoading"
+            [disabled]="isLoading"
             (click)="crearProyecto()">
-            {{ nuevoProyecto ? 'Crear proyecto' : 'Actualizar proyecto' }}
+            {{
+                !this.proyectoOriginal
+                    ? 'Crear proyecto'
+                    : 'Actualizar proyecto'
+            }}
         </button>
     </div>
 </div>

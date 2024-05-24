@@ -1,20 +1,17 @@
 <div class="titulo">
     <span nz-icon nzType="warning" nzTheme="fill" class="warning-icon"></span>
-    ¿Estas seguro de que deseas borrarlo?
+    <div>{{ entrada.pregunta }}</div>
 </div>
 
 <div class="descripcion">
-    Esto va a borrar todo el proyecto incluyendo sus archivos y versiones, si se
-    acabó el proyecto se recomienda archivarlo para mantener el historial. Si
-    estás seguro que quieres borrarlo, por favor reescribe el nombre del
-    proyecto
-    <strong>{{ proyecto.nombre }}</strong
+    {{ entrada.descripcion }}
+    <strong>{{ nombre }}</strong
     >.
 </div>
 
 <input
     nz-input
-    placeholder="Nombre del proyecto"
+    [placeholder]="entrada.placeholder"
     [(ngModel)]="value"
     type="text"
     class="inputNombre" />
@@ -28,8 +25,8 @@
         class="boton-borrar"
         nz-button
         (click)="handleOk()"
-        [nzLoading]="isConfirmLoading"
-        [disabled]="value !== proyecto.nombre || isConfirmLoading">
+        [nzLoading]="isLoading"
+        [disabled]="value !== nombre || isLoading">
         Borrar
     </button>
 </div>

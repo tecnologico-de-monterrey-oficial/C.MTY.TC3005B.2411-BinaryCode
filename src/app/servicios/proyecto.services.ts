@@ -19,107 +19,58 @@ export class ProyectosService {
 
     constructor(private http: HttpClient) {}
 
-    async getProyectos(): Promise<RespuestaProyectoServidor> {
-        try {
-            const response: Response = await fetch(this.baseUrl);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const proyectos: Proyecto[] = await response.json();
-            const respuesta: RespuestaProyectoServidor = {
-                mensaje: proyectos,
-                exito: true,
-            };
-            return respuesta;
-        } catch (error) {
-            console.error('Error obteniendo los proyectos', error);
-            const respuesta: RespuestaProyectoServidor = {
-                mensaje: error.message,
-                exito: false,
-            };
-            return respuesta;
+    async getProyectos(): Promise<Proyecto[]> {
+        const response: Response = await fetch(this.baseUrl);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const proyectos: Proyecto[] = await response.json();
+        return proyectos;
+    }
+
+    async crearProyecto(proyecto: Proyecto): Promise<Proyecto> {
+        const response: Response = await fetch(this.baseUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(proyecto),
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const proyectoResponse: Proyecto = await response.json();
+        return proyectoResponse;
+    }
+
+    async eliminarProyecto(proyectoId: number): Promise<void> {
+        const url: string = `${this.baseUrl}${proyectoId}/`;
+        const response: Response = await fetch(url, {
+            method: 'DELETE',
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
     }
 
-    async eliminarProyecto(proyectoId: number): Promise<boolean> {
-        try {
-            const url: string = `${this.baseUrl}${proyectoId}/`;
-            const response: Response = await fetch(url, {
-                method: 'DELETE',
-            });
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return true;
-        } catch (error) {
-            console.error('Error al eliminar el proyecto', error);
-            return false;
+    async actualizarProyecto(proyecto: Proyecto): Promise<Proyecto> {
+        const url: string = `${this.baseUrl}${proyecto.id}/`;
+        const response: Response = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(proyecto),
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
-    }
-
-    async actualizarProyecto(
-        proyecto: Proyecto
-    ): Promise<RespuestaProyectoServidor> {
-        try {
-            const url: string = `${this.baseUrl}${proyecto.id}/`;
-            const response: Response = await fetch(url, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(proyecto),
-            });
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const responseJSON: Proyecto = await response.json();
-            const respuesta: RespuestaProyectoServidor = {
-                mensaje: responseJSON,
-                exito: true,
-            };
-            return respuesta;
-        } catch (error) {
-            console.error('Error al crear el proyecto', error);
-            const respuesta: RespuestaProyectoServidor = {
-                mensaje: error.message,
-                exito: false,
-            };
-            return respuesta;
-        }
+        const nuevoProyecto: Proyecto = await response.json();
+        return nuevoProyecto;
     }
 
     getLideres(idProyecto: number): Usuario[] {
         idProyecto;
         return this.lideres;
-    }
-
-    async createProyecto(
-        proyecto: Proyecto
-    ): Promise<RespuestaProyectoServidor> {
-        try {
-            const response: Response = await fetch(this.baseUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(proyecto),
-            });
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const responseJSON: Proyecto = await response.json();
-            const respuesta: RespuestaProyectoServidor = {
-                mensaje: responseJSON,
-                exito: true,
-            };
-            return respuesta;
-        } catch (error) {
-            console.error('Error al crear el proyecto', error);
-            const respuesta: RespuestaProyectoServidor = {
-                mensaje: error.message,
-                exito: false,
-            };
-            return respuesta;
-        }
     }
 }

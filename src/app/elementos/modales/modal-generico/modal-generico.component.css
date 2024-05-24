@@ -1,12 +1,12 @@
 .warning-icon {
     color: var(--rojoLogin);
-    padding: 10px;
-    padding-left: 0;
+    padding: 7px 10px 10px 0;
 }
 
 .titulo {
     font-size: 1.4rem;
     font-weight: 600;
+    display: flex;
 }
 
 .descripcion {
@@ -48,7 +48,7 @@
     border-radius: 20px;
 }
 
-.boton-borrar {
+.boton-principal {
     font-size: 1rem;
     height: auto;
 
@@ -57,10 +57,4 @@
     color: var(--blanco);
 
     border-radius: 20px;
-}
-
-.boton-borrar[disabled] {
-    color: var(--bordes);
-    border-color: var(--bordes);
-    background: var(--contentBg);
 }

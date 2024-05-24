@@ -1,0 +1,23 @@
+<div class="titulo">
+    <span nz-icon nzType="warning" nzTheme="fill" class="warning-icon"></span>
+    {{ entrada.pregunta }}
+</div>
+
+<div class="descripcion">
+    {{ entrada.descripcion }}
+</div>
+
+<div class="botones">
+    <button class="boton-cancelar" nz-button (click)="handleCancel()">
+        Cancelar
+    </button>
+
+    <button
+        class="boton-principal"
+        nz-button
+        (click)="handleOk()"
+        [nzLoading]="isLoading"
+        [disabled]="isLoading">
+        {{ entrada.botonPrincipal }}
+    </button>
+</div>
