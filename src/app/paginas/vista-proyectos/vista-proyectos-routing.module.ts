@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { UnidadesComponent } from '../vista-unidades/unidades/unidades.component';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 
 const routes: Routes = [
     { path: '', component: ProyectosComponent },
-    { path: ':proyectoId/unidades', component: UnidadesComponent },
+    {
+        path: ':proyectoId/unidades',
+        loadChildren: () =>
+            import('../vista-unidades/vista-unidades-routing.module').then(
+                m => m.VistaUnidadesRoutingModule
+            ),
+    },
 ];
 
 @NgModule({

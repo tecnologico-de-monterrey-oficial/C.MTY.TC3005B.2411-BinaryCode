@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { NzInputDirective } from 'ng-zorro-antd/input';
 import { NzModalComponent } from 'ng-zorro-antd/modal';
 import { VistaProyectosModule } from '../vista-proyectos/vista-proyectos.module';
+import { RouterOutlet } from '@angular/router';
 
 @NgModule({
     imports: [
@@ -33,6 +34,7 @@ import { VistaProyectosModule } from '../vista-proyectos/vista-proyectos.module'
         NzInputDirective,
         NzModalComponent,
         VistaProyectosModule,
+        RouterOutlet,
     ],
     declarations: [
         UnidadBorrarComponent,
