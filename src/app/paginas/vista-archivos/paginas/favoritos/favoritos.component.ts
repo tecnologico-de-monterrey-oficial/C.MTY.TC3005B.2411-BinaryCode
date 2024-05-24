@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Archivo } from '../../../../modelos/archivo.model';
 import { ArchivosService } from '../../../../servicios/archivo.services';
 
@@ -6,10 +6,11 @@ import { ArchivosService } from '../../../../servicios/archivo.services';
     selector: 'app-favoritos',
     templateUrl: './favoritos.component.html',
 })
-export class FavoritosComponent {
+export class FavoritosComponent implements OnInit {
     archivos: Archivo[] = [];
 
-    constructor(archivosService: ArchivosService) {
-        this.archivos = archivosService.getArchivosFavoritos();
+    constructor(private archivosServices: ArchivosService) {}
+    async ngOnInit(): Promise<void> {
+        this.archivos = await this.archivosServices.getArchivosFavoritos(1);
     }
 }

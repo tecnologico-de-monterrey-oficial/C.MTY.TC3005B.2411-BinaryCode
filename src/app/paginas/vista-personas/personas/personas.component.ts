@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../../modelos/usuario.model';
 import { UsuariosServices } from '../../../servicios/usuarios.services';
 
@@ -7,10 +7,11 @@ import { UsuariosServices } from '../../../servicios/usuarios.services';
     templateUrl: './personas.component.html',
     styleUrl: './personas.component.css',
 })
-export class PersonasComponent {
+export class PersonasComponent implements OnInit {
     usuarios: Usuario[] = [];
 
-    constructor(private usuariosService: UsuariosServices) {
-        this.usuarios = usuariosService.getUsuarios();
+    constructor(private usuariosService: UsuariosServices) {}
+    async ngOnInit(): Promise<void> {
+        this.usuarios = await this.usuariosService.getUsuarios();
     }
 }

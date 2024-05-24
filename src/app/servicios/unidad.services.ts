@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Unidad } from '../modelos/unidad.model';
-import { US1, US2, US3, US4, US5, US6 } from '../../assets/mocks/usuarios';
+//import { US1, US2, US3, US4, US5, US6 } from '../../assets/mocks/usuarios';
 import { Usuario } from '../modelos/usuario.model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -11,8 +11,8 @@ import { HttpClient } from '@angular/common/http';
 export class UnidadesService {
     private baseUrl = 'http://127.0.0.1:8000/api/apartados/';
     // unidades: Unidad[] = [UN1, UN2, UN3, UN4, UN5, UN6];
-    coordinadores: Usuario[] = [US4, US5, US6];
-    editores: Usuario[] = [US1, US2, US3, US4, US5, US6];
+    coordinadores: Usuario[]; //= [US4, US5, US6];
+    editores: Usuario[]; //= [US1, US2, US3, US4, US5, US6];
 
     constructor(private http: HttpClient) {}
 
@@ -21,12 +21,12 @@ export class UnidadesService {
     }
 
     getCoordinadores(idUnidad: number): Usuario[] {
-        idUnidad;
+        idUnidad; //TODO
         return this.coordinadores;
     }
 
     getEditores(idUnidad: number): Usuario[] {
-        idUnidad;
+        idUnidad; //TODO
         return this.editores;
     }
 

@@ -9,5 +9,7 @@
         class="usuario-imagen"
         [src]="coordinador.imagenUrl"
         alt="Imagen de usuario" />
-    <div class="nombre">{{ coordinador.nombre }}</div>
+    <div class="nombre">
+        {{ coordinador.first_name }} {{ coordinador.last_name }}
+    </div>
 </div>

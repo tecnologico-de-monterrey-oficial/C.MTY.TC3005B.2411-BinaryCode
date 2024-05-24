@@ -1,4 +1,4 @@
-import { Usuario } from '../../app/modelos/usuario.model';
+/*import { Usuario } from '../../app/modelos/usuario.model';
 
 export const US1: Usuario = {
     id: 1,
@@ -40,4 +40,4 @@ export const US6: Usuario = {
     nombre: 'Presno Gonzalez',
     imagenUrl: 'assets/images/usuarios_props/corrin.png',
     fecha: '24 Mayo 2010',
-};
+};*/

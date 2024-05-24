@@ -1,4 +1,4 @@
-import { Archivo } from '../../app/modelos/archivo.model';
+/*import { Archivo } from '../../app/modelos/archivo.model';
 import { fileIcons } from '../../app/modelos/icono.model';
 import {
     E1,
@@ -120,4 +120,4 @@ export const A10: Archivo = {
     propietario: US6,
     etiquetas: [E8, E4, E15],
     fecha: '29 de febrero de 2024',
-};
+};*/

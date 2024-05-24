@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ArchivosService } from '../../../../servicios/archivo.services';
 import { Archivo } from '../../../../modelos/archivo.model';
 
@@ -6,10 +6,10 @@ import { Archivo } from '../../../../modelos/archivo.model';
     selector: 'app-recientes',
     templateUrl: './recientes.component.html',
 })
-export class RecientesComponent {
+export class RecientesComponent implements OnInit {
     archivos: Archivo[] = [];
-
-    constructor(archivosService: ArchivosService) {
-        this.archivos = archivosService.getArchivosRecientes();
+    constructor(private archivosServices: ArchivosService) {}
+    async ngOnInit(): Promise<void> {
+        this.archivos = await this.archivosServices.getRecientes(1);
     }
 }

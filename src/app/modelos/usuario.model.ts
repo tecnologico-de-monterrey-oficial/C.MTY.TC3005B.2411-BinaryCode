@@ -3,7 +3,10 @@
 
 export type Usuario = {
     id: number;
-    nombre: string;
+    first_name: string;
+    last_name: string;
+    email: string;
+    color: string;
     imagenUrl: string;
     fecha: string;
 };
