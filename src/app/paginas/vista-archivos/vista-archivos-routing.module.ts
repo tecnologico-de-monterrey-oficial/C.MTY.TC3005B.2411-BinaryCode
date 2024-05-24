@@ -5,7 +5,7 @@ import { FavoritosComponent } from './paginas/favoritos/favoritos.component';
 import { RecientesComponent } from './paginas/recientes/recientes.component';
 
 const routes: Routes = [
-    { path: '', component: ContenidosComponent }, // Esta es la ruta por defecto
+    { path: '', component: ContenidosComponent },
     { path: 'favoritos', component: FavoritosComponent },
     { path: 'recientes', component: RecientesComponent },
 ];
