@@ -7,8 +7,16 @@
     <app-unidades-tarjeta
         *ngFor="let unidad of unidades"
         [unidad]="unidad"
-        (click)="navigateToArchivos(unidad.id)" />
-    <app-unidades-crear-tarjeta *ngIf="!esqueleto && permisoParaAgregar" />
+        [message]="message"
+        [unidadService]="unidadesService"
+        (eliminarUnidadImportada)="borrarUnidad($event)"
+        (actualizarUnidadImportada)="actualizarUnidad($event)" />
+    <app-unidades-crear-tarjeta
+        *ngIf="!esqueleto && permisoParaAgregar"
+        (crearUnidadImportada)="crearUnidad($event)"
+        [proyectoId]="proyectoId"
+        [unidadService]="unidadesService"
+        [message]="message" />
 </nz-flex>
 
 <nz-flex

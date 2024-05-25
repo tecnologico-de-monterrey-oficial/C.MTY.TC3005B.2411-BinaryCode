@@ -6,5 +6,6 @@ export const UN1: Unidad = {
     nombre: 'Marketing',
     imagen: 'assets/images/unidades_props/marketing_temporal_prop.png',
     color: unidad_roja,
-    proyectoId: 1,
+    id_proyecto: 1,
+    id_usuario: 1,
 };

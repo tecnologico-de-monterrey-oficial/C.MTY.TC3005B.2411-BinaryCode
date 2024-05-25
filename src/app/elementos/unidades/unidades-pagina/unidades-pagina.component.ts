@@ -11,6 +11,8 @@ import { obtenerUnidades } from '../../../servicios/unidad.util';
     styleUrl: './unidades-pagina.component.css',
 })
 export class UnidadesPaginaComponent implements OnInit {
+    proyectoId: number;
+
     loadingCards: number[] = [1, 2, 3, 4, 5];
 
     unidades: Unidad[] = [];
@@ -19,17 +21,11 @@ export class UnidadesPaginaComponent implements OnInit {
     unidadesVacias: boolean = false;
     esqueleto: boolean = true;
 
-    constructor(
-        private unidadesService: UnidadesService,
-        private message: NzMessageService,
-        private route: ActivatedRoute
-    ) {}
-
     async ngOnInit(): Promise<void> {
         this.route.params.subscribe(async params => {
-            const proyectoId: number = params['id'];
+            this.proyectoId = params['id'];
             this.unidades = await obtenerUnidades(
-                proyectoId,
+                this.proyectoId,
                 this.unidadesService,
                 this.message
             );
@@ -40,4 +36,24 @@ export class UnidadesPaginaComponent implements OnInit {
             }
         });
     }
+
+    crearUnidad(unidad: Unidad): void {
+        this.unidades.push(unidad);
+    }
+
+    borrarUnidad(id: number): void {
+        this.unidades = this.unidades.filter(p => p.id !== id);
+    }
+
+    actualizarUnidad(unidad: Unidad): void {
+        this.unidades = this.unidades.map(u =>
+            u.id === unidad.id ? unidad : u
+        );
+    }
+
+    constructor(
+        private unidadesService: UnidadesService,
+        private message: NzMessageService,
+        private route: ActivatedRoute
+    ) {}
 }

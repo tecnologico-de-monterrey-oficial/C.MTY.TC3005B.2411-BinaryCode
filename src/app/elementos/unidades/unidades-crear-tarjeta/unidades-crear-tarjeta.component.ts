@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { UnidadesService } from '../../../servicios/unidad.services';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { Unidad } from '../../../modelos/unidad.model';
+import { crearUnidad } from '../../../servicios/unidad.util';
 
 @Component({
     selector: 'app-unidades-crear-tarjeta',
@@ -6,7 +10,30 @@ import { Component } from '@angular/core';
     styleUrl: './unidades-crear-tarjeta.component.css',
 })
 export class UnidadesCrearTarjetaComponent {
-    crearUnidad(): void {
-        console.log('Crear unidad');
+    @Output() crearUnidadImportada = new EventEmitter<Unidad>();
+
+    @Input() proyectoId: number;
+    @Input() unidadService: UnidadesService;
+    @Input() message: NzMessageService;
+
+    modalVisible: boolean = false;
+
+    handleCrear(unidadACrear: Unidad, finishLoading: () => void): void {
+        crearUnidad(
+            unidadACrear,
+            this.crearUnidadImportada,
+            this.unidadService,
+            this.message,
+            this.handleCancel.bind(this),
+            finishLoading
+        );
+    }
+
+    handleCancel(): void {
+        this.modalVisible = false;
+    }
+
+    abrirModal(): void {
+        this.modalVisible = true;
     }
 }

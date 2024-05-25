@@ -44,7 +44,6 @@ export const crearProyecto: (
             nzDuration: 10000,
         });
         cancelModal();
-        finishLoading();
         crearProyecto.emit(respuestaAPI);
     } catch (error) {
         console.log('Error creando el proyecto', error);
@@ -52,6 +51,7 @@ export const crearProyecto: (
             nzDuration: 10000,
         });
     }
+    finishLoading();
 };
 
 export const borrarProyecto: (
@@ -75,7 +75,6 @@ export const borrarProyecto: (
             nzDuration: 10000,
         });
         cancelModal();
-        finishLoading();
         eliminarProyecto.emit(proyectoId);
     } catch (error) {
         console.error('Error al eliminar el proyecto', error);
@@ -83,6 +82,7 @@ export const borrarProyecto: (
             nzDuration: 10000,
         });
     }
+    finishLoading();
 };
 
 export type actualizarProyectoMessages = {
@@ -115,7 +115,6 @@ export const actualizarProyecto: (
         });
 
         cancelModal();
-        finishLoading();
         actualizarProyectoImportado.emit(nuevoProyecto);
     } catch (error) {
         console.error('Error al actualizar el proyecto', error);
@@ -123,4 +122,5 @@ export const actualizarProyecto: (
             nzDuration: 10000,
         });
     }
+    finishLoading();
 };

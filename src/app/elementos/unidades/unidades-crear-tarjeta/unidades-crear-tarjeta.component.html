@@ -1,4 +1,20 @@
-<div class="card" (click)="crearUnidad()">
+<div class="card" (click)="abrirModal()">
     <span nz-icon nzType="plus-circle" nzTheme="outline" class="icono"></span>
     <div class="mensaje">Agregar unidad</div>
 </div>
+
+<nz-modal
+    class="proyecto-unidad-modal"
+    [(nzVisible)]="modalVisible"
+    [nzContent]="modalContent"
+    [nzFooter]="null"
+    [nzClosable]="false"
+    (nzOnCancel)="handleCancel()"
+    [nzWidth]="1380">
+    <ng-template #modalContent>
+        <app-modal-crear-unidad
+            (cancelModal)="handleCancel()"
+            (crearUnidadImportada)="handleCrear($event.unidad, $event.funcion)"
+            [proyectoId]="proyectoId" />
+    </ng-template>
+</nz-modal>

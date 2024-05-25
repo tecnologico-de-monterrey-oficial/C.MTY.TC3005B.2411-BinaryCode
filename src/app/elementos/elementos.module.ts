@@ -45,6 +45,7 @@ import { EntradaRegistroComponent } from './entrada/entrada-registro/entrada-reg
 // Declaraciones - Modales
 import { ModalBorrarInputComponent } from './modales/modal-borrar-input/modal-borrar-input.component';
 import { ModalCrearProyectoComponent } from './modales/modal-crear-proyecto/modal-crear-proyecto.component';
+import { ModalCrearUnidadComponent } from './modales/modal-crear-unidad/modal-crear-unidad.component';
 import { ModalGenericoComponent } from './modales/modal-generico/modal-generico.component';
 
 // Declaraciones - Permisos
@@ -118,6 +119,7 @@ import { UnidadesTarjetaEsqueletoComponent } from './unidades/unidades-tarjeta-e
 
         ModalBorrarInputComponent,
         ModalCrearProyectoComponent,
+        ModalCrearUnidadComponent,
         ModalGenericoComponent,
 
         PermisosCoordinadoresComponent,

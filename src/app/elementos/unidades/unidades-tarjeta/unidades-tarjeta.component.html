@@ -2,7 +2,7 @@
     <a href="/archivos">
         <img
             class="image-container"
-            [src]="unidad.urlImagen"
+            [src]="unidad.imagen"
             (error)="handleImageError()"
             [ngStyle]="{ 'border-color': unidad.color }"
             *ngIf="!showPlaceholder"
@@ -24,16 +24,62 @@
         </a>
         <nz-dropdown-menu #menu="nzDropdownMenu">
             <ul nz-menu nzSelectable>
-                <li nz-menu-item>1st menu item</li>
-                <li nz-menu-item>2nd menu item</li>
-                <li nz-menu-item>3rd menu item</li>
-                <li nz-menu-item nzDanger>4th danger item</li>
+                <li nz-menu-item (click)="showActualizarModal()">
+                    Editar
+                    <span class="icono-opcion" nz-icon nzType="edit"></span>
+                </li>
+                <li nz-menu-item>
+                    Permisos
+                    <span class="icono-opcion" nz-icon nzType="unlock"></span>
+                </li>
+                <li nz-menu-item nzDanger (click)="showBorrarModal()">
+                    Borrar
+                    <span
+                        class="icono-opcion icono-borrar"
+                        nz-icon
+                        nzType="delete"></span>
+                </li>
             </ul>
         </nz-dropdown-menu>
     </div>
-    <a href="/proyectos/{{ unidad.proyectoId }}/unidades/{{ unidad.id }}">
+    <a href="/proyectos/{{ unidad.id_proyecto }}/unidades/{{ unidad.id }}">
         <div class="name-label" [ngStyle]="{ color: unidad.color }">
             {{ unidad.nombre }}
         </div>
     </a>
 </div>
+
+<nz-modal
+    class="modal-borrar"
+    [(nzVisible)]="borrarVisible"
+    [nzContent]="modalBorrarContent"
+    [nzFooter]="null"
+    (nzOnCancel)="handleCancel()"
+    [nzClosable]="false">
+    <ng-template #modalBorrarContent>
+        <app-modal-borrar-input
+            [loading]="isLoading"
+            [entrada]="textoBorrarUnidad"
+            [nombre]="unidad.nombre"
+            (okModal)="handleDelete($event)"
+            (cancelModal)="handleCancel()" />
+    </ng-template>
+</nz-modal>
+
+<nz-modal
+    [(nzVisible)]="actualizarVisible"
+    [nzContent]="modalActualizarContent"
+    [nzFooter]="null"
+    [nzClosable]="false"
+    (nzOnCancel)="handleCancel()"
+    [nzWidth]="1380">
+    <ng-template #modalActualizarContent>
+        <app-modal-crear-unidad
+            [loading]="isLoading"
+            (cancelModal)="handleCancel()"
+            (actualizarUnidadImportada)="
+                handleActualizar($event.unidad, $event.funcion)
+            "
+            [unidadOriginal]="unidad" />
+    </ng-template>
+</nz-modal>
