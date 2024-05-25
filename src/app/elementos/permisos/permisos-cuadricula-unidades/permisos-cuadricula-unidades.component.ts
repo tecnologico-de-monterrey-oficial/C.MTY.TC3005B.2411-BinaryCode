@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UnidadesService } from '../../../servicios/unidad.services';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { Unidad } from '../../../modelos/unidad.model';
+import { UnidadesService } from '../../../servicios/unidad.services';
+import { obtenerUnidades } from '../../../servicios/unidad.util';
 
 @Component({
     selector: 'app-permisos-cuadricula-unidades',
@@ -9,14 +11,25 @@ import { Unidad } from '../../../modelos/unidad.model';
 })
 export class PermisosCuadriculaUnidadesComponent implements OnInit {
     unidades: Unidad[] = [];
+    unidadesVacias: boolean;
+    loading: boolean = true;
 
-    constructor(private unidadesService: UnidadesService) {}
+    constructor(
+        private unidadesService: UnidadesService,
+        private message: NzMessageService
+    ) {}
 
-    ngOnInit(): void {
-        this.unidadesService.getUnidadesPorProyecto(0).subscribe({
-            next: data => (this.unidades = data),
-            error: err => console.error('Error fetching units:', err),
-            complete: () => console.log('Fetching units complete'),
-        });
+    async ngOnInit(): Promise<void> {
+        const proyectoId: number = 0;
+        this.unidades = await obtenerUnidades(
+            proyectoId,
+            this.unidadesService,
+            this.message
+        );
+
+        if (this.unidades) {
+            this.unidadesVacias = this.unidades.length === 0;
+            this.loading = false;
+        }
     }
 }

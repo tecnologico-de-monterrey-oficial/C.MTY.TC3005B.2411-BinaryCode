@@ -35,6 +35,8 @@ export class ModalCrearProyectoComponent implements OnInit {
 
     colores: string[] = listaColores;
 
+    imagenControl: string;
+
     proyectoEnProceso: Proyecto;
     isLoading: boolean;
 
@@ -49,6 +51,8 @@ export class ModalCrearProyectoComponent implements OnInit {
             activo: true,
             creator: 1,
         };
+
+        this.imagenControl = this.proyectoEnProceso.imagen;
 
         this.validateForm = this.fb.group({
             id: [this.proyectoEnProceso.id],
@@ -90,9 +94,9 @@ export class ModalCrearProyectoComponent implements OnInit {
             this.proyectoEnProceso.color =
                 this.validateForm.value.colorSeleccionado;
             this.proyectoEnProceso.imagen =
-                this.validateForm.value.imagen === this.proyectoOriginal?.imagen
+                this.imagenControl === this.proyectoOriginal?.imagen
                     ? undefined
-                    : this.validateForm.value.imagen;
+                    : this.imagenControl;
 
             if (!this.proyectoOriginal) {
                 this.crearProyectoImportado.emit({
@@ -106,28 +110,31 @@ export class ModalCrearProyectoComponent implements OnInit {
                 });
             }
         } else {
-            console.log('Formulario inválido');
             Object.values(this.validateForm.controls).forEach(control => {
                 if (control.invalid) {
                     control.markAsDirty();
                     control.updateValueAndValidity({ onlySelf: true });
                 }
             });
+            this.isLoading = false;
         }
     }
 
     onFileSelected(event: Event): void {
         const file: File = (event.target as HTMLInputElement).files[0];
-        if (file) {
-            const reader: FileReader = new FileReader();
-            reader.onload = (e: ProgressEvent<FileReader>): void => {
-                const imagen: string | ArrayBuffer = e.target.result;
-                if (typeof imagen === 'string') {
-                    this.validateForm.controls.imagen.setValue(imagen);
-                }
-            };
-            reader.readAsDataURL(file);
-        }
+
+        if (!file) return;
+
+        const reader: FileReader = new FileReader();
+
+        reader.onload = (e: ProgressEvent<FileReader>): void => {
+            const imagen: string | ArrayBuffer = e.target.result;
+            if (typeof imagen === 'string') {
+                this.imagenControl = imagen;
+            }
+        };
+
+        reader.readAsDataURL(file);
     }
 
     constructor(private fb: NonNullableFormBuilder) {}

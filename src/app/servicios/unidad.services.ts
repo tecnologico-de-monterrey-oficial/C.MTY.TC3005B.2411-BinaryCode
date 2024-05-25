@@ -16,8 +16,15 @@ export class UnidadesService {
 
     constructor(private http: HttpClient) {}
 
-    getUnidadesPorProyecto(proyectoId: number): Observable<Unidad[]> {
-        return this.http.get<Unidad[]>(`${this.baseUrl}?search=${proyectoId}`);
+    async getUnidadesPorProyecto(proyectoId: number): Promise<Unidad[]> {
+        const response: Response = await fetch(
+            `${this.baseUrl}?search=${proyectoId}`
+        );
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const unidades: Unidad[] = await response.json();
+        return unidades;
     }
 
     getCoordinadores(idUnidad: number): Usuario[] {

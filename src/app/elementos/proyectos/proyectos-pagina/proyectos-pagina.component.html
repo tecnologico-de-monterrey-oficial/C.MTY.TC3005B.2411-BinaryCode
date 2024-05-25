@@ -8,8 +8,7 @@
 
 <nz-flex class="grid-container">
     <ng-container *ngIf="esqueleto">
-        <app-proyectos-tarjeta-esqueleto
-            *ngFor="let i of numbers"></app-proyectos-tarjeta-esqueleto>
+        <app-proyectos-tarjeta-esqueleto *ngFor="let i of loadingCards" />
     </ng-container>
     <app-proyectos-tarjeta
         *ngFor="

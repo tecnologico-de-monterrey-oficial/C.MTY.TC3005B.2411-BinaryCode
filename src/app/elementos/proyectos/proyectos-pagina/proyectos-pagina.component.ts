@@ -11,11 +11,13 @@ import { obtenerProyectos } from '../../../servicios/proyecto.util';
     styleUrl: './proyectos-pagina.component.css',
 })
 export class ProyectosPaginaComponent implements OnInit {
+    loadingCards: number[] = [1, 2, 3, 4];
+
     proyectosActivos: Proyecto[] = [];
     proyectosInactivos: Proyecto[] = [];
+
     esqueleto: boolean = true;
     admin: boolean = true;
-    numbers: number[] = [1, 2, 3, 4];
     inactivo: boolean = false;
 
     proyectosRespuesta: Proyecto[];

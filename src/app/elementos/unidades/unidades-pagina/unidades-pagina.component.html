@@ -1,14 +1,19 @@
 <h1>Unidades</h1>
 
-<nz-flex class="grid-container" *ngIf="!unidadesVacias">
+<nz-flex class="grid-container" *ngIf="!unidadesVacias || permisoParaAgregar">
+    <ng-container *ngIf="esqueleto">
+        <app-unidades-tarjeta-esqueleto *ngFor="let i of loadingCards" />
+    </ng-container>
     <app-unidades-tarjeta
         *ngFor="let unidad of unidades"
         [unidad]="unidad"
         (click)="navigateToArchivos(unidad.id)" />
-    <app-unidades-crear-tarjeta />
+    <app-unidades-crear-tarjeta *ngIf="!esqueleto && permisoParaAgregar" />
 </nz-flex>
 
-<nz-flex class="grid-container-empty" *ngIf="unidadesVacias">
+<nz-flex
+    class="grid-container-empty"
+    *ngIf="unidadesVacias && !permisoParaAgregar">
     <nz-empty [nzNotFoundContent]="contentTpl">
         <ng-template #contentTpl>No hay unidades</ng-template>
     </nz-empty>

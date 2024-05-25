@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Unidad } from '../../../modelos/unidad.model';
 import { UnidadesService } from '../../../servicios/unidad.services';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { obtenerUnidades } from '../../../servicios/unidad.util';
 
 @Component({
     selector: 'app-unidades-pagina',
@@ -9,27 +11,33 @@ import { ActivatedRoute, Router } from '@angular/router';
     styleUrl: './unidades-pagina.component.css',
 })
 export class UnidadesPaginaComponent implements OnInit {
+    loadingCards: number[] = [1, 2, 3, 4, 5];
+
     unidades: Unidad[] = [];
-    unidadesVacias: boolean = true;
+
+    permisoParaAgregar: boolean = true;
+    unidadesVacias: boolean = false;
+    esqueleto: boolean = true;
 
     constructor(
         private unidadesService: UnidadesService,
-        private router: Router,
+        private message: NzMessageService,
         private route: ActivatedRoute
     ) {}
 
-    ngOnInit(): void {
-        this.route.params.subscribe(params => {
+    async ngOnInit(): Promise<void> {
+        this.route.params.subscribe(async params => {
             const proyectoId: number = params['id'];
-            this.unidadesService.getUnidadesPorProyecto(proyectoId).subscribe({
-                next: data => {
-                    this.unidades = data;
-                    this.unidadesVacias = this.unidades.length === 0;
-                    console.log('Units fetched successfully:', this.unidades);
-                },
-                error: err => console.error('Error fetching units:', err),
-                complete: () => console.log('Fetching units complete'),
-            });
+            this.unidades = await obtenerUnidades(
+                proyectoId,
+                this.unidadesService,
+                this.message
+            );
+
+            if (this.unidades) {
+                this.unidadesVacias = this.unidades.length === 0;
+                this.esqueleto = false;
+            }
         });
     }
 }

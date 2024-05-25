@@ -23,7 +23,7 @@
 
 .left {
     flex: 1;
-    padding: 10px;
+    padding: 5px 10px;
     display: flex;
     flex-direction: column;
 }
@@ -52,6 +52,10 @@
 .imagen-upload span {
     font-size: 70px;
     margin: 15px;
+}
+
+.imagen-upload.dirty {
+    border: dashed 2px var(--rojoLogin);
 }
 
 .imagen-proyecto {

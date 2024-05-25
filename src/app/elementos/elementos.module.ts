@@ -68,10 +68,10 @@ import { ProyectosTarjetaEsqueletoComponent } from './proyectos/proyectos-tarjet
 import { ProyectosTarjetaComponent } from './proyectos/proyectos-tarjeta/proyectos-tarjeta.component';
 
 // Declaraciones - Unidades
-import { UnidadesCrearModalComponent } from './unidades/unidades-crear-modal/unidades-crear-modal.component';
 import { UnidadesCrearTarjetaComponent } from './unidades/unidades-crear-tarjeta/unidades-crear-tarjeta.component';
 import { UnidadesPaginaComponent } from './unidades/unidades-pagina/unidades-pagina.component';
 import { UnidadesTarjetaComponent } from './unidades/unidades-tarjeta/unidades-tarjeta.component';
+import { UnidadesTarjetaEsqueletoComponent } from './unidades/unidades-tarjeta-esqueleto/unidades-tarjeta-esqueleto.component';
 
 @NgModule({
     imports: [
@@ -137,10 +137,10 @@ import { UnidadesTarjetaComponent } from './unidades/unidades-tarjeta/unidades-t
         ProyectosTarjetaEsqueletoComponent,
         ProyectosTarjetaComponent,
 
-        UnidadesCrearModalComponent,
         UnidadesCrearTarjetaComponent,
         UnidadesTarjetaComponent,
         UnidadesPaginaComponent,
+        UnidadesTarjetaEsqueletoComponent,
     ],
 })
 export class ElementosModule {}
