@@ -1,14 +1,20 @@
 import { EventEmitter } from '@angular/core';
-import { ProyectosService } from './proyecto.services';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Proyecto } from '../modelos/proyectos.model';
+import {
+    actualizarProyectoAPI,
+    crearProyectoAPI,
+    eliminarProyectoAPI,
+    getProyectoAPI,
+    getProyectosAPI,
+} from './proyecto.services';
+import { Usuario } from '../modelos/usuario.model';
 
 export const obtenerProyectos: (
-    proyectoService: ProyectosService,
     message: NzMessageService
-) => Promise<Proyecto[]> = async (proyectoService, message) => {
+) => Promise<Proyecto[]> = async message => {
     try {
-        const proyectos: Proyecto[] = await proyectoService.getProyectos();
+        const proyectos: Proyecto[] = await getProyectosAPI();
         return proyectos;
     } catch (error) {
         console.error('Error obteniendo los proyectos', error);
@@ -22,24 +28,33 @@ export const obtenerProyectos: (
     }
 };
 
+export const obtenerProyecto: (
+    proyectoId: number
+) => Promise<Proyecto> = async proyectoId => {
+    try {
+        const proyecto: Proyecto = await getProyectoAPI(proyectoId);
+        return proyecto;
+    } catch (error) {
+        console.error('Error obteniendo el proyecto', error);
+        return null;
+    }
+};
+
 export const crearProyecto: (
     proyecto: Proyecto,
     crearProyecto: EventEmitter<Proyecto>,
-    proyectoService: ProyectosService,
     message: NzMessageService,
     cancelModal: () => void,
     finishLoading: () => void
 ) => Promise<void> = async (
     proyecto,
     crearProyecto,
-    proyectoService,
     message,
     cancelModal,
     finishLoading
 ) => {
     try {
-        const respuestaAPI: Proyecto =
-            await proyectoService.crearProyecto(proyecto);
+        const respuestaAPI: Proyecto = await crearProyectoAPI(proyecto);
         message.success('El proyecto se creó exitosamente', {
             nzDuration: 10000,
         });
@@ -57,20 +72,18 @@ export const crearProyecto: (
 export const borrarProyecto: (
     proyectoId: number,
     eliminarProyecto: EventEmitter<number>,
-    proyectoService: ProyectosService,
     message: NzMessageService,
     cancelModal: () => void,
     finishLoading: () => void
 ) => Promise<void> = async (
     proyectoId,
     eliminarProyecto,
-    proyectoService,
     message,
     cancelModal,
     finishLoading
 ) => {
     try {
-        await proyectoService.eliminarProyecto(proyectoId);
+        await eliminarProyectoAPI(proyectoId);
         message.success('El proyecto se eliminó exitosamente', {
             nzDuration: 10000,
         });
@@ -94,7 +107,6 @@ export const actualizarProyecto: (
     proyecto: Proyecto,
     mensajes: actualizarProyectoMessages,
     actualizarProyectoImportado: EventEmitter<Proyecto>,
-    proyectoService: ProyectosService,
     message: NzMessageService,
     cancelModal: () => void,
     finishLoading: () => void
@@ -102,14 +114,12 @@ export const actualizarProyecto: (
     proyecto,
     mensajes,
     actualizarProyectoImportado,
-    proyectoService,
     message,
     cancelModal,
     finishLoading
 ) => {
     try {
-        const nuevoProyecto: Proyecto =
-            await proyectoService.actualizarProyecto(proyecto);
+        const nuevoProyecto: Proyecto = await actualizarProyectoAPI(proyecto);
         message.success(mensajes.success, {
             nzDuration: 10000,
         });
@@ -123,4 +133,11 @@ export const actualizarProyecto: (
         });
     }
     finishLoading();
+};
+
+export const getLideres: {
+    (idProyecto: number): Usuario[];
+} = idProyecto => {
+    idProyecto;
+    return [];
 };

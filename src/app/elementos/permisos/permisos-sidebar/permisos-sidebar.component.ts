@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Unidad } from '../../../modelos/unidad.model';
 import { Proyecto } from '../../../modelos/proyectos.model';
+import { Unidad } from '../../../modelos/unidad.model';
 import { Usuario } from '../../../modelos/usuario.model';
-import { UnidadesService } from '../../../servicios/unidad.services';
-import { ProyectosService } from '../../../servicios/proyecto.services';
+import { getLideres } from '../../../servicios/proyecto.util';
+import { getCoordinadores } from '../../../servicios/unidad.util';
 
 @Component({
     selector: 'app-permisos-sidebar',
@@ -19,19 +19,12 @@ export class PermisosSidebarComponent implements OnInit {
 
     ngOnInit(): void {
         if (this.unidad !== null) {
-            this.coordinadores = this.unidadesService.getCoordinadores(
-                this.unidad.id
-            );
+            this.coordinadores = getCoordinadores(this.unidad.id);
         }
         if (this.proyecto !== null) {
-            this.lideres = this.proyectosService.getLideres(this.proyecto.id);
+            this.lideres = getLideres(this.proyecto.id);
         }
     }
-
-    constructor(
-        private unidadesService: UnidadesService,
-        private proyectosService: ProyectosService
-    ) {}
 
     onRemoveItemClick(idEliminado: number): void {
         // TODO: Implementar eliminación de usuario API

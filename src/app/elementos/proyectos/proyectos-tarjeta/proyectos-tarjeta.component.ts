@@ -1,21 +1,20 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Proyecto } from '../../../modelos/proyectos.model';
-import { ProyectosService } from '../../../servicios/proyecto.services';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { Proyecto } from '../../../modelos/proyectos.model';
 import {
-    entradaArchivarProyecto,
-    entradaBorrarProyecto,
-    mensajesArchivarProyecto,
-    mensajesActivarProyecto,
-    mensajesActualizarProyecto,
-    entradaActivarProyecto,
-} from '../proyectos-constantes';
-import {
-    borrarProyecto,
     actualizarProyecto,
+    borrarProyecto,
 } from '../../../servicios/proyecto.util';
 import { modalBorrarInputInput } from '../../modales/modal-borrar-input/modal-borrar-input.component';
 import { modalGenericoInput } from '../../modales/modal-generico/modal-generico.component';
+import {
+    entradaActivarProyecto,
+    entradaArchivarProyecto,
+    entradaBorrarProyecto,
+    mensajesActivarProyecto,
+    mensajesActualizarProyecto,
+    mensajesArchivarProyecto,
+} from '../proyectos-constantes';
 
 @Component({
     selector: 'app-proyectos-tarjeta',
@@ -70,7 +69,6 @@ export class ProyectosTarjetaComponent {
             proyectoAActualizar,
             mensajesActualizarProyecto,
             this.actualizarProyectoImportado,
-            this.proyectoService,
             this.message,
             this.handleCancel.bind(this),
             finishLoading
@@ -81,7 +79,6 @@ export class ProyectosTarjetaComponent {
         await borrarProyecto(
             this.proyecto.id,
             this.eliminarProyectoImportado,
-            this.proyectoService,
             this.message,
             this.handleCancel.bind(this),
             finishLoading
@@ -96,7 +93,6 @@ export class ProyectosTarjetaComponent {
             this.proyecto,
             mensajesArchivarProyecto,
             this.archivarProyectoImportado,
-            this.proyectoService,
             this.message,
             this.handleCancel.bind(this),
             finishLoading
@@ -112,7 +108,6 @@ export class ProyectosTarjetaComponent {
             this.proyecto,
             mensajesActivarProyecto,
             this.activarProyectoImportado,
-            this.proyectoService,
             this.message,
             this.handleCancel.bind(this),
             finishLoading
@@ -120,8 +115,5 @@ export class ProyectosTarjetaComponent {
         this.proyecto.imagen = imagenTemp;
     }
 
-    constructor(
-        private proyectoService: ProyectosService,
-        private message: NzMessageService
-    ) {}
+    constructor(private message: NzMessageService) {}
 }

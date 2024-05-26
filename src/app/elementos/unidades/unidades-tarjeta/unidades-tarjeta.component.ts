@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Unidad } from '../../../modelos/unidad.model';
-import { UnidadesService } from '../../../servicios/unidad.services';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { borrarUnidad, actualizarUnidad } from '../../../servicios/unidad.util';
 import { modalBorrarInputInput } from '../../modales/modal-borrar-input/modal-borrar-input.component';
@@ -11,13 +10,14 @@ import { entradaBorrarUnidad } from '../unidades-constantes';
     templateUrl: './unidades-tarjeta.component.html',
     styleUrl: './unidades-tarjeta.component.css',
 })
-export class UnidadesTarjetaComponent {
+export class UnidadesTarjetaComponent implements OnInit {
     @Input() unidad: Unidad;
     @Input() message: NzMessageService;
-    @Input() unidadService: UnidadesService;
 
     @Output() eliminarUnidadImportada = new EventEmitter<number>();
     @Output() actualizarUnidadImportada = new EventEmitter<Unidad>();
+
+    urlReferencia: string;
 
     textoBorrarUnidad: modalBorrarInputInput = entradaBorrarUnidad;
 
@@ -25,6 +25,14 @@ export class UnidadesTarjetaComponent {
 
     borrarVisible: boolean = false;
     actualizarVisible: boolean = false;
+
+    ngOnInit(): void {
+        this.urlReferencia =
+            '/proyectos/' +
+            this.unidad.id_proyecto +
+            '/unidades/' +
+            this.unidad.id;
+    }
 
     handleImageError(): void {
         this.showPlaceholder = true;
@@ -50,7 +58,6 @@ export class UnidadesTarjetaComponent {
         await actualizarUnidad(
             unidadAActualizar,
             this.actualizarUnidadImportada,
-            this.unidadService,
             this.message,
             this.handleCancel.bind(this),
             finishLoading
@@ -63,7 +70,6 @@ export class UnidadesTarjetaComponent {
         await borrarUnidad(
             this.unidad.id,
             this.eliminarUnidadImportada,
-            this.unidadService,
             this.message,
             this.handleCancel.bind(this),
             finishLoading

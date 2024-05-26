@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Proyecto } from '../../../modelos/proyectos.model';
-import { ProyectosService } from '../../../servicios/proyecto.services';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { crearProyecto } from '../../../servicios/proyecto.util';
 
@@ -18,7 +17,6 @@ export class ProyectosCrearTarjetaComponent {
         crearProyecto(
             proyectoACrear,
             this.crearProyectoImportado,
-            this.proyectoService,
             this.message,
             this.handleCancel.bind(this),
             finishLoading
@@ -33,8 +31,5 @@ export class ProyectosCrearTarjetaComponent {
         this.modalVisible = true;
     }
 
-    constructor(
-        private proyectoService: ProyectosService,
-        private message: NzMessageService
-    ) {}
+    constructor(private message: NzMessageService) {}
 }

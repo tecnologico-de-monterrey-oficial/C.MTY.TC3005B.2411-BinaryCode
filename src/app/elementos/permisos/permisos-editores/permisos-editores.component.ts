@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Unidad } from '../../../modelos/unidad.model';
-import { UnidadesService } from '../../../servicios/unidad.services';
 import { Usuario } from '../../../modelos/usuario.model';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { getEditores } from '../../../servicios/unidad.services';
 
 @Component({
     selector: 'app-permisos-editores',
@@ -15,14 +15,11 @@ export class PermisosEditoresComponent implements OnInit {
     buscadorVisible: boolean = false;
     editores: Usuario[];
 
-    constructor(
-        private unidadesService: UnidadesService,
-        private message: NzMessageService
-    ) {}
+    constructor(private message: NzMessageService) {}
 
     ngOnInit(): void {
         if (this.unidad) {
-            this.editores = this.unidadesService.getEditores(this.unidad.id);
+            this.editores = getEditores(this.unidad.id);
         }
     }
 

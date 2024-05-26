@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { UnidadesService } from '../../../servicios/unidad.services';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Unidad } from '../../../modelos/unidad.model';
 import { crearUnidad } from '../../../servicios/unidad.util';
@@ -13,7 +12,6 @@ export class UnidadesCrearTarjetaComponent {
     @Output() crearUnidadImportada = new EventEmitter<Unidad>();
 
     @Input() proyectoId: number;
-    @Input() unidadService: UnidadesService;
     @Input() message: NzMessageService;
 
     modalVisible: boolean = false;
@@ -22,7 +20,6 @@ export class UnidadesCrearTarjetaComponent {
         crearUnidad(
             unidadACrear,
             this.crearUnidadImportada,
-            this.unidadService,
             this.message,
             this.handleCancel.bind(this),
             finishLoading

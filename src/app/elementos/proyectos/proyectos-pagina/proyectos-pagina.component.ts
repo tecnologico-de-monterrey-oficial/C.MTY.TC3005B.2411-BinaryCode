@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Proyecto } from '../../../modelos/proyectos.model';
-import { ProyectosService } from '../../../servicios/proyecto.services';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { obtenerProyectos } from '../../../servicios/proyecto.util';
@@ -23,7 +22,6 @@ export class ProyectosPaginaComponent implements OnInit {
     proyectosRespuesta: Proyecto[];
 
     constructor(
-        private proyectoServices: ProyectosService,
         private router: Router,
         private route: ActivatedRoute,
         private message: NzMessageService
@@ -31,10 +29,7 @@ export class ProyectosPaginaComponent implements OnInit {
 
     async ngOnInit(): Promise<void> {
         this.esqueleto = true;
-        this.proyectosRespuesta = await obtenerProyectos(
-            this.proyectoServices,
-            this.message
-        );
+        this.proyectosRespuesta = await obtenerProyectos(this.message);
 
         if (this.proyectosRespuesta) {
             this.proyectosActivos = this.proyectosRespuesta.filter(

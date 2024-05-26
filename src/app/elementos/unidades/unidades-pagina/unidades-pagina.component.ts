@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Unidad } from '../../../modelos/unidad.model';
-import { UnidadesService } from '../../../servicios/unidad.services';
 import { ActivatedRoute } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { obtenerUnidades } from '../../../servicios/unidad.util';
@@ -26,7 +25,6 @@ export class UnidadesPaginaComponent implements OnInit {
             this.proyectoId = params['id'];
             this.unidades = await obtenerUnidades(
                 this.proyectoId,
-                this.unidadesService,
                 this.message
             );
 
@@ -52,7 +50,6 @@ export class UnidadesPaginaComponent implements OnInit {
     }
 
     constructor(
-        private unidadesService: UnidadesService,
         private message: NzMessageService,
         private route: ActivatedRoute
     ) {}
