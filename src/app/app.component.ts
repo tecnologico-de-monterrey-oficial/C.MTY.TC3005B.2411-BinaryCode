@@ -7,17 +7,14 @@ import { Router, NavigationEnd } from '@angular/router';
     styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-    showSidebar: boolean = true;
-    showHeader: boolean = true;
+    isLoginRoute: boolean = true;
 
     constructor(private router: Router) {}
 
     ngOnInit(): void {
         this.router.events.subscribe(event => {
             if (event instanceof NavigationEnd) {
-                const isLoginRoute: boolean = event.url.includes('entrada');
-                this.showSidebar = !isLoginRoute;
-                this.showHeader = !isLoginRoute;
+                this.isLoginRoute = event.url.includes('entrada');
             }
         });
     }
