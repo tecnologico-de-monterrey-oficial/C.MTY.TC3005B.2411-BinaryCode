@@ -1,16 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../../modelos/usuario.model';
-import { UsuariosServices } from '../../../servicios/usuarios.services';
+import { getUsuariosAPI } from '../../../servicios/usuarios.services';
 
 @Component({
     selector: 'app-personas-lista',
     templateUrl: './personas-lista.component.html',
     styleUrl: './personas-lista.component.css',
 })
-export class PersonasListaComponent {
+export class PersonasListaComponent implements OnInit {
     usuarios: Usuario[] = [];
 
-    constructor(private usuariosService: UsuariosServices) {
-        this.usuarios = usuariosService.getUsuarios();
+    async ngOnInit(): Promise<void> {
+        this.usuarios = await getUsuariosAPI();
     }
 }

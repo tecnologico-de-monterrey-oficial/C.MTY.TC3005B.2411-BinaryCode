@@ -1,21 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Archivo } from '../../../modelos/archivo.model';
-import { ArchivosService } from '../../../servicios/archivo.services';
 import { Carpeta } from '../../../modelos/carpeta.model';
 import { Contenidos } from '../../../modelos/contenidos.model';
+import { getContenidosAPI } from '../../../servicios/archivo.services';
 
 @Component({
     selector: 'app-archivos-pagina-contenidos',
     templateUrl: './archivos-pagina-contenidos.component.html',
     styleUrl: './archivos-pagina-contenidos.component.css',
 })
-export class ArchivosPaginaContenidosComponent {
+export class ArchivosPaginaContenidosComponent implements OnInit {
     archivos: Archivo[] = [];
     carpetas: Carpeta[] = [];
 
-    constructor(archivosService: ArchivosService) {
+    async ngOnInit(): Promise<void> {
         const contenidos: Contenidos =
-            archivosService.getContenidos('idParaGetArchivos');
+            await getContenidosAPI('idParaGetArchivos');
         this.archivos = contenidos.archivos;
         this.carpetas = contenidos.carpetas;
     }

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Archivo } from '../../../modelos/archivo.model';
-import { ArchivosService } from '../../../servicios/archivo.services';
+import { setFavoritoAPI } from '../../../servicios/archivo.services';
 
 @Component({
     selector: 'app-archivos-fila',
@@ -8,15 +8,11 @@ import { ArchivosService } from '../../../servicios/archivo.services';
     styleUrl: './archivos-fila.component.css',
 })
 export class ArchivosFilaComponent {
-    constructor(private archivosService: ArchivosService) {}
     @Input() archivo: Archivo;
 
     onStarClick(): void {
         this.archivo.favorito = !this.archivo.favorito;
-        this.archivosService.setFavorito(
-            this.archivo.id,
-            this.archivo.favorito
-        );
+        setFavoritoAPI(this.archivo.id, this.archivo.favorito);
     }
 
     onFileClick(): void {

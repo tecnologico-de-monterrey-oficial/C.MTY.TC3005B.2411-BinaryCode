@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import Fuse, { FuseResult } from 'fuse.js';
 import { Usuario } from '../../../modelos/usuario.model';
-import { UsuariosServices } from '../../../servicios/usuarios.services';
 import { nivelPermiso } from '../buscador-confirmar-modal/buscador-confirmar-modal.component';
 import { personaBuscador } from '../buscador-mini-personas/buscador-mini-personas.component';
+import { getUsuariosAPI } from '../../../servicios/usuarios.services';
 
 @Component({
     selector: 'app-buscador-personas',
@@ -30,9 +30,9 @@ export class BuscadorPersonasComponent implements OnInit {
         keys: ['nombre'],
     };
 
-    ngOnInit(): void {
-        this.usuariosTotales = this.usuariosService
-            .getUsuarios()
+    async ngOnInit(): Promise<void> {
+        const usuarios: Usuario[] = await getUsuariosAPI();
+        this.usuariosTotales = usuarios
             .filter(
                 usuario =>
                     !this.usuariosActuales.some(
@@ -111,6 +111,4 @@ export class BuscadorPersonasComponent implements OnInit {
             this.usuariosFiltrados = result.map(resultado => resultado.item);
         }
     }
-
-    constructor(private usuariosService: UsuariosServices) {}
 }
