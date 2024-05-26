@@ -1,9 +1,9 @@
 <div class="contenedor">
     <app-unidades-tarjeta [unidad]="unidad" *ngIf="unidad" />
 
-    <app-proyectos-pagina
+    <app-proyectos-tarjeta
         [proyecto]="proyecto"
-        [descripcion]="false"
+        [descripcionVisible]="false"
         *ngIf="proyecto" />
     <div class="titulo" *ngIf="proyecto">Líderes de proyecto</div>
 

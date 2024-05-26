@@ -3,10 +3,23 @@
     display: flex;
 }
 
-app-permisos-permisos {
+.esqueleto {
+    min-height: 90%;
+    display: flex;
+    flex-direction: column;
+    background: var(--contentBg);
+    border-radius: 25px;
+    padding: 35px;
+}
+
+app-permisos-sidebar {
     flex: 0 0 30%;
 }
 
 app-permisos-editores {
     flex: 1;
+}
+
+app-permisos-cuadricula-unidades {
+    width: 100%;
 }

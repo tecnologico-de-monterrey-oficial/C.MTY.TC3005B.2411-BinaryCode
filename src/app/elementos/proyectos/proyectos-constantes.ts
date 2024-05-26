@@ -1,6 +1,6 @@
 import { modalBorrarInputInput } from '../modales/modal-borrar-input/modal-borrar-input.component';
 import { modalGenericoInput } from '../modales/modal-generico/modal-generico.component';
-import { actualizarProyectoMessages } from '../../servicios/proyecto.util';
+import { actualizarProyectoMessages } from '../../servicios/proyecto.services';
 
 export const entradaBorrarProyecto: modalBorrarInputInput = {
     pregunta: '¿Estás seguro de que quieres borrar el proyecto?',

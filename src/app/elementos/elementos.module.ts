@@ -20,6 +20,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzSegmentedModule } from 'ng-zorro-antd/segmented';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 
@@ -71,8 +72,8 @@ import { ProyectosTarjetaComponent } from './proyectos/proyectos-tarjeta/proyect
 // Declaraciones - Unidades
 import { UnidadesCrearTarjetaComponent } from './unidades/unidades-crear-tarjeta/unidades-crear-tarjeta.component';
 import { UnidadesPaginaComponent } from './unidades/unidades-pagina/unidades-pagina.component';
-import { UnidadesTarjetaComponent } from './unidades/unidades-tarjeta/unidades-tarjeta.component';
 import { UnidadesTarjetaEsqueletoComponent } from './unidades/unidades-tarjeta-esqueleto/unidades-tarjeta-esqueleto.component';
+import { UnidadesTarjetaComponent } from './unidades/unidades-tarjeta/unidades-tarjeta.component';
 
 @NgModule({
     imports: [
@@ -97,6 +98,7 @@ import { UnidadesTarjetaEsqueletoComponent } from './unidades/unidades-tarjeta-e
         NzPopoverModule,
         NzSegmentedModule,
         NzSkeletonModule,
+        NzSpinModule,
         NzTagModule,
         NzToolTipModule,
     ],

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Proyecto } from '../../../modelos/proyectos.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { obtenerProyectos } from '../../../servicios/proyecto.util';
+import { obtenerProyectosConValidacion } from '../../../servicios/proyecto.services';
 
 @Component({
     selector: 'app-proyectos-pagina',
@@ -29,7 +29,9 @@ export class ProyectosPaginaComponent implements OnInit {
 
     async ngOnInit(): Promise<void> {
         this.esqueleto = true;
-        this.proyectosRespuesta = await obtenerProyectos(this.message);
+        this.proyectosRespuesta = await obtenerProyectosConValidacion(
+            this.message
+        );
 
         if (this.proyectosRespuesta) {
             this.proyectosActivos = this.proyectosRespuesta.filter(

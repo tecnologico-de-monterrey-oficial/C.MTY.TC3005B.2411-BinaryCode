@@ -1,6 +1,7 @@
 .grid-container {
     background: var(--contentBg);
 
+    width: 100%;
     min-height: 100%;
     border-radius: 25px;
     padding: 25px;

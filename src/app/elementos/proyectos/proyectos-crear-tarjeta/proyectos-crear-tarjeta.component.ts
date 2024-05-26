@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Proyecto } from '../../../modelos/proyectos.model';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { crearProyecto } from '../../../servicios/proyecto.util';
+import { crearProyectoConValidacion } from '../../../servicios/proyecto.services';
 
 @Component({
     selector: 'app-proyectos-crear-tarjeta',
@@ -14,7 +14,7 @@ export class ProyectosCrearTarjetaComponent {
     modalVisible: boolean = false;
 
     handleCrear(proyectoACrear: Proyecto, finishLoading: () => void): void {
-        crearProyecto(
+        crearProyectoConValidacion(
             proyectoACrear,
             this.crearProyectoImportado,
             this.message,

@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Proyecto } from '../../../modelos/proyectos.model';
 import { Unidad } from '../../../modelos/unidad.model';
 import { Usuario } from '../../../modelos/usuario.model';
-import { getLideres } from '../../../servicios/proyecto.util';
 import { getCoordinadores } from '../../../servicios/unidad.util';
+import { getLideres } from '../../../servicios/proyecto.services';
 
 @Component({
     selector: 'app-permisos-sidebar',
@@ -18,10 +18,10 @@ export class PermisosSidebarComponent implements OnInit {
     lideres: Usuario[];
 
     ngOnInit(): void {
-        if (this.unidad !== null) {
+        if (this.unidad) {
             this.coordinadores = getCoordinadores(this.unidad.id);
         }
-        if (this.proyecto !== null) {
+        if (this.proyecto) {
             this.lideres = getLideres(this.proyecto.id);
         }
     }

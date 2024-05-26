@@ -1,8 +1,18 @@
 <h1>Permisos</h1>
 
-<div class="contenedor">
+<div class="contenedor" *ngIf="!isLoading">
     <app-permisos-sidebar [unidad]="unidad" [proyecto]="proyecto" />
 
-    <app-permisos-editores [unidad]="unidad" *ngIf="unidad" />
-    <app-permisos-cuadricula [proyecto]="proyecto" *ngIf="proyecto" />
+    <app-permisos-editores [unidad]="unidad" *ngIf="tipo === 'unidad'" />
+    <app-permisos-cuadricula-unidades
+        [proyectoId]="proyecto.id"
+        *ngIf="tipo === 'proyecto'" />
+</div>
+
+<div class="esqueleto" *ngIf="isLoading">
+    <nz-skeleton [nzActive]="true" />
+    <nz-skeleton [nzActive]="true" />
+    <nz-skeleton [nzActive]="true" />
+    <nz-skeleton [nzActive]="true" />
+    <nz-skeleton [nzActive]="true" />
 </div>

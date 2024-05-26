@@ -1,10 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Proyecto } from '../../../modelos/proyectos.model';
-import {
-    actualizarProyecto,
-    borrarProyecto,
-} from '../../../servicios/proyecto.util';
 import { modalBorrarInputInput } from '../../modales/modal-borrar-input/modal-borrar-input.component';
 import { modalGenericoInput } from '../../modales/modal-generico/modal-generico.component';
 import {
@@ -15,6 +11,10 @@ import {
     mensajesActualizarProyecto,
     mensajesArchivarProyecto,
 } from '../proyectos-constantes';
+import {
+    actualizarProyectoConValidacion,
+    borrarProyectoConValidacion,
+} from '../../../servicios/proyecto.services';
 
 @Component({
     selector: 'app-proyectos-tarjeta',
@@ -23,6 +23,7 @@ import {
 })
 export class ProyectosTarjetaComponent {
     @Input() proyecto: Proyecto;
+    @Input() descripcionVisible: boolean = true;
 
     @Output() eliminarProyectoImportado = new EventEmitter<number>();
     @Output() actualizarProyectoImportado = new EventEmitter<Proyecto>();
@@ -65,7 +66,7 @@ export class ProyectosTarjetaComponent {
         proyectoAActualizar: Proyecto,
         finishLoading: () => void
     ): Promise<void> {
-        await actualizarProyecto(
+        await actualizarProyectoConValidacion(
             proyectoAActualizar,
             mensajesActualizarProyecto,
             this.actualizarProyectoImportado,
@@ -76,7 +77,7 @@ export class ProyectosTarjetaComponent {
     }
 
     async handleDelete(finishLoading: () => void): Promise<void> {
-        await borrarProyecto(
+        await borrarProyectoConValidacion(
             this.proyecto.id,
             this.eliminarProyectoImportado,
             this.message,
@@ -89,7 +90,7 @@ export class ProyectosTarjetaComponent {
         this.proyecto.activo = false;
         const imagenTemp: string = this.proyecto.imagen;
         this.proyecto.imagen = undefined;
-        actualizarProyecto(
+        actualizarProyectoConValidacion(
             this.proyecto,
             mensajesArchivarProyecto,
             this.archivarProyectoImportado,
@@ -104,7 +105,7 @@ export class ProyectosTarjetaComponent {
         this.proyecto.activo = true;
         const imagenTemp: string = this.proyecto.imagen;
         this.proyecto.imagen = undefined;
-        actualizarProyecto(
+        actualizarProyectoConValidacion(
             this.proyecto,
             mensajesActivarProyecto,
             this.activarProyectoImportado,

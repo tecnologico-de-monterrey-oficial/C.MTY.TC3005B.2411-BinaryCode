@@ -1,6 +1,10 @@
 <nz-flex class="grid-container">
-    <!-- TODO: rutear a dentro de los permisos -->
-    <app-unidades-cuadricula
-        *ngFor="let unidad of unidades"
-        [unidad]="unidad" />
+    <ng-container *ngIf="loading">
+        <app-unidades-tarjeta-esqueleto />
+        <app-unidades-tarjeta-esqueleto />
+        <app-unidades-tarjeta-esqueleto />
+        <app-unidades-tarjeta-esqueleto />
+        <app-unidades-tarjeta-esqueleto />
+    </ng-container>
+    <app-unidades-tarjeta *ngFor="let unidad of unidades" [unidad]="unidad" />
 </nz-flex>

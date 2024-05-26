@@ -1,21 +1,14 @@
-<div class="card">
+<div [class]="descripcionVisible ? 'card' : 'card-no-description'">
     <div
         class="image-container"
         [ngStyle]="{
             'background-image': 'url(' + proyecto.imagen + ')',
             'border-color': proyecto.color
-        }"
-        style="position: relative">
+        }">
         <div
+            class="fondo-color"
             [ngStyle]="{
-                position: 'absolute',
-                top: '0',
-                left: '0',
-                width: '100%',
-                height: '100%',
-                'background-color': proyecto.color,
-                opacity: '0.5',
-                'border-radius': '10px'
+                'background-color': proyecto.color
             }">
             <div class="options-button">
                 <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
@@ -43,13 +36,15 @@
                                 nz-icon
                                 nzType="folder-open"></span>
                         </li>
-                        <li nz-menu-item>
+                        <a
+                            nz-menu-item
+                            href="/permisos/proyecto/{{ proyecto.id }}">
                             Permisos
                             <span
                                 class="icono-opcion"
                                 nz-icon
                                 nzType="unlock"></span>
-                        </li>
+                        </a>
                         <li nz-menu-item nzDanger (click)="showBorrarModal()">
                             Borrar
                             <span
@@ -63,11 +58,13 @@
         </div>
     </div>
     <a href="/proyectos/{{ proyecto.id }}/unidades">
-        <div class="name-label" [ngStyle]="{ color: proyecto.color }">
+        <div
+            [class]="descripcionVisible ? 'name-label' : 'name-label-center'"
+            [ngStyle]="{ color: proyecto.color }">
             {{ proyecto.nombre }}
         </div>
     </a>
-    <div class="description">
+    <div class="description" *ngIf="descripcionVisible">
         {{ proyecto.descripcion }}
     </div>
 </div>

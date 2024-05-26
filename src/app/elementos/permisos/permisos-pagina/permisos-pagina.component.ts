@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Unidad } from '../../../modelos/unidad.model';
-import { Proyecto } from '../../../modelos/proyectos.model';
 import { ActivatedRoute } from '@angular/router';
-import { obtenerProyecto } from '../../../servicios/proyecto.util';
+import { Proyecto } from '../../../modelos/proyectos.model';
+import { Unidad } from '../../../modelos/unidad.model';
+import { obtenerProyectoConValidacion } from '../../../servicios/proyecto.services';
 import { obtenerUnidad } from '../../../servicios/unidad.util';
 
 @Component({
@@ -11,19 +11,23 @@ import { obtenerUnidad } from '../../../servicios/unidad.util';
     styleUrl: './permisos-pagina.component.css',
 })
 export class PermisosPaginaComponent implements OnInit {
+    tipo: string;
     unidad: Unidad;
     proyecto: Proyecto;
 
+    isLoading: boolean = true;
+
     async ngOnInit(): Promise<void> {
         this.route.params.subscribe(async params => {
-            const tipo: string = params['tipo'];
+            this.tipo = params['tipo'];
             const elementoId: number = params['id'];
 
-            if (tipo === 'proyecto') {
-                this.proyecto = await obtenerProyecto(elementoId);
-            } else if (tipo === 'unidad') {
+            if (this.tipo === 'proyecto') {
+                this.proyecto = await obtenerProyectoConValidacion(elementoId);
+            } else if (this.tipo === 'unidad') {
                 this.unidad = await obtenerUnidad(elementoId);
             }
+            this.isLoading = false;
         });
     }
 

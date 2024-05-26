@@ -28,10 +28,10 @@
                     Editar
                     <span class="icono-opcion" nz-icon nzType="edit"></span>
                 </li>
-                <li nz-menu-item>
+                <a nz-menu-item href="/permisos/unidad/{{ unidad.id }}">
                     Permisos
                     <span class="icono-opcion" nz-icon nzType="unlock"></span>
-                </li>
+                </a>
                 <li nz-menu-item nzDanger (click)="showBorrarModal()">
                     Borrar
                     <span
