@@ -2,8 +2,9 @@
 // Qué tan largo puede ser el nombre del usuario?
 
 export type Usuario = {
-    id: number;
+    id?: number;
     nombre: string;
+    color: string;
     imagenUrl: string;
-    fecha: string;
+    fecha?: string;
 };

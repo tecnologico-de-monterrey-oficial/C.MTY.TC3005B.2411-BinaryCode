@@ -82,14 +82,9 @@ export class BuscadorPersonasComponent implements OnInit {
 
     handleConfirmacion(): void {
         this.modalConfirmacionVisible = false;
-        const finales: Usuario[] = this.usuariosTotales
-            .filter(p => p.seleccionado)
-            .map(p => ({
-                id: p.id,
-                nombre: p.nombre,
-                imagenUrl: p.imagenUrl,
-                fecha: p.fecha,
-            }));
+        const finales: Usuario[] = this.usuariosTotales.filter(
+            p => p.seleccionado
+        );
         this.agregarUsuarios.emit(finales);
     }
 

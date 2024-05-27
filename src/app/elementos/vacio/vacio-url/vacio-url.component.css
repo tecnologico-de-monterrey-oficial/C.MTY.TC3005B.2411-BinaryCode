@@ -1,0 +1,15 @@
+.no-existe {
+    background: var(--contentBg);
+    padding: 24px;
+    height: 100%;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.icono {
+    font-size: 80px;
+    margin: 20px;
+}

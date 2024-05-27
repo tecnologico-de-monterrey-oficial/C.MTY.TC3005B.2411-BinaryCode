@@ -1,42 +1,67 @@
-<div class="text">
+<div class="header">
     <div class="titulo">Registrarse en CarDrive</div>
     <div
         class="usuario-icono-container"
-        [style.background-color]="colorSeleccionado">
+        [style.background-color]="registroForm.value.colorSeleccionado">
         <span class="usuario-icono" nz-icon nzType="user"></span>
     </div>
 </div>
 
-<form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
-    <div class="campo">
-        <label for="nombre">Nombre:</label>
-        <input
-            nz-input
-            placeholder="Nombre"
-            type="text"
-            formControlName="nombre" />
-    </div>
+<form nz-form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+    <nz-form-item>
+        <nz-form-label class="etiqueta" nzFor="nombre"> Nombre </nz-form-label>
+        <nz-form-control [nzErrorTip]="nombreErrorTpl">
+            <input
+                nz-input
+                class="campo-texto"
+                placeholder="Nombre"
+                type="text"
+                formControlName="nombre" />
+            <ng-template #nombreErrorTpl>
+                Se necesita agregar un nombre
+            </ng-template>
+        </nz-form-control>
+    </nz-form-item>
 
-    <div class="campo">
-        <label for="apellido">Apellido:</label>
-        <input
-            nz-input
-            placeholder="Apellido"
-            type="text"
-            formControlName="apellido" />
-    </div>
+    <nz-form-item>
+        <nz-form-label class="etiqueta" nzFor="apellido">
+            Apellido
+        </nz-form-label>
+        <nz-form-control [nzErrorTip]="apellidoErrorTpl">
+            <input
+                nz-input
+                class="campo-texto"
+                placeholder="Apellido"
+                type="text"
+                formControlName="apellido" />
+            <ng-template #apellidoErrorTpl>
+                Se necesita agregar un apellido
+            </ng-template>
+        </nz-form-control>
+    </nz-form-item>
 
-    <p class="texto-color">Selecciona el color</p>
-
-    <div class="colores">
-        <div
-            *ngFor="let opcionColor of colores"
-            nzSpan="2"
-            class="cuadro"
-            [class.seleccionado]="colorSeleccionado === opcionColor"
-            (click)="seleccionarColor(opcionColor)"
-            [style.background-color]="opcionColor"></div>
-    </div>
-
-    <button type="submit">Registrarse</button>
+    <nz-form-item>
+        <nz-form-label class="etiqueta" nzFor="colorSeleccionado">
+            Selecciona el color
+        </nz-form-label>
+        <div class="colores">
+            <div
+                *ngFor="let opcionColor of colores"
+                nzSpan="2"
+                class="cuadro"
+                [class.seleccionado]="
+                    registroForm.value.colorSeleccionado === opcionColor
+                "
+                (click)="
+                    registroForm.controls.colorSeleccionado.setValue(
+                        opcionColor
+                    )
+                "
+                [style.background-color]="opcionColor"></div>
+        </div>
+    </nz-form-item>
 </form>
+
+<button class="boton-registrar" nz-button (click)="onSubmit()" type="submit">
+    Registrar
+</button>

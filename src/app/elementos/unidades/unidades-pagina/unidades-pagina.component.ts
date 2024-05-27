@@ -16,7 +16,7 @@ export class UnidadesPaginaComponent implements OnInit {
 
     unidades: Unidad[] = [];
 
-    permisoParaAgregar: boolean = true;
+    permisoParaAgregar: boolean = false;
     unidadesVacias: boolean = false;
     esqueleto: boolean = true;
 

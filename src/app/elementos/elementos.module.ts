@@ -75,6 +75,10 @@ import { UnidadesPaginaComponent } from './unidades/unidades-pagina/unidades-pag
 import { UnidadesTarjetaEsqueletoComponent } from './unidades/unidades-tarjeta-esqueleto/unidades-tarjeta-esqueleto.component';
 import { UnidadesTarjetaComponent } from './unidades/unidades-tarjeta/unidades-tarjeta.component';
 
+// Declaraciones - Vacío
+import { VacioContenidoComponent } from './vacio/vacio-contenido/vacio-contenido.component';
+import { VacioUrlComponent } from './vacio/vacio-url/vacio-url.component';
+
 @NgModule({
     imports: [
         CommonModule,
@@ -145,6 +149,9 @@ import { UnidadesTarjetaComponent } from './unidades/unidades-tarjeta/unidades-t
         UnidadesTarjetaComponent,
         UnidadesPaginaComponent,
         UnidadesTarjetaEsqueletoComponent,
+
+        VacioContenidoComponent,
+        VacioUrlComponent,
     ],
 })
 export class ElementosModule {}

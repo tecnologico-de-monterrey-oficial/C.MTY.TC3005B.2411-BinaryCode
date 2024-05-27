@@ -5,8 +5,8 @@ import {
     NonNullableFormBuilder,
     Validators,
 } from '@angular/forms';
+import { paletaColores } from '../../../../assets/colores';
 import { Unidad } from '../../../modelos/unidad.model';
-import { listaColores } from '../modales.util';
 
 type sendCrearUnidad = {
     unidad: Unidad;
@@ -33,7 +33,7 @@ export class ModalCrearUnidadComponent implements OnInit {
         imagen: FormControl<string>;
     }>;
 
-    colores: string[] = listaColores;
+    colores: string[] = paletaColores;
 
     imagenControl: string;
 

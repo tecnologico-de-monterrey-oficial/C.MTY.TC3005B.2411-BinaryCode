@@ -8,10 +8,12 @@ import { PermisosPaginaComponent } from './elementos/permisos/permisos-pagina/pe
 import { PersonasListaComponent } from './elementos/personas/personas-lista/personas-lista.component';
 import { ProyectosPaginaComponent } from './elementos/proyectos/proyectos-pagina/proyectos-pagina.component';
 import { UnidadesPaginaComponent } from './elementos/unidades/unidades-pagina/unidades-pagina.component';
+import { VacioUrlComponent } from './elementos/vacio/vacio-url/vacio-url.component';
 
 const routes: Routes = [
-    { path: '', pathMatch: 'full', redirectTo: '/proyectos' },
     { path: 'entrada', component: EntradaPaginaComponent },
+
+    { path: '', pathMatch: 'full', redirectTo: '/proyectos' },
     { path: 'favoritos', component: ArchivosPaginaFavoritosComponent },
     { path: 'recientes', component: ArchivosPaginaRecientesComponent },
     { path: 'personas', component: PersonasListaComponent },
@@ -22,6 +24,8 @@ const routes: Routes = [
         path: 'proyectos/:proyectoID/unidades/:apartadoID',
         component: ArchivosPaginaContenidosComponent,
     },
+
+    { path: '**', component: VacioUrlComponent },
 ];
 
 @NgModule({

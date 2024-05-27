@@ -50,6 +50,25 @@ body {
     --tarjeta_rosa_fuerte: #d000af;
     --tarjeta_rosa: #ff4de3;
     --tarjeta_rosa_claro: #ff95ee;
+
+    --tema_azul: #156082;
+    --tema_naranja: #e97132;
+    --tema_verde: #196b24;
+    --tema_celeste: #0f9ed5;
+    --tema_morado: #a02b93;
+    --tema_verde_claro: #4ea72e;
+    --tema_azul_claro: #4472c4;
+    --tema_naranja_claro: #ed7d31;
+    --tema_gris: #a5a5a5;
+    --tema_amarillo: #ffc000;
+    --tema_celeste_claro: #5b9bd5;
+    --tema_verde_oscuro: #70ad47;
+    --tema_azul_oscuro: #4f81bd;
+    --tema_rojo: #c0504d;
+    --tema_verde_claro_2: #9bbb59;
+    --tema_morado_claro: #8064a2;
+    --tema_celeste_claro_2: #4bacc6;
+    --tema_naranja_claro_2: #f79646;
 }
 
 .ant-popover {

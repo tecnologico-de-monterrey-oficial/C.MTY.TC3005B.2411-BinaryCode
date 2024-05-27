@@ -1,0 +1,15 @@
+.grid-container-empty {
+    background: var(--contentBg);
+    padding: 24px;
+    min-height: 90%;
+    border-radius: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.ant-empty {
+    font-size: 30px;
+    color: var(--bordes);
+}

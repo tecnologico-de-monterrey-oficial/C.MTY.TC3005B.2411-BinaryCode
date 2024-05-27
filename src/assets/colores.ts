@@ -48,3 +48,39 @@ export const proyecto_morado: string = '#914DFF';
 export const proyecto_verde: string = '#21B514';
 export const proyecto_amarillo: string = '#FFCD4D';
 export const proyecto_rosa: string = '#FF4DE3';
+
+export const tema_azul: string = '#156082';
+export const tema_naranja: string = '#E97132';
+export const tema_verde: string = '#196B24';
+export const tema_celeste: string = '#0F9ED5';
+export const tema_morado: string = '#A02B93';
+export const tema_verde_claro: string = '#4EA72E';
+export const tema_azul_claro: string = '#4472C4';
+export const tema_naranja_claro: string = '#ED7D31';
+export const tema_gris: string = '#A5A5A5';
+export const tema_amarillo: string = '#FFC000';
+export const tema_celeste_claro: string = '#5B9BD5';
+export const tema_verde_oscuro: string = '#70AD47';
+export const tema_azul_oscuro: string = '#4F81BD';
+export const tema_rojo: string = '#C0504D';
+export const tema_verde_claro_2: string = '#9BBB59';
+export const tema_morado_claro: string = '#8064A2';
+export const tema_celeste_claro_2: string = '#4BACC6';
+export const tema_naranja_claro_2: string = '#F79646';
+
+export const paletaColores: string[] = [
+    tema_azul_claro,
+    tema_naranja_claro,
+    tema_verde_claro_2,
+    tema_amarillo,
+    tema_rojo,
+    tema_gris,
+    tema_morado_claro,
+    tema_celeste_claro_2,
+    tema_azul,
+    tema_verde,
+    tema_celeste,
+    tema_morado,
+    tema_verde_claro,
+    tarjeta_rosa_fuerte,
+];
