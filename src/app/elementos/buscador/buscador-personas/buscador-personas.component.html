@@ -39,9 +39,9 @@
     [nzFooter]="null"
     (nzOnCancel)="handleCloseModal()">
     <ng-template #modalContent>
-        <app-buscador-confirmar-modal
-            [nivel]="permiso"
-            (regresar)="handleCloseModal()"
-            (agregarUsuarios)="handleConfirmacion()" />
+        <app-modal-generico
+            [entrada]="mensajeModal"
+            (okModal)="handleConfirmacion($event)"
+            (cancelModal)="handleCloseModal()" />
     </ng-template>
 </nz-modal>

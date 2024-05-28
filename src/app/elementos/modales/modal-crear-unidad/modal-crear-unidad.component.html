@@ -53,7 +53,8 @@
                     </ng-template>
                 </div>
             </div>
-            <app-permisos-coordinadores />
+            <app-permisos-buscador-mini
+                [tipoUsuario]="permisosType.coordinador" />
         </div>
 
         <div class="right">
@@ -89,6 +90,7 @@
                         [style.background-color]="opcionColor"></div>
                 </div>
             </nz-form-item>
+            <app-permisos-buscador-mini [tipoUsuario]="permisosType.editor" />
         </div>
     </form>
 

@@ -2,7 +2,11 @@
 
 <nz-flex class="grid-container" *ngIf="!unidadesVacias || permisoParaAgregar">
     <ng-container *ngIf="esqueleto">
-        <app-unidades-tarjeta-esqueleto *ngFor="let i of loadingCards" />
+        <app-unidades-tarjeta-esqueleto />
+        <app-unidades-tarjeta-esqueleto />
+        <app-unidades-tarjeta-esqueleto />
+        <app-unidades-tarjeta-esqueleto />
+        <app-unidades-tarjeta-esqueleto />
     </ng-container>
     <app-unidades-tarjeta
         *ngFor="let unidad of unidades"

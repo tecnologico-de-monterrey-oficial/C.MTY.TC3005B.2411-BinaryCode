@@ -78,7 +78,6 @@
     [nzClosable]="false">
     <ng-template #modalBorrarContent>
         <app-modal-borrar-input
-            [loading]="isLoading"
             [entrada]="textoBorrarProyecto"
             [nombre]="proyecto.nombre"
             (okModal)="handleDelete($event)"
@@ -94,7 +93,6 @@
     [nzClosable]="false">
     <ng-template #modalArchivarContent>
         <app-modal-generico
-            [loading]="isLoading"
             [entrada]="textoArchivarProyecto"
             (okModal)="handleArchivar($event)"
             (cancelModal)="handleCancel()" />
@@ -109,7 +107,6 @@
     [nzClosable]="false">
     <ng-template #modalActivarContent>
         <app-modal-generico
-            [loading]="isLoading"
             [entrada]="textoActivarProyecto"
             (okModal)="handleActivar($event)"
             (cancelModal)="handleCancel()" />

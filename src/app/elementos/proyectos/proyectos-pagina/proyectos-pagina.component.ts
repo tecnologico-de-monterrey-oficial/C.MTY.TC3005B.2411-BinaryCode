@@ -10,14 +10,14 @@ import { obtenerProyectosConValidacion } from '../../../servicios/proyecto.servi
     styleUrl: './proyectos-pagina.component.css',
 })
 export class ProyectosPaginaComponent implements OnInit {
-    loadingCards: number[] = [1, 2, 3, 4];
+    proyectosVacios: boolean;
+    permisoParaAgregar: boolean = true;
 
     proyectosActivos: Proyecto[] = [];
     proyectosInactivos: Proyecto[] = [];
 
     esqueleto: boolean = true;
-    admin: boolean = true;
-    inactivo: boolean = false;
+    archivado: boolean = false;
 
     proyectosRespuesta: Proyecto[];
 
@@ -40,6 +40,7 @@ export class ProyectosPaginaComponent implements OnInit {
             this.proyectosInactivos = this.proyectosRespuesta.filter(
                 proyecto => !proyecto.activo
             );
+            this.proyectosVacios = this.proyectosActivos.length === 0;
             this.esqueleto = false;
         }
     }
@@ -85,6 +86,9 @@ export class ProyectosPaginaComponent implements OnInit {
     }
 
     handleActivoChange(id: number): void {
-        this.inactivo = id === 1 ? true : false;
+        this.archivado = id === 1 ? true : false;
+        this.proyectosVacios = this.archivado
+            ? this.proyectosInactivos.length === 0
+            : this.proyectosActivos.length === 0;
     }
 }

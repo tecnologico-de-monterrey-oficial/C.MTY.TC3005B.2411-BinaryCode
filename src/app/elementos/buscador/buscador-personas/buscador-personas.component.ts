@@ -1,9 +1,15 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import Fuse, { FuseResult } from 'fuse.js';
 import { Usuario } from '../../../modelos/usuario.model';
-import { nivelPermiso } from '../buscador-confirmar-modal/buscador-confirmar-modal.component';
 import { personaBuscador } from '../buscador-mini-personas/buscador-mini-personas.component';
 import { getUsuariosAPI } from '../../../servicios/usuarios.services';
+import {
+    coordinadorMensaje,
+    editorMensaje,
+    liderMensaje,
+} from '../buscador-constantes';
+import { modalGenericoInput } from '../../modales/modal-generico/modal-generico.component';
+import { permisoType } from '../../permisos/permisos-constantes';
 
 @Component({
     selector: 'app-buscador-personas',
@@ -14,7 +20,7 @@ export class BuscadorPersonasComponent implements OnInit {
     @Output() agregarUsuarios = new EventEmitter<Usuario[]>();
     @Output() cancelar = new EventEmitter<void>();
     @Input() usuariosActuales: Usuario[];
-    @Input() permiso: nivelPermiso;
+    @Input() permiso: permisoType;
 
     fuse: Fuse<personaBuscador>;
     usuariosTotales: personaBuscador[];
@@ -23,6 +29,7 @@ export class BuscadorPersonasComponent implements OnInit {
     modalConfirmacionVisible: boolean = false;
     agregarHabilitado: boolean = false;
     botonString: string;
+    mensajeModal: modalGenericoInput;
 
     parametrosBusqueda = {
         threshold: 0.3,
@@ -45,12 +52,15 @@ export class BuscadorPersonasComponent implements OnInit {
         this.usuariosFiltrados = this.usuariosTotales;
         this.fuse = new Fuse(this.usuariosTotales, this.parametrosBusqueda);
 
-        if (this.permiso === 'lider') {
-            this.botonString = 'Agregar líder(es)';
-        } else if (this.permiso === 'coordinador') {
-            this.botonString = 'Agregar coordinador(es)';
-        } else if (this.permiso === 'editor') {
-            this.botonString = 'Agregar editor(es)';
+        if (this.permiso === permisoType.lider) {
+            this.botonString = liderMensaje.botonPrincipal;
+            this.mensajeModal = liderMensaje;
+        } else if (this.permiso === permisoType.coordinador) {
+            this.botonString = coordinadorMensaje.botonPrincipal;
+            this.mensajeModal = coordinadorMensaje;
+        } else if (this.permiso === permisoType.editor) {
+            this.botonString = editorMensaje.botonPrincipal;
+            this.mensajeModal = editorMensaje;
         }
     }
 
@@ -80,12 +90,13 @@ export class BuscadorPersonasComponent implements OnInit {
         this.terminoBusqueda = '';
     }
 
-    handleConfirmacion(): void {
+    handleConfirmacion(finishLoading: () => void): void {
         this.modalConfirmacionVisible = false;
         const finales: Usuario[] = this.usuariosTotales.filter(
             p => p.seleccionado
         );
         this.agregarUsuarios.emit(finales);
+        finishLoading();
     }
 
     handleAgregar(): void {

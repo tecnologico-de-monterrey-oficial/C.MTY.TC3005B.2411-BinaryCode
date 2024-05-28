@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { paletaColores } from '../../../../assets/colores';
 import { Unidad } from '../../../modelos/unidad.model';
+import { permisoType } from '../../permisos/permisos-constantes';
 
 type sendCrearUnidad = {
     unidad: Unidad;
@@ -37,6 +38,7 @@ export class ModalCrearUnidadComponent implements OnInit {
 
     imagenControl: string;
 
+    permisosType = permisoType;
     unidadEnProceso: Unidad;
     isLoading: boolean;
 

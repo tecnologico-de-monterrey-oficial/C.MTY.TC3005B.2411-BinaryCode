@@ -34,7 +34,6 @@ import { ArchivosPaginaRecientesComponent } from './archivos/archivos-pagina-rec
 import { CarpetasFilaComponent } from './archivos/carpetas-fila/carpetas-fila.component';
 
 // Declaraciones - Buscador
-import { BuscadorConfirmarModalComponent } from './buscador/buscador-confirmar-modal/buscador-confirmar-modal.component';
 import { BuscadorMiniPersonasComponent } from './buscador/buscador-mini-personas/buscador-mini-personas.component';
 import { BuscadorPersonasComponent } from './buscador/buscador-personas/buscador-personas.component';
 
@@ -50,10 +49,9 @@ import { ModalCrearUnidadComponent } from './modales/modal-crear-unidad/modal-cr
 import { ModalGenericoComponent } from './modales/modal-generico/modal-generico.component';
 
 // Declaraciones - Permisos
-import { PermisosCoordinadoresComponent } from './permisos/permisos-coordinadores/permisos-coordinadores.component';
+import { PermisosBuscadorMiniComponent } from './permisos/permisos-buscador-mini/permisos-buscador-mini.component';
 import { PermisosCuadriculaUnidadesComponent } from './permisos/permisos-cuadricula-unidades/permisos-cuadricula-unidades.component';
 import { PermisosEditoresComponent } from './permisos/permisos-editores/permisos-editores.component';
-import { PermisosLideresComponent } from './permisos/permisos-lideres/permisos-lideres.component';
 import { PermisosMiniCoordinadorComponent } from './permisos/permisos-mini-coordinador/permisos-mini-coordinador.component';
 import { PermisosMiniEditorComponent } from './permisos/permisos-mini-editor/permisos-mini-editor.component';
 import { PermisosPaginaComponent } from './permisos/permisos-pagina/permisos-pagina.component';
@@ -117,7 +115,6 @@ import { VacioUrlComponent } from './vacio/vacio-url/vacio-url.component';
 
         BuscadorPersonasComponent,
         BuscadorMiniPersonasComponent,
-        BuscadorConfirmarModalComponent,
 
         EntradaPaginaComponent,
         EntradaLoginComponent,
@@ -128,10 +125,9 @@ import { VacioUrlComponent } from './vacio/vacio-url/vacio-url.component';
         ModalCrearUnidadComponent,
         ModalGenericoComponent,
 
-        PermisosCoordinadoresComponent,
+        PermisosBuscadorMiniComponent,
         PermisosCuadriculaUnidadesComponent,
         PermisosEditoresComponent,
-        PermisosLideresComponent,
         PermisosMiniCoordinadorComponent,
         PermisosMiniEditorComponent,
         PermisosPaginaComponent,

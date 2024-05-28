@@ -12,11 +12,9 @@ import { obtenerUnidades } from '../../../servicios/unidad.util';
 export class UnidadesPaginaComponent implements OnInit {
     proyectoId: number;
 
-    loadingCards: number[] = [1, 2, 3, 4, 5];
-
     unidades: Unidad[] = [];
 
-    permisoParaAgregar: boolean = false;
+    permisoParaAgregar: boolean = true;
     unidadesVacias: boolean = false;
     esqueleto: boolean = true;
 

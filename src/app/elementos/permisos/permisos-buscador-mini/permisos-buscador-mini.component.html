@@ -1,5 +1,5 @@
 <div class="subtitulo">
-    <div>Agregar líder</div>
+    <div>{{ mensajes.titulo }}</div>
     <span
         nz-popover
         nz-icon
@@ -14,14 +14,14 @@
     </span>
 </div>
 <app-permisos-mini-coordinador
-    *ngFor="let lider of lideres"
-    [coordinador]="lider"
+    *ngFor="let usuario of usuariosActuales"
+    [coordinador]="usuario"
     (removeItemClick)="onRemoveItemClick($event)" />
 
 <ng-template #buscador>
     <app-buscador-personas
-        (agregarUsuarios)="addCoordinadores($event)"
+        (agregarUsuarios)="addUsuarios($event)"
         (cancelar)="cancelarBuscador()"
         [usuariosActuales]="lideres"
-        permiso="lider" />
+        [permiso]="tipoUsuario" />
 </ng-template>

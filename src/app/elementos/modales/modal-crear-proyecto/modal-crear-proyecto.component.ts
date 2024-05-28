@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { paletaColores } from '../../../../assets/colores';
 import { Proyecto } from '../../../modelos/proyectos.model';
+import { permisoType } from '../../permisos/permisos-constantes';
 
 type sendCrear = {
     proyecto: Proyecto;
@@ -37,6 +38,7 @@ export class ModalCrearProyectoComponent implements OnInit {
 
     imagenControl: string;
 
+    permisosType = permisoType;
     proyectoEnProceso: Proyecto;
     isLoading: boolean;
 

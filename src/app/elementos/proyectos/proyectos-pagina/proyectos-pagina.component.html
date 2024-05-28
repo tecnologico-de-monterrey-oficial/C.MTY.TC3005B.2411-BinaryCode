@@ -6,13 +6,18 @@
         (nzValueChange)="handleActivoChange($event)" />
 </div>
 
-<nz-flex class="grid-container">
+<nz-flex
+    class="grid-container"
+    *ngIf="!(proyectosVacios && !(!archivado && permisoParaAgregar))">
     <ng-container *ngIf="esqueleto">
-        <app-proyectos-tarjeta-esqueleto *ngFor="let i of loadingCards" />
+        <app-proyectos-tarjeta-esqueleto />
+        <app-proyectos-tarjeta-esqueleto />
+        <app-proyectos-tarjeta-esqueleto />
+        <app-proyectos-tarjeta-esqueleto />
     </ng-container>
     <app-proyectos-tarjeta
         *ngFor="
-            let proyecto of !inactivo ? proyectosActivos : proyectosInactivos
+            let proyecto of !archivado ? proyectosActivos : proyectosInactivos
         "
         [proyecto]="proyecto"
         (eliminarProyectoImportado)="borrarProyecto($event)"
@@ -20,6 +25,10 @@
         (archivarProyectoImportado)="archivarProyecto($event)"
         (activarProyectoImportado)="activarProyecto($event)" />
     <app-proyectos-crear-tarjeta
-        *ngIf="!esqueleto && !inactivo && admin"
+        *ngIf="!esqueleto && !archivado && permisoParaAgregar"
         (crearProyectoImportado)="crearProyecto($event)" />
 </nz-flex>
+
+<app-vacio-contenido
+    [mensaje]="'No hay proyectos'"
+    *ngIf="proyectosVacios && !(!archivado && permisoParaAgregar)" />
