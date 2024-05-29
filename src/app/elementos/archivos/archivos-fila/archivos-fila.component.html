@@ -28,7 +28,13 @@
                 class="usuario-imagen"
                 [src]="archivo.propietario.imagenUrl"
                 alt="Imagen de usuario" />
-            <div class="texto">{{ archivo.propietario.nombre }}</div>
+            <div class="texto">
+                {{
+                    archivo.propietario.primer_nombre +
+                        ' ' +
+                        archivo.propietario.segundo_nombre
+                }}
+            </div>
         </div>
 
         <!-- Etiquetas -->

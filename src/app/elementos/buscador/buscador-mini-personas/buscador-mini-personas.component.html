@@ -4,7 +4,9 @@
             class="usuario-imagen"
             [src]="persona.imagenUrl"
             alt="Imagen de usuario" />
-        <div class="nombre">{{ persona.nombre }}</div>
+        <div class="nombre">
+            {{ persona.primer_nombre + ' ' + persona.segundo_nombre }}
+        </div>
     </div>
     <span
         nz-icon

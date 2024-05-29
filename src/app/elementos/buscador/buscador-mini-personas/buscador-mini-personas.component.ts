@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Usuario } from '../../../modelos/usuario.model';
 import { bordes, tarjeta_verde_medio } from '../../../../assets/colores';
+import { Usuario } from '../../../modelos';
 
 export type personaBuscador = Usuario & { seleccionado: boolean };
 

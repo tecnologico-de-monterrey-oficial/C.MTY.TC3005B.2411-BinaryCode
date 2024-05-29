@@ -9,11 +9,62 @@ import {
     icono_rosa,
     icono_rosa_fuerte,
     icono_verde,
-} from '../../assets/colores';
+} from '../assets/colores';
+
+export type Archivo = {
+    id: string;
+    favorito: boolean;
+    icono: Icono;
+    nombre: string;
+    propietario: Usuario;
+    etiquetas: Etiqueta[];
+    fecha: string;
+};
+
+export type Carpeta = {
+    id: string;
+    nombre: string;
+    fecha: string;
+    color?: string;
+};
+
+export type Etiqueta = {
+    id: string;
+    nombre: string;
+    color?: string;
+};
 
 export type Icono = {
     nombre: string;
     color: string;
+};
+
+export type Proyecto = {
+    id?: number;
+    nombre: string;
+    descripcion: string;
+    color: string;
+    imagen: string;
+    activo: boolean;
+    creator: number;
+};
+
+export type Unidad = {
+    id?: number;
+    nombre: string;
+    color: string;
+    imagen: string;
+    id_proyecto: number;
+    id_usuario: number;
+};
+
+export type Usuario = {
+    id?: number;
+    primer_nombre: string;
+    segundo_nombre: string;
+    color: string;
+    imagenUrl: string;
+    fecha?: string;
 };
 
 type DefinitionObject = {

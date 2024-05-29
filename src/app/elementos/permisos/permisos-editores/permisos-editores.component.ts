@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Unidad } from '../../../modelos/unidad.model';
-import { Usuario } from '../../../modelos/usuario.model';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { getEditores } from '../../../servicios/unidad.services';
+import { Unidad, Usuario } from '../../../modelos';
 
 @Component({
     selector: 'app-permisos-editores',

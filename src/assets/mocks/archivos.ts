@@ -1,5 +1,4 @@
-import { Archivo } from '../../app/modelos/archivo.model';
-import { fileIcons } from '../../app/modelos/icono.model';
+import { Archivo, fileIcons } from '../../app/modelos';
 import {
     E1,
     E10,

@@ -25,13 +25,13 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 
 // Declaraciones - Archivos
+import { ArchivosCarpetaFilaComponent } from './archivos/archivos-carpeta-fila/archivos-carpeta-fila.component';
 import { ArchivosCrearModalComponent } from './archivos/archivos-crear-modal/archivos-crear-modal.component';
 import { ArchivosFilaComponent } from './archivos/archivos-fila/archivos-fila.component';
 import { ArchivosListaComponent } from './archivos/archivos-lista/archivos-lista.component';
 import { ArchivosPaginaContenidosComponent } from './archivos/archivos-pagina-contenidos/archivos-pagina-contenidos.component';
 import { ArchivosPaginaFavoritosComponent } from './archivos/archivos-pagina-favoritos/archivos-pagina-favoritos.component';
 import { ArchivosPaginaRecientesComponent } from './archivos/archivos-pagina-recientes/archivos-pagina-recientes.component';
-import { CarpetasFilaComponent } from './archivos/carpetas-fila/carpetas-fila.component';
 
 // Declaraciones - Buscador
 import { BuscadorMiniPersonasComponent } from './buscador/buscador-mini-personas/buscador-mini-personas.component';
@@ -42,8 +42,11 @@ import { EntradaLoginComponent } from './entrada/entrada-login/entrada-login.com
 import { EntradaPaginaComponent } from './entrada/entrada-pagina/entrada-pagina.component';
 import { EntradaRegistroComponent } from './entrada/entrada-registro/entrada-registro.component';
 
+import { EstructuraEncabezadoComponent } from './estructura/estructura-encabezado/estructura-encabezado.component';
+
 // Declaraciones - Modales
 import { ModalBorrarInputComponent } from './modales/modal-borrar-input/modal-borrar-input.component';
+import { ModalCrearArchivoComponent } from './modales/modal-crear-archivo/modal-crear-archivo.component';
 import { ModalCrearProyectoComponent } from './modales/modal-crear-proyecto/modal-crear-proyecto.component';
 import { ModalCrearUnidadComponent } from './modales/modal-crear-unidad/modal-crear-unidad.component';
 import { ModalGenericoComponent } from './modales/modal-generico/modal-generico.component';
@@ -74,8 +77,10 @@ import { UnidadesTarjetaEsqueletoComponent } from './unidades/unidades-tarjeta-e
 import { UnidadesTarjetaComponent } from './unidades/unidades-tarjeta/unidades-tarjeta.component';
 
 // Declaraciones - Vacío
+import { ArchivosCrearFilaComponent } from './archivos/archivos-crear-fila/archivos-crear-fila.component';
 import { VacioContenidoComponent } from './vacio/vacio-contenido/vacio-contenido.component';
 import { VacioUrlComponent } from './vacio/vacio-url/vacio-url.component';
+import { EstructuraPaginaComponent } from './estructura/estructura-pagina/estructura-pagina.component';
 
 @NgModule({
     imports: [
@@ -105,22 +110,27 @@ import { VacioUrlComponent } from './vacio/vacio-url/vacio-url.component';
         NzToolTipModule,
     ],
     declarations: [
+        ArchivosCarpetaFilaComponent,
+        ArchivosCrearFilaComponent,
         ArchivosCrearModalComponent,
         ArchivosFilaComponent,
         ArchivosListaComponent,
         ArchivosPaginaContenidosComponent,
         ArchivosPaginaFavoritosComponent,
         ArchivosPaginaRecientesComponent,
-        CarpetasFilaComponent,
 
         BuscadorPersonasComponent,
         BuscadorMiniPersonasComponent,
+
+        EstructuraEncabezadoComponent,
+        EstructuraPaginaComponent,
 
         EntradaPaginaComponent,
         EntradaLoginComponent,
         EntradaRegistroComponent,
 
         ModalBorrarInputComponent,
+        ModalCrearArchivoComponent,
         ModalCrearProyectoComponent,
         ModalCrearUnidadComponent,
         ModalGenericoComponent,
@@ -149,5 +159,6 @@ import { VacioUrlComponent } from './vacio/vacio-url/vacio-url.component';
         VacioContenidoComponent,
         VacioUrlComponent,
     ],
+    exports: [EstructuraPaginaComponent],
 })
 export class ElementosModule {}

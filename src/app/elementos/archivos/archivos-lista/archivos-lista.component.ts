@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Archivo } from '../../../modelos/archivo.model';
-import { Carpeta } from '../../../modelos/carpeta.model';
+import { Archivo, Carpeta } from '../../../modelos';
 
 @Component({
     selector: 'app-archivos-lista',
@@ -10,4 +9,6 @@ import { Carpeta } from '../../../modelos/carpeta.model';
 export class ArchivosListaComponent {
     @Input() archivos: Archivo[];
     @Input() carpetas: Carpeta[];
+
+    @Input() permiso: boolean;
 }

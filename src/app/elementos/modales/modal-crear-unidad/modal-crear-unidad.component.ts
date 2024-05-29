@@ -6,8 +6,8 @@ import {
     Validators,
 } from '@angular/forms';
 import { paletaColores } from '../../../../assets/colores';
-import { Unidad } from '../../../modelos/unidad.model';
 import { permisoType } from '../../permisos/permisos-constantes';
+import { Unidad } from '../../../modelos';
 
 type sendCrearUnidad = {
     unidad: Unidad;

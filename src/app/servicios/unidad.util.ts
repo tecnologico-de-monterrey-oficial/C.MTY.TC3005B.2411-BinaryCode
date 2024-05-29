@@ -1,5 +1,4 @@
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { Unidad } from '../modelos/unidad.model';
 import {
     actualizarUnidadAPI,
     crearUnidadAPI,
@@ -8,7 +7,7 @@ import {
     getUnidadesPorProyectoAPI,
 } from './unidad.services';
 import { EventEmitter } from '@angular/core';
-import { Usuario } from '../modelos/usuario.model';
+import { Unidad, Usuario } from '../modelos';
 
 export const obtenerUnidad: {
     (unidadId: number): Promise<Unidad>;

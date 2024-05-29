@@ -1,4 +1,4 @@
-import { Carpeta } from '../../app/modelos/carpeta.model';
+import { Carpeta } from '../../app/modelos';
 import {
     tarjeta_azul_fuerte,
     tarjeta_rojo_claro,

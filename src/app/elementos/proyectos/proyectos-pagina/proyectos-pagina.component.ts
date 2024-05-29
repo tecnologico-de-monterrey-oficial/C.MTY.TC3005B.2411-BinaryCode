@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Proyecto } from '../../../modelos/proyectos.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { obtenerProyectosConValidacion } from '../../../servicios/proyecto.services';
+import { Proyecto } from '../../../modelos';
 
 @Component({
     selector: 'app-proyectos-pagina',

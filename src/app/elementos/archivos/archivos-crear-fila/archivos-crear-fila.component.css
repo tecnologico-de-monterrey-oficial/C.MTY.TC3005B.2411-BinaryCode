@@ -1,0 +1,48 @@
+/* General */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+}
+
+.file-card {
+    width: 100%;
+    border-top: 1px solid var(--bordes);
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.ant-col {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.texto {
+    padding-left: 15px;
+    color: var(--negro);
+}
+
+/* Carpeta */
+
+.archivo-icono {
+    color: var(--grisPerfil);
+    font-size: 25px;
+    padding-left: 15px;
+    width: 55px;
+}
+
+/* Responsividad */
+
+@media (max-width: 1048px) {
+    .hide-on-small-1 {
+        display: none;
+    }
+}
+
+@media (max-width: 820px) {
+    .hide-on-small-2 {
+        display: none;
+    }
+}

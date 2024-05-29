@@ -4,7 +4,9 @@
             class="usuario-imagen"
             [src]="editor.imagenUrl"
             alt="Imagen de usuario" />
-        <div class="nombre">{{ editor.nombre }}</div>
+        <div class="nombre">
+            {{ editor.primer_nombre + ' ' + editor.segundo_nombre }}
+        </div>
     </div>
     <div class="derecha">
         <span

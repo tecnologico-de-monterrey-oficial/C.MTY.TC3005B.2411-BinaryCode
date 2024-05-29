@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Archivo } from '../../../modelos/archivo.model';
 import { setFavoritoAPI } from '../../../servicios/archivo.services';
+import { Archivo } from '../../../modelos';
 
 @Component({
     selector: 'app-archivos-fila',

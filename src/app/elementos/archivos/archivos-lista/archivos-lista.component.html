@@ -11,4 +11,5 @@
     </div>
     <app-carpetas-fila *ngFor="let carpeta of carpetas" [carpeta]="carpeta" />
     <app-archivos-fila *ngFor="let archivo of archivos" [archivo]="archivo" />
+    <app-archivos-crear-fila *ngIf="permiso" />
 </div>

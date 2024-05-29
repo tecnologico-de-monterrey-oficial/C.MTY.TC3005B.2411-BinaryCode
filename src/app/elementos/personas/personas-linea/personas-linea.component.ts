@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Usuario } from '../../../modelos/usuario.model';
+import { Usuario } from '../../../modelos';
 
 @Component({
     selector: 'app-personas-linea',

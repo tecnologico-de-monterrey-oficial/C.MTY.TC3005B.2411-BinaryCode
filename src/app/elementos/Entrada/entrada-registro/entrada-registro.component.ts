@@ -6,7 +6,7 @@ import {
     Validators,
 } from '@angular/forms';
 import { paletaColores } from '../../../../assets/colores';
-import { Usuario } from '../../../modelos/usuario.model';
+import { Usuario } from '../../../modelos';
 
 @Component({
     selector: 'app-entrada-registro',
@@ -47,10 +47,8 @@ export class EntradaRegistroComponent implements OnInit {
         this.isLoading = true;
         if (this.registroForm.valid) {
             this.usuario = {
-                nombre:
-                    this.registroForm.controls.nombre.value +
-                    ' ' +
-                    this.registroForm.controls.apellido.value,
+                primer_nombre: this.registroForm.controls.nombre.value,
+                segundo_nombre: this.registroForm.controls.apellido.value,
                 color: this.registroForm.controls.colorSeleccionado.value,
                 imagenUrl: this.registroForm.controls.imagen.value,
             };

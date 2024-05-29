@@ -1,10 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Proyecto } from '../../../modelos/proyectos.model';
-import { Unidad } from '../../../modelos/unidad.model';
-import { Usuario } from '../../../modelos/usuario.model';
 import { getCoordinadores } from '../../../servicios/unidad.util';
 import { getLideres } from '../../../servicios/proyecto.services';
 import { permisoType } from '../permisos-constantes';
+import { Proyecto, Unidad, Usuario } from '../../../modelos';
 
 @Component({
     selector: 'app-permisos-sidebar',

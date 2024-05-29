@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Usuario } from '../../../modelos/usuario.model';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { US1, US2, US3 } from '../../../../assets/mocks/usuarios';
 import {
@@ -9,6 +8,7 @@ import {
     liderMensaje,
     permisoType,
 } from '../permisos-constantes';
+import { Usuario } from '../../../modelos';
 
 @Component({
     selector: 'app-permisos-buscador-mini',

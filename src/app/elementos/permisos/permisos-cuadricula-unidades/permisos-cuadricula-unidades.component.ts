@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { Unidad } from '../../../modelos/unidad.model';
 import { obtenerUnidades } from '../../../servicios/unidad.util';
+import { Unidad } from '../../../modelos';
 
 @Component({
     selector: 'app-permisos-cuadricula-unidades',

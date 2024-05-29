@@ -1,8 +1,7 @@
 import { EventEmitter } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { US4, US5, US6 } from '../../assets/mocks/usuarios';
-import { Proyecto } from '../modelos/proyectos.model';
-import { Usuario } from '../modelos/usuario.model';
+import { Proyecto, Usuario } from '../modelos';
 
 export interface RespuestaProyectoServidor {
     mensaje?: Proyecto | Proyecto[] | string;

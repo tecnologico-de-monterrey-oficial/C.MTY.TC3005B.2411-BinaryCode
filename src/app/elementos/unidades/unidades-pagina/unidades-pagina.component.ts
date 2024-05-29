@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Unidad } from '../../../modelos/unidad.model';
 import { ActivatedRoute } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { obtenerUnidades } from '../../../servicios/unidad.util';
+import { Unidad } from '../../../modelos';
 
 @Component({
     selector: 'app-unidades-pagina',

@@ -1,0 +1,35 @@
+<nz-layout class="whole-layout">
+    <app-estructura-encabezado *ngIf="!isLoginRoute" />
+    <nz-layout>
+        <nz-sider
+            *ngIf="!isLoginRoute"
+            class="collapsible-sidebar"
+            nzWidth="250px"
+            nzCollapsible
+            [nzCollapsed]="true">
+            <ul nz-menu nzMode="inline" class="sider">
+                <li nz-menu-item routerLink="/proyectos">
+                    <span nz-icon nzType="folder"></span>
+                    <span> Proyecto</span>
+                </li>
+                <li nz-menu-item routerLink="/favoritos">
+                    <span nz-icon nzType="star"></span>
+                    <span> Favoritos</span>
+                </li>
+                <li nz-menu-item routerLink="/recientes">
+                    <span nz-icon nzType="history"></span>
+                    <span> Documentos recientes</span>
+                </li>
+                <li nz-menu-item routerLink="/personas">
+                    <span nz-icon nzType="team"></span>
+                    <span> Personas</span>
+                </li>
+            </ul>
+        </nz-sider>
+        <nz-layout [class]="!isLoginRoute ? 'inner-layout' : ''">
+            <nz-content>
+                <ng-content></ng-content>
+            </nz-content>
+        </nz-layout>
+    </nz-layout>
+</nz-layout>

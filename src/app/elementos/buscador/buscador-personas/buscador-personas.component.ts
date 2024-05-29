@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import Fuse, { FuseResult } from 'fuse.js';
-import { Usuario } from '../../../modelos/usuario.model';
 import { personaBuscador } from '../buscador-mini-personas/buscador-mini-personas.component';
 import { getUsuariosAPI } from '../../../servicios/usuarios.services';
 import {
@@ -10,6 +9,7 @@ import {
 } from '../buscador-constantes';
 import { modalGenericoInput } from '../../modales/modal-generico/modal-generico.component';
 import { permisoType } from '../../permisos/permisos-constantes';
+import { Usuario } from '../../../modelos';
 
 @Component({
     selector: 'app-buscador-personas',
@@ -67,7 +67,7 @@ export class BuscadorPersonasComponent implements OnInit {
     sortTotales(): void {
         this.usuariosTotales.sort((a, b) => {
             if (a.seleccionado === b.seleccionado) {
-                return a.nombre.localeCompare(b.nombre);
+                return a.primer_nombre.localeCompare(b.primer_nombre);
             }
             return b.seleccionado ? 1 : -1;
         });

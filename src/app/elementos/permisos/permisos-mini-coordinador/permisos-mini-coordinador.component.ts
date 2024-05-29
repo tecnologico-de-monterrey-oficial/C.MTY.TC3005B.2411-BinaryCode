@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Usuario } from '../../../modelos/usuario.model';
+import { Usuario } from '../../../modelos';
 
 @Component({
     selector: 'app-permisos-mini-coordinador',

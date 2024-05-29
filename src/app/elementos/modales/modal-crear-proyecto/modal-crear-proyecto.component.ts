@@ -6,8 +6,8 @@ import {
     Validators,
 } from '@angular/forms';
 import { paletaColores } from '../../../../assets/colores';
-import { Proyecto } from '../../../modelos/proyectos.model';
 import { permisoType } from '../../permisos/permisos-constantes';
+import { Proyecto } from '../../../modelos';
 
 type sendCrear = {
     proyecto: Proyecto;

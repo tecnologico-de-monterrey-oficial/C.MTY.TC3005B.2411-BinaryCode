@@ -1,6 +1,5 @@
 import { US1, US2, US3, US4, US5, US6 } from '../../assets/mocks/usuarios';
-import { Unidad } from '../modelos/unidad.model';
-import { Usuario } from '../modelos/usuario.model';
+import { Unidad, Usuario } from '../modelos';
 
 // Llamadas API sin validación
 

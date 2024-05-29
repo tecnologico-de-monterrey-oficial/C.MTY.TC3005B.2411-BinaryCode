@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Proyecto } from '../../../modelos/proyectos.model';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { crearProyectoConValidacion } from '../../../servicios/proyecto.services';
+import { Proyecto } from '../../../modelos';
 
 @Component({
     selector: 'app-proyectos-crear-tarjeta',

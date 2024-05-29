@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { Proyecto } from '../../../modelos/proyectos.model';
 import { modalBorrarInputInput } from '../../modales/modal-borrar-input/modal-borrar-input.component';
 import { modalGenericoInput } from '../../modales/modal-generico/modal-generico.component';
 import {
@@ -15,6 +14,7 @@ import {
     actualizarProyectoConValidacion,
     borrarProyectoConValidacion,
 } from '../../../servicios/proyecto.services';
+import { Proyecto } from '../../../modelos';
 
 @Component({
     selector: 'app-proyectos-tarjeta',

@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Unidad } from '../../../modelos/unidad.model';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { borrarUnidad, actualizarUnidad } from '../../../servicios/unidad.util';
 import { modalBorrarInputInput } from '../../modales/modal-borrar-input/modal-borrar-input.component';
 import { entradaBorrarUnidad } from '../unidades-constantes';
+import { Unidad } from '../../../modelos';
 
 @Component({
     selector: 'app-unidades-tarjeta',

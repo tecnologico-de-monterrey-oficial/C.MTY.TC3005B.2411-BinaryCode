@@ -1,4 +1,4 @@
-import { Etiqueta } from '../../app/modelos/etiqueta.model';
+import { Etiqueta } from '../../app/modelos';
 import {
     tarjeta_amarillo,
     tarjeta_amarillo_claro,
