@@ -1,3 +1,4 @@
+// app.module.ts
 import { NgModule } from '@angular/core';
 
 // Declarations
