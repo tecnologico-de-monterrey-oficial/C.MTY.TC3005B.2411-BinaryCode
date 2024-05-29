@@ -1,6 +1,5 @@
-/* registro.component.css */
 .titulo {
-    font-size: 35px;
+    font-size: 25px;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -44,7 +43,7 @@ button:hover {
     display: block;
 }
 
-.campo {
+/*.campo {
     margin-bottom: 20px;
     width: 100%;
     display: flex;
@@ -66,12 +65,25 @@ button:hover {
     border-radius: 5px;
     font-size: 20px;
     padding: 10px;
+} */
+
+.campo .input-wrapper {
+    display: flex;
+    align-items: center;
 }
 
+.campo .input-wrapper input {
+    flex-grow: 1;
+}
+
+.campo .input-wrapper i {
+    margin-left: 10px;
+    cursor: pointer;
+}
 .cuadro {
-    width: 50px;
-    height: 50px;
-    margin: 10px;
+    width: 45px;
+    height: 45px;
+    margin: 2px;
     border: 1px solid var(--negro);
     border-radius: 5px;
 }

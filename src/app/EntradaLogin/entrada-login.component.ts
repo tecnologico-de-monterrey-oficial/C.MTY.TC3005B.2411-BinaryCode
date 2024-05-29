@@ -1,4 +1,3 @@
-// entrada-login.component.ts
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
@@ -8,7 +7,7 @@ import { FormBuilder } from '@angular/forms';
     styleUrls: ['./entrada-login.component.css'],
 })
 export class EntradaLoginComponent {
-    showLogin: boolean = true; // true muestra login, false muestra registro
+    showLogin: boolean = true; // true  login      false  registro
 
     constructor(private fb: FormBuilder) {}
 

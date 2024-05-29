@@ -1,4 +1,3 @@
-<!-- registro.component.html -->
 <div class="text">
     <div class="titulo">Registrarse en CarDrive</div>
     <div
@@ -9,6 +8,46 @@
 </div>
 
 <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+    <div class="campo">
+        <label for="email">Email:</label>
+        <input
+            nz-input
+            placeholder="Introduce tu email"
+            formControlName="email"
+            type="email" />
+    </div>
+
+    <div class="campo">
+        <label for="password">Crea tu contraseña:</label>
+        <div class="input-wrapper">
+            <input
+                nz-input
+                type="password"
+                placeholder="Introduce tu contraseña"
+                formControlName="password"
+                [type]="hide ? 'password' : 'text'" />
+            <i
+                nz-icon
+                nzType="{{ hide ? 'eye-invisible' : 'eye' }}"
+                (click)="toggleHide()"></i>
+        </div>
+    </div>
+
+    <div class="campo">
+        <label for="password">Confirma tu contraseña:</label>
+        <div class="input-wrapper">
+            <input
+                nz-input
+                type="password"
+                placeholder="Confirma tu contraseña"
+                [type]="hide ? 'password' : 'text'" />
+            <i
+                nz-icon
+                nzType="{{ hide ? 'eye-invisible' : 'eye' }}"
+                (click)="toggleHide()"></i>
+        </div>
+    </div>
+
     <div class="campo">
         <label for="nombre">Nombre:</label>
         <input
