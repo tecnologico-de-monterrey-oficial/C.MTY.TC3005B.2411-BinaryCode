@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-estructura-pagina',
@@ -7,6 +8,7 @@ import { NavigationEnd, Router } from '@angular/router';
     styleUrl: './estructura-pagina.component.css',
 })
 export class EstructuraPaginaComponent implements OnInit {
+    routeSubscription: Subscription;
     isLoginRoute: boolean = true;
 
     constructor(private router: Router) {}
@@ -16,8 +18,13 @@ export class EstructuraPaginaComponent implements OnInit {
             if (event instanceof NavigationEnd) {
                 this.isLoginRoute =
                     event.url.includes('registro') ||
-                    event.url.includes('login');
+                    event.url.includes('login') ||
+                    !this.routeExists(event.url);
             }
         });
+    }
+
+    private routeExists(url: string): boolean {
+        return this.router.config.some(route => route.path === url.slice(1));
     }
 }

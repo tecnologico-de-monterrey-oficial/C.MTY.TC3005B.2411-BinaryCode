@@ -1,5 +1,5 @@
 <nz-header nz-row>
-    <div nz-col nzSpan="1">
+    <div>
         <a href="/proyectos">
             <img
                 class="logo"
@@ -7,18 +7,18 @@
                 alt="Logo de la aplicación" />
         </a>
     </div>
-    <nz-input-group nz-col nzSpan="3" [nzSuffix]="suffixIconSearch">
-        <input type="text" nz-input placeholder="input search text" />
+    <nz-input-group class="encabezado" [nzSuffix]="suffixIconSearch">
+        <input
+            class="texto-busqueda"
+            type="text"
+            nz-input
+            placeholder="Búsqueda" />
     </nz-input-group>
     <ng-template #suffixIconSearch>
         <span nz-icon nzType="search" class="header-icon"></span>
+        <span nz-icon nzType="control" class="control-icon"></span>
     </ng-template>
     <div class="derecha">
-        <span
-            nz-icon
-            nzType="bell"
-            nzTheme="outline"
-            class="header-icon"></span>
         <ng-container *ngIf="!showPlaceholderUsuario; else icono">
             <!-- Mostrar la imagen si la URL de la imagen está presente -->
             <img

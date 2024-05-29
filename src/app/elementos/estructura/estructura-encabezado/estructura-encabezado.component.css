@@ -4,8 +4,19 @@
     float: left;
 }
 
+.encabezado {
+    background-color: var(--contentBg);
+    border-radius: 20px;
+    border: none;
+}
+
+.texto-busqueda {
+    background: none;
+}
+
 .ant-layout-header {
     padding: 0;
+    margin-bottom: 10px;
     line-height: 64px;
     background: var(--blanco);
     display: flex;
@@ -15,10 +26,19 @@
 
 .ant-input-affix-wrapper {
     width: 40%;
+    padding: 0 11px;
 }
 
 .header-icon {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+}
+
+.control-icon {
+    font-size: 1.5rem;
+    padding: 8px 4px;
+    padding-right: 0;
+    border-left: 3px solid var(--blanco);
+    cursor: pointer;
 }
 
 .derecha {
@@ -63,4 +83,8 @@
 
 .icono-opcion {
     margin-left: 10px;
+}
+
+.ant-input-affix-wrapper > input.ant-input {
+    padding-left: 5px;
 }
