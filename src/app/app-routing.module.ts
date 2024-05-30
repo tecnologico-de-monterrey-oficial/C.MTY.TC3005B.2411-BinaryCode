@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+// import { IsAuthGuard } from './guards/auth.guards';
+//descomentar cuando pruebes autenticacion
 
 const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: '/proyectos' },
@@ -24,6 +26,7 @@ const routes: Routes = [
             import(
                 './paginas/vista-proyectos/vista-proyectos-routing.module'
             ).then(m => m.VistaProyectosRoutingModule),
+        // canActivate: [IsAuthGuard], DESCONECTAR AL PROBAR AUTH
     },
     {
         path: 'unidades',
@@ -45,6 +48,13 @@ const routes: Routes = [
             import(
                 './paginas/vista-permisos/vista-permisos-routing.module'
             ).then(m => m.VistaPermisosRoutingModule),
+    },
+    {
+        path: 'login',
+        loadChildren: () =>
+            import('./EntradaLogin/entrada-login.module').then(
+                m => m.EntradaLoginModule
+            ),
     },
 ];
 

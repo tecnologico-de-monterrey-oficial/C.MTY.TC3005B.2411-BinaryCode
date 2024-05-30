@@ -32,6 +32,7 @@ import { VistaPersonasModule } from './paginas/vista-personas/vista-persona.modu
 import { VistaUnidadesModule } from './paginas/vista-unidades/vista-unidades.module';
 import { VistaPermisosModule } from './paginas/vista-permisos/vista-permisos.module';
 import { NzColDirective, NzRowDirective } from 'ng-zorro-antd/grid';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 enableRipple(true);
 
@@ -69,5 +70,6 @@ enableRipple(true);
         NzRowDirective,
     ],
     bootstrap: [AppComponent],
+    providers: [provideAnimationsAsync()],
 })
 export class AppModule {}
