@@ -51,6 +51,7 @@ export class RegistroComponent implements OnInit {
     ];
 
     colorSeleccionado: string;
+    hide = true;
 
     constructor(private fb: FormBuilder) {}
 
@@ -62,7 +63,13 @@ export class RegistroComponent implements OnInit {
             nombre: ['', Validators.required],
             apellido: ['', Validators.required],
             color: [this.colorSeleccionado, Validators.required],
+            email: ['', [Validators.required, Validators.email]],
+            password: ['', [Validators.required, Validators.minLength(6)]],
         });
+    }
+
+    toggleHide(): void {
+        this.hide = !this.hide;
     }
 
     seleccionarColor(color: string): void {
@@ -74,7 +81,7 @@ export class RegistroComponent implements OnInit {
     onSubmit(): void {
         if (this.registroForm.valid) {
             console.log('Form values:', this.registroForm.value);
-            // Aqui poner lo de la Enviar los datos a la base de datos
+            // Presno
         }
     }
 }

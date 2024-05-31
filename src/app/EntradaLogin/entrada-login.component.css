@@ -42,6 +42,21 @@ app-registro {
     overflow: auto;
 }
 
+.text {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.text a {
+    color: #ff4d4f;
+    text-decoration: none;
+}
+
+.text a:hover {
+    color: #d9363e;
+}
+
 /* Media queries para pantallas pequeñas */
 @media (max-width: 768px) {
     .container {
