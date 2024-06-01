@@ -1,0 +1,27 @@
+<div class="subtitulo">
+    <div>{{ mensajes.titulo }}</div>
+    <span
+        nz-popover
+        nz-icon
+        [(nzPopoverVisible)]="buscadorVisible"
+        (click)="abrirBuscador()"
+        [nzPopoverContent]="buscador"
+        [nzPopoverTrigger]="null"
+        nzTrigger="manual"
+        nzPopoverPlacement="bottomLeft"
+        nzType="plus-circle"
+        nzTheme="fill">
+    </span>
+</div>
+<app-personas-agregar-lista-pq-individual
+    *ngFor="let usuario of usuariosActuales"
+    [coordinador]="usuario"
+    (removeItemClick)="onRemoveItemClick($event)" />
+
+<ng-template #buscador>
+    <app-personas-buscador
+        (agregarUsuarios)="addUsuarios($event)"
+        (cancelar)="cancelarBuscador()"
+        [usuariosActuales]="lideres"
+        [permiso]="tipoUsuario" />
+</ng-template>

@@ -1,0 +1,30 @@
+<div class="contenedor">
+    <div class="titulo">Editores de la unidad</div>
+    <div class="subtitulo">
+        <div>Agregar miembros que puedan editar en la unidad</div>
+        <span
+            nz-popover
+            nz-icon
+            [(nzPopoverVisible)]="buscadorVisible"
+            (click)="abrirBuscador()"
+            [nzPopoverContent]="buscador"
+            [nzPopoverTrigger]="null"
+            nzTrigger="manual"
+            nzPopoverPlacement="bottomRight"
+            nzType="plus-circle"
+            nzTheme="fill">
+        </span>
+    </div>
+    <app-personas-agregar-lista-gd-individual
+        *ngFor="let editor of editores"
+        [editor]="editor"
+        (removeItemClick)="onRemoveItemClick($event)" />
+</div>
+
+<ng-template #buscador>
+    <app-personas-buscador
+        (agregarUsuarios)="addEditores($event)"
+        (cancelar)="cancelarBuscador()"
+        [usuariosActuales]="editores"
+        permiso="editor" />
+</ng-template>

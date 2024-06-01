@@ -56,6 +56,10 @@
     color: var(--negro);
 }
 
+.icono-menu {
+    color: var(--negro);
+}
+
 .ant-layout-sider {
     overflow: auto;
     background: var(--blanco);
@@ -120,10 +124,6 @@
 
     .main-content {
         flex-direction: column;
-    }
-
-    app-sidebar {
-        width: 100%;
     }
 
     .content {

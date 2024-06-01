@@ -1,24 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { ArchivosPaginaContenidosComponent } from './elementos/archivos/archivos-pagina-contenidos/archivos-pagina-contenidos.component';
 import { ArchivosPaginaFavoritosComponent } from './elementos/archivos/archivos-pagina-favoritos/archivos-pagina-favoritos.component';
 import { ArchivosPaginaRecientesComponent } from './elementos/archivos/archivos-pagina-recientes/archivos-pagina-recientes.component';
-import { EntradaRegistroComponent } from './elementos/entrada/entrada-registro/entrada-registro.component';
+import { EstructuraEntradaLoginComponent } from './elementos/estructura/estructura-entrada-login/estructura-entrada-login.component';
+import { EstructuraEntradaRegistroComponent } from './elementos/estructura/estructura-entrada-registro/estructura-entrada-registro.component';
+import { EstructuraVacioComponent } from './elementos/estructura/estructura-vacio/estructura-vacio.component';
 import { PermisosPaginaComponent } from './elementos/permisos/permisos-pagina/permisos-pagina.component';
-import { PersonasListaComponent } from './elementos/personas/personas-lista/personas-lista.component';
+import { PersonasPaginaComponent } from './elementos/personas/personas-pagina/personas-pagina.component';
 import { ProyectosPaginaComponent } from './elementos/proyectos/proyectos-pagina/proyectos-pagina.component';
 import { UnidadesPaginaComponent } from './elementos/unidades/unidades-pagina/unidades-pagina.component';
-import { VacioUrlComponent } from './elementos/vacio/vacio-url/vacio-url.component';
-import { EntradaLoginComponent } from './elementos/entrada/entrada-login/entrada-login.component';
 
 const routes: Routes = [
-    { path: 'registro', component: EntradaRegistroComponent },
-    { path: 'login', component: EntradaLoginComponent },
+    { path: 'registro', component: EstructuraEntradaRegistroComponent },
+    { path: 'login', component: EstructuraEntradaLoginComponent },
 
     { path: '', pathMatch: 'full', redirectTo: '/proyectos' },
     { path: 'favoritos', component: ArchivosPaginaFavoritosComponent },
     { path: 'recientes', component: ArchivosPaginaRecientesComponent },
-    { path: 'personas', component: PersonasListaComponent },
+    { path: 'personas', component: PersonasPaginaComponent },
     { path: 'permisos/:tipo/:id', component: PermisosPaginaComponent },
     { path: 'proyectos', component: ProyectosPaginaComponent },
     { path: 'proyectos/:id/unidades', component: UnidadesPaginaComponent },
@@ -27,7 +28,7 @@ const routes: Routes = [
         component: ArchivosPaginaContenidosComponent,
     },
 
-    { path: '**', component: VacioUrlComponent },
+    { path: '**', component: EstructuraVacioComponent },
 ];
 
 @NgModule({

@@ -57,7 +57,7 @@
     (nzOnCancel)="handleCancel()"
     [nzClosable]="false">
     <ng-template #modalBorrarContent>
-        <app-modal-borrar-input
+        <app-micelaneos-modal-borrar-input
             [loading]="isLoading"
             [entrada]="textoBorrarUnidad"
             [nombre]="unidad.nombre"
@@ -74,7 +74,7 @@
     (nzOnCancel)="handleCancel()"
     [nzWidth]="1380">
     <ng-template #modalActualizarContent>
-        <app-modal-crear-unidad
+        <app-unidades-crear-modal
             [loading]="isLoading"
             (cancelModal)="handleCancel()"
             (actualizarUnidadImportada)="

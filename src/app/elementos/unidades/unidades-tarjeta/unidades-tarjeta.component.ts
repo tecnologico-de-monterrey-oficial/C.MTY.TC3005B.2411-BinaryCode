@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { borrarUnidad, actualizarUnidad } from '../../../servicios/unidad.util';
-import { modalBorrarInputInput } from '../../modales/modal-borrar-input/modal-borrar-input.component';
+import { modalBorrarInputInput } from '../../micelaneos/micelaneos-modal-borrar-input/micelaneos-modal-borrar-input.component';
 import { entradaBorrarUnidad } from '../unidades-constantes';
 import { Unidad } from '../../../modelos';
 

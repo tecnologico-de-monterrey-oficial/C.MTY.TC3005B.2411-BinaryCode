@@ -7,11 +7,11 @@
         *ngIf="proyecto" />
     <div class="titulo" *ngIf="proyecto">Líderes de proyecto</div>
 
-    <app-permisos-buscador-mini
+    <app-personas-agregar-lista-pq
         *ngIf="proyecto"
         class="lideres"
         [tipoUsuario]="permisosType.lider" />
-    <app-permisos-buscador-mini
+    <app-personas-agregar-lista-pq
         *ngIf="unidad"
         class="coordinadores"
         [tipoUsuario]="permisosType.coordinador" />

@@ -3,7 +3,9 @@
 <div class="contenedor" *ngIf="!isLoading">
     <app-permisos-sidebar [unidad]="unidad" [proyecto]="proyecto" />
 
-    <app-permisos-editores [unidad]="unidad" *ngIf="tipo === 'unidad'" />
+    <app-personas-agregar-lista-gd
+        [unidad]="unidad"
+        *ngIf="tipo === 'unidad'" />
     <app-permisos-cuadricula-unidades
         [proyectoId]="proyecto.id"
         *ngIf="tipo === 'proyecto'" />

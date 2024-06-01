@@ -16,7 +16,7 @@
                 </a>
                 <nz-dropdown-menu #menu="nzDropdownMenu">
                     <ul nz-menu nzSelectable>
-                        <li nz-menu-item (click)="showActualizarModal()">
+                        <li nz-menu-item (click)="abrirActualizarModal()">
                             Editar
                             <span
                                 class="icono-opcion"
@@ -27,8 +27,8 @@
                             nz-menu-item
                             (click)="
                                 proyecto.activo
-                                    ? showArchivarModal()
-                                    : showActivarModal()
+                                    ? abrirArchivarModal()
+                                    : abrirActivarModal()
                             ">
                             {{ proyecto.activo ? 'Archivar' : 'Activar' }}
                             <span
@@ -45,7 +45,7 @@
                                 nz-icon
                                 nzType="unlock"></span>
                         </a>
-                        <li nz-menu-item nzDanger (click)="showBorrarModal()">
+                        <li nz-menu-item nzDanger (click)="abrirBorrarModal()">
                             Borrar
                             <span
                                 class="icono-opcion icono-borrar"
@@ -74,14 +74,14 @@
     [(nzVisible)]="borrarVisible"
     [nzContent]="modalBorrarContent"
     [nzFooter]="null"
-    (nzOnCancel)="handleCancel()"
+    (nzOnCancel)="cerrarModales()"
     [nzClosable]="false">
     <ng-template #modalBorrarContent>
-        <app-modal-borrar-input
+        <app-micelaneos-modal-borrar-input
             [entrada]="textoBorrarProyecto"
             [nombre]="proyecto.nombre"
-            (okModal)="handleDelete($event)"
-            (cancelModal)="handleCancel()" />
+            (okModal)="handleBorrar($event)"
+            (cancelModal)="cerrarModales()" />
     </ng-template>
 </nz-modal>
 
@@ -89,13 +89,13 @@
     [(nzVisible)]="archivarVisible"
     [nzContent]="modalArchivarContent"
     [nzFooter]="null"
-    (nzOnCancel)="handleCancel()"
+    (nzOnCancel)="cerrarModales()"
     [nzClosable]="false">
     <ng-template #modalArchivarContent>
-        <app-modal-generico
+        <app-micelaneos-modal-generico
             [entrada]="textoArchivarProyecto"
             (okModal)="handleArchivar($event)"
-            (cancelModal)="handleCancel()" />
+            (cancelModal)="cerrarModales()" />
     </ng-template>
 </nz-modal>
 
@@ -103,13 +103,13 @@
     [(nzVisible)]="activarVisible"
     [nzContent]="modalActivarContent"
     [nzFooter]="null"
-    (nzOnCancel)="handleCancel()"
+    (nzOnCancel)="cerrarModales()"
     [nzClosable]="false">
     <ng-template #modalActivarContent>
-        <app-modal-generico
+        <app-micelaneos-modal-generico
             [entrada]="textoActivarProyecto"
             (okModal)="handleActivar($event)"
-            (cancelModal)="handleCancel()" />
+            (cancelModal)="cerrarModales()" />
     </ng-template>
 </nz-modal>
 
@@ -118,12 +118,12 @@
     [nzContent]="modalActualizarContent"
     [nzFooter]="null"
     [nzClosable]="false"
-    (nzOnCancel)="handleCancel()"
+    (nzOnCancel)="cerrarModales()"
     [nzWidth]="1380">
     <ng-template #modalActualizarContent>
-        <app-modal-crear-proyecto
+        <app-proyectos-crear-modal
             [loading]="isLoading"
-            (cancelModal)="handleCancel()"
+            (cancelModal)="cerrarModales()"
             (actualizarProyectoImportado)="
                 handleActualizar($event.proyecto, $event.funcion)
             "

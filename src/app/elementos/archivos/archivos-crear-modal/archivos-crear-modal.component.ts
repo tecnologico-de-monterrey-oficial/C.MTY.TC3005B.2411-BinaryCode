@@ -1,32 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Archivo } from '../../../modelos';
+
+type sendCrearArchivo = {
+    archivo: Archivo;
+    funcion: () => void;
+};
 
 @Component({
     selector: 'app-archivos-crear-modal',
     templateUrl: './archivos-crear-modal.component.html',
-    styleUrls: ['./archivos-crear-modal.component.css'],
+    styleUrl: './archivos-crear-modal.component.css',
 })
 export class ArchivosCrearModalComponent {
-    agregar: string = ''; // Propiedad enlazada al input 'agregar'
-    nombreArchivo: string = ''; // Propiedad enlazada al input 'nombre_archivo'
-    descripcion: string = ''; // Propiedad enlazada al textarea 'descripcion'
+    @Output() cancelModal = new EventEmitter();
+    @Output() crearArchivoImportada = new EventEmitter<sendCrearArchivo>();
+    @Output() actualizarArchivoImportada = new EventEmitter<sendCrearArchivo>();
 
-    validarDatos(): void {
-        // Validación de los datos ingresados
-        if (
-            this.agregar.trim() === '' ||
-            this.nombreArchivo.trim() === '' ||
-            this.descripcion.trim() === ''
-        ) {
-            alert('Por favor completa todos los campos.');
-            return; // Detiene la ejecución si hay campos vacíos
-        }
+    @Input() archivoOriginal: Archivo;
+    @Input() unidadId: number;
 
-        // Si los datos son válidos, realizar la acción correspondiente
-        this.subirArchivo();
-    }
+    validateForm: FormGroup<{
+        id: FormControl<number>;
+        nombreArchivo: FormControl<string>;
+        etiquetas: FormControl<string>;
+    }>;
 
-    subirArchivo(): void {
-        // Aquí puedes escribir la lógica para subir el archivo al servidor
-        console.log('Datos válidos, subiendo archivo...');
-    }
+    imagenControl: string;
+
+    archivoEnProceso: Archivo;
+    isLoading: boolean;
 }

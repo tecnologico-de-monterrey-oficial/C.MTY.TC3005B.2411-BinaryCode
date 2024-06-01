@@ -9,7 +9,11 @@
         </div>
         <div class="titulo" nz-col nzFlex="1"></div>
     </div>
-    <app-carpetas-fila *ngFor="let carpeta of carpetas" [carpeta]="carpeta" />
-    <app-archivos-fila *ngFor="let archivo of archivos" [archivo]="archivo" />
-    <app-archivos-crear-fila *ngIf="permiso" />
+    <app-archivos-lista-individual-carpeta
+        *ngFor="let carpeta of carpetas"
+        [carpeta]="carpeta" />
+    <app-archivos-lista-individual-archivo
+        *ngFor="let archivo of archivos"
+        [archivo]="archivo" />
+    <app-archivos-lista-crear *ngIf="permiso" />
 </div>

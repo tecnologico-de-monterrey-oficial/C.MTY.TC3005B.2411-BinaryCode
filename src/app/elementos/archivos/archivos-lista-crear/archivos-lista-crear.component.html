@@ -1,0 +1,39 @@
+<div nz-row class="file-card" (click)="openCrearModal()">
+    <div nz-col nzFlex="1"></div>
+
+    <!-- Nombre de carpeta -->
+    <div nz-col nzFlex="6">
+        <span
+            class="archivo-icono"
+            nz-icon
+            nzType="plus-circle"
+            nzTheme="outline"></span>
+        <div class="texto">Subir archivo</div>
+    </div>
+
+    <div nz-col nzFlex="6"></div>
+
+    <div nz-col nzFlex="6" class="hide-on-small-1"></div>
+
+    <!-- Fecha -->
+    <div nz-col nzFlex="6" class="hide-on-small-2"></div>
+
+    <!-- Icono de detalles -->
+    <div nz-col nzFlex="1"></div>
+</div>
+
+<nz-modal
+    class="proyecto-unidad-modal"
+    [(nzVisible)]="modalVisible"
+    [nzContent]="modalContent"
+    [nzFooter]="null"
+    [nzClosable]="false"
+    (nzOnCancel)="handleCancel()"
+    [nzWidth]="1380">
+    <ng-template #modalContent>
+        <app-archivos-crear-modal
+            (cancelModal)="handleCancel()"
+            (crearArchivoImportado)="handleCrear($event.unidad, $event.funcion)"
+            [unidadId]="unidadId" />
+    </ng-template>
+</nz-modal>

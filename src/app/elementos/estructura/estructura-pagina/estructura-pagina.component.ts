@@ -25,6 +25,20 @@ export class EstructuraPaginaComponent implements OnInit {
     }
 
     private routeExists(url: string): boolean {
-        return this.router.config.some(route => route.path === url.slice(1));
+        const urlSegments: string[] = url.split('/');
+
+        return this.router.config.some(route => {
+            const routeSegments: string[] = route.path.split('/');
+
+            if (urlSegments.length - 1 !== routeSegments.length) {
+                return false;
+            }
+
+            return routeSegments.every(
+                (routeSegment, index) =>
+                    routeSegment === urlSegments[index + 1] ||
+                    routeSegment.startsWith(':')
+            );
+        });
     }
 }

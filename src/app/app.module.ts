@@ -10,8 +10,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
 // Imports locales
-import { ElementosModule } from './elementos/elementos.module';
 import { AppRoutingModule } from './app-routing.module';
+import { EstructuraModule } from './elementos/estructura/estructura.module';
+import { ArchivosModule } from './elementos/archivos/archivos.module';
+import { EncabezadoModule } from './elementos/encabezado/encabezado.module';
+import { MicelaneosModule } from './elementos/micelaneos/micelaneos.module';
+import { PermisosModule } from './elementos/permisos/permisos.module';
+import { PersonasModule } from './elementos/personas/personas.module';
+import { ProyectosModule } from './elementos/proyectos/proyectos.module';
+import { UnidadesModule } from './elementos/unidades/unidades.module';
 
 @NgModule({
     declarations: [AppComponent],
@@ -21,8 +28,16 @@ import { AppRoutingModule } from './app-routing.module';
         BrowserAnimationsModule,
         RouterModule,
 
-        ElementosModule,
         AppRoutingModule,
+
+        ArchivosModule,
+        EncabezadoModule,
+        EstructuraModule,
+        MicelaneosModule,
+        PermisosModule,
+        PersonasModule,
+        ProyectosModule,
+        UnidadesModule,
     ],
     bootstrap: [AppComponent],
 })

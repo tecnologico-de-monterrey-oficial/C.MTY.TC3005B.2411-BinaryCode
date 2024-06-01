@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { modalBorrarInputInput } from '../../modales/modal-borrar-input/modal-borrar-input.component';
-import { modalGenericoInput } from '../../modales/modal-generico/modal-generico.component';
+import { modalBorrarInputInput } from '../../micelaneos/micelaneos-modal-borrar-input/micelaneos-modal-borrar-input.component';
+import { modalGenericoInput } from '../../micelaneos/micelaneos-modal-generico/micelaneos-modal-generico.component';
 import {
     entradaActivarProyecto,
     entradaArchivarProyecto,
@@ -39,23 +39,23 @@ export class ProyectosTarjetaComponent {
     archivarVisible: boolean = false;
     activarVisible: boolean = false;
 
-    showBorrarModal(): void {
+    abrirBorrarModal(): void {
         this.borrarVisible = true;
     }
 
-    showActualizarModal(): void {
+    abrirActualizarModal(): void {
         this.actualizarVisible = true;
     }
 
-    showArchivarModal(): void {
+    abrirArchivarModal(): void {
         this.archivarVisible = true;
     }
 
-    showActivarModal(): void {
+    abrirActivarModal(): void {
         this.activarVisible = true;
     }
 
-    handleCancel(): void {
+    cerrarModales(): void {
         this.borrarVisible = false;
         this.actualizarVisible = false;
         this.archivarVisible = false;
@@ -71,17 +71,17 @@ export class ProyectosTarjetaComponent {
             mensajesActualizarProyecto,
             this.actualizarProyectoImportado,
             this.message,
-            this.handleCancel.bind(this),
+            this.cerrarModales.bind(this),
             finishLoading
         );
     }
 
-    async handleDelete(finishLoading: () => void): Promise<void> {
+    async handleBorrar(finishLoading: () => void): Promise<void> {
         await borrarProyectoConValidacion(
             this.proyecto.id,
             this.eliminarProyectoImportado,
             this.message,
-            this.handleCancel.bind(this),
+            this.cerrarModales.bind(this),
             finishLoading
         );
     }
@@ -95,7 +95,7 @@ export class ProyectosTarjetaComponent {
             mensajesArchivarProyecto,
             this.archivarProyectoImportado,
             this.message,
-            this.handleCancel.bind(this),
+            this.cerrarModales.bind(this),
             finishLoading
         );
         this.proyecto.imagen = imagenTemp;
@@ -110,7 +110,7 @@ export class ProyectosTarjetaComponent {
             mensajesActivarProyecto,
             this.activarProyectoImportado,
             this.message,
-            this.handleCancel.bind(this),
+            this.cerrarModales.bind(this),
             finishLoading
         );
         this.proyecto.imagen = imagenTemp;

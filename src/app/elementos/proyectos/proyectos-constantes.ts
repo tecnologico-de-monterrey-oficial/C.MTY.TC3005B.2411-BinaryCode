@@ -1,5 +1,5 @@
-import { modalBorrarInputInput } from '../modales/modal-borrar-input/modal-borrar-input.component';
-import { modalGenericoInput } from '../modales/modal-generico/modal-generico.component';
+import { modalBorrarInputInput } from '../micelaneos/micelaneos-modal-borrar-input/micelaneos-modal-borrar-input.component';
+import { modalGenericoInput } from '../micelaneos/micelaneos-modal-generico/micelaneos-modal-generico.component';
 import { actualizarProyectoMessages } from '../../servicios/proyecto.services';
 
 export const entradaBorrarProyecto: modalBorrarInputInput = {

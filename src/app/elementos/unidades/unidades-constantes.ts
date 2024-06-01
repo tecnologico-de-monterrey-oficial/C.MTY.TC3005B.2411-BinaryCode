@@ -1,4 +1,4 @@
-import { modalBorrarInputInput } from '../modales/modal-borrar-input/modal-borrar-input.component';
+import { modalBorrarInputInput } from '../micelaneos/micelaneos-modal-borrar-input/micelaneos-modal-borrar-input.component';
 
 export const entradaBorrarUnidad: modalBorrarInputInput = {
     pregunta: '¿Estás seguro de que quieres borrar la unidad?',
