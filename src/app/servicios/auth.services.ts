@@ -14,7 +14,7 @@ interface AuthResponse {
     providedIn: 'root',
 })
 export class AuthService {
-    private apiUrl = 'http://127.0.0.1:8000/api/token/';
+    private apiUrl = 'http://127.0.0.1:8000/api/usuarios/login/';
     private authStatusListener = new BehaviorSubject<boolean>(
         this.isAuthenticated()
     );
@@ -24,12 +24,9 @@ export class AuthService {
         private router: Router
     ) {}
 
-    login(username: string, password: string): Observable<AuthResponse> {
+    login(email: string, password: string): Observable<AuthResponse> {
         return this.http
-            .post<{
-                access: string;
-                refresh: string;
-            }>(this.apiUrl, { username, password })
+            .post<AuthResponse>(this.apiUrl, { email: email, password })
             .pipe(
                 tap(response => {
                     localStorage.setItem('access_token', response.access);

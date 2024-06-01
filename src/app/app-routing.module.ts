@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-// import { IsAuthGuard } from './guards/auth.guards';
+import { IsAuthGuard } from './guards/auth.guards';
 //descomentar cuando pruebes autenticacion
 
 const routes: Routes = [
@@ -26,7 +26,7 @@ const routes: Routes = [
             import(
                 './paginas/vista-proyectos/vista-proyectos-routing.module'
             ).then(m => m.VistaProyectosRoutingModule),
-        // canActivate: [IsAuthGuard], DESCONECTAR AL PROBAR AUTH
+        canActivate: [IsAuthGuard],
     },
     {
         path: 'unidades',

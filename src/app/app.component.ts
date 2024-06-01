@@ -32,9 +32,9 @@ export class AppComponent implements OnInit {
 
     private updateLayoutVisibility(): void {
         const isLoginRoute: boolean = this.router.url.includes('entrada');
-        this.showSidebar = !isLoginRoute;
-        this.showHeader = !isLoginRoute;
-        // this.showSidebar = this.isAuthenticated && !isLoginRoute;
-        // this.showHeader = this.isAuthenticated && !isLoginRoute;
+        // this.showSidebar = !isLoginRoute;
+        // this.showHeader = !isLoginRoute;
+        this.showSidebar = this.isAuthenticated && !isLoginRoute;
+        this.showHeader = this.isAuthenticated && !isLoginRoute;
     }
 }
