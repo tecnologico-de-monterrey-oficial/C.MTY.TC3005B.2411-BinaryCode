@@ -15,6 +15,7 @@ interface AuthResponse {
 })
 export class AuthService {
     private apiUrl = 'http://127.0.0.1:8000/api/usuarios/login/';
+    private registerUrl = 'http://127.0.0.1:8000/api/usuarios/';
     private authStatusListener = new BehaviorSubject<boolean>(
         this.isAuthenticated()
     );
@@ -32,6 +33,33 @@ export class AuthService {
                     localStorage.setItem('access_token', response.access);
                     localStorage.setItem('refresh_token', response.refresh);
                     this.authStatusListener.next(true);
+                })
+            );
+    }
+
+    register(
+        first_name: string,
+        last_name: string,
+        email: string,
+        password: string,
+        color: string
+    ): Observable<unknown> {
+        const fecha: string = new Date().toISOString().split('T')[0]; // Formato YYYY-MM-DD
+        return this.http
+            .post<unknown>(this.registerUrl, {
+                first_name,
+                last_name,
+                email,
+                password,
+                color,
+                fecha,
+            })
+            .pipe(
+                tap(() => {
+                    // Auto login después del registro exitoso
+                    this.login(email, password).subscribe(() => {
+                        this.router.navigate(['/proyectos']);
+                    });
                 })
             );
     }
