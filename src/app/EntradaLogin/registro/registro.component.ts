@@ -101,6 +101,7 @@ export class RegistroComponent implements OnInit {
                 });
         } else {
             console.log('Formulario no válido');
+
         }
     }
 }

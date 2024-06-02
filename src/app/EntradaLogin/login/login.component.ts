@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 export class LoginComponent {
     loginForm: FormGroup;
     hide = true;
-
     constructor(
         private fb: FormBuilder,
         private authService: AuthService,
@@ -43,6 +42,7 @@ export class LoginComponent {
                     // Acción opcional al completar la solicitud
                 },
             });
+
         }
     }
 }
