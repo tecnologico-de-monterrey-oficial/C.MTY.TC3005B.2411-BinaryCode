@@ -3,10 +3,10 @@
         <!-- Estrella -->
         <div nz-col nzFlex="1" class="columna-icono hide-on-small-3">
             <span
-                [class]="archivo.favorito ? 'estrella-llena' : 'estrella-vacia'"
+                [class]="0 ? 'estrella-llena' : 'estrella-vacia'"
                 nz-icon
                 nzType="star"
-                [nzTheme]="archivo.favorito ? 'fill' : 'outline'"
+                [nzTheme]="0 ? 'fill' : 'outline'"
                 (click)="onStarClick()">
             </span>
         </div>

@@ -15,3 +15,13 @@ export type Archivo = {
     id_usuarios: number;
     id_apartados: number;
 };
+
+export type ArchivoGrande = {
+    id: number;
+    nombre: string;
+    descripcion: string;
+    terminacion: string;
+    fecha: string;
+    id_usuarios: number;
+    id_apartados: number;
+};
