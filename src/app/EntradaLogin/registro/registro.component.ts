@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../servicios/auth.services';
+import { Router } from '@angular/router';
 
 import {
     tarjeta_amarillo,
@@ -51,18 +53,29 @@ export class RegistroComponent implements OnInit {
     ];
 
     colorSeleccionado: string;
+    hide = true;
 
-    constructor(private fb: FormBuilder) {}
+    constructor(
+        private fb: FormBuilder,
+        private authService: AuthService,
+        private router: Router
+    ) {}
 
     ngOnInit(): void {
         this.colorSeleccionado =
             this.colores[Math.floor(Math.random() * this.colores.length)];
 
         this.registroForm = this.fb.group({
-            nombre: ['', Validators.required],
-            apellido: ['', Validators.required],
+            first_name: ['', Validators.required],
+            last_name: ['', Validators.required],
             color: [this.colorSeleccionado, Validators.required],
+            email: ['', [Validators.required, Validators.email]],
+            password: ['', [Validators.required, Validators.minLength(6)]],
         });
+    }
+
+    toggleHide(): void {
+        this.hide = !this.hide;
     }
 
     seleccionarColor(color: string): void {
@@ -73,8 +86,22 @@ export class RegistroComponent implements OnInit {
 
     onSubmit(): void {
         if (this.registroForm.valid) {
-            console.log('Form values:', this.registroForm.value);
-            // Aqui poner lo de la Enviar los datos a la base de datos
+            const { first_name, last_name, email, password, color } =
+                this.registroForm.value;
+            console.log(first_name, last_name, email, password, color);
+            this.authService
+                .register(first_name, last_name, email, password, color)
+                .subscribe({
+                    next: () => {
+                        this.router.navigate(['/proyectos']);
+                    },
+                    error: err => {
+                        console.error('Registro fallido', err);
+                    },
+                });
+        } else {
+            console.log('Formulario no válido');
+
         }
     }
 }

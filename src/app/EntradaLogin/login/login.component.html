@@ -1,7 +1,29 @@
-<div class="text">
+<div class="titulo">
     <h2>Iniciar sesión en CarDrive</h2>
 </div>
-<div class="buttons">
-    <button>Iniciar sesión con Google</button>
-    <button>Iniciar sesión con Microsoft</button>
-</div>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="campo">
+        <label for="email">Email:</label>
+        <input
+            nz-input
+            placeholder="Introduce tu email"
+            formControlName="email"
+            type="email" />
+    </div>
+    <div class="campo">
+        <label for="password">Contraseña:</label>
+        <div class="input-wrapper">
+            <input
+                nz-input
+                type="password"
+                placeholder="Introduce tu contraseña"
+                formControlName="password"
+                [type]="hide ? 'password' : 'text'" />
+            <i
+                nz-icon
+                nzType="{{ hide ? 'eye-invisible' : 'eye' }}"
+                (click)="toggleHide()"></i>
+        </div>
+    </div>
+    <button nz-button nzType="submit" nzBlock>Iniciar sesión</button>
+</form>

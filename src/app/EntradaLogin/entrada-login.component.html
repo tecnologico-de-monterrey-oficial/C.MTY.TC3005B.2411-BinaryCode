@@ -3,7 +3,14 @@
         <img src="../../assets/images/FSAE.png" alt="FASE" />
     </div>
     <div class="right">
-        <app-registro></app-registro>
-        <!-- <app-login></app-login> -->
+        <ng-container *ngIf="showLogin; else registro">
+            <app-login></app-login>
+            <div class="text">
+                ¿No tienes cuenta? <a (click)="toggleView()">Regístrate aquí</a>
+            </div>
+        </ng-container>
+        <ng-template #registro>
+            <app-registro></app-registro>
+        </ng-template>
     </div>
 </div>

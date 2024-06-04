@@ -9,21 +9,61 @@
 
 <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
     <div class="campo">
-        <label for="nombre">Nombre:</label>
+        <label for="email">Email:</label>
+        <input
+            nz-input
+            placeholder="Introduce tu email"
+            formControlName="email"
+            type="email" />
+    </div>
+
+    <div class="campo">
+        <label for="password">Crea tu contraseña:</label>
+        <div class="input-wrapper">
+            <input
+                nz-input
+                type="password"
+                placeholder="Introduce tu contraseña"
+                formControlName="password"
+                [type]="hide ? 'password' : 'text'" />
+            <i
+                nz-icon
+                nzType="{{ hide ? 'eye-invisible' : 'eye' }}"
+                (click)="toggleHide()"></i>
+        </div>
+    </div>
+
+    <div class="campo">
+        <label for="password">Confirma tu contraseña:</label>
+        <div class="input-wrapper">
+            <input
+                nz-input
+                type="password"
+                placeholder="Confirma tu contraseña"
+                [type]="hide ? 'password' : 'text'" />
+            <i
+                nz-icon
+                nzType="{{ hide ? 'eye-invisible' : 'eye' }}"
+                (click)="toggleHide()"></i>
+        </div>
+    </div>
+
+    <div class="campo">
+        <label for="first_name">Nombre:</label>
         <input
             nz-input
             placeholder="Nombre"
             type="text"
-            formControlName="nombre" />
+            formControlName="first_name" />
     </div>
 
     <div class="campo">
-        <label for="apellido">Apellido:</label>
+        <label for="last_name">Apellido:</label>
         <input
             nz-input
             placeholder="Apellido"
             type="text"
-            formControlName="apellido" />
+            formControlName="last_name" />
     </div>
 
     <p class="texto-color">Selecciona el color</p>

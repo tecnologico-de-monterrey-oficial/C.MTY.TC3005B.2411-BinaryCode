@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms'; // Importa solo lo necesario de @angular/forms
+import { FormBuilder } from '@angular/forms';
 
 @Component({
     selector: 'app-entrada-login',
@@ -7,7 +7,11 @@ import { FormBuilder } from '@angular/forms'; // Importa solo lo necesario de @a
     styleUrls: ['./entrada-login.component.css'],
 })
 export class EntradaLoginComponent {
-    // Declara cualquier propiedad o método necesario
+    showLogin: boolean = true; // true  login      false  registro
 
-    constructor(private fb: FormBuilder) {} // Usa FormBuilder
+    constructor(private fb: FormBuilder) {}
+
+    toggleView(): void {
+        this.showLogin = !this.showLogin;
+    }
 }
