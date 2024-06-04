@@ -1,5 +1,8 @@
 <div class="card">
-    <a href="/archivos">
+    <a
+        href="/proyectos/{{ unidad.id_proyecto }}/unidades/{{
+            unidad.id
+        }}/archivos">
         <img
             class="image-container"
             [src]="unidad.imagen"
@@ -50,7 +53,10 @@
             </ul>
         </nz-dropdown-menu>
     </div>
-    <a href="/proyectos/{{ unidad.proyectoId }}/unidades/{{ unidad.id }}">
+    <a
+        href="/proyectos/{{ unidad.id_proyecto }}/unidades/{{
+            unidad.id
+        }}/archivos">
         <div class="name-label" [ngStyle]="{ color: unidad.color }">
             {{ unidad.nombre }}
         </div>
