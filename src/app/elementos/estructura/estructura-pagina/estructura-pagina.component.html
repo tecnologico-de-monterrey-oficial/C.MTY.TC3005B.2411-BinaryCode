@@ -8,19 +8,19 @@
             nzCollapsible
             [nzCollapsed]="true">
             <ul nz-menu nzMode="inline" class="sider">
-                <a nz-menu-item href="/proyectos">
+                <a nz-menu-item [routerLink]="['/proyectos']">
                     <span class="icono-menu" nz-icon nzType="folder"></span>
                     <span class="icono-menu"> Proyecto</span>
                 </a>
-                <a nz-menu-item href="/favoritos">
+                <a nz-menu-item [routerLink]="['/favoritos']">
                     <span class="icono-menu" nz-icon nzType="star"></span>
                     <span class="icono-menu"> Favoritos</span>
                 </a>
-                <a nz-menu-item href="/recientes">
+                <a nz-menu-item [routerLink]="['/recientes']">
                     <span class="icono-menu" nz-icon nzType="history"></span>
                     <span class="icono-menu"> Documentos recientes</span>
                 </a>
-                <a nz-menu-item href="/personas">
+                <a nz-menu-item [routerLink]="['/personas']">
                     <span class="icono-menu" nz-icon nzType="team"></span>
                     <span class="icono-menu"> Personas</span>
                 </a>

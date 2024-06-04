@@ -38,7 +38,7 @@
                         </li>
                         <a
                             nz-menu-item
-                            href="/permisos/proyecto/{{ proyecto.id }}">
+                            [routerLink]="['/permisos/proyecto/', proyecto.id]">
                             Permisos
                             <span
                                 class="icono-opcion"
@@ -57,7 +57,7 @@
             </div>
         </div>
     </div>
-    <a href="/proyectos/{{ proyecto.id }}/unidades">
+    <a [routerLink]="['/proyectos', proyecto.id, 'unidades']">
         <div
             [class]="descripcionVisible ? 'name-label' : 'name-label-center'"
             [ngStyle]="{ color: proyecto.color }">

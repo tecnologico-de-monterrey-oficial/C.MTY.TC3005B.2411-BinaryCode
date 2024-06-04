@@ -1,5 +1,5 @@
 <div class="card">
-    <a href="{{ urlReferencia }}">
+    <a [routerLink]="['{{ urlReferencia }}']">
         <img
             class="image-container"
             [src]="unidad.imagen"
@@ -28,7 +28,9 @@
                     Editar
                     <span class="icono-opcion" nz-icon nzType="edit"></span>
                 </li>
-                <a nz-menu-item href="/permisos/unidad/{{ unidad.id }}">
+                <a
+                    nz-menu-item
+                    [routerLink]="['/permisos/unidad/{{ unidad.id }}']">
                     Permisos
                     <span class="icono-opcion" nz-icon nzType="unlock"></span>
                 </a>
@@ -42,7 +44,7 @@
             </ul>
         </nz-dropdown-menu>
     </div>
-    <a href="{{ urlReferencia }}">
+    <a [routerLink]="['{{ urlReferencia }}']">
         <div class="name-label" [ngStyle]="{ color: unidad.color }">
             {{ unidad.nombre }}
         </div>

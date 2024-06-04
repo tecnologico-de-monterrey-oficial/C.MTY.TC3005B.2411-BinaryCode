@@ -20,13 +20,22 @@ export class ProyectosService {
         'Content-Type': 'application/json',
     };
 
+    proyectosCache: { [id: number]: Proyecto };
+
     async getProyectos(): Promise<Proyecto[]> {
+        if (this.proyectosCache) {
+            return Object.values(this.proyectosCache);
+        }
         try {
             const response: Response = await fetch(this.baseUrl);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const proyectos: Proyecto[] = await response.json();
+            this.proyectosCache = {};
+            for (const proyecto of proyectos) {
+                this.proyectosCache[proyecto.id] = proyecto;
+            }
             return proyectos;
         } catch (error) {
             console.error('Error obteniendo los proyectos', error);
@@ -41,6 +50,9 @@ export class ProyectosService {
     }
 
     async getProyectoIndividual(proyectoId: number): Promise<Proyecto> {
+        if (this.proyectosCache && this.proyectosCache[proyectoId]) {
+            return this.proyectosCache[proyectoId];
+        }
         try {
             const url: string = `${this.baseUrl}${proyectoId}/`;
             const response: Response = await fetch(url);
@@ -66,6 +78,7 @@ export class ProyectosService {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const respuestaAPI: Proyecto = await response.json();
+            this.proyectosCache[respuestaAPI.id] = respuestaAPI;
             this.message.success('El proyecto se creó exitosamente', {
                 nzDuration: 10000,
             });
@@ -87,6 +100,7 @@ export class ProyectosService {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
+            delete this.proyectosCache[proyectoId];
             this.message.success('El proyecto se eliminó exitosamente', {
                 nzDuration: 10000,
             });
@@ -111,6 +125,7 @@ export class ProyectosService {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const nuevoProyecto: Proyecto = await response.json();
+            this.proyectosCache[nuevoProyecto.id] = nuevoProyecto;
             this.message.success('El proyecto se actualizó exitosamente', {
                 nzDuration: 10000,
             });
@@ -138,6 +153,7 @@ export class ProyectosService {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const nuevoProyecto: Proyecto = await response.json();
+            this.proyectosCache[nuevoProyecto.id] = nuevoProyecto;
             this.message.success('El proyecto se archivó exitosamente', {
                 nzDuration: 10000,
             });
@@ -165,6 +181,7 @@ export class ProyectosService {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const nuevoProyecto: Proyecto = await response.json();
+            this.proyectosCache[nuevoProyecto.id] = nuevoProyecto;
             this.message.success('El proyecto se activó exitosamente', {
                 nzDuration: 10000,
             });

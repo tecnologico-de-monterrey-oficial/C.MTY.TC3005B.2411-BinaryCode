@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
@@ -22,6 +23,7 @@ import { ArchivosPaginaContenidosComponent } from './archivos-pagina-contenidos/
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        RouterModule,
 
         NzBreadCrumbModule,
         NzDropDownModule,

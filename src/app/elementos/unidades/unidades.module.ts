@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
@@ -23,6 +24,7 @@ import { UnidadesTarjetaComponent } from './unidades-tarjeta/unidades-tarjeta.co
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        RouterModule,
 
         NzButtonModule,
         NzDropDownModule,

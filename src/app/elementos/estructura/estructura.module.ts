@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzFlexModule } from 'ng-zorro-antd/flex';
@@ -22,6 +23,7 @@ import { EstructuraVacioComponent } from './estructura-vacio/estructura-vacio.co
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        RouterModule,
 
         NzDropDownModule,
         NzFlexModule,
