@@ -23,7 +23,7 @@
         (archivarProyectoImportado)="archivarProyecto($event)"
         (activarProyectoImportado)="activarProyecto($event)" />
     <app-proyectos-crear-tarjeta
-        *ngIf="!cargando && !archivado && permisoParaAgregar"
+        *ngIf="!cargando && !archivado && permisoParaCrear"
         (crearProyectoImportado)="crearProyecto($event)" />
 </nz-flex>
 

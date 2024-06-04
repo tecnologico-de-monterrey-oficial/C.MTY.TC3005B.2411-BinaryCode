@@ -11,11 +11,15 @@
         <span nz-icon nzType="search" class="header-icon"></span>
     </ng-template>
 
-    <div class="personas">
+    <div class="personas" *ngIf="usuariosFiltrados?.length !== 0">
         <app-personas-buscador-individual
             *ngFor="let persona of usuariosFiltrados"
             [persona]="persona"
             (addItemClick)="handleSeleccionar($event)" />
+    </div>
+
+    <div class="personas" *ngIf="usuariosFiltrados?.length === 0">
+        <app-micelaneos-contenido-vacio [mensaje]="'No hay personas'" />
     </div>
 
     <div class="botones">

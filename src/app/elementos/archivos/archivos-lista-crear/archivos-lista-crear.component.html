@@ -33,7 +33,9 @@
     <ng-template #modalContent>
         <app-archivos-crear-modal
             (cancelModal)="handleCancel()"
-            (crearArchivoImportado)="handleCrear($event.unidad, $event.funcion)"
+            (crearArchivoImportado)="
+                handleCrear($event.unidad, $event.terminar)
+            "
             [unidadId]="unidadId" />
     </ng-template>
 </nz-modal>

@@ -1,4 +1,4 @@
-<nz-flex class="grid-container">
+<nz-flex class="grid-container" *ngIf="!unidadesVacias">
     <ng-container *ngIf="loading">
         <app-unidades-tarjeta-esqueleto />
         <app-unidades-tarjeta-esqueleto />
@@ -8,3 +8,7 @@
     </ng-container>
     <app-unidades-tarjeta *ngFor="let unidad of unidades" [unidad]="unidad" />
 </nz-flex>
+
+<app-micelaneos-contenido-vacio
+    [mensaje]="'No hay unidades'"
+    *ngIf="unidadesVacias" />

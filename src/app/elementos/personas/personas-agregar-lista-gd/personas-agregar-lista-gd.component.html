@@ -16,7 +16,7 @@
         </span>
     </div>
     <app-personas-agregar-lista-gd-individual
-        *ngFor="let editor of editores"
+        *ngFor="let editor of usuariosActuales"
         [editor]="editor"
         (removeItemClick)="onRemoveItemClick($event)" />
 </div>
@@ -25,6 +25,6 @@
     <app-personas-buscador
         (agregarUsuarios)="addEditores($event)"
         (cancelar)="cancelarBuscador()"
-        [usuariosActuales]="editores"
-        permiso="editor" />
+        [usuariosActuales]="usuariosActuales"
+        [permiso]="permiso" />
 </ng-template>

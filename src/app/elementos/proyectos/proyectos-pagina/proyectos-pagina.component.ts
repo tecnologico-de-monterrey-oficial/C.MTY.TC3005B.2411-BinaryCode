@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NzMessageService } from 'ng-zorro-antd/message';
 import { Proyecto } from '../../../modelos';
-import { obtenerProyectosConValidacion } from '../../../servicios/proyecto.services';
+import { ProyectosService } from '../../../servicios/proyectos.service';
 
 @Component({
     selector: 'app-proyectos-pagina',
@@ -18,12 +17,10 @@ export class ProyectosPaginaComponent implements OnInit {
     cargando: boolean;
     vacio: boolean;
 
-    constructor(private message: NzMessageService) {}
-
     async ngOnInit(): Promise<void> {
         this.cargando = true;
         const proyectosRespuesta: Proyecto[] =
-            await obtenerProyectosConValidacion(this.message);
+            await this.proyectoServicio.getProyectos();
 
         if (proyectosRespuesta) {
             this.proyectosActivos = proyectosRespuesta.filter(
@@ -85,4 +82,6 @@ export class ProyectosPaginaComponent implements OnInit {
             : this.proyectosActivos.length === 0;
         this.vacio = longitud && !(!this.archivado && this.permisoParaCrear);
     }
+
+    constructor(private proyectoServicio: ProyectosService) {}
 }

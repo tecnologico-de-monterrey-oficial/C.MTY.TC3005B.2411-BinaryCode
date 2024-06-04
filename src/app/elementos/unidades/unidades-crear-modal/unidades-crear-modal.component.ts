@@ -11,7 +11,7 @@ import { Unidad } from '../../../modelos';
 
 type sendCrearUnidad = {
     unidad: Unidad;
-    funcion: () => void;
+    terminar: () => void;
 };
 
 @Component({
@@ -70,11 +70,28 @@ export class UnidadesCrearModalComponent implements OnInit {
         this.validateForm.controls.colorSeleccionado.setValue(color);
     }
 
-    handleCancel(): void {
+    seleccionarArchivo(event: Event): void {
+        const file: File = (event.target as HTMLInputElement).files[0];
+
+        if (!file) return;
+
+        const reader: FileReader = new FileReader();
+
+        reader.onload = (e: ProgressEvent<FileReader>): void => {
+            const imagen: string | ArrayBuffer = e.target.result;
+            if (typeof imagen === 'string') {
+                this.imagenControl = imagen;
+            }
+        };
+
+        reader.readAsDataURL(file);
+    }
+
+    cancelarModal(): void {
         this.cancelModal.emit();
     }
 
-    finishLoading(): void {
+    terminarCargar(): void {
         this.isLoading = false;
     }
 
@@ -92,12 +109,12 @@ export class UnidadesCrearModalComponent implements OnInit {
             if (!this.unidadOriginal) {
                 this.crearUnidadImportada.emit({
                     unidad: this.unidadEnProceso,
-                    funcion: this.finishLoading.bind(this),
+                    terminar: this.terminarCargar.bind(this),
                 });
             } else {
                 this.actualizarUnidadImportada.emit({
                     unidad: this.unidadEnProceso,
-                    funcion: this.finishLoading.bind(this),
+                    terminar: this.terminarCargar.bind(this),
                 });
             }
         } else {
@@ -109,23 +126,6 @@ export class UnidadesCrearModalComponent implements OnInit {
             });
             this.isLoading = false;
         }
-    }
-
-    onFileSelected(event: Event): void {
-        const file: File = (event.target as HTMLInputElement).files[0];
-
-        if (!file) return;
-
-        const reader: FileReader = new FileReader();
-
-        reader.onload = (e: ProgressEvent<FileReader>): void => {
-            const imagen: string | ArrayBuffer = e.target.result;
-            if (typeof imagen === 'string') {
-                this.imagenControl = imagen;
-            }
-        };
-
-        reader.readAsDataURL(file);
     }
 
     constructor(private fb: NonNullableFormBuilder) {}

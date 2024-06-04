@@ -14,7 +14,7 @@
     <ng-template #modalContent>
         <app-unidades-crear-modal
             (cancelModal)="handleCancel()"
-            (crearUnidadImportada)="handleCrear($event.unidad, $event.funcion)"
+            (crearUnidadImportada)="handleCrear($event.unidad, $event.terminar)"
             [proyectoId]="proyectoId" />
     </ng-template>
 </nz-modal>

@@ -41,6 +41,6 @@ import { UnidadesTarjetaComponent } from './unidades-tarjeta/unidades-tarjeta.co
         UnidadesTarjetaComponent,
         UnidadesTarjetaEsqueletoComponent,
     ],
-    exports: [UnidadesTarjetaComponent],
+    exports: [UnidadesTarjetaComponent, UnidadesTarjetaEsqueletoComponent],
 })
 export class UnidadesModule {}

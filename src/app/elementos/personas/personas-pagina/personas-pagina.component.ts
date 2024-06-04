@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { getUsuariosAPI } from '../../../servicios/usuarios.services';
 import { Usuario } from '../../../modelos';
+import { UsuariosService } from '../../../servicios/usuarios.service';
 
 @Component({
     selector: 'app-personas-pagina',
@@ -11,6 +11,8 @@ export class PersonasPaginaComponent implements OnInit {
     usuarios: Usuario[] = [];
 
     async ngOnInit(): Promise<void> {
-        this.usuarios = await getUsuariosAPI();
+        this.usuarios = await this.usuariosService.getUsuariosAPI();
     }
+
+    constructor(private usuariosService: UsuariosService) {}
 }

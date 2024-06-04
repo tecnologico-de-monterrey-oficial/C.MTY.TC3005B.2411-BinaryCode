@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ArchivosPaginaContenidosComponent } from './elementos/archivos/archivos-pagina-contenidos/archivos-pagina-contenidos.component';
-import { ArchivosPaginaFavoritosComponent } from './elementos/archivos/archivos-pagina-favoritos/archivos-pagina-favoritos.component';
-import { ArchivosPaginaRecientesComponent } from './elementos/archivos/archivos-pagina-recientes/archivos-pagina-recientes.component';
 import { EstructuraEntradaLoginComponent } from './elementos/estructura/estructura-entrada-login/estructura-entrada-login.component';
 import { EstructuraEntradaRegistroComponent } from './elementos/estructura/estructura-entrada-registro/estructura-entrada-registro.component';
 import { EstructuraVacioComponent } from './elementos/estructura/estructura-vacio/estructura-vacio.component';
@@ -17,8 +15,8 @@ const routes: Routes = [
     { path: 'login', component: EstructuraEntradaLoginComponent },
 
     { path: '', pathMatch: 'full', redirectTo: '/proyectos' },
-    { path: 'favoritos', component: ArchivosPaginaFavoritosComponent },
-    { path: 'recientes', component: ArchivosPaginaRecientesComponent },
+    { path: 'favoritos', component: ArchivosPaginaContenidosComponent },
+    { path: 'recientes', component: ArchivosPaginaContenidosComponent },
     { path: 'personas', component: PersonasPaginaComponent },
     { path: 'permisos/:tipo/:id', component: PermisosPaginaComponent },
     { path: 'proyectos', component: ProyectosPaginaComponent },

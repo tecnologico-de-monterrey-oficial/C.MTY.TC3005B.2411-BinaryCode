@@ -9,9 +9,9 @@ import { paletaColores } from '../../../../assets/colores';
 import { permisoType } from '../../permisos/permisos-constantes';
 import { Proyecto } from '../../../modelos';
 
-type sendCrear = {
+type sendCrearProyecto = {
     proyecto: Proyecto;
-    funcion: () => void;
+    terminar: () => void;
 };
 
 @Component({
@@ -21,8 +21,9 @@ type sendCrear = {
 })
 export class ProyectosCrearModalComponent implements OnInit {
     @Output() cancelModal = new EventEmitter();
-    @Output() crearProyectoImportado = new EventEmitter<sendCrear>();
-    @Output() actualizarProyectoImportado = new EventEmitter<sendCrear>();
+    @Output() crearProyectoImportado = new EventEmitter<sendCrearProyecto>();
+    @Output() actualizarProyectoImportado =
+        new EventEmitter<sendCrearProyecto>();
 
     @Input() proyectoOriginal: Proyecto;
 
@@ -120,12 +121,12 @@ export class ProyectosCrearModalComponent implements OnInit {
             if (!this.proyectoOriginal) {
                 this.crearProyectoImportado.emit({
                     proyecto: this.proyectoEnProceso,
-                    funcion: this.finishLoading.bind(this),
+                    terminar: this.finishLoading.bind(this),
                 });
             } else {
                 this.actualizarProyectoImportado.emit({
                     proyecto: this.proyectoEnProceso,
-                    funcion: this.finishLoading.bind(this),
+                    terminar: this.finishLoading.bind(this),
                 });
             }
         } else {

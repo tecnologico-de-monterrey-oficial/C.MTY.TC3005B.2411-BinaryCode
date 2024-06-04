@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-estructura-pagina',
@@ -8,7 +7,6 @@ import { Subscription } from 'rxjs';
     styleUrl: './estructura-pagina.component.css',
 })
 export class EstructuraPaginaComponent implements OnInit {
-    routeSubscription: Subscription;
     isLoginRoute: boolean = true;
 
     constructor(private router: Router) {}

@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import Fuse, { FuseResult } from 'fuse.js';
+import Fuse, { FuseResult, IFuseOptions } from 'fuse.js';
 import { personaBuscador } from '../personas-buscador-individual/personas-buscador-individual.component';
-import { getUsuariosAPI } from '../../../servicios/usuarios.services';
 import {
     coordinadorMensaje,
     editorMensaje,
@@ -10,6 +9,7 @@ import {
 import { modalGenericoInput } from '../../micelaneos/micelaneos-modal-generico/micelaneos-modal-generico.component';
 import { permisoType } from '../../permisos/permisos-constantes';
 import { Usuario } from '../../../modelos';
+import { UsuariosService } from '../../../servicios/usuarios.service';
 
 @Component({
     selector: 'app-personas-buscador',
@@ -18,7 +18,7 @@ import { Usuario } from '../../../modelos';
 })
 export class PersonasBuscadorComponent implements OnInit {
     @Output() agregarUsuarios = new EventEmitter<Usuario[]>();
-    @Output() cancelar = new EventEmitter<void>();
+    @Output() cancelar = new EventEmitter();
     @Input() usuariosActuales: Usuario[];
     @Input() permiso: permisoType;
 
@@ -31,18 +31,18 @@ export class PersonasBuscadorComponent implements OnInit {
     botonString: string;
     mensajeModal: modalGenericoInput;
 
-    parametrosBusqueda = {
+    parametrosBusqueda: IFuseOptions<personaBuscador> = {
         threshold: 0.3,
         ignoreLocation: true,
-        keys: ['nombre'],
+        keys: ['primer_nombre', 'segundo_nombre'],
     };
 
     async ngOnInit(): Promise<void> {
-        const usuarios: Usuario[] = await getUsuariosAPI();
+        const usuarios: Usuario[] = await this.usuariosService.getUsuariosAPI();
         this.usuariosTotales = usuarios
             .filter(
                 usuario =>
-                    !this.usuariosActuales.some(
+                    !this.usuariosActuales?.some(
                         actual => actual.id === usuario.id
                     )
             )
@@ -117,4 +117,6 @@ export class PersonasBuscadorComponent implements OnInit {
             this.usuariosFiltrados = result.map(resultado => resultado.item);
         }
     }
+
+    constructor(private usuariosService: UsuariosService) {}
 }

@@ -1,6 +1,5 @@
 import { modalBorrarInputInput } from '../micelaneos/micelaneos-modal-borrar-input/micelaneos-modal-borrar-input.component';
 import { modalGenericoInput } from '../micelaneos/micelaneos-modal-generico/micelaneos-modal-generico.component';
-import { actualizarProyectoMessages } from '../../servicios/proyecto.services';
 
 export const entradaBorrarProyecto: modalBorrarInputInput = {
     pregunta: '¿Estás seguro de que quieres borrar el proyecto?',
@@ -21,19 +20,4 @@ export const entradaActivarProyecto: modalGenericoInput = {
     descripcion:
         'Esto va a activar el proyecto para todos los usuarios incluyendo sus archivos y versiones. Esto se puede regresar si es necesario.',
     botonPrincipal: 'Activar',
-};
-
-export const mensajesArchivarProyecto: actualizarProyectoMessages = {
-    success: 'El proyecto se archivó exitosamente',
-    error: 'Hubo un error al archivar el proyecto',
-};
-
-export const mensajesActivarProyecto: actualizarProyectoMessages = {
-    success: 'El proyecto se activó exitosamente',
-    error: 'Hubo un error al activar el proyecto',
-};
-
-export const mensajesActualizarProyecto: actualizarProyectoMessages = {
-    success: 'El proyecto se actualizó exitosamente',
-    error: 'Hubo un error al actualizar el proyecto',
 };

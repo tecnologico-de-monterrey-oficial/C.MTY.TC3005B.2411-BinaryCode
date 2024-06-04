@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { getCoordinadores } from '../../../servicios/unidad.util';
-import { getLideres } from '../../../servicios/proyecto.services';
 import { permisoType } from '../permisos-constantes';
 import { Proyecto, Unidad, Usuario } from '../../../modelos';
+import { ProyectosService } from '../../../servicios/proyectos.service';
+import { UnidadesService } from '../../../servicios/unidades.service';
 
 @Component({
     selector: 'app-permisos-sidebar',
@@ -18,12 +18,16 @@ export class PermisosSidebarComponent implements OnInit {
 
     permisosType = permisoType;
 
-    ngOnInit(): void {
+    async ngOnInit(): Promise<void> {
         if (this.unidad) {
-            this.coordinadores = getCoordinadores(this.unidad.id);
+            this.coordinadores = this.unidadesService.getCoordinadores(
+                this.unidad.id
+            );
         }
         if (this.proyecto) {
-            this.lideres = getLideres(this.proyecto.id);
+            this.lideres = await this.proyectosService.getLideres(
+                this.proyecto.id
+            );
         }
     }
 
@@ -33,4 +37,9 @@ export class PermisosSidebarComponent implements OnInit {
             coordinador => coordinador.id !== idEliminado
         );
     }
+
+    constructor(
+        private proyectosService: ProyectosService,
+        private unidadesService: UnidadesService
+    ) {}
 }

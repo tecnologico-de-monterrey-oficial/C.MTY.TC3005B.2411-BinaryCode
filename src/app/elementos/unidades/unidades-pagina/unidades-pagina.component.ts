@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { obtenerUnidades } from '../../../servicios/unidad.util';
 import { Unidad } from '../../../modelos';
+import { UnidadesService } from '../../../servicios/unidades.service';
 
 @Component({
     selector: 'app-unidades-pagina',
@@ -12,7 +12,7 @@ import { Unidad } from '../../../modelos';
 export class UnidadesPaginaComponent implements OnInit {
     proyectoId: number;
 
-    unidades: Unidad[] = [];
+    unidades: Unidad[];
 
     permisoParaAgregar: boolean = true;
     unidadesVacias: boolean = false;
@@ -21,9 +21,8 @@ export class UnidadesPaginaComponent implements OnInit {
     async ngOnInit(): Promise<void> {
         this.route.params.subscribe(async params => {
             this.proyectoId = params['id'];
-            this.unidades = await obtenerUnidades(
-                this.proyectoId,
-                this.message
+            this.unidades = await this.unidadesService.getUnidadesPorProyecto(
+                this.proyectoId
             );
 
             if (this.unidades) {
@@ -49,6 +48,7 @@ export class UnidadesPaginaComponent implements OnInit {
 
     constructor(
         private message: NzMessageService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private unidadesService: UnidadesService
     ) {}
 }

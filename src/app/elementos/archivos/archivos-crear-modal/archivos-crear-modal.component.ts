@@ -4,7 +4,7 @@ import { Archivo } from '../../../modelos';
 
 type sendCrearArchivo = {
     archivo: Archivo;
-    funcion: () => void;
+    terminar: () => void;
 };
 
 @Component({

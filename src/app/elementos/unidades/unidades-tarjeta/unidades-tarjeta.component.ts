@@ -1,9 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { NzMessageService } from 'ng-zorro-antd/message';
-import { borrarUnidad, actualizarUnidad } from '../../../servicios/unidad.util';
 import { modalBorrarInputInput } from '../../micelaneos/micelaneos-modal-borrar-input/micelaneos-modal-borrar-input.component';
 import { entradaBorrarUnidad } from '../unidades-constantes';
 import { Unidad } from '../../../modelos';
+import { UnidadesService } from '../../../servicios/unidades.service';
 
 @Component({
     selector: 'app-unidades-tarjeta',
@@ -12,7 +11,6 @@ import { Unidad } from '../../../modelos';
 })
 export class UnidadesTarjetaComponent implements OnInit {
     @Input() unidad: Unidad;
-    @Input() message: NzMessageService;
 
     @Output() eliminarUnidadImportada = new EventEmitter<number>();
     @Output() actualizarUnidadImportada = new EventEmitter<Unidad>();
@@ -55,25 +53,25 @@ export class UnidadesTarjetaComponent implements OnInit {
         unidadAActualizar: Unidad,
         finishLoading: () => void
     ): Promise<void> {
-        await actualizarUnidad(
-            unidadAActualizar,
-            this.actualizarUnidadImportada,
-            this.message,
-            this.handleCancel.bind(this),
-            finishLoading
-        );
-        unidadAActualizar;
-        finishLoading;
+        const nuevaUnidad: Unidad =
+            await this.unidadesService.putUnidad(unidadAActualizar);
+        if (nuevaUnidad) {
+            this.handleCancel();
+            this.actualizarUnidadImportada.emit(nuevaUnidad);
+        }
+        finishLoading();
     }
 
     async handleDelete(finishLoading: () => void): Promise<void> {
-        await borrarUnidad(
-            this.unidad.id,
-            this.eliminarUnidadImportada,
-            this.message,
-            this.handleCancel.bind(this),
-            finishLoading
+        const unidadId: number = await this.unidadesService.deleteUnidad(
+            this.unidad.id
         );
-        finishLoading;
+        if (unidadId) {
+            this.eliminarUnidadImportada.emit(unidadId);
+            this.handleCancel();
+        }
+        finishLoading();
     }
+
+    constructor(private unidadesService: UnidadesService) {}
 }

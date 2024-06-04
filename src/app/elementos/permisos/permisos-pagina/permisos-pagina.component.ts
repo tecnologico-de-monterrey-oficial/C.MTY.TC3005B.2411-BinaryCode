@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { obtenerProyectoConValidacion } from '../../../servicios/proyecto.services';
-import { obtenerUnidad } from '../../../servicios/unidad.util';
 import { Proyecto, Unidad } from '../../../modelos';
+import { ProyectosService } from '../../../servicios/proyectos.service';
+import { UnidadesService } from '../../../servicios/unidades.service';
 
 @Component({
     selector: 'app-permisos-pagina',
@@ -22,13 +22,21 @@ export class PermisosPaginaComponent implements OnInit {
             const elementoId: number = params['id'];
 
             if (this.tipo === 'proyecto') {
-                this.proyecto = await obtenerProyectoConValidacion(elementoId);
+                this.proyecto =
+                    await this.proyectosService.getProyectoIndividual(
+                        elementoId
+                    );
             } else if (this.tipo === 'unidad') {
-                this.unidad = await obtenerUnidad(elementoId);
+                this.unidad =
+                    await this.unidadesService.getUnidadIndividual(elementoId);
             }
             this.isLoading = false;
         });
     }
 
-    constructor(private route: ActivatedRoute) {}
+    constructor(
+        private route: ActivatedRoute,
+        private proyectosService: ProyectosService,
+        private unidadesService: UnidadesService
+    ) {}
 }

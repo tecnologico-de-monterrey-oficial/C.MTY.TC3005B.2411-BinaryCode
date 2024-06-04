@@ -5,6 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzFlexModule } from 'ng-zorro-antd/flex';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzInputModule } from 'ng-zorro-antd/input';
 
 import { MicelaneosContenidosVacioComponent } from './micelaneos-contenido-vacio/micelaneos-contenido-vacio.component';
 import { MicelaneosModalBorrarInputComponent } from './micelaneos-modal-borrar-input/micelaneos-modal-borrar-input.component';
@@ -19,6 +21,8 @@ import { MicelaneosModalGenericoComponent } from './micelaneos-modal-generico/mi
         NzButtonModule,
         NzEmptyModule,
         NzFlexModule,
+        NzIconModule,
+        NzInputModule,
     ],
     declarations: [
         MicelaneosContenidosVacioComponent,

@@ -6,7 +6,7 @@ import { Usuario } from '../../../modelos';
     templateUrl: './personas-agregar-lista-gd-individual.component.html',
     styleUrl: './personas-agregar-lista-gd-individual.component.css',
 })
-export class PersonasAgregarListGdComponent {
+export class PersonasAgregarListaGdIndividualComponent {
     @Input() editor: Usuario;
     @Output() removeItemClick = new EventEmitter<number>();
 

@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { NzMessageService } from 'ng-zorro-antd/message';
-import { crearUnidad } from '../../../servicios/unidad.util';
 import { Unidad } from '../../../modelos';
+import { UnidadesService } from '../../../servicios/unidades.service';
 
 @Component({
     selector: 'app-unidades-crear-tarjeta',
@@ -10,20 +9,21 @@ import { Unidad } from '../../../modelos';
 })
 export class UnidadesCrearTarjetaComponent {
     @Output() crearUnidadImportada = new EventEmitter<Unidad>();
-
     @Input() proyectoId: number;
-    @Input() message: NzMessageService;
 
     modalVisible: boolean = false;
 
-    handleCrear(unidadACrear: Unidad, finishLoading: () => void): void {
-        crearUnidad(
-            unidadACrear,
-            this.crearUnidadImportada,
-            this.message,
-            this.handleCancel.bind(this),
-            finishLoading
-        );
+    async handleCrear(
+        unidadACrear: Unidad,
+        finishLoading: () => void
+    ): Promise<void> {
+        const unidad: Unidad =
+            await this.unidadesService.postUnidad(unidadACrear);
+        if (unidad) {
+            this.crearUnidadImportada.emit(unidad);
+            this.handleCancel();
+        }
+        finishLoading();
     }
 
     handleCancel(): void {
@@ -33,4 +33,6 @@ export class UnidadesCrearTarjetaComponent {
     abrirModal(): void {
         this.modalVisible = true;
     }
+
+    constructor(private unidadesService: UnidadesService) {}
 }

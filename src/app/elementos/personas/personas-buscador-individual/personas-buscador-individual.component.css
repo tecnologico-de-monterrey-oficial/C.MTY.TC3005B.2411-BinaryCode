@@ -29,3 +29,11 @@
 .nombre {
     font-size: 1.3rem;
 }
+
+.checkMarkTrue {
+    color: var(--tarjeta_verde_medio);
+}
+
+.checkMarkFalse {
+    color: var(--bordes);
+}

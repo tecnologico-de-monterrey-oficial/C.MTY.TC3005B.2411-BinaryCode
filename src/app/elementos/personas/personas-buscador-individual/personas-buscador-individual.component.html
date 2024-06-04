@@ -1,4 +1,4 @@
-<div class="fila">
+<div class="fila" (click)="addClick()">
     <div class="usuario">
         <img
             class="usuario-imagen"
@@ -12,7 +12,6 @@
         nz-icon
         nzType="check-circle"
         nzTheme="outline"
-        (click)="addClick()"
-        [style.color]="persona.seleccionado ? verde : gris">
+        [class]="persona.seleccionado ? 'checkMarkTrue' : 'checkMarkFalse'">
     </span>
 </div>

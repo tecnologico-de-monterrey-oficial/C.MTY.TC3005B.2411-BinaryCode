@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { NzMessageService } from 'ng-zorro-antd/message';
 import { Proyecto } from '../../../modelos';
-import { crearProyectoConValidacion } from '../../../servicios/proyecto.services';
+import { ProyectosService } from '../../../servicios/proyectos.service';
 
 @Component({
     selector: 'app-proyectos-crear-tarjeta',
@@ -21,18 +20,18 @@ export class ProyectosCrearTarjetaComponent {
         this.modalVisible = false;
     }
 
-    handleCrearProyecto(
+    async handleCrearProyecto(
         proyectoACrear: Proyecto,
         finishLoading: () => void
-    ): void {
-        crearProyectoConValidacion(
-            proyectoACrear,
-            this.crearProyectoImportado,
-            this.message,
-            this.cerrarModal.bind(this),
-            finishLoading
-        );
+    ): Promise<void> {
+        const proyecto: Proyecto =
+            await this.proyectoServicio.postProyecto(proyectoACrear);
+        if (proyecto !== null) {
+            this.crearProyectoImportado.emit(proyecto);
+            this.cerrarModal();
+        }
+        finishLoading();
     }
 
-    constructor(private message: NzMessageService) {}
+    constructor(private proyectoServicio: ProyectosService) {}
 }

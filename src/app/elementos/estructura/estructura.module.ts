@@ -1,21 +1,21 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzFlexModule } from 'ng-zorro-antd/flex';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
 
-import { EncabezadoModule } from '../encabezado/encabezado.module';
-
+import { EstructuraEncabezadoComponent } from './estructura-encabezado/estructura-encabezado.component';
 import { EstructuraEntradaLoginComponent } from './estructura-entrada-login/estructura-entrada-login.component';
 import { EstructuraEntradaPaginaComponent } from './estructura-entrada-pagina/estructura-entrada-pagina.component';
 import { EstructuraEntradaRegistroComponent } from './estructura-entrada-registro/estructura-entrada-registro.component';
 import { EstructuraPaginaComponent } from './estructura-pagina/estructura-pagina.component';
 import { EstructuraVacioComponent } from './estructura-vacio/estructura-vacio.component';
-import { NzMenuModule } from 'ng-zorro-antd/menu';
 
 @NgModule({
     imports: [
@@ -23,26 +23,22 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
         FormsModule,
         ReactiveFormsModule,
 
+        NzDropDownModule,
         NzFlexModule,
         NzFormModule,
         NzIconModule,
         NzInputModule,
         NzLayoutModule,
         NzMenuModule,
-
-        EncabezadoModule,
     ],
     declarations: [
+        EstructuraEncabezadoComponent,
         EstructuraEntradaLoginComponent,
         EstructuraEntradaPaginaComponent,
         EstructuraEntradaRegistroComponent,
         EstructuraPaginaComponent,
         EstructuraVacioComponent,
     ],
-    exports: [
-        EstructuraPaginaComponent,
-        EstructuraEntradaRegistroComponent,
-        EstructuraVacioComponent,
-    ],
+    exports: [EstructuraPaginaComponent, EstructuraVacioComponent],
 })
 export class EstructuraModule {}

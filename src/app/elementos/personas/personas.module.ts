@@ -11,7 +11,7 @@ import { NzPopoverModule } from 'ng-zorro-antd/popover';
 
 import { MicelaneosModule } from '../micelaneos/micelaneos.module';
 
-import { PersonasAgregarListGdComponent } from './personas-agregar-lista-gd-individual/personas-agregar-lista-gd-individual.component';
+import { PersonasAgregarListaGdIndividualComponent } from './personas-agregar-lista-gd-individual/personas-agregar-lista-gd-individual.component';
 import { PersonasAgregarListaGdComponent } from './personas-agregar-lista-gd/personas-agregar-lista-gd.component';
 import { PersonasAgregarListaPqIndividualComponent } from './personas-agregar-lista-pq-individual/personas-agregar-lista-pq-individual.component';
 import { PersonasAgregarListaPqComponent } from './personas-agregar-lista-pq/personas-agregar-lista-pq.component';
@@ -19,6 +19,7 @@ import { PersonasBuscadorIndividualComponent } from './personas-buscador-individ
 import { PersonasBuscadorComponent } from './personas-buscador/personas-buscador.component';
 import { PersonasIndividualComponent } from './personas-individual/personas-individual.component';
 import { PersonasPaginaComponent } from './personas-pagina/personas-pagina.component';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @NgModule({
     imports: [
@@ -26,6 +27,7 @@ import { PersonasPaginaComponent } from './personas-pagina/personas-pagina.compo
         FormsModule,
         ReactiveFormsModule,
 
+        NzButtonModule,
         NzDropDownModule,
         NzGridModule,
         NzIconModule,
@@ -37,7 +39,7 @@ import { PersonasPaginaComponent } from './personas-pagina/personas-pagina.compo
     ],
     declarations: [
         PersonasAgregarListaGdComponent,
-        PersonasAgregarListGdComponent,
+        PersonasAgregarListaGdIndividualComponent,
         PersonasAgregarListaPqComponent,
         PersonasAgregarListaPqIndividualComponent,
         PersonasBuscadorComponent,
@@ -45,6 +47,6 @@ import { PersonasPaginaComponent } from './personas-pagina/personas-pagina.compo
         PersonasIndividualComponent,
         PersonasPaginaComponent,
     ],
-    exports: [PersonasAgregarListaPqComponent],
+    exports: [PersonasAgregarListaPqComponent, PersonasAgregarListaGdComponent],
 })
 export class PersonasModule {}

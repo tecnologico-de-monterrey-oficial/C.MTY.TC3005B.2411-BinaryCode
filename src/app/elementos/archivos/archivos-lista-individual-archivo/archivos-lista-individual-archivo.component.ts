@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { setFavoritoAPI } from '../../../servicios/archivo.services';
 import { Archivo } from '../../../modelos';
+import { ArchivosService } from '../../../servicios/archivos.service';
 
 @Component({
     selector: 'app-archivos-lista-individual-archivo',
@@ -10,13 +10,20 @@ import { Archivo } from '../../../modelos';
 export class ArchivosListaIndividualArchivoComponent {
     @Input() archivo: Archivo;
 
-    onStarClick(): void {
-        this.archivo.favorito = !this.archivo.favorito;
-        setFavoritoAPI(this.archivo.id, this.archivo.favorito);
+    async onStarClick(): Promise<void> {
+        const respuesta: Archivo = await this.archivosService.setFavorito(
+            this.archivo,
+            this.archivo.favorito
+        );
+        if (respuesta) {
+            this.archivo.favorito = !this.archivo.favorito;
+        }
     }
 
     onFileClick(): void {
         console.log('Se abre archivo ' + this.archivo.nombre);
         // TODO: Agregar ruteo
     }
+
+    constructor(private archivosService: ArchivosService) {}
 }

@@ -1,0 +1,186 @@
+import { Injectable } from '@angular/core';
+import { Proyecto, Usuario } from '../modelos';
+import { US4, US5, US6 } from '../../assets/mocks/usuarios';
+import { NzMessageService } from 'ng-zorro-antd/message';
+
+export type actualizarProyectoMessages = {
+    success: string;
+    error: string;
+};
+
+@Injectable({
+    providedIn: 'root',
+})
+export class ProyectosService {
+    lideres: Usuario[] = [US4, US5, US6];
+
+    baseUrl: string = 'http://127.0.0.1:8000/api/proyectos/'; // Base URL for API
+
+    customHeader: HeadersInit = {
+        'Content-Type': 'application/json',
+    };
+
+    async getProyectos(): Promise<Proyecto[]> {
+        try {
+            const response: Response = await fetch(this.baseUrl);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const proyectos: Proyecto[] = await response.json();
+            return proyectos;
+        } catch (error) {
+            console.error('Error obteniendo los proyectos', error);
+            this.message.error(
+                'Hubo un error al obtener los proyectos, por favor intente más tarde',
+                {
+                    nzDuration: 10000,
+                }
+            );
+            return null;
+        }
+    }
+
+    async getProyectoIndividual(proyectoId: number): Promise<Proyecto> {
+        try {
+            const url: string = `${this.baseUrl}${proyectoId}/`;
+            const response: Response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const proyecto: Proyecto = await response.json();
+            return proyecto;
+        } catch (error) {
+            console.error('Error obteniendo el proyecto', error);
+            return null;
+        }
+    }
+
+    async postProyecto(proyecto: Proyecto): Promise<Proyecto> {
+        try {
+            const response: Response = await fetch(this.baseUrl, {
+                method: 'POST',
+                headers: this.customHeader,
+                body: JSON.stringify(proyecto),
+            });
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const respuestaAPI: Proyecto = await response.json();
+            this.message.success('El proyecto se creó exitosamente', {
+                nzDuration: 10000,
+            });
+            return respuestaAPI;
+        } catch (error) {
+            console.log('Error creando el proyecto', error);
+            this.message.error('Hubo un error al crear el proyecto', {
+                nzDuration: 10000,
+            });
+        }
+    }
+
+    async deleteProyecto(proyectoId: number): Promise<number> {
+        try {
+            const url: string = `${this.baseUrl}${proyectoId}/`;
+            const response: Response = await fetch(url, {
+                method: 'DELETE',
+            });
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            this.message.success('El proyecto se eliminó exitosamente', {
+                nzDuration: 10000,
+            });
+            return proyectoId;
+        } catch (error) {
+            console.error('Error al eliminar el proyecto', error);
+            this.message.error('Hubo un error al eliminar el proyecto', {
+                nzDuration: 10000,
+            });
+        }
+    }
+
+    async putProyecto(proyecto: Proyecto): Promise<Proyecto> {
+        try {
+            const url: string = `${this.baseUrl}${proyecto.id}/`;
+            const response: Response = await fetch(url, {
+                method: 'PUT',
+                headers: this.customHeader,
+                body: JSON.stringify(proyecto),
+            });
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const nuevoProyecto: Proyecto = await response.json();
+            this.message.success('El proyecto se actualizó exitosamente', {
+                nzDuration: 10000,
+            });
+            return nuevoProyecto;
+        } catch (error) {
+            console.error('Error al actualizar el proyecto', error);
+            this.message.error('Hubo un error al actualizar el proyecto', {
+                nzDuration: 10000,
+            });
+        }
+    }
+
+    async archivarProyecto(proyecto: Proyecto): Promise<Proyecto> {
+        const proyectoModificado: Proyecto = { ...proyecto };
+        proyectoModificado.activo = false;
+        proyectoModificado.imagen = undefined;
+        try {
+            const url: string = `${this.baseUrl}${proyecto.id}/`;
+            const response: Response = await fetch(url, {
+                method: 'PUT',
+                headers: this.customHeader,
+                body: JSON.stringify(proyectoModificado),
+            });
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const nuevoProyecto: Proyecto = await response.json();
+            this.message.success('El proyecto se archivó exitosamente', {
+                nzDuration: 10000,
+            });
+            return nuevoProyecto;
+        } catch (error) {
+            console.error('Error al actualizar el proyecto', error);
+            this.message.error('Hubo un error al archivar el proyecto', {
+                nzDuration: 10000,
+            });
+        }
+    }
+
+    async activarProyecto(proyecto: Proyecto): Promise<Proyecto> {
+        const proyectoModificado: Proyecto = { ...proyecto };
+        proyectoModificado.activo = true;
+        proyectoModificado.imagen = undefined;
+        try {
+            const url: string = `${this.baseUrl}${proyecto.id}/`;
+            const response: Response = await fetch(url, {
+                method: 'PUT',
+                headers: this.customHeader,
+                body: JSON.stringify(proyectoModificado),
+            });
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const nuevoProyecto: Proyecto = await response.json();
+            this.message.success('El proyecto se activó exitosamente', {
+                nzDuration: 10000,
+            });
+            return nuevoProyecto;
+        } catch (error) {
+            console.error('Error al actualizar el proyecto', error);
+            this.message.error('Hubo un error al activar el proyecto', {
+                nzDuration: 10000,
+            });
+        }
+    }
+
+    async getLideres(idProyecto: number): Promise<Usuario[]> {
+        idProyecto;
+        return this.lideres;
+    }
+
+    constructor(private message: NzMessageService) {}
+}

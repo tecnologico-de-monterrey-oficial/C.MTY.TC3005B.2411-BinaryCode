@@ -16,7 +16,7 @@
                                 formControlName="imagen"
                                 type="file"
                                 #fileInput
-                                (change)="onFileSelected($event)"
+                                (change)="seleccionarArchivo($event)"
                                 accept=".png, .jpg, .jpeg"
                                 hidden />
                             <div
@@ -96,7 +96,7 @@
     </form>
 
     <div class="botones">
-        <button class="boton-cancelar" nz-button (click)="handleCancel()">
+        <button class="boton-cancelar" nz-button (click)="cancelarModal()">
             Cancelar
         </button>
         <button

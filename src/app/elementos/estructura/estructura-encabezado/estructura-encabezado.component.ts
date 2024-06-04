@@ -3,11 +3,11 @@ import { US1 } from '../../../../assets/mocks/usuarios';
 import { Usuario } from '../../../modelos';
 
 @Component({
-    selector: 'app-encabezado-barra',
-    templateUrl: './encabezado-barra.component.html',
-    styleUrl: './encabezado-barra.component.css',
+    selector: 'app-estructura-encabezado',
+    templateUrl: './estructura-encabezado.component.html',
+    styleUrl: './estructura-encabezado.component.css',
 })
-export class EncabezadoBarraComponent {
+export class EstructuraEncabezadoComponent {
     @Input() usuario: Usuario = US1;
 
     showPlaceholderUsuario: boolean = false;
