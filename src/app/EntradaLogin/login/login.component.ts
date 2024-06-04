@@ -42,7 +42,6 @@ export class LoginComponent {
                     // Acción opcional al completar la solicitud
                 },
             });
-
         }
     }
 }
