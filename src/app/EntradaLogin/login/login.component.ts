@@ -32,6 +32,7 @@ export class LoginComponent {
             this.authService.login(email, password).subscribe({
                 next: response => {
                     console.log('Login successful', response);
+                    // noinspection JSIgnoredPromiseFromCall
                     this.router.navigate(['/proyectos']); // Redirigir a la página deseada después del login
                 },
                 error: error => {
