@@ -7,5 +7,5 @@ export type Unidad = {
     nombre: string;
     color: string;
     imagen: string;
-    proyectoId: number;
+    id_proyecto: number;
 };

@@ -1,8 +1,17 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { UnidadesComponent } from './unidades/unidades.component'; // Importar el componente
+import { RouterModule, Routes } from '@angular/router';
+import { UnidadesComponent } from './unidades/unidades.component';
 
-const routes: Routes = [{ path: 'unidades/:id', component: UnidadesComponent }];
+const routes: Routes = [
+    { path: '', component: UnidadesComponent },
+    {
+        path: ':unidadesId/archivos',
+        loadChildren: () =>
+            import('../vista-archivos/vista-archivos-routing.module').then(
+                m => m.VistaArchivosRoutingModule
+            ),
+    },
+];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

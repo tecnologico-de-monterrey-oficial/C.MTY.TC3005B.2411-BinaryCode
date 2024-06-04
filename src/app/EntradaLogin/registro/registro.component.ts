@@ -93,6 +93,7 @@ export class RegistroComponent implements OnInit {
                 .register(first_name, last_name, email, password, color)
                 .subscribe({
                     next: () => {
+                        // noinspection JSIgnoredPromiseFromCall
                         this.router.navigate(['/proyectos']);
                     },
                     error: err => {
@@ -101,7 +102,6 @@ export class RegistroComponent implements OnInit {
                 });
         } else {
             console.log('Formulario no válido');
-
         }
     }
 }
