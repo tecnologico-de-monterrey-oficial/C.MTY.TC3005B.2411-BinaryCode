@@ -1,3 +1,14 @@
+<!-- favoritos.component.ts -->
 <h1>Favoritos</h1>
 
 <app-lista-archivos [archivos]="archivos" />
+
+<button
+    nz-button
+    nzType="primary"
+    nzShape="circle"
+    nzSize="large"
+    class="add-button"
+    (click)="abrirModalCrearContenido()">
+    <i nz-icon nzType="plus" nzTheme="outline"></i>
+</button>
