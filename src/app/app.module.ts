@@ -11,13 +11,13 @@ import { RouterModule } from '@angular/router';
 
 // Imports locales
 import { AppRoutingModule } from './app-routing.module';
-import { EstructuraModule } from './elementos/estructura/estructura.module';
-import { ArchivosModule } from './elementos/archivos/archivos.module';
-import { MicelaneosModule } from './elementos/micelaneos/micelaneos.module';
-import { PermisosModule } from './elementos/permisos/permisos.module';
-import { PersonasModule } from './elementos/personas/personas.module';
-import { ProyectosModule } from './elementos/proyectos/proyectos.module';
-import { UnidadesModule } from './elementos/unidades/unidades.module';
+import { EstructuraModule } from './componentes/estructura/estructura.module';
+import { ArchivosModule } from './componentes/archivos/archivos.module';
+import { MicelaneosModule } from './componentes/micelaneos/micelaneos.module';
+import { PermisosModule } from './componentes/permisos/permisos.module';
+import { PersonasModule } from './componentes/personas/personas.module';
+import { ProyectosModule } from './componentes/proyectos/proyectos.module';
+import { UnidadesModule } from './componentes/unidades/unidades.module';
 
 @NgModule({
     declarations: [AppComponent],
