@@ -7,6 +7,8 @@ import { EncabezadoComponent } from './components/encabezado/encabezado.componen
 import { CrearContenidosComponent } from './paginas/vista-archivos/components/crear-contenidos/crear-contenidos.component';
 import { ProyectoCrearComponent } from './paginas/vista-proyectos/components/proyecto-crear/proyecto-crear.component';
 import { CrearUnidadComponent } from './paginas/vista-unidades/components/crear-unidad/crear-unidad.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 // Imports angular
 import { HttpClientModule } from '@angular/common/http';
@@ -70,5 +72,12 @@ enableRipple(true);
         NzRowDirective,
     ],
     bootstrap: [AppComponent],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: TokenInterceptor,
+            multi: true,
+        },
+    ],
 })
 export class AppModule {}

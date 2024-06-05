@@ -120,7 +120,7 @@ export class ProyectoCrearComponent implements OnInit, OnDestroy {
                     creator: 1,
                 };
                 fetch('http://127.0.0.1:8000/api/proyectos/', {
-                    // Reemplaza con tu URL de la API
+                    // Reemplazar con URL de la API
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

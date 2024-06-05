@@ -15,13 +15,14 @@
 }
 
 .ant-input-affix-wrapper {
-    width: 40%;
+    width: 70%;
 }
 .buscador {
     justify-content: center;
     align-items: center;
     margin-right: 10%;
     width: 100px;
+    border-radius: 25px;
 }
 
 .header-icon {

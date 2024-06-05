@@ -1,5 +1,5 @@
 <nz-layout class="whole-layout">
-    <app-encabezado *ngIf="showHeader"></app-encabezado>
+    <app-encabezado *ngIf="isAuthenticated"></app-encabezado>
     <nz-layout>
         <nz-sider
             *ngIf="showSidebar"
