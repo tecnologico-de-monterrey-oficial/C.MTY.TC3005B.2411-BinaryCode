@@ -28,7 +28,7 @@
 .container {
     display: flex;
     flex-grow: 1;
-    padding: 10px; /* Añadir relleno alrededor del contenedor */
+    padding: 10px;
 }
 
 .left {
@@ -40,7 +40,7 @@
     position: relative;
     cursor: pointer;
     margin-right: 5px;
-    flex-direction: column; /* Cambiado para apilar elementos verticalmente */
+    flex-direction: column;
 }
 
 .left img,
@@ -67,7 +67,7 @@
 }
 
 .file-name {
-    margin-top: 10px; /* Espacio entre el área de subida y el nombre del archivo */
+    margin-top: 10px;
     text-align: center;
 }
 
