@@ -1,5 +1,4 @@
 import { Etiqueta } from './etiqueta.model';
-import { Icono } from './icono.model';
 import { Usuario } from './usuario.model';
 
 // TODO: Parametros que delimitar
@@ -8,10 +7,11 @@ import { Usuario } from './usuario.model';
 
 export type Archivo = {
     id: string;
-    favorito: boolean;
-    icono: Icono;
     nombre: string;
-    propietario: Usuario;
-    etiquetas: Etiqueta[];
+    descripcion: string;
+    terminacion: string;
     fecha: string;
+    usuario_info: Usuario; // Asegúrate de que tienes un tipo Usuario definido.
+    etiquetas: Etiqueta[];
+    favorito: boolean;
 };

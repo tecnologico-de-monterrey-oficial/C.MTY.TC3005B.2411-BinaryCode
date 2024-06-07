@@ -17,19 +17,28 @@
             <span
                 class="archivo-icono"
                 nz-icon
-                [nzType]="archivo.icono.nombre"
-                [ngStyle]="{ color: archivo.icono.color }"
+                [nzType]="getIcono(archivo.terminacion).nombre"
+                [ngStyle]="{ color: getIcono(archivo.terminacion).color }"
                 nzTheme="outline"></span>
             <div class="texto">{{ archivo.nombre }}</div>
         </div>
 
-        <!-- Propietario -->
         <div nz-col nzFlex="6" class="hide-on-small-3">
-            <img
-                class="usuario-imagen"
-                [src]="archivo.propietario.imagenUrl"
-                alt="Imagen de usuario" />
-            <div class="texto">{{ archivo.propietario.nombre }}</div>
+            <ng-container *ngIf="archivo.usuario_info.imagen; else icono">
+                <!-- Mostrar la imagen si la URL de la imagen está presente -->
+                <img
+                    class="usuario-imagen"
+                    [src]="archivo.usuario_info.imagen"
+                    alt="Imagen de usuario" />
+            </ng-container>
+
+            <ng-template #icono>
+                <!-- Mostrar el icono si la URL de la imagen no está presente -->
+                <div class="usuario-icono-container">
+                    <span class="usuario-icono" nz-icon nzType="user"></span>
+                </div>
+            </ng-template>
+            <div class="texto">{{ archivo.usuario_info.nombre }}</div>
         </div>
 
         <!-- Etiquetas -->
@@ -44,7 +53,7 @@
 
         <!-- Fecha -->
         <div nz-col nzFlex="6" class="hide-on-small-2">
-            <div class="texto">{{ archivo.fecha }}</div>
+            <div class="texto">{{ formatDate(archivo.fecha) }}</div>
         </div>
 
         <!-- Icono de detalles -->

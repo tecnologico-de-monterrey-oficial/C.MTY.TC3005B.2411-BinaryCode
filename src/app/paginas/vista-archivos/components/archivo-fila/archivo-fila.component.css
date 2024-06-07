@@ -57,6 +57,23 @@ body {
     border-radius: 50%;
 }
 
+.usuario-icono-container {
+    /* Establece el tamaño del contenedor */
+    width: 35px; /* Cambia el tamaño según sea necesario */
+    height: 35px; /* Cambia el tamaño según sea necesario */
+    border-radius: 50%; /* Hace que el contenedor sea circular */
+    border: 2px solid var(--negro); /* Cambia el grosor y color del borde según sea necesario */
+}
+
+.usuario-icono {
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    color: var(--negro);
+}
+
 /* Etiquetas */
 
 .etiqueta {
