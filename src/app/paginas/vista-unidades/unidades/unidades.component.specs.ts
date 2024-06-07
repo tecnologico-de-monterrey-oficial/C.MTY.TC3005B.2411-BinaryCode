@@ -56,14 +56,14 @@ fdescribe('UnidadesComponent', () => {
                 nombre: 'Unidad 1',
                 color: 'red',
                 imagen: 'imagen1.png',
-                proyectoId: 1,
+                id_proyecto: 1,
             },
             {
                 id: 2,
                 nombre: 'Unidad 2',
                 color: 'blue',
                 imagen: 'imagen2.png',
-                proyectoId: 1,
+                id_proyecto: 1,
             },
         ];
 

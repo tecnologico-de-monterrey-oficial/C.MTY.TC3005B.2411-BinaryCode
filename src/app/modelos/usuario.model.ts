@@ -4,6 +4,6 @@
 export type Usuario = {
     id: number;
     nombre: string;
-    imagenUrl: string;
+    imagen: string;
     fecha: string;
 };

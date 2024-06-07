@@ -1,5 +1,4 @@
 import { Archivo } from '../../app/modelos/archivo.model';
-import { fileIcons } from '../../app/modelos/icono.model';
 import {
     E1,
     E10,
@@ -23,101 +22,131 @@ import {
 import { US1, US2, US3, US4, US5, US6 } from './usuarios';
 
 export const A1: Archivo = {
-    id: 'A1',
-    favorito: true,
-    icono: fileIcons.word,
-    nombre: 'Archivo 1',
-    propietario: US1,
+    id: '8c4a5e83-777d-49ee-a317-ddf4c93ce559',
+    nombre: 'Algo',
+    descripcion:
+        'En este proyecto estoy probando que nuestra aplicacion funcione con django',
+    terminacion: 'pdf',
+    fecha: '05-06-2024',
+    usuario_info: US1,
     etiquetas: [E12, E6, E17],
-    fecha: '29 de febrero de 2024',
+    favorito: false,
+    //icono: fileIcons.word,
 };
 
 export const A2: Archivo = {
-    id: 'A2',
-    favorito: false,
-    icono: fileIcons.pdf,
-    nombre: 'Archivo 2',
-    propietario: US2,
+    id: '8c4a5e83-777d-49ee-a317-ddf4c93ce559',
+    nombre: 'Algo',
+    descripcion:
+        'En este proyecto estoy probando que nuestra aplicacion funcione con django',
+    terminacion: 'pdf',
+    fecha: '05-06-2024',
+    usuario_info: US2,
+    //icono: fileIcons.pdf,
     etiquetas: [E3, E14, E10],
-    fecha: '29 de febrero de 2024',
+    favorito: false,
 };
 
 export const A3: Archivo = {
-    id: 'A3',
-    favorito: true,
-    icono: fileIcons.excel,
-    nombre: 'Archivo 3',
-    propietario: US3,
+    id: '8c4a5e83-777d-49ee-a317-ddf4c93ce559',
+    nombre: 'Algo',
+    descripcion:
+        'En este proyecto estoy probando que nuestra aplicacion funcione con django',
+    terminacion: 'pdf',
+    fecha: '05-06-2024',
+    usuario_info: US3,
+    //icono: fileIcons.pdf,
+    favorito: false,
     etiquetas: [E2, E9, E16],
-    fecha: '29 de febrero de 2024',
 };
 
 export const A4: Archivo = {
-    id: 'A4',
+    id: '8c4a5e83-777d-49ee-a317-ddf4c93ce559',
+    nombre: 'Algo',
+    descripcion:
+        'En este proyecto estoy probando que nuestra aplicacion funcione con django',
+    terminacion: 'pdf',
+    fecha: '05-06-2024',
+    usuario_info: US4,
+    //icono: fileIcons.pdf,
     favorito: false,
-    icono: fileIcons.solidWorks,
-    nombre: 'Archivo 4',
-    propietario: US4,
     etiquetas: [E8, E4, E15],
-    fecha: '29 de febrero de 2024',
 };
 
 export const A5: Archivo = {
-    id: 'A5',
-    favorito: true,
-    icono: fileIcons.ppt,
-    nombre: 'Archivo 5',
-    propietario: US5,
+    id: '8c4a5e83-777d-49ee-a317-ddf4c93ce559',
+    nombre: 'Algo',
+    descripcion:
+        'En este proyecto estoy probando que nuestra aplicacion funcione con django',
+    terminacion: 'pdf',
+    fecha: '05-06-2024',
+    usuario_info: US5,
+    //icono: fileIcons.pdf,
+    favorito: false,
     etiquetas: [E7, E18, E11],
-    fecha: '29 de febrero de 2024',
 };
 
 export const A6: Archivo = {
-    id: 'A6',
+    id: '8c4a5e83-777d-49ee-a317-ddf4c93ce559',
+    nombre: 'Algo',
+    descripcion:
+        'En este proyecto estoy probando que nuestra aplicacion funcione con django',
+    terminacion: 'pdf',
+    fecha: '05-06-2024',
+    usuario_info: US6,
+    //icono: fileIcons.pdf,
     favorito: false,
-    icono: fileIcons.image,
-    nombre: 'Archivo 6',
-    propietario: US6,
     etiquetas: [E5, E1, E13],
-    fecha: '29 de febrero de 2024',
 };
 
 export const A7: Archivo = {
-    id: 'A7',
-    favorito: true,
-    icono: fileIcons.word,
-    nombre: 'Archivo 7',
-    propietario: US1,
+    id: '8c4a5e83-777d-49ee-a317-ddf4c93ce559',
+    nombre: 'Algo',
+    descripcion:
+        'En este proyecto estoy probando que nuestra aplicacion funcione con django',
+    terminacion: 'pdf',
+    fecha: '05-06-2024',
+    usuario_info: US1,
+    //icono: fileIcons.pdf,
+    favorito: false,
     etiquetas: [E12, E6, E17],
-    fecha: '29 de febrero de 2024',
 };
 
 export const A8: Archivo = {
-    id: 'A8',
-    favorito: true,
-    icono: fileIcons.pdf,
-    nombre: 'Archivo 8',
-    propietario: US2,
+    id: '8c4a5e83-777d-49ee-a317-ddf4c93ce559',
+    nombre: 'Algo',
+    descripcion:
+        'En este proyecto estoy probando que nuestra aplicacion funcione con django',
+    terminacion: 'pdf',
+    fecha: '05-06-2024',
+    usuario_info: US1,
+    //icono: fileIcons.pdf,
+    favorito: false,
     etiquetas: [E3, E14, E10],
-    fecha: '29 de febrero de 2024',
 };
 
 export const A9: Archivo = {
-    id: 'A9',
-    favorito: true,
-    icono: fileIcons.excel,
-    nombre: 'Archivo 9',
-    propietario: US4,
+    id: '8c4a5e83-777d-49ee-a317-ddf4c93ce559',
+    nombre: 'Algo',
+    descripcion:
+        'En este proyecto estoy probando que nuestra aplicacion funcione con django',
+    terminacion: 'pdf',
+    fecha: '05-06-2024',
+    usuario_info: US2,
+    //icono: fileIcons.pdf,
+    favorito: false,
     etiquetas: [E2, E9, E16],
-    fecha: '29 de febrero de 2024',
 };
 
 export const A10: Archivo = {
-    id: 'A10',
-    favorito: true,
-    icono: fileIcons.image,
-    nombre: 'Archivo 10',
-    propietario: US6,
+    id: '8c4a5e83-777d-49ee-a317-ddf4c93ce559',
+    nombre: 'Algo',
+    descripcion:
+        'En este proyecto estoy probando que nuestra aplicacion funcione con django',
+    terminacion: 'pdf',
+    fecha: '05-06-2024',
+    usuario_info: US2,
+    //icono: fileIcons.pdf,
+    favorito: false,
     etiquetas: [E8, E4, E15],
-    fecha: '29 de febrero de 2024',
 };

@@ -1,20 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Archivo } from '../modelos/archivo.model';
 import { Carpeta } from '../modelos/carpeta.model';
-import { Contenidos } from '../modelos/contenidos.model';
-import {
-    A1,
-    A10,
-    A2,
-    A3,
-    A4,
-    A5,
-    A6,
-    A7,
-    A8,
-    A9,
-} from '../../assets/mocks/archivos';
 import { C1, C2, C3 } from '../../assets/mocks/carpetas';
+import { A10, A3, A5, A7, A8, A9 } from '../../assets/mocks/archivos';
 
 @Injectable({
     providedIn: 'root',
@@ -24,15 +12,11 @@ import { C1, C2, C3 } from '../../assets/mocks/carpetas';
 // Cuántos archivos pueden verse a la vez (ponemos paginación?)
 // Cuántos archivos puede haber en total
 export class ArchivosService {
-    archivos: Archivo[] = [A1, A2, A3, A4, A5, A6];
+    private baseUrl = 'http://127.0.0.1:8000/api/archivos/';
+    archivos: Archivo[];
     favoritos: Archivo[] = [A7, A8, A3, A9, A5, A10];
 
     carpetas: Carpeta[] = [C1, C2, C3];
-
-    contenidos: Contenidos = {
-        archivos: this.archivos,
-        carpetas: this.carpetas,
-    };
 
     getArchivosFavoritos(): Archivo[] {
         // TODO: LLAMADA A API
@@ -44,10 +28,18 @@ export class ArchivosService {
         return this.archivos;
     }
 
-    getContenidos(idParaAPI: string): Contenidos {
-        // TODO: LLAMADA A API
-        idParaAPI;
-        return this.contenidos;
+    async getCarpetas(): Promise<Carpeta[]> {
+        return await this.carpetas;
+    }
+
+    async getArchivos(): Promise<Archivo[]> {
+        const response: Response = await fetch(this.baseUrl);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const archivos: Archivo[] = await response.json();
+        console.log(archivos);
+        return archivos;
     }
 
     setFavorito(idArchivo: string, favorito: boolean): void {
