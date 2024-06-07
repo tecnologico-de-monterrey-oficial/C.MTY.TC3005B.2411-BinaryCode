@@ -1,0 +1,31 @@
+/* crear-carpeta.component.css */
+.tarjeta {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: auto;
+    background-color: #f7faff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.texto-indicador {
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.colores {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.cuadro {
+    width: 45px;
+    height: 45px;
+    margin: 2px;
+    border: 1px solid #070809;
+    border-radius: 5px;
+    cursor: pointer;
+}

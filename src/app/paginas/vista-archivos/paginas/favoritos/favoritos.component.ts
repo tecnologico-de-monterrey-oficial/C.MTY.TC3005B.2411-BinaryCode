@@ -1,8 +1,7 @@
+// favoritos.component.ts
 import { Component } from '@angular/core';
-import { NzModalService } from 'ng-zorro-antd/modal';
 import { Archivo } from '../../../../modelos/archivo.model';
 import { ArchivosService } from '../../../../servicios/archivo.services';
-import { CrearContenidosComponent } from '../../components/crear-contenidos/crear-contenidos.component';
 
 @Component({
     selector: 'app-favoritos',
@@ -12,19 +11,7 @@ import { CrearContenidosComponent } from '../../components/crear-contenidos/crea
 export class FavoritosComponent {
     archivos: Archivo[] = [];
 
-    constructor(
-        private archivosService: ArchivosService,
-        private modalService: NzModalService
-    ) {
+    constructor(archivosService: ArchivosService) {
         this.archivos = archivosService.getArchivosFavoritos();
-    }
-
-    abrirModalCrearContenido(): void {
-        this.modalService.create({
-            nzTitle: 'Agregar a Favoritos',
-            nzContent: CrearContenidosComponent,
-            nzFooter: null,
-            nzWidth: '80%',
-        });
     }
 }

@@ -6,6 +6,7 @@ import { ArchivosService } from '../../../../servicios/archivo.services';
 import { Carpeta } from '../../../../modelos/carpeta.model';
 import { Contenidos } from '../../../../modelos/contenidos.model';
 import { CrearContenidosComponent } from '../../components/crear-contenidos/crear-contenidos.component';
+import { CrearCarpetaComponent } from '../../components/crear-carpeta/crear-carpeta.component';
 
 @Component({
     selector: 'app-contenidos',
@@ -32,6 +33,15 @@ export class ContenidosComponent {
             nzContent: CrearContenidosComponent,
             nzFooter: null,
             nzWidth: '80%',
+        });
+    }
+
+    abrirModalCrearCarpeta(): void {
+        this.modalService.create({
+            nzTitle: 'Crear Carpeta',
+            nzContent: CrearCarpetaComponent,
+            nzFooter: null,
+            nzWidth: '40%',
         });
     }
 }
