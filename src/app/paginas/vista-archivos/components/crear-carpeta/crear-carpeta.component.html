@@ -1,26 +1,111 @@
-<!-- crear-carpeta.component.html 
 <div class="tarjeta">
-    <div >
-        <p class="texto-indicador">Escribe un nombre para la Carpeta</p>
-        <input
-            type="text"
-            class="buscador"
-            placeholder="Nombre de la Carpeta"
-            formControlName="nombreUnidad" />
-    </div>
-    
-    <div>
-        <p class="texto-indicador">Selecciona el color</p>
-        <div class="colores">
-            <div
-                *ngFor="let opcionColor of colores"
-                nzSpan="2"
-                class="cuadro"
-                [class.seleccionado]="colorSeleccionado === opcionColor"
-                (click)="seleccionarColor(opcionColor)"
-                [style.background-color]="opcionColor"></div>
+    <div class="container">
+        <div class="content">
+            <div>
+                <p class="texto-indicador">Nombre de la Carpeta</p>
+                <input
+                    type="text"
+                    nz-input
+                    placeholder="Ingresa el nombre de la carpeta"
+                    formControlName="nombreCarpeta" />
+            </div>
+            <br />
+            <div>
+                <p class="texto-indicador">Selecciona el color</p>
+                <div class="colores">
+                    <div
+                        class="cuadro"
+                        [class.seleccionado]="colorSeleccionado === '#FFCD4D'"
+                        (click)="seleccionarColor('#FFCD4D')"
+                        style="background-color: #ffcd4d"></div>
+                    <div
+                        class="cuadro"
+                        [class.seleccionado]="colorSeleccionado === '#FFE298'"
+                        (click)="seleccionarColor('#FFE298')"
+                        style="background-color: #ffe298"></div>
+                    <div
+                        class="cuadro"
+                        [class.seleccionado]="colorSeleccionado === '#FFB018'"
+                        (click)="seleccionarColor('#FFB018')"
+                        style="background-color: #ffb018"></div>
+                    <div
+                        class="cuadro"
+                        [class.seleccionado]="colorSeleccionado === '#1890FF'"
+                        (click)="seleccionarColor('#1890FF')"
+                        style="background-color: #1890ff"></div>
+                    <div
+                        class="cuadro"
+                        [class.seleccionado]="colorSeleccionado === '#1499B5'"
+                        (click)="seleccionarColor('#1499B5')"
+                        style="background-color: #1499b5"></div>
+                    <div
+                        class="cuadro"
+                        [class.seleccionado]="colorSeleccionado === '#4D69FF'"
+                        (click)="seleccionarColor('#4D69FF')"
+                        style="background-color: #4d69ff"></div>
+                    <div
+                        class="cuadro"
+                        [class.seleccionado]="colorSeleccionado === '#CD2F2F'"
+                        (click)="seleccionarColor('#CD2F2F')"
+                        style="background-color: #cd2f2f"></div>
+                    <div
+                        class="cuadro"
+                        [class.seleccionado]="colorSeleccionado === '#FF2F2F'"
+                        (click)="seleccionarColor('#FF2F2F')"
+                        style="background-color: #ff2f2f"></div>
+                    <div
+                        class="cuadro"
+                        [class.seleccionado]="colorSeleccionado === '#FF4D4F'"
+                        (click)="seleccionarColor('#FF4D4F')"
+                        style="background-color: #ff4d4f"></div>
+                    <div
+                        class="cuadro"
+                        [class.seleccionado]="colorSeleccionado === '#7138CC'"
+                        (click)="seleccionarColor('#7138CC')"
+                        style="background-color: #7138cc"></div>
+                    <div
+                        class="cuadro"
+                        [class.seleccionado]="colorSeleccionado === '#914DFF'"
+                        (click)="seleccionarColor('#914DFF')"
+                        style="background-color: #914dff"></div>
+                    <div
+                        class="cuadro"
+                        [class.seleccionado]="colorSeleccionado === '#B385FF'"
+                        (click)="seleccionarColor('#B385FF')"
+                        style="background-color: #b385ff"></div>
+                    <div
+                        class="cuadro"
+                        [class.seleccionado]="colorSeleccionado === '#17820D'"
+                        (click)="seleccionarColor('#17820D')"
+                        style="background-color: #17820d"></div>
+                    <div
+                        class="cuadro"
+                        [class.seleccionado]="colorSeleccionado === '#21B514'"
+                        (click)="seleccionarColor('#21B514')"
+                        style="background-color: #21b514"></div>
+                    <div
+                        class="cuadro"
+                        [class.seleccionado]="colorSeleccionado === '#75EF6A'"
+                        (click)="seleccionarColor('#75EF6A')"
+                        style="background-color: #75ef6a"></div>
+                    <div
+                        class="cuadro"
+                        [class.seleccionado]="colorSeleccionado === '#D000AF'"
+                        (click)="seleccionarColor('#D000AF')"
+                        style="background-color: #d000af"></div>
+                    <div
+                        class="cuadro"
+                        [class.seleccionado]="colorSeleccionado === '#FF4DE3'"
+                        (click)="seleccionarColor('#FF4DE3')"
+                        style="background-color: #ff4de3"></div>
+                    <div
+                        class="cuadro"
+                        [class.seleccionado]="colorSeleccionado === '#FF95EE'"
+                        (click)="seleccionarColor('#FF95EE')"
+                        style="background-color: #ff95ee"></div>
+                </div>
+            </div>
         </div>
     </div>
+    <button>Crear Carpeta</button>
 </div>
--->
-<p>Hola, solo estoy probando si funciona el modal</p>
