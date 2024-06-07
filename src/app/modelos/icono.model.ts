@@ -16,19 +16,19 @@ export type Icono = {
     color: string;
 };
 
-type DefinitionObject = {
-    [key: string]: Icono;
-};
+export function getIcono(terminacion: string): Icono {
+    const fileIcons: { [key: string]: Icono } = {
+        excel: { nombre: 'file-excel', color: icono_verde },
+        jpg: { nombre: 'file-jpg', color: icono_morado },
+        pdf: { nombre: 'file-pdf', color: icono_rojo },
+        ppt: { nombre: 'file-ppt', color: icono_naranja },
+        word: { nombre: 'file-word', color: icono_azul },
+        solidWorks: { nombre: 'code-sandbox', color: icono_rosa },
+        gif: { nombre: 'file-gif', color: icono_amarillo },
+        image: { nombre: 'file-image', color: icono_azul_claro },
+        txt: { nombre: 'file-text', color: icono_gris },
+        unknown: { nombre: 'file-unknown', color: icono_rosa_fuerte },
+    };
 
-export const fileIcons: DefinitionObject = {
-    excel: { nombre: 'file-excel', color: icono_verde },
-    jpg: { nombre: 'file-jpg', color: icono_morado },
-    pdf: { nombre: 'file-pdf', color: icono_rojo },
-    ppt: { nombre: 'file-ppt', color: icono_naranja },
-    word: { nombre: 'file-word', color: icono_azul },
-    solidWorks: { nombre: 'code-sandbox', color: icono_rosa },
-    gif: { nombre: 'file-gif', color: icono_amarillo },
-    image: { nombre: 'file-image', color: icono_azul_claro },
-    text: { nombre: 'file-text', color: icono_gris },
-    unknown: { nombre: 'file-unknown', color: icono_rosa_fuerte },
-};
+    return fileIcons[terminacion.toLowerCase()] || fileIcons['unknown'];
+}
