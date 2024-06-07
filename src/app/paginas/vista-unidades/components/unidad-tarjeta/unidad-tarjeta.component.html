@@ -1,8 +1,5 @@
 <div class="card">
-    <a
-        href="/proyectos/{{ unidad.id_proyecto }}/unidades/{{
-            unidad.id
-        }}/archivos">
+    <a [routerLink]="['/proyectos', unidad.id_proyecto, 'unidades', unidad.id]">
         <img
             class="image-container"
             [src]="unidad.imagen"
@@ -31,7 +28,6 @@
                     Editar
                     <span class="icono-opcion" nz-icon nzType="edit"></span>
                 </li>
-
                 <li nz-menu-item>
                     Archivar
                     <span
@@ -53,10 +49,7 @@
             </ul>
         </nz-dropdown-menu>
     </div>
-    <a
-        href="/proyectos/{{ unidad.id_proyecto }}/unidades/{{
-            unidad.id
-        }}/archivos">
+    <a [routerLink]="['/proyectos', unidad.id_proyecto, 'unidades', unidad.id]">
         <div class="name-label" [ngStyle]="{ color: unidad.color }">
             {{ unidad.nombre }}
         </div>
