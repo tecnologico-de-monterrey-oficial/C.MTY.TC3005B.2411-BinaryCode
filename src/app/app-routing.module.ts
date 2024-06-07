@@ -1,17 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { IsAuthGuard } from './guards/auth.guards';
-//descomentar cuando pruebes autenticacion
+import { AuthRedirectGuardFn } from './guards/authRedirect.guards';
 
 const routes: Routes = [
-    { path: '', pathMatch: 'full', redirectTo: '/proyectos' },
-    // { path: 'inicio', loadChildren: () => import('./MainLayout/main-layout.module').then(m => m.MainLayoutModule) },
+    {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: '/login',
+        //canActivate: [AuthRedirectGuardFn],
+    },
     {
         path: 'entrada',
         loadChildren: () =>
             import('./EntradaLogin/entrada-login.module').then(
                 m => m.EntradaLoginModule
             ),
+        canActivate: [AuthRedirectGuardFn],
     },
     {
         path: 'archivos',
@@ -19,6 +24,7 @@ const routes: Routes = [
             import(
                 './paginas/vista-archivos/vista-archivos-routing.module'
             ).then(m => m.VistaArchivosRoutingModule),
+        canActivate: [IsAuthGuard],
     },
     {
         path: 'proyectos',
@@ -34,6 +40,7 @@ const routes: Routes = [
             import(
                 './paginas/vista-unidades/vista-unidades-routing.module'
             ).then(m => m.VistaUnidadesRoutingModule),
+        canActivate: [IsAuthGuard],
     },
     {
         path: 'personas',
@@ -41,6 +48,7 @@ const routes: Routes = [
             import(
                 './paginas/vista-personas/vista-persona-routing.module'
             ).then(m => m.VistaPersonasRoutingModule),
+        canActivate: [IsAuthGuard],
     },
     {
         path: 'permisos',
@@ -48,6 +56,7 @@ const routes: Routes = [
             import(
                 './paginas/vista-permisos/vista-permisos-routing.module'
             ).then(m => m.VistaPermisosRoutingModule),
+        canActivate: [IsAuthGuard],
     },
     {
         path: 'login',
@@ -55,6 +64,7 @@ const routes: Routes = [
             import('./EntradaLogin/entrada-login.module').then(
                 m => m.EntradaLoginModule
             ),
+        canActivate: [AuthRedirectGuardFn],
     },
 ];
 
