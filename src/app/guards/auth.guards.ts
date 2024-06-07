@@ -4,7 +4,7 @@ import {
     CanActivateFn,
     ActivatedRouteSnapshot,
     RouterStateSnapshot,
-    //Router,
+    Router,
 } from '@angular/router';
 import { AuthService } from '../servicios/auth.services';
 
@@ -14,8 +14,8 @@ import { AuthService } from '../servicios/auth.services';
 //Descomentar todo lo comentado cuando pruebes la autenticación
 class AuthGuard {
     constructor(
-        private authService: AuthService
-        // private router: Router
+        private authService: AuthService,
+        private router: Router
     ) {}
 
     canActivate(
@@ -25,9 +25,9 @@ class AuthGuard {
         state: RouterStateSnapshot
     ): boolean {
         const isAuth: boolean = this.authService.isAuthenticated();
-        // if (!isAuth) {
-        //   this.router.navigate(['/login']);
-        // }
+        if (!isAuth) {
+            this.router.navigate(['/']);
+        }
         return isAuth;
     }
 }
