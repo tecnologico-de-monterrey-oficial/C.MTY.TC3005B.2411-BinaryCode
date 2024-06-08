@@ -1,7 +1,31 @@
+<!-- contenidos.component.html -->
 <nz-breadcrumb>
     <nz-breadcrumb-item>Inicio</nz-breadcrumb-item>
     <nz-breadcrumb-item>Proyecto 1</nz-breadcrumb-item>
     <nz-breadcrumb-item>Finanzas</nz-breadcrumb-item>
 </nz-breadcrumb>
 
-<app-lista-archivos [archivos]="archivos" [carpetas]="carpetas" />
+<app-lista-archivos [archivos]="archivos" [carpetas]="carpetas">
+</app-lista-archivos>
+
+<div>
+    <a
+        nz-dropdown
+        nzTrigger="click"
+        [nzDropdownMenu]="menu"
+        class="boton-circular-derecha">
+        <i nz-icon nzType="plus" nzTheme="outline"></i>
+    </a>
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu nzSelectable>
+            <li nz-menu-item (click)="abrirModalCrearContenido()">
+                <span nz-icon nzType="file" class="icono-opcion"></span> Subir
+                Archivo
+            </li>
+            <li nz-menu-item (click)="abrirModalCrearCarpeta()">
+                <span nz-icon nzType="folder-add" class="icono-opcion"></span>
+                Crear Carpeta
+            </li>
+        </ul>
+    </nz-dropdown-menu>
+</div>

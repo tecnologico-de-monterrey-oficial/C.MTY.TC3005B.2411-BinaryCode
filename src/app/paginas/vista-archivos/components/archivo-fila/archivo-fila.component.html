@@ -1,3 +1,4 @@
+<!-- archivo-fila.component.html -->
 <a href="javascript:void(0)" (click)="onFileClick()">
     <div nz-row class="file-card">
         <!-- Estrella -->
@@ -7,7 +8,7 @@
                 nz-icon
                 nzType="star"
                 [nzTheme]="archivo.favorito ? 'fill' : 'outline'"
-                (click)="onStarClick()">
+                (click)="onStarClick($event)">
             </span>
         </div>
 
@@ -62,7 +63,8 @@
             nz-dropdown
             nzTrigger="click"
             [nzDropdownMenu]="menu"
-            class="columna-icono">
+            class="columna-icono"
+            (click)="onMenuClick($event)">
             <span
                 class="detalles"
                 nz-icon
@@ -73,10 +75,17 @@
         <!-- Menu opciones -->
         <nz-dropdown-menu #menu="nzDropdownMenu">
             <ul nz-menu nzSelectable>
-                <li nz-menu-item>1st menu item</li>
-                <li nz-menu-item>2nd menu item</li>
-                <li nz-menu-item>3rd menu item</li>
-                <li nz-menu-item nzDanger>4th danger item</li>
+                <li nz-menu-item>
+                    Editar
+                    <span class="icono-opcion" nz-icon nzType="edit"></span>
+                </li>
+                <li nz-menu-item nzDanger>
+                    Borrar
+                    <span
+                        class="icono-opcion icono-borrar"
+                        nz-icon
+                        nzType="delete"></span>
+                </li>
             </ul>
         </nz-dropdown-menu>
     </div>

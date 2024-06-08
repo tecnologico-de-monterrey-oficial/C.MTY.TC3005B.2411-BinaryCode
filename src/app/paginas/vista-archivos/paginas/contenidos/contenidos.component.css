@@ -1,5 +1,25 @@
+/* contenidos.component.css */
 .ant-breadcrumb {
     font-family: 'Roboto', sans-serif;
     font-size: 22px;
     margin: 10px 15px;
+}
+
+.icono-opcion {
+    margin-right: 8px;
+}
+
+.boton-circular-derecha {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    border: solid 1px #595959;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #f7faff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
 }

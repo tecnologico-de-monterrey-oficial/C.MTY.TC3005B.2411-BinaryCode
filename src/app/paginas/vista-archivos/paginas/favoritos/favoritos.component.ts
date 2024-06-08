@@ -1,3 +1,4 @@
+// favoritos.component.ts
 import { Component } from '@angular/core';
 import { Archivo } from '../../../../modelos/archivo.model';
 import { ArchivosService } from '../../../../servicios/archivo.services';
@@ -5,6 +6,7 @@ import { ArchivosService } from '../../../../servicios/archivo.services';
 @Component({
     selector: 'app-favoritos',
     templateUrl: './favoritos.component.html',
+    styleUrls: ['../contenidos/contenidos.component.css'],
 })
 export class FavoritosComponent {
     archivos: Archivo[] = [];
