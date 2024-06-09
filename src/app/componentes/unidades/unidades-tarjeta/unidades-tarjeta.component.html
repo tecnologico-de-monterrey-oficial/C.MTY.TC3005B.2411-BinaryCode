@@ -1,5 +1,5 @@
 <div class="card">
-    <a [routerLink]="['{{ urlReferencia }}']">
+    <a [routerLink]="[urlReferencia]">
         <img
             class="image-container"
             [src]="unidad.imagen"
@@ -44,7 +44,7 @@
             </ul>
         </nz-dropdown-menu>
     </div>
-    <a [routerLink]="['{{ urlReferencia }}']">
+    <a [routerLink]="[urlReferencia]">
         <div class="name-label" [ngStyle]="{ color: unidad.color }">
             {{ unidad.nombre }}
         </div>

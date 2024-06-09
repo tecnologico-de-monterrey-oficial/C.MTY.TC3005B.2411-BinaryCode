@@ -49,7 +49,7 @@ export class ArchivosPaginaContenidosComponent implements OnInit {
                 await this.archivosService.getArchivos('idParaGetArchivos');
             this.carpetas =
                 await this.archivosService.getCarpetas('idParaGetArchivos');
-            this.permiso = false;
+            this.permiso = true; // Checar
         }
     }
 

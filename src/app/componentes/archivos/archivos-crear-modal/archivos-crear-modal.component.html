@@ -1,0 +1,163 @@
+<div class="tarjeta">
+    <form
+        class="container"
+        nz-form
+        [formGroup]="validateForm"
+        (ngSubmit)="crearArchivo()">
+        <div class="left">
+            <div class="left">
+                <div (click)="fileInput.click()">
+                    <nz-form-item>
+                        <nz-form-label nzFor="imagen">
+                            Subir archivo
+                        </nz-form-label>
+                        <nz-form-control [nzErrorTip]="imagenArchivoErrorTpl">
+                            <input
+                                formControlName="imagen"
+                                type="file"
+                                #fileInput
+                                (change)="seleccionarArchivo($event)"
+                                hidden />
+                            <div
+                                *ngIf="imagenControl === ''; else imagenPreview"
+                                class="imagen-upload"
+                                [style.background-color]="
+                                    validateForm.value.colorSeleccionado
+                                "
+                                [class.dirty]="
+                                    validateForm.controls['imagen'].dirty
+                                ">
+                                <span
+                                    nz-icon
+                                    nzType="upload"
+                                    nzTheme="outline"></span>
+                                <div>Añadir archivo</div>
+                            </div>
+                        </nz-form-control>
+                    </nz-form-item>
+                    <ng-template #imagenPreview>
+                        <div class="contenedor-imagen">
+                            <img
+                                [src]="imagenControl"
+                                alt="Vista previa de la imagen"
+                                class="imagen-archivo"
+                                [style.border-color]="
+                                    validateForm.value.colorSeleccionado
+                                " />
+                        </div>
+                    </ng-template>
+                    <ng-template #imagenArchivoErrorTpl>
+                        Se necesita agregar una imagen
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+
+        <div class="right">
+            <nz-form-item>
+                <nz-form-label nzFor="nombreArchivo">
+                    Nombre para el archivo
+                </nz-form-label>
+                <nz-form-control [nzErrorTip]="nombreArchivoErrorTpl">
+                    <nz-textarea-count
+                        [nzMaxCharacterCount]="palabrasTotalesNombre">
+                        <textarea
+                            nz-input
+                            class="campo-nombre"
+                            type="text"
+                            formControlName="nombreArchivo"
+                            placeholder="Nombre del archivo"
+                            [rows]="1">
+                        </textarea>
+                    </nz-textarea-count>
+                    <ng-template #nombreArchivoErrorTpl>
+                        Se necesita agregar un nombre con un máximo de
+                        {{ palabrasTotalesNombre }} caracteres
+                    </ng-template>
+                </nz-form-control>
+                <nz-form-label nzFor="etiquetas"> Etiquetas </nz-form-label>
+                <nz-form-control class="lista-etiquetas">
+                    <nz-input-group
+                        nz-col
+                        nz-dropdown
+                        nzSpan="3"
+                        [nzSuffix]="suffixIconSearch"
+                        [nzDropdownMenu]="menuBusqueda"
+                        nzPlacement="bottomCenter"
+                        [nzTrigger]="null"
+                        [nzVisible]="menuEtiquetasVisible">
+                        <input
+                            type="text"
+                            nz-input
+                            placeholder="Buscador"
+                            formControlName="terminoBusquedaEtiqueta"
+                            (input)="handleBusquedaEtiqueta()" />
+                    </nz-input-group>
+                    <ng-template #suffixIconSearch>
+                        <span
+                            nz-icon
+                            nzType="search"
+                            class="header-icon"></span>
+                    </ng-template>
+                    <nz-dropdown-menu #menuBusqueda="nzDropdownMenu">
+                        <ul nz-menu nzSelectable>
+                            <li
+                                nz-menu-item
+                                *ngFor="let etiqueta of etiquetasFiltradas"
+                                (click)="agregarEtiqueta(etiqueta)">
+                                <nz-tag
+                                    class="etiqueta"
+                                    [nzColor]="etiqueta.color">
+                                    {{ etiqueta.nombre }}
+                                </nz-tag>
+                            </li>
+                        </ul>
+                    </nz-dropdown-menu>
+                    <div class="lista-etiquetas">
+                        <nz-tag
+                            class="etiqueta"
+                            *ngFor="let etiqueta of etiquetasActuales"
+                            [nzColor]="etiqueta.color"
+                            nzMode="closeable"
+                            (nzOnClose)="quitarEtiqueta(etiqueta)">
+                            {{ etiqueta.nombre }}
+                        </nz-tag>
+                    </div>
+                </nz-form-control>
+                <nz-form-label nzFor="descripcionArchivo">
+                    Descripción
+                </nz-form-label>
+                <nz-form-control [nzErrorTip]="descripcionErrorTpl">
+                    <nz-textarea-count
+                        [nzMaxCharacterCount]="palabrasTotalesDescripcion">
+                        <textarea
+                            class="campo-texto"
+                            nz-input
+                            rows="4"
+                            formControlName="descripcion"
+                            placeholder="Añade una descripción breve del archivo">
+                        </textarea>
+                        <ng-template #descripcionErrorTpl>
+                            Añade una descripción con un máximo de
+                            {{ palabrasTotalesDescripcion }} caracteres
+                        </ng-template>
+                    </nz-textarea-count>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </form>
+
+    <div class="botones">
+        <button class="boton-cancelar" nz-button (click)="cancelarModal()">
+            Cancelar
+        </button>
+        <button
+            class="boton-crear"
+            nz-button
+            [nzLoading]="isLoading"
+            [disabled]="isLoading"
+            (click)="crearArchivo()">
+            {{ !this.archivoOriginal ? 'Crear archivo' : 'Actualizar archivo' }}
+        </button>
+    </div>
+</div>

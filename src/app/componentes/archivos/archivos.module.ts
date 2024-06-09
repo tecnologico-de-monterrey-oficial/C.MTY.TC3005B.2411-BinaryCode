@@ -4,9 +4,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 
@@ -26,8 +29,11 @@ import { ArchivosPaginaContenidosComponent } from './archivos-pagina-contenidos/
         RouterModule,
 
         NzBreadCrumbModule,
+        NzButtonModule,
         NzDropDownModule,
+        NzFormModule,
         NzIconModule,
+        NzInputModule,
         NzGridModule,
         NzModalModule,
         NzTagModule,

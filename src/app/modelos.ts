@@ -12,13 +12,13 @@ import {
 } from '../assets/colores';
 
 export type Archivo = {
-    id: string;
+    id?: string;
     favorito: boolean;
-    icono: Icono;
+    icono?: Icono;
     nombre: string;
     propietario: Usuario;
     etiquetas: Etiqueta[];
-    fecha: string;
+    fecha?: string;
 };
 
 export type Carpeta = {

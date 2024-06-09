@@ -67,7 +67,7 @@ body {
 
 .lista-etiquetas {
     justify-content: flex-start;
-    overflow-x: scroll;
+    overflow-x: auto;
     overflow-y: hidden;
 }
 
@@ -83,6 +83,10 @@ body {
     justify-content: center;
     padding: 0;
 }
+
+/* .lista-etiquetas::-webkit-scrollbar {
+    background-color: var(--contentBg);
+} */
 
 /* Responsividad */
 

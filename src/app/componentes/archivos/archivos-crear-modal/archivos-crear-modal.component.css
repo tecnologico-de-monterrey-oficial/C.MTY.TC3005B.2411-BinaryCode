@@ -1,0 +1,205 @@
+.ant-input-affix-wrapper {
+    max-width: 100%;
+    border-radius: 20px;
+    margin-bottom: 5px;
+    background-color: var(--contentBg);
+}
+
+.ant-input-affix-wrapper > input.ant-input {
+    background-color: var(--contentBg);
+    font-size: 16px;
+    padding: 5px;
+}
+
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper:hover,
+.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
+    border: solid 1px var(--bordes);
+    box-shadow: 0 0 0;
+}
+
+.body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.tarjeta {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    flex-grow: 1;
+}
+
+.left {
+    width: 100%;
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.contenedor-imagen {
+    max-width: 100%;
+    aspect-ratio: 1.75;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.imagen-upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    font-size: 30px;
+    border-radius: 10px;
+    aspect-ratio: 1.75;
+    border: dashed 2px var(--bordes);
+    background-color: var(--contentBg);
+    cursor: pointer;
+}
+
+.imagen-upload span {
+    font-size: 70px;
+    margin: 15px;
+}
+
+.imagen-upload.dirty {
+    border: dashed 2px var(--rojoLogin);
+}
+
+.imagen-archivo {
+    width: 100%;
+    aspect-ratio: 1.75;
+    border-radius: 10px;
+    border: 3px solid;
+}
+
+.right {
+    padding: 10px;
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1;
+}
+
+.etiqueta {
+    border-radius: 10px;
+    margin: 2px 0 2px 10px;
+}
+
+.lista-etiquetas {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.campo-texto,
+.campo-nombre {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--contentBg);
+    border: 1px solid var(--bordes);
+    box-shadow: 0 0 0 0;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.campo-nombre {
+    resize: none;
+}
+
+.ant-form-horizontal .ant-form-item-control {
+    width: 100%;
+    flex: auto;
+}
+
+.ant-input-status-error:not(.ant-input-disabled):not(
+        .ant-input-borderless
+    ).ant-input,
+.ant-input-status-error:not(.ant-input-disabled):not(
+        .ant-input-borderless
+    ).ant-input:hover,
+.ant-input-status-error:not(.ant-input-disabled):not(
+        .ant-input-borderless
+    ).ant-input:focus {
+    background-color: var(--contentBg);
+}
+
+nz-form-label {
+    font-size: 16px;
+    color: var(--negro);
+    text-align: start;
+    margin-top: 5px;
+}
+
+nz-form-item {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.ant-form-horizontal .ant-form-item-control .ant-form-item-control-input {
+    min-height: auto;
+}
+
+.botones {
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 5px 0 5px;
+}
+
+.boton-cancelar {
+    font-size: 1rem;
+    height: auto;
+
+    background-color: var(--blanco);
+    border: 2px solid var(--rojoLogin);
+    color: var(--rojoLogin);
+
+    border-radius: 20px;
+}
+
+.boton-crear {
+    font-size: 1rem;
+    height: auto;
+
+    background-color: var(--rojoLogin);
+    border: 2px solid var(--rojoLogin);
+    color: var(--blanco);
+
+    border-radius: 20px;
+}
+
+::ng-deep .ant-form-item-with-help .ant-form-item-explain {
+    margin-top: -20px;
+}
+
+/* Media queries para responsivo */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .left,
+    .right {
+        flex: none;
+        width: 100%;
+        padding: 10px;
+    }
+}

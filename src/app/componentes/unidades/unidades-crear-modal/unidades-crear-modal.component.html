@@ -37,15 +37,14 @@
                         </nz-form-control>
                     </nz-form-item>
                     <ng-template #imagenPreview>
-                        <div
-                            class="contenedor-imagen"
-                            [style.background-color]="
-                                validateForm.value.colorSeleccionado
-                            ">
+                        <div class="contenedor-imagen">
                             <img
                                 [src]="imagenControl"
                                 alt="Vista previa de la imagen"
-                                class="imagen-unidad" />
+                                class="imagen-unidad"
+                                [style.border-color]="
+                                    validateForm.value.colorSeleccionado
+                                " />
                         </div>
                     </ng-template>
                     <ng-template #imagenUnidadErrorTpl>
