@@ -30,7 +30,7 @@
     display: flex;
     flex-grow: 1;
     padding: 10px;
-    flex-direction: row; /* Cambio aquí */
+    flex-direction: row;
 }
 
 .left {
@@ -187,7 +187,7 @@ button:hover {
 /* Media query para pantallas más pequeñas */
 @media (max-width: 768px) {
     .container {
-        flex-direction: column; /* Cambio aquí */
+        flex-direction: column;
     }
 
     .left {

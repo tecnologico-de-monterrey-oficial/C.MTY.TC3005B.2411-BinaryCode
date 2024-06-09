@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../servicios/auth.services';
 import { Router } from '@angular/router';
@@ -30,6 +30,8 @@ import {
     styleUrls: ['./registro.component.css'],
 })
 export class RegistroComponent implements OnInit {
+    @ViewChild('fileInput') fileInput: ElementRef<HTMLInputElement>;
+
     registroForm: FormGroup;
     colores: string[] = [
         tarjeta_azul_fuerte,
@@ -53,6 +55,7 @@ export class RegistroComponent implements OnInit {
     ];
 
     colorSeleccionado: string;
+    imagenSeleccionada: string | ArrayBuffer | null = null;
     hide = true;
 
     constructor(
@@ -84,6 +87,26 @@ export class RegistroComponent implements OnInit {
         this.registroForm.patchValue({ color: this.colorSeleccionado });
     }
 
+    seleccionarImagen(): void {
+        this.fileInput.nativeElement.click();
+    }
+
+    onFileSelected(event: Event): void {
+        const input: HTMLInputElement = event.target as HTMLInputElement;
+        if (input.files && input.files[0]) {
+            const reader: FileReader = new FileReader();
+            reader.onload = (e: ProgressEvent<FileReader>): void => {
+                this.imagenSeleccionada = e.target?.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+            input.value = '';
+        }
+    }
+
+    quitarImagen(): void {
+        this.imagenSeleccionada = null;
+    }
+
     onSubmit(): void {
         if (this.registroForm.valid) {
             const { first_name, last_name, email, password, color } =
@@ -92,11 +115,10 @@ export class RegistroComponent implements OnInit {
             this.authService
                 .register(first_name, last_name, email, password, color)
                 .subscribe({
-                    next: () => {
-                        // noinspection JSIgnoredPromiseFromCall
+                    next: (): void => {
                         this.router.navigate(['/proyectos']);
                     },
-                    error: err => {
+                    error: (err: { message: string }): void => {
                         console.error('Registro fallido', err);
                     },
                 });

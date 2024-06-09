@@ -37,14 +37,14 @@ import { ArchivoCompletoComponent } from './components/archivo-completo/archivo-
         ContenidosComponent,
         FavoritosComponent,
         RecientesComponent,
-        ArchivoCompletoComponent, // Y declararlo aquí
+        ArchivoCompletoComponent,
     ],
     exports: [
         ListaArchivosComponent,
         ContenidosComponent,
         FavoritosComponent,
         RecientesComponent,
-        ArchivoCompletoComponent, // Y exportarlo si es necesario
+        ArchivoCompletoComponent,
     ],
 })
 export class VistaArchivosModule {}

@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 export class CrearContenidosComponent {
     nombreArchivo: string = '';
     descripcion: string = '';
-    nombreVersion: string = ''; // Nueva variable para 'Nombre de la versión'
+    nombreVersion: string = '';
     filePreview: string | ArrayBuffer | null = null;
     isImage: boolean = false;
     isDocument: boolean = false;
@@ -23,7 +23,7 @@ export class CrearContenidosComponent {
         if (
             this.nombreArchivo.trim() === '' ||
             this.descripcion.trim() === '' ||
-            this.nombreVersion.trim() === '' // Validación del nuevo campo
+            this.nombreVersion.trim() === ''
         ) {
             alert('Por favor completa todos los campos.');
             return;

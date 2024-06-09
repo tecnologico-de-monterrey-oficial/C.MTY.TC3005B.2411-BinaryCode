@@ -23,6 +23,7 @@ import { CrearContenidosComponent } from './paginas/vista-archivos/components/cr
 import { ProyectoCrearComponent } from './paginas/vista-proyectos/components/proyecto-crear/proyecto-crear.component';
 import { CrearUnidadComponent } from './paginas/vista-unidades/components/crear-unidad/crear-unidad.component';
 import { CrearVersionComponent } from './paginas/vista-archivos/components/crear-version/crear-version.component';
+import { EditarPerfilComponent } from './components/encabezado/editar-perfil/editar-perfil.component';
 import { EntradaLoginModule } from './EntradaLogin/entrada-login.module';
 import { AppRoutingModule } from './app-routing.module';
 import { VistaProyectosModule } from './paginas/vista-proyectos/vista-proyectos.module';
@@ -42,6 +43,7 @@ enableRipple(true);
         ProyectoCrearComponent,
         CrearUnidadComponent,
         CrearVersionComponent,
+        EditarPerfilComponent,
     ],
     imports: [
         CommonModule,

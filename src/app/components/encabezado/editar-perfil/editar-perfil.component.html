@@ -1,0 +1,43 @@
+<p class="texto-color">Haz clic en el usuario para añadir una imagen</p>
+<div class="usuario-container">
+    <div
+        class="usuario-icono-container"
+        [style.background-color]="
+            !imagenSeleccionada ? colorSeleccionado : 'transparent'
+        "
+        (click)="seleccionarImagen()"
+        style="cursor: pointer">
+        <ng-container *ngIf="!imagenSeleccionada">
+            <span class="usuario-icono" nz-icon nzType="user"></span>
+        </ng-container>
+        <ng-container *ngIf="imagenSeleccionada">
+            <img
+                [src]="imagenSeleccionada"
+                class="usuario-imagen"
+                alt="Imagen de usuario" />
+        </ng-container>
+        <input
+            type="file"
+            #fileInput
+            (change)="onFileSelected($event)"
+            style="display: none" />
+    </div>
+</div>
+
+<ng-container *ngIf="imagenSeleccionada">
+    <button type="button" (click)="quitarImagen()">Quitar Imagen</button>
+</ng-container>
+
+<p class="texto-color" *ngIf="!imagenSeleccionada">Selecciona el color</p>
+
+<div class="colores" *ngIf="!imagenSeleccionada">
+    <div
+        *ngFor="let opcionColor of colores"
+        nzSpan="2"
+        class="cuadro"
+        [class.seleccionado]="colorSeleccionado === opcionColor"
+        (click)="seleccionarColor(opcionColor)"
+        [style.background-color]="opcionColor"></div>
+</div>
+
+<button type="button" (click)="guardarCambios()">Guardar Cambios</button>
