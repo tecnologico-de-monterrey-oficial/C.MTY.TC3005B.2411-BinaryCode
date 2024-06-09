@@ -1,3 +1,4 @@
+<!-- crear-contenidos.component.html -->
 <div class="tarjeta">
     <div class="container">
         <div class="left" (click)="fileInput.click()">
@@ -13,10 +14,7 @@
             </div>
             <ng-template [ngIf]="isImage">
                 <div class="image-container">
-                    <div
-                        class="image-overlay"
-                        [style.background-color]="color"
-                        [style.opacity]="0.5"></div>
+                    <div class="image-overlay"></div>
                     <img [src]="filePreview" alt="Vista previa de la imagen" />
                 </div>
             </ng-template>
@@ -49,6 +47,15 @@
                 name="descripcion"
                 rows="4"
                 [(ngModel)]="descripcion"></textarea>
+            <div>
+                <br />
+                <label for="nombre_version">Nombre de la versión:</label>
+                <input
+                    type="text"
+                    id="nombre_version"
+                    name="nombre_version"
+                    [(ngModel)]="nombreVersion" />
+            </div>
             <div class="tags">
                 <label for="tags">Etiquetas:</label>
                 <div class="tag-input-container">

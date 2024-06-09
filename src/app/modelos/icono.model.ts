@@ -1,3 +1,4 @@
+// icono.model.ts
 import {
     icono_amarillo,
     icono_azul,

@@ -1,4 +1,4 @@
-/* crear-contenidos.component.css */
+/* crear-version.component.css */
 :root {
     --rojoLogin: #e74c3c;
     --blanco: #ffffff;
@@ -73,16 +73,28 @@
     text-align: center;
 }
 
-.right {
-    flex: 1;
+.bottom-section {
+    padding: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    padding: 10px;
+    align-items: center;
 }
 
-.right input[type='text'],
-.right textarea {
+.bottom-section label {
+    margin-top: 0px;
+    font-size: 16px;
+    color: var(--negro);
+    width: 100%;
+    text-align: left;
+}
+
+.bottom-section label {
+    margin-top: 10px;
+    font-size: 16px;
+    color: var(--negro);
+}
+
+.bottom-section input[type='text'] {
     width: 100%;
     padding: 10px;
     margin-top: 10px;
@@ -92,83 +104,13 @@
     color: var(--negro);
 }
 
-.right input[type='text']:focus,
-.right textarea:focus {
+.bottom-section input[type='text']:focus {
     outline: none;
     border-color: var(--rojoLogin);
 }
 
-.right label {
-    margin-top: 10px;
-    font-size: 16px;
-    color: var(--negro);
-}
-
-.tags {
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-}
-
-.tag-input-container {
-    display: flex;
-    align-items: baseline;
-    margin-top: 3px;
-}
-
-.tag-input-container input[type='text'] {
-    padding: 10px;
-    margin-right: 10px;
-    border: 1px solid #c5cdd1;
-    border-radius: 5px;
-}
-
-.tag-input-container button {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: var(--rojoLogin);
-    color: var(--blanco);
-    cursor: pointer;
-}
-
-.tag-input-container button:hover {
-    background-color: var(--blanco);
-    color: var(--rojoLogin);
-    border: 1px solid var(--rojoLogin);
-}
-
-.tags-list {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 10px;
-}
-
-.tag {
-    display: inline-block;
-    background-color: #fff;
-    color: var(--negro);
-    padding: 5px 10px;
-    margin: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-    white-space: nowrap;
-    border: 1px solid #c5cdd1;
-}
-
-.tag:hover {
-    background-color: var(--rojoLogin);
-    color: var(--blanco);
-    border: 1px solid var(--rojoLogin);
-}
-
-.bottom-section {
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-}
-
 button {
+    margin-top: 10px;
     padding: 10px 50px;
     border: none;
     border-radius: 5px;
@@ -182,20 +124,4 @@ button:hover {
     background-color: var(--blanco);
     color: var(--rojoLogin);
     border: 2px solid var(--rojoLogin);
-}
-
-/* Media query para pantallas más pequeñas */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-
-    .left {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-
-    .right {
-        padding-top: 0;
-    }
 }

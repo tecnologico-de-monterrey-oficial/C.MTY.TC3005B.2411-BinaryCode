@@ -44,3 +44,16 @@
 .anticon {
     color: #595959;
 }
+
+.icono-opcion {
+    margin-right: 8px;
+}
+
+.icono-borrar {
+    color: var(--rojoLogin);
+}
+
+.ant-dropdown-menu-item-danger:hover .icono-borrar {
+    color: var(--blanco);
+    transition: all 0.3s;
+}

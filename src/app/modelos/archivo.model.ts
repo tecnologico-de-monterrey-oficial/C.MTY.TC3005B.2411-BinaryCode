@@ -1,3 +1,4 @@
+// archivo.model.ts
 import { Etiqueta } from './etiqueta.model';
 import { Usuario } from './usuario.model';
 

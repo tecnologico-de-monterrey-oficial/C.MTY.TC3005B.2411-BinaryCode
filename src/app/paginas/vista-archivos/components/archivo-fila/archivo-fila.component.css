@@ -1,5 +1,4 @@
 /* archivo-fila.component.css */
-
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
@@ -23,8 +22,6 @@ body {
     color: var(--negro);
 }
 
-/* Estrella */
-
 .estrella-llena {
     font-size: 18px;
     cursor: pointer;
@@ -41,14 +38,10 @@ body {
     color: var(--negro);
 }
 
-/* Archivo - Nombre/Icono */
-
 .archivo-icono {
     font-size: 40px;
     padding-left: 15px;
 }
-
-/* Usuario */
 
 .usuario-imagen {
     width: 35px;
@@ -58,11 +51,10 @@ body {
 }
 
 .usuario-icono-container {
-    /* Establece el tamaño del contenedor */
-    width: 35px; /* Cambia el tamaño según sea necesario */
-    height: 35px; /* Cambia el tamaño según sea necesario */
-    border-radius: 50%; /* Hace que el contenedor sea circular */
-    border: 2px solid var(--negro); /* Cambia el grosor y color del borde según sea necesario */
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid var(--negro);
 }
 
 .usuario-icono {
@@ -73,8 +65,6 @@ body {
     align-items: center;
     color: var(--negro);
 }
-
-/* Etiquetas */
 
 .etiqueta {
     border-radius: 10px;
@@ -88,17 +78,26 @@ body {
     overflow-y: hidden;
 }
 
-/* Detalles */
-
 .detalles {
     color: var(--negro);
 }
 
-/* Iconos */
-
 .columna-icono {
     justify-content: center;
     padding: 0;
+}
+
+.icono-opcion {
+    margin-right: 8px;
+}
+
+.icono-borrar {
+    color: var(--rojoLogin);
+}
+
+.ant-dropdown-menu-item-danger:hover .icono-borrar {
+    color: var(--blanco);
+    transition: all 0.3s;
 }
 
 /* Responsividad */

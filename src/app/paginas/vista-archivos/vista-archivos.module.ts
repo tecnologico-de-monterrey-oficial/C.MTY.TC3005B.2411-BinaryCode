@@ -1,3 +1,4 @@
+// src/app/paginas/vista-archivos/vista-archivos.module.ts
 // Imports angular
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -17,8 +18,7 @@ import { ListaArchivosComponent } from './components/lista-archivos/lista-archiv
 import { ContenidosComponent } from './paginas/contenidos/contenidos.component';
 import { FavoritosComponent } from './paginas/favoritos/favoritos.component';
 import { RecientesComponent } from './paginas/recientes/recientes.component';
-
-//import { VistaArchivosRoutingModule } from './vista-archivos-routing.module';
+import { ArchivoCompletoComponent } from './components/archivo-completo/archivo-completo.component'; // Asegúrate de importar tu componente aquí
 
 @NgModule({
     imports: [
@@ -37,12 +37,14 @@ import { RecientesComponent } from './paginas/recientes/recientes.component';
         ContenidosComponent,
         FavoritosComponent,
         RecientesComponent,
+        ArchivoCompletoComponent,
     ],
     exports: [
         ListaArchivosComponent,
         ContenidosComponent,
         FavoritosComponent,
         RecientesComponent,
+        ArchivoCompletoComponent,
     ],
 })
 export class VistaArchivosModule {}

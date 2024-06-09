@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-// Importaciones de los colores desde el archivo correspondiente
+// No me funciono lo de los colores, a ver si ustedes pueden hacerlo funcionar
 import {
     tarjeta_amarillo,
     tarjeta_amarillo_claro,
@@ -56,22 +56,19 @@ export class CrearCarpetaComponent implements OnInit {
 
     ngOnInit(): void {
         this.iniciarFormulario();
-        console.log('Colores disponibles:', this.colores); // Añade este logging
+        console.log('Colores disponibles:', this.colores);
     }
 
     iniciarFormulario(): void {
-        // Inicializa el formulario usando formBuilder
         this.unidadForm = this.formBuilder.group({
             nombreCarpeta: ['', Validators.required],
             color: [this.colores[0], Validators.required],
         });
 
-        // Establece el color predeterminado en la variable para el binding con la clase CSS
         this.colorSeleccionado = this.colores[0];
     }
 
     seleccionarColor(color: string): void {
-        // Establece el color seleccionado y actualiza el valor del formulario
         this.colorSeleccionado = color;
         this.unidadForm.patchValue({ color: color });
     }

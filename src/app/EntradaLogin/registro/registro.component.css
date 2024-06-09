@@ -43,30 +43,6 @@ button:hover {
     display: block;
 }
 
-/*.campo {
-    margin-bottom: 20px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.campo label {
-    color: var(--negro);
-    font-size: 20px;
-    margin-bottom: 5px;
-}
-
-.campo input {
-    width: 100%;
-    max-width: 300px;
-    background: var(--contentBg);
-    border: none;
-    border-radius: 5px;
-    font-size: 20px;
-    padding: 10px;
-} */
-
 .campo .input-wrapper {
     display: flex;
     align-items: center;
@@ -107,12 +83,24 @@ button:hover {
 }
 
 .usuario-icono-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 110px;
     width: 175px;
     height: 175px;
     border-radius: 50%;
     border: 2px solid var(--negro);
     margin: 35px auto;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.usuario-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 /* Media queries para pantallas pequeñas */
