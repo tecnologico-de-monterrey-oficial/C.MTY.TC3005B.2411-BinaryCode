@@ -3,9 +3,12 @@
 // Hay límites en el tamaño de la imagen?
 
 export type Unidad = {
-    id: number;
+    id: string;
     nombre: string;
-    color: string;
-    imagen: string;
-    id_proyecto: number;
+    color?: string;
+    fecha?: string;
+    imagen?: string;
+    id_padre?: string;
+    id_usuario: string;
+    id_proyecto: string;
 };

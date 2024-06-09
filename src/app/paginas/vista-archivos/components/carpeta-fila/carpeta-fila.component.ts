@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Carpeta } from '../../../../modelos/carpeta.model';
+import { Unidad } from '../../../../modelos/unidad.model';
+import { UnidadesService } from '../../../../servicios/unidad.services';
 
 @Component({
     selector: 'app-carpeta-fila',
@@ -7,9 +8,10 @@ import { Carpeta } from '../../../../modelos/carpeta.model';
     styleUrl: './carpeta-fila.component.css',
 })
 export class CarpetaFilaComponent {
-    @Input() carpeta: Carpeta;
+    constructor(private unidadesService: UnidadesService) {}
+    @Input() unidad: Unidad;
 
     onFolderClick(): void {
-        console.log('Carpeta clickeada');
+        console.log('Carpeta clickeada' + this.unidad.nombre);
     }
 }

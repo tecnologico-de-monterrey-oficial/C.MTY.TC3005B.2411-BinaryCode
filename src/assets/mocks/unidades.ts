@@ -11,11 +11,13 @@ import {
 // Datos para mockup de Unidades - agregar a la base de datos
 
 export const UN1: Unidad = {
-    id: 1,
+    id: '1',
+    id_usuario: '1',
+    id_padre: '0',
     nombre: 'Marketing',
     imagen: 'assets/images/unidades_props/marketing_temporal_prop.png',
     color: unidad_roja,
-    id_proyecto: 1,
+    id_proyecto: '1',
 };
 /*
 export const UN2: Unidad = {

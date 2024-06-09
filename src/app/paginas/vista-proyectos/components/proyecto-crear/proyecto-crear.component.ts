@@ -54,7 +54,7 @@ export class ProyectoCrearComponent implements OnInit, OnDestroy {
     imagenURL: string | ArrayBuffer | null = null;
     modo: string = 'crear';
     imagenOriginal: string;
-    idProyecto: number;
+    idProyecto: string;
 
     constructor(
         private fb: FormBuilder,

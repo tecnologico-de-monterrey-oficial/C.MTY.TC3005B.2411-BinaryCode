@@ -1,5 +1,5 @@
 export type Proyecto = {
-    id: number;
+    id: string;
     nombre: string;
     descripcion: string;
     color: string;

@@ -2,10 +2,10 @@
 
 <nz-flex class="grid-container" *ngIf="!unidadesVacias">
     <app-unidad *ngFor="let unidad of unidades" [unidad]="unidad"></app-unidad>
-    <app-unidad-crear-tarjeta />
+    <app-unidad-crear-tarjeta></app-unidad-crear-tarjeta>
 </nz-flex>
 <nz-flex class="grid-container-empty" *ngIf="unidadesVacias">
-    <app-unidad-crear-tarjeta />
+    <app-unidad-crear-tarjeta></app-unidad-crear-tarjeta>
     <nz-empty [nzNotFoundContent]="contentTpl">
         <ng-template #contentTpl>No hay unidades</ng-template>
     </nz-empty>

@@ -18,7 +18,7 @@ export class CuadriculaPermisosComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.params.subscribe(params => {
-            const proyectoId: number = params['id'];
+            const proyectoId: string = params['id'];
             console.log(params['id']);
             this.unidadesService.getUnidadesPorProyecto(proyectoId).subscribe({
                 next: data => {

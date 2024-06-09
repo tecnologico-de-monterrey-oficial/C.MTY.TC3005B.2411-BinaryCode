@@ -12,7 +12,7 @@ export class ProyectoBorrarComponent {
     @Input() isConfirmLoading: boolean = false;
 
     @Output() cancelModal = new EventEmitter();
-    @Output() proyectoEliminado = new EventEmitter<number>();
+    @Output() proyectoEliminado = new EventEmitter<string>();
 
     value?: string;
 

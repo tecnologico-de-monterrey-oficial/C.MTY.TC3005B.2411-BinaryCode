@@ -32,7 +32,7 @@ import { Router } from '@angular/router';
 export class CrearUnidadComponent implements OnInit {
     subscription: Subscription;
     unidadForm: FormGroup;
-    unidadId: number;
+    unidadId: string;
     color: string = '#000000';
     colores: string[] = [
         tarjeta_amarillo,

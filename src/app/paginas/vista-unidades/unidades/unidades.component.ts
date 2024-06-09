@@ -12,6 +12,8 @@ export class UnidadesComponent implements OnInit {
     unidades: Unidad[] = [];
     unidadesVacias: boolean = true;
     unidadesId: string | null = null;
+    apartadosFiltrados: Unidad[] = [];
+    filterParentId: string | null = null;
 
     constructor(
         private unidadesService: UnidadesService,
@@ -21,7 +23,7 @@ export class UnidadesComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.params.subscribe(params => {
-            const proyectoId: number = params['proyectoId'];
+            const proyectoId: string = params['proyectoId'];
             this.unidadesId = params['unidadesId'];
 
             if (proyectoId) {
@@ -49,15 +51,37 @@ export class UnidadesComponent implements OnInit {
     }
 
     loadUnidadesData(unidadesId: string): void {
-        // Aquí puedes cargar los datos específicos de la unidad
-        console.log(`Cargando datos para unidad: ${unidadesId}`);
-        // Implementa la lógica necesaria para cargar los datos de la unidad específica
-        // Ejemplo:
-        // this.unidadesService.getUnidadPorId(unidadesId).subscribe({
-        //     next: data => {
-        //         // Maneja los datos de la unidad específica
-        //     },
-        //     error: err => console.error('Error fetching unit data:', err)
-        // });
+        console.log(`Cargando datos para unidad con idPadre: ${unidadesId}`);
+        this.unidadesService.getApartadosPorPadre(unidadesId).subscribe({
+            next: apartados => {
+                this.unidades = apartados;
+                this.unidadesVacias = this.unidades.length === 0;
+                console.log('Apartados filtrados:', this.unidades);
+            },
+            error: err => console.error('Error fetching filtered units:', err),
+        });
+    }
+
+    filtrarPorPadre(): void {
+        if (this.filterParentId) {
+            this.unidadesService
+                .getApartadosPorPadre(this.filterParentId)
+                .subscribe({
+                    next: apartados => {
+                        this.apartadosFiltrados = apartados;
+                        this.unidadesVacias = apartados.length === 0;
+                        console.log(
+                            'Apartados filtrados:',
+                            this.apartadosFiltrados
+                        );
+                    },
+                    error: err =>
+                        console.error('Error fetching filtered units:', err),
+                });
+        } else {
+            // Si no hay filtro, mostrar todas las unidades
+            this.apartadosFiltrados = this.unidades;
+            this.unidadesVacias = this.unidades.length === 0;
+        }
     }
 }

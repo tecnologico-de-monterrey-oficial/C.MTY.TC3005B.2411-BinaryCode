@@ -12,7 +12,7 @@ export class UnidadBorrarComponent {
     @Input() isConfirmLoading: boolean = false;
 
     @Output() cancelModal = new EventEmitter();
-    @Output() unidadEliminada = new EventEmitter<number>();
+    @Output() unidadEliminada = new EventEmitter<string>();
 
     value?: string;
 

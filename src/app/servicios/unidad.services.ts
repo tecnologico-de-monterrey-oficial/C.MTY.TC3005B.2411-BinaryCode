@@ -16,21 +16,29 @@ export class UnidadesService {
 
     constructor(private http: HttpClient) {}
 
-    getUnidadesPorProyecto(proyectoId: number): Observable<Unidad[]> {
+    getUnidadesPorProyecto(proyectoId: string): Observable<Unidad[]> {
         return this.http.get<Unidad[]>(`${this.baseUrl}?search=${proyectoId}`);
     }
 
-    getCoordinadores(idUnidad: number): Usuario[] {
+    getApartadosPorPadre(idPadre: string): Observable<Unidad[]> {
+        return this.http.get<Unidad[]>(`${this.baseUrl}?search=${idPadre}`);
+    }
+
+    getApartados(): Observable<Unidad[]> {
+        return this.http.get<Unidad[]>(this.baseUrl);
+    }
+
+    getCoordinadores(idUnidad: string): Usuario[] {
         idUnidad;
         return this.coordinadores;
     }
 
-    getEditores(idUnidad: number): Usuario[] {
+    getEditores(idUnidad: string): Usuario[] {
         idUnidad;
         return this.editores;
     }
 
-    eliminarUnidad(unidadId: number): Observable<Unidad> {
+    eliminarUnidad(unidadId: string): Observable<Unidad> {
         const url: string = `${this.baseUrl}${unidadId}/`;
         return this.http.delete<Unidad>(url);
     }

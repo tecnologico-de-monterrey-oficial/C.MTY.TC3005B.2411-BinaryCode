@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Archivo } from '../../../../modelos/archivo.model';
 import { ArchivosService } from '../../../../servicios/archivo.services';
-import { Carpeta } from '../../../../modelos/carpeta.model';
+import { Unidad } from '../../../../modelos/unidad.model';
+import { UnidadesService } from '../../../../servicios/unidad.services';
 
 @Component({
     selector: 'app-contenidos',
@@ -10,12 +11,19 @@ import { Carpeta } from '../../../../modelos/carpeta.model';
 })
 export class ContenidosComponent implements OnInit {
     archivos: Archivo[] = [];
-    carpetas: Carpeta[] = [];
-    constructor(private archivosService: ArchivosService) {}
+    unidades: Unidad[] = [];
+    constructor(
+        private archivosService: ArchivosService,
+        private unidadesService: UnidadesService
+    ) {}
 
     async ngOnInit(): Promise<void> {
-        this.archivos = await this.archivosService.getArchivos();
-        this.carpetas = await this.archivosService.getCarpetas();
-        console.log(this.archivos.at(0).usuario_info);
+        this.archivosService.getArchivos().subscribe(archivos => {
+            this.archivos = archivos;
+        });
+        this.unidadesService.getApartados().subscribe(unidades => {
+            this.unidades = unidades;
+        });
+        //console.log(this.archivos.at(0).usuario_info);
     }
 }

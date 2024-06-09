@@ -26,7 +26,7 @@ export class ProyectosService {
         return this.http.get<Proyecto[]>(this.baseUrl);
     }
 
-    eliminarProyecto(proyectoId: number): Observable<RespuestaServidor> {
+    eliminarProyecto(proyectoId: string): Observable<RespuestaServidor> {
         const url: string = `${this.baseUrl}${proyectoId}/`;
         return this.http.delete<RespuestaServidor>(url);
     }
@@ -36,7 +36,7 @@ export class ProyectosService {
         return this.http.put<Proyecto>(url, proyecto);
     }
 
-    getLideres(idProyecto: number): Usuario[] {
+    getLideres(idProyecto: string): Usuario[] {
         idProyecto;
         return this.lideres;
     }
