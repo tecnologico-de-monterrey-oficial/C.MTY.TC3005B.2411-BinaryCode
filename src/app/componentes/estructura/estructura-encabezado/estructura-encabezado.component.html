@@ -32,66 +32,66 @@
                 [src]="usuario.imagenUrl"
                 alt="Imagen de usuario" />
         </ng-container>
-
-        <ng-template #icono>
-            <div
-                class="usuario-icono-container"
-                nz-dropdown
-                [nzDropdownMenu]="menuUsuario">
-                <span class="usuario-icono" nz-icon nzType="user"></span>
-            </div>
-        </ng-template>
     </div>
-
-    <nz-dropdown-menu #menuBusqueda="nzDropdownMenu">
-        <ul nz-menu nzSelectable>
-            <li
-                nz-menu-item
-                *ngFor="let archivo of archivosFiltrados"
-                (click)="handleClick(archivo.id)">
-                <div class="archivo-nombre">
-                    <span
-                        class="archivo-icono"
-                        nz-icon
-                        [nzType]="archivo.icono.nombre"
-                        [ngStyle]="{ color: archivo.icono.color }"
-                        nzTheme="outline"></span>
-                    <div class="texto-nombre">{{ archivo.nombre }}</div>
-                </div>
-                <div class="texto-propietario">
-                    {{
-                        archivo.propietario.primer_nombre +
-                            ' ' +
-                            archivo.propietario.segundo_nombre
-                    }}
-                </div>
-            </li>
-        </ul>
-    </nz-dropdown-menu>
-
-    <nz-dropdown-menu #menuUsuario="nzDropdownMenu">
-        <ul nz-menu nzSelectable>
-            <li nz-menu-item>
-                Editar perfil
-                <span
-                    nz-icon
-                    nzType="edit"
-                    nzTheme="outline"
-                    class="icono-opcion"></span>
-            </li>
-            <li nz-menu-item nzDanger>
-                Cerrar sesión
-                <span
-                    nz-icon
-                    nzType="logout"
-                    nzTheme="outline"
-                    class="icono-opcion"></span>
-            </li>
-        </ul>
-    </nz-dropdown-menu>
-
-    <ng-template #suffixIconSearch>
-        <span nz-icon nzType="search" class="header-icon"></span>
-        <span nz-icon nzType="control" class="control-icon"></span>
-    </ng-template>
 </nz-header>
+
+<nz-dropdown-menu #menuBusqueda="nzDropdownMenu">
+    <ul nz-menu nzSelectable>
+        <li
+            nz-menu-item
+            *ngFor="let archivo of archivosFiltrados"
+            (click)="handleClick(archivo.id)">
+            <div class="archivo-nombre">
+                <span
+                    class="archivo-icono"
+                    nz-icon
+                    [nzType]="archivo.icono.nombre"
+                    [ngStyle]="{ color: archivo.icono.color }"
+                    nzTheme="outline"></span>
+                <div class="texto-nombre">{{ archivo.nombre }}</div>
+            </div>
+            <div class="texto-propietario">
+                {{
+                    archivo.propietario.primer_nombre +
+                        ' ' +
+                        archivo.propietario.segundo_nombre
+                }}
+            </div>
+        </li>
+    </ul>
+</nz-dropdown-menu>
+
+<nz-dropdown-menu #menuUsuario="nzDropdownMenu">
+    <ul nz-menu nzSelectable>
+        <li nz-menu-item>
+            Editar perfil
+            <span
+                nz-icon
+                nzType="edit"
+                nzTheme="outline"
+                class="icono-opcion"></span>
+        </li>
+        <li nz-menu-item nzDanger>
+            Cerrar sesión
+            <span
+                nz-icon
+                nzType="logout"
+                nzTheme="outline"
+                class="icono-opcion"></span>
+        </li>
+    </ul>
+</nz-dropdown-menu>
+
+<ng-template #suffixIconSearch>
+    <span nz-icon nzType="search" class="header-icon"></span>
+    <span nz-icon nzType="control" class="control-icon"></span>
+</ng-template>
+
+<ng-template #icono>
+    <div
+        class="usuario-icono-container"
+        nz-dropdown
+        [nzDropdownMenu]="menuUsuario">
+        <span class="usuario-icono" nz-icon nzType="user"></span>
+    </div>
+</ng-template>

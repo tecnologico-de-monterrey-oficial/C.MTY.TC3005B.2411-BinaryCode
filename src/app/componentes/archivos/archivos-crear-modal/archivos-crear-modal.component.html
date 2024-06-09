@@ -35,20 +35,6 @@
                             </div>
                         </nz-form-control>
                     </nz-form-item>
-                    <ng-template #imagenPreview>
-                        <div class="contenedor-imagen">
-                            <img
-                                [src]="imagenControl"
-                                alt="Vista previa de la imagen"
-                                class="imagen-archivo"
-                                [style.border-color]="
-                                    validateForm.value.colorSeleccionado
-                                " />
-                        </div>
-                    </ng-template>
-                    <ng-template #imagenArchivoErrorTpl>
-                        Se necesita agregar una imagen
-                    </ng-template>
                 </div>
             </div>
         </div>
@@ -70,10 +56,6 @@
                             [rows]="1">
                         </textarea>
                     </nz-textarea-count>
-                    <ng-template #nombreArchivoErrorTpl>
-                        Se necesita agregar un nombre con un máximo de
-                        {{ palabrasTotalesNombre }} caracteres
-                    </ng-template>
                 </nz-form-control>
                 <nz-form-label nzFor="etiquetas"> Etiquetas </nz-form-label>
                 <nz-form-control class="lista-etiquetas">
@@ -94,26 +76,6 @@
                             formControlName="terminoBusquedaEtiqueta"
                             (input)="handleBusquedaEtiqueta()" />
                     </nz-input-group>
-                    <ng-template #suffixIconSearch>
-                        <span
-                            nz-icon
-                            nzType="search"
-                            class="header-icon"></span>
-                    </ng-template>
-                    <nz-dropdown-menu #menuBusqueda="nzDropdownMenu">
-                        <ul nz-menu nzSelectable>
-                            <li
-                                nz-menu-item
-                                *ngFor="let etiqueta of etiquetasFiltradas"
-                                (click)="agregarEtiqueta(etiqueta)">
-                                <nz-tag
-                                    class="etiqueta"
-                                    [nzColor]="etiqueta.color">
-                                    {{ etiqueta.nombre }}
-                                </nz-tag>
-                            </li>
-                        </ul>
-                    </nz-dropdown-menu>
                     <div class="lista-etiquetas">
                         <nz-tag
                             class="etiqueta"
@@ -138,10 +100,6 @@
                             formControlName="descripcion"
                             placeholder="Añade una descripción breve del archivo">
                         </textarea>
-                        <ng-template #descripcionErrorTpl>
-                            Añade una descripción con un máximo de
-                            {{ palabrasTotalesDescripcion }} caracteres
-                        </ng-template>
                     </nz-textarea-count>
                 </nz-form-control>
             </nz-form-item>
@@ -162,3 +120,52 @@
         </button>
     </div>
 </div>
+
+<!-- Preview de imagen -->
+
+<ng-template #imagenPreview>
+    <div class="contenedor-imagen">
+        <img
+            [src]="imagenControl"
+            alt="Vista previa de la imagen"
+            class="imagen-archivo"
+            [style.border-color]="validateForm.value.colorSeleccionado" />
+    </div>
+</ng-template>
+
+<!-- Mensajes de error -->
+
+<ng-template #imagenArchivoErrorTpl>
+    Se necesita agregar una imagen
+</ng-template>
+
+<ng-template #nombreArchivoErrorTpl>
+    Se necesita agregar un nombre con un máximo de
+    {{ palabrasTotalesNombre }} caracteres
+</ng-template>
+
+<ng-template #descripcionErrorTpl>
+    Añade una descripción con un máximo de
+    {{ palabrasTotalesDescripcion }} caracteres
+</ng-template>
+
+<!-- Icono de búsqueda -->
+
+<ng-template #suffixIconSearch>
+    <span nz-icon nzType="search" class="header-icon"></span>
+</ng-template>
+
+<!-- Dropdown menu -->
+
+<nz-dropdown-menu #menuBusqueda="nzDropdownMenu">
+    <ul nz-menu nzSelectable>
+        <li
+            nz-menu-item
+            *ngFor="let etiqueta of etiquetasFiltradas"
+            (click)="agregarEtiqueta(etiqueta)">
+            <nz-tag class="etiqueta" [nzColor]="etiqueta.color">
+                {{ etiqueta.nombre }}
+            </nz-tag>
+        </li>
+    </ul>
+</nz-dropdown-menu>
