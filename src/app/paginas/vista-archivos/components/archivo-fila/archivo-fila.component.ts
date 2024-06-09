@@ -4,6 +4,7 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 import { ArchivoCompletoComponent } from '../archivo-completo/archivo-completo.component';
 import { Archivo } from '../../../../modelos/archivo.model';
 import { ArchivosService } from '../../../../servicios/archivo.services';
+import { ArchivoModalService } from '../../../../servicios/archivo-modal.service';
 import { getIcono } from '../../../../modelos/icono.model';
 
 @Component({
@@ -14,8 +15,10 @@ import { getIcono } from '../../../../modelos/icono.model';
 export class ArchivoFilaComponent {
     constructor(
         private archivosService: ArchivosService,
-        private modal: NzModalService
+        private modal: NzModalService,
+        private archivoModalService: ArchivoModalService
     ) {}
+
     @Input() archivo: Archivo;
 
     onStarClick(event: Event): void {
@@ -32,13 +35,16 @@ export class ArchivoFilaComponent {
     }
 
     onFileClick(): void {
-        console.log('Se abre archivo ' + this.archivo.nombre);
+        console.log('Archivo clickeado:', this.archivo);
+        this.archivoModalService.setArchivo(this.archivo);
         this.modal.create({
             nzTitle: 'Detalles del Archivo',
             nzContent: ArchivoCompletoComponent,
             nzFooter: null,
+            nzWidth: '80%',
         });
     }
+
     formatDate(dateString: string): string {
         const [day, month, year] = dateString.split('-');
         const date: Date = new Date(

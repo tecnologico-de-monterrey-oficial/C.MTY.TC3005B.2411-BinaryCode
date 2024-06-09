@@ -1,5 +1,59 @@
-<!-- archivo-completo.component.html -->
-<div class="tarjeta">
-    <h1>Archivo Completo</h1>
-    <p>Este es un componente temporal para mostrar en el modal.</p>
+<div class="modal-contenedor">
+    <div class="izquierda">
+        <div class="icono-terminacion">
+            <span
+                nz-icon
+                [nzType]="getIcono(archivo.terminacion).nombre"
+                [ngStyle]="{ color: getIcono(archivo.terminacion).color }"
+                nzTheme="outline"></span>
+        </div>
+    </div>
+    <div class="derecha">
+        <h2>{{ archivo.nombre }}</h2>
+        <div class="usuario-info">
+            <div class="usuario-icono-container">
+                <img
+                    *ngIf="archivo.usuario_info.imagen"
+                    class="usuario-imagen"
+                    [src]="archivo.usuario_info.imagen"
+                    alt="Imagen de usuario" />
+                <span
+                    *ngIf="!archivo.usuario_info.imagen"
+                    class="usuario-icono"
+                    nz-icon
+                    nzType="user"></span>
+            </div>
+            <div class="usuario-detalles">
+                <p class="nombre">{{ archivo.usuario_info.nombre }}</p>
+                <p class="fecha">{{ formatDate(archivo.fecha) }}</p>
+            </div>
+        </div>
+        <div class="descripcion-contenedor">
+            <p>Descripción:</p>
+            <p>Texto random para identificar la descripción</p>
+        </div>
+        <div class="etiquetas-contenedor">
+            <ul>
+                <li *ngFor="let etiqueta of archivo.etiquetas">
+                    {{ etiqueta.nombre }}
+                </li>
+            </ul>
+        </div>
+        <div class="acciones">
+            <button nz-button nz-dropdown [nzDropdownMenu]="menu">
+                {{ selectedVersion }} <i nz-icon nzType="down"></i>
+            </button>
+            <nz-dropdown-menu #menu="nzDropdownMenu">
+                <ul nz-menu>
+                    <li
+                        nz-menu-item
+                        *ngFor="let version of versions"
+                        (click)="selectVersion(version)">
+                        {{ version }}
+                    </li>
+                </ul>
+            </nz-dropdown-menu>
+            <button>Descargar</button>
+        </div>
+    </div>
 </div>
