@@ -5,16 +5,23 @@
             src="../../../assets/images/Imagenes_topbar/CarDrive.png"
             alt="" />
     </a>
-    <nz-input-group
-        nz-col
-        nzSpan="3"
-        [nzSuffix]="suffixIconSearch"
-        class="buscador">
-        <input type="text" nz-input placeholder="Ingresa la búsqueda" />
-    </nz-input-group>
-    <ng-template #suffixIconSearch>
-        <span nz-icon nzType="search" class="header-icon"></span>
-    </ng-template>
+    <div class="buscador-container">
+        <nz-input-group
+            nz-col
+            nzSpan="3"
+            [nzSuffix]="suffixIconSearch"
+            class="buscador">
+            <input type="text" nz-input placeholder="Ingresa la búsqueda" />
+        </nz-input-group>
+        <ng-template #suffixIconSearch>
+            <span nz-icon nzType="search" class="header-icon"></span>
+        </ng-template>
+        <button
+            (click)="abrirModalBusquedaAvanzada()"
+            class="boton-busqueda-avanzada">
+            <span nz-icon nzType="bars"></span>
+        </button>
+    </div>
     <div class="derecha">
         <span
             nz-icon
