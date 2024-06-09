@@ -1,4 +1,3 @@
-// src/app/app.module.ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,6 +22,7 @@ import { EncabezadoComponent } from './components/encabezado/encabezado.componen
 import { CrearContenidosComponent } from './paginas/vista-archivos/components/crear-contenidos/crear-contenidos.component';
 import { ProyectoCrearComponent } from './paginas/vista-proyectos/components/proyecto-crear/proyecto-crear.component';
 import { CrearUnidadComponent } from './paginas/vista-unidades/components/crear-unidad/crear-unidad.component';
+import { CrearVersionComponent } from './paginas/vista-archivos/components/crear-version/crear-version.component';
 import { EntradaLoginModule } from './EntradaLogin/entrada-login.module';
 import { AppRoutingModule } from './app-routing.module';
 import { VistaProyectosModule } from './paginas/vista-proyectos/vista-proyectos.module';
@@ -41,6 +41,7 @@ enableRipple(true);
         CrearContenidosComponent,
         ProyectoCrearComponent,
         CrearUnidadComponent,
+        CrearVersionComponent,
     ],
     imports: [
         CommonModule,

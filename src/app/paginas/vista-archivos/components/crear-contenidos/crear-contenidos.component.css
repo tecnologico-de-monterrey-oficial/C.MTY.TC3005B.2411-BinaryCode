@@ -1,3 +1,4 @@
+/* crear-contenidos.component.css */
 :root {
     --rojoLogin: #e74c3c;
     --blanco: #ffffff;
@@ -29,6 +30,7 @@
     display: flex;
     flex-grow: 1;
     padding: 10px;
+    flex-direction: row; /* Cambio aquí */
 }
 
 .left {
@@ -180,4 +182,20 @@ button:hover {
     background-color: var(--blanco);
     color: var(--rojoLogin);
     border: 2px solid var(--rojoLogin);
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Cambio aquí */
+    }
+
+    .left {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .right {
+        padding-top: 0;
+    }
 }

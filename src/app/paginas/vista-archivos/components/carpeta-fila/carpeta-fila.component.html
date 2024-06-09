@@ -35,10 +35,17 @@
     <!-- Menu de opciones -->
     <nz-dropdown-menu #menu="nzDropdownMenu">
         <ul nz-menu nzSelectable>
-            <li nz-menu-item>1st menu item</li>
-            <li nz-menu-item>2nd menu item</li>
-            <li nz-menu-item>3rd menu item</li>
-            <li nz-menu-item nzDanger>4th danger item</li>
+            <li nz-menu-item>
+                <span class="icono-opcion" nz-icon nzType="edit"></span>
+                Editar
+            </li>
+            <li nz-menu-item nzDanger>
+                <span
+                    class="icono-opcion icono-borrar"
+                    nz-icon
+                    nzType="delete"></span>
+                Borrar
+            </li>
         </ul>
     </nz-dropdown-menu>
 </div>

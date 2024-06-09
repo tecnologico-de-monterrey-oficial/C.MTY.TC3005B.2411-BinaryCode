@@ -53,6 +53,10 @@
     align-items: center;
 }
 
+.icono-opcion {
+    margin-right: 8px;
+}
+
 @media (max-width: 1048px) {
     .hide-on-small-1 {
         display: none;

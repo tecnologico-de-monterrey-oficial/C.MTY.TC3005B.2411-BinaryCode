@@ -1,3 +1,4 @@
+<!-- crear-contenidos.component.html -->
 <div class="tarjeta">
     <div class="container">
         <div class="left" (click)="fileInput.click()">
@@ -46,6 +47,15 @@
                 name="descripcion"
                 rows="4"
                 [(ngModel)]="descripcion"></textarea>
+            <div>
+                <br />
+                <label for="nombre_version">Nombre de la versión:</label>
+                <input
+                    type="text"
+                    id="nombre_version"
+                    name="nombre_version"
+                    [(ngModel)]="nombreVersion" />
+            </div>
             <div class="tags">
                 <label for="tags">Etiquetas:</label>
                 <div class="tag-input-container">

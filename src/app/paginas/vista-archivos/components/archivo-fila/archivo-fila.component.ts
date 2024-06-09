@@ -2,6 +2,7 @@
 import { Component, Input } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { ArchivoCompletoComponent } from '../archivo-completo/archivo-completo.component';
+import { CrearVersionComponent } from '../crear-version/crear-version.component';
 import { Archivo } from '../../../../modelos/archivo.model';
 import { ArchivosService } from '../../../../servicios/archivo.services';
 import { ArchivoModalService } from '../../../../servicios/archivo-modal.service';
@@ -42,6 +43,15 @@ export class ArchivoFilaComponent {
             nzContent: ArchivoCompletoComponent,
             nzFooter: null,
             nzWidth: '80%',
+        });
+    }
+
+    onAddVersionClick(): void {
+        this.modal.create({
+            nzTitle: 'Agregar Versión',
+            nzContent: CrearVersionComponent,
+            nzFooter: null,
+            nzWidth: '70%',
         });
     }
 

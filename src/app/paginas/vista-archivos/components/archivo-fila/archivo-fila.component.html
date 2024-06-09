@@ -76,15 +76,19 @@
         <nz-dropdown-menu #menu="nzDropdownMenu">
             <ul nz-menu nzSelectable>
                 <li nz-menu-item>
-                    Editar
                     <span class="icono-opcion" nz-icon nzType="edit"></span>
+                    Editar
+                </li>
+                <li nz-menu-item (click)="onAddVersionClick()">
+                    <span class="icono-opcion" nz-icon nzType="file-add"></span>
+                    Agregar versión
                 </li>
                 <li nz-menu-item nzDanger>
-                    Borrar
                     <span
                         class="icono-opcion icono-borrar"
                         nz-icon
                         nzType="delete"></span>
+                    Borrar
                 </li>
             </ul>
         </nz-dropdown-menu>

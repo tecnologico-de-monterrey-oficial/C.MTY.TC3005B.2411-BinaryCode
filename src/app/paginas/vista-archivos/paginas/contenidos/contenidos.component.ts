@@ -1,3 +1,4 @@
+//contenidos.component.ts
 import { Component, OnInit } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { Archivo } from '../../../../modelos/archivo.model';
@@ -39,7 +40,7 @@ export class ContenidosComponent implements OnInit {
             nzTitle: 'Crear Carpeta',
             nzContent: CrearCarpetaComponent,
             nzFooter: null,
-            nzWidth: '40%',
+            nzWidth: '70%',
         });
     }
 }

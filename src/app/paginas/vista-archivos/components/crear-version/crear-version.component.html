@@ -1,0 +1,44 @@
+<div class="tarjeta">
+    <div class="container">
+        <div class="left" (click)="fileInput.click()">
+            <input
+                type="file"
+                #fileInput
+                (change)="fileChanged($event)"
+                hidden />
+            <div
+                *ngIf="!filePreview && !isOther"
+                class="file-upload-placeholder">
+                Clic para añadir archivo
+            </div>
+            <ng-template [ngIf]="isImage">
+                <div class="image-container">
+                    <div class="image-overlay"></div>
+                    <img [src]="filePreview" alt="Vista previa de la imagen" />
+                </div>
+            </ng-template>
+            <ng-template [ngIf]="isVideo">
+                <div class="video-preview">
+                    <video [src]="filePreview" controls width="100%"></video>
+                </div>
+            </ng-template>
+            <ng-template [ngIf]="isOther">
+                <div class="other-preview">
+                    <p>Archivo cargado</p>
+                </div>
+            </ng-template>
+            <div class="file-name" *ngIf="fileName">
+                <p>{{ fileName }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-section">
+        <label for="version_name">Agregar nombre de versión:</label>
+        <input
+            type="text"
+            id="version_name"
+            name="version_name"
+            [(ngModel)]="versionName" />
+        <button (click)="agregarVersion()">Agregar versión</button>
+    </div>
+</div>

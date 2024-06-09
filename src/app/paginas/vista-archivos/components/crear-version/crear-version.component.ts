@@ -1,39 +1,23 @@
-// crear-contenidos.component.ts
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'; // OnInit
 
 @Component({
-    selector: 'app-crear-contenidos',
-    templateUrl: './crear-contenidos.component.html',
-    styleUrls: ['./crear-contenidos.component.css'],
+    selector: 'app-crear-version',
+    templateUrl: './crear-version.component.html',
+    styleUrls: ['./crear-version.component.css'],
 })
-export class CrearContenidosComponent {
-    nombreArchivo: string = '';
-    descripcion: string = '';
-    nombreVersion: string = ''; // Nueva variable para 'Nombre de la versión'
+export class CrearVersionComponent {
+    //implements OnInit
     filePreview: string | ArrayBuffer | null = null;
     isImage: boolean = false;
     isDocument: boolean = false;
     isVideo: boolean = false;
     isOther: boolean = false;
     fileName: string = '';
-    tagInput: string = '';
-    tags: string[] = [];
+    versionName: string = '';
 
-    validarDatos(): void {
-        if (
-            this.nombreArchivo.trim() === '' ||
-            this.descripcion.trim() === '' ||
-            this.nombreVersion.trim() === '' // Validación del nuevo campo
-        ) {
-            alert('Por favor completa todos los campos.');
-            return;
-        }
-        this.subirArchivo();
-    }
+    //constructor() {}
 
-    subirArchivo(): void {
-        console.log('Datos válidos, subiendo archivo...');
-    }
+    //ngOnInit(): void {}
 
     fileChanged(event: Event): void {
         const input: HTMLInputElement = event.target as HTMLInputElement;
@@ -65,14 +49,11 @@ export class CrearContenidosComponent {
         this.isOther = false;
     }
 
-    agregarTag(): void {
-        if (this.tagInput.trim() !== '') {
-            this.tags.push(this.tagInput.trim());
-            this.tagInput = '';
+    agregarVersion(): void {
+        if (this.versionName.trim() === '') {
+            alert('Por favor ingresa un nombre para la versión.');
+            return;
         }
-    }
-
-    eliminarTag(tag: string): void {
-        this.tags = this.tags.filter(t => t !== tag);
+        console.log('Versión agregada:', this.versionName);
     }
 }
