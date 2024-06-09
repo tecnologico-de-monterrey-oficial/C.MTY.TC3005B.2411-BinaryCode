@@ -3,9 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { Archivo } from '../../../../modelos/archivo.model';
 import { ArchivosService } from '../../../../servicios/archivo.services';
-import { Carpeta } from '../../../../modelos/carpeta.model';
 import { CrearContenidosComponent } from '../../components/crear-contenidos/crear-contenidos.component';
 import { CrearCarpetaComponent } from '../../components/crear-carpeta/crear-carpeta.component';
+import { ActivatedRoute } from '@angular/router';
+import { Unidad } from '../../../../modelos/unidad.model';
 // import { Contenidos } from '../../../../modelos/contenidos.model';
 
 @Component({
@@ -15,15 +16,24 @@ import { CrearCarpetaComponent } from '../../components/crear-carpeta/crear-carp
 })
 export class ContenidosComponent implements OnInit {
     archivos: Archivo[] = [];
-    carpetas: Carpeta[] = [];
+    carpetas: Unidad[] = [];
+    unidadId: string;
     constructor(
         private archivosService: ArchivosService,
-        private modalService: NzModalService
+        private modalService: NzModalService,
+        private route: ActivatedRoute
     ) {}
 
     async ngOnInit(): Promise<void> {
-        this.archivos = await this.archivosService.getArchivos();
-        this.carpetas = await this.archivosService.getCarpetas();
+        this.route.params.subscribe(async params => {
+            this.unidadId = params['unidadesId'];
+            this.archivos = await this.archivosService.getArchivos(
+                this.unidadId
+            );
+            this.carpetas = await this.archivosService.getCarpetas(
+                this.unidadId
+            );
+        });
     }
 
     abrirModalCrearContenido(): void {

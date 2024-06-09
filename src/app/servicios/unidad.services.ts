@@ -17,7 +17,9 @@ export class UnidadesService {
     constructor(private http: HttpClient) {}
 
     getUnidadesPorProyecto(proyectoId: number): Observable<Unidad[]> {
-        return this.http.get<Unidad[]>(`${this.baseUrl}?search=${proyectoId}`);
+        return this.http.get<Unidad[]>(
+            `${this.baseUrl}?id_proyecto__id=${proyectoId}`
+        );
     }
 
     getCoordinadores(idUnidad: number): Usuario[] {

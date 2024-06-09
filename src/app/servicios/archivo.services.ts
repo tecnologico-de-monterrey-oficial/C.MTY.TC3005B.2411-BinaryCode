@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Archivo } from '../modelos/archivo.model';
 import { Carpeta } from '../modelos/carpeta.model';
-import { C1, C2, C3 } from '../../assets/mocks/carpetas';
+//import { Contenidos } from '../modelos/contenidos.model';
 import { A10, A3, A5, A7, A8, A9 } from '../../assets/mocks/archivos';
+import { C1, C2, C3 } from '../../assets/mocks/carpetas';
+import { Unidad } from '../modelos/unidad.model';
 
 @Injectable({
     providedIn: 'root',
@@ -13,6 +15,7 @@ import { A10, A3, A5, A7, A8, A9 } from '../../assets/mocks/archivos';
 // Cuántos archivos puede haber en total
 export class ArchivosService {
     private baseUrl = 'http://127.0.0.1:8000/api/archivos/';
+    private carpetasUrl = 'http://127.0.0.1:8000/api/apartados/';
     archivos: Archivo[];
     favoritos: Archivo[] = [A7, A8, A3, A9, A5, A10];
 
@@ -28,12 +31,22 @@ export class ArchivosService {
         return this.archivos;
     }
 
-    async getCarpetas(): Promise<Carpeta[]> {
-        return await this.carpetas;
+    async getCarpetas(unidadId: string): Promise<Unidad[]> {
+        const response: Response = await fetch(
+            `${this.carpetasUrl}?id_padre__id=${unidadId}`
+        );
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const carpetas: Unidad[] = await response.json();
+        console.log(carpetas);
+        return carpetas;
     }
 
-    async getArchivos(): Promise<Archivo[]> {
-        const response: Response = await fetch(this.baseUrl);
+    async getArchivos(unidadId: string): Promise<Archivo[]> {
+        const response: Response = await fetch(
+            `${this.baseUrl}?id_apartado=${unidadId}`
+        );
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
