@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Archivo } from '../../../modelos';
 import { ArchivosService } from '../../../servicios/archivos.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-archivos-lista-individual-archivo',
@@ -21,9 +22,11 @@ export class ArchivosListaIndividualArchivoComponent {
     }
 
     onFileClick(): void {
-        console.log('Se abre archivo ' + this.archivo.nombre);
-        // TODO: Agregar ruteo
+        this.router.navigate(['/archivo', this.archivo.id]);
     }
 
-    constructor(private archivosService: ArchivosService) {}
+    constructor(
+        private archivosService: ArchivosService,
+        private router: Router
+    ) {}
 }

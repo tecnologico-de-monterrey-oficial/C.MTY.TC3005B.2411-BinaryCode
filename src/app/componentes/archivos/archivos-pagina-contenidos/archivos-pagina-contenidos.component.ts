@@ -46,7 +46,9 @@ export class ArchivosPaginaContenidosComponent implements OnInit {
         } else {
             this.titulo = 'Contenidos';
             this.archivos =
-                await this.archivosService.getArchivos('idParaGetArchivos');
+                await this.archivosService.getArchivosPorApartado(
+                    'idParaGetArchivos'
+                );
             this.carpetas =
                 await this.archivosService.getCarpetas('idParaGetArchivos');
             this.permiso = true; // Checar

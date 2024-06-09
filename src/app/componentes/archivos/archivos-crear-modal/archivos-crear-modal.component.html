@@ -85,7 +85,8 @@
                         [nzDropdownMenu]="menuBusqueda"
                         nzPlacement="bottomCenter"
                         [nzTrigger]="null"
-                        [nzVisible]="menuEtiquetasVisible">
+                        [nzVisible]="menuEtiquetasVisible"
+                        (nzVisibleChange)="handleMenuBusquedaVisible($event)">
                         <input
                             type="text"
                             nz-input

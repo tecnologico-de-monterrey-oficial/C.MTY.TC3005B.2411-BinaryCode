@@ -42,9 +42,11 @@ export class ArchivosService {
         return archivo;
     };
 
-    getArchivos: {
-        (id: string): Promise<Archivo[]>;
-    } = async id => {
+    getArchivos: { (): Promise<Archivo[]> } = async () => {
+        return this.archivos;
+    };
+
+    getArchivosPorApartado: { (id: string): Promise<Archivo[]> } = async id => {
         id;
         return this.archivos;
     };

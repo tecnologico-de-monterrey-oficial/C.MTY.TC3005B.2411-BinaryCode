@@ -88,3 +88,30 @@
 .ant-input-affix-wrapper > input.ant-input {
     padding-left: 5px;
 }
+
+.archivo-icono {
+    font-size: 30px;
+    padding-left: 5px;
+}
+
+.archivo-nombre {
+    display: flex;
+    align-items: center;
+}
+
+.texto-nombre {
+    padding-left: 15px;
+    color: var(--negro);
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+}
+
+.texto-propietario {
+    color: var(--bordes);
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+}
+
+/* ::ng-deep .ant-menu-title-content {
+    justify-content: flex-start;
+} */

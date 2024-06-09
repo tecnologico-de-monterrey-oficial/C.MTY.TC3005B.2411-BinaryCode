@@ -126,7 +126,14 @@ export class ArchivosCrearModalComponent implements OnInit {
                 this.validateForm.value.terminoBusquedaEtiqueta
             );
             this.etiquetasFiltradas = result.map(resultado => resultado.item);
+            if (this.etiquetasFiltradas.length > 10) {
+                this.etiquetasFiltradas = this.etiquetasFiltradas.slice(0, 10);
+            }
         }
+    }
+
+    handleMenuBusquedaVisible(valor: boolean): void {
+        this.menuEtiquetasVisible = valor;
     }
 
     agregarEtiqueta(etiqueta: Etiqueta): void {
