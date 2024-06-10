@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Archivo } from '../modelos/archivo.model';
-import { Carpeta } from '../modelos/carpeta.model';
+import { Archivo, ArchivoPost } from '../modelos/archivo.model';
 //import { Contenidos } from '../modelos/contenidos.model';
 import { A10, A3, A5, A7, A8, A9 } from '../../assets/mocks/archivos';
-import { C1, C2, C3 } from '../../assets/mocks/carpetas';
 import { Unidad } from '../modelos/unidad.model';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Injectable({
     providedIn: 'root',
@@ -18,9 +17,7 @@ export class ArchivosService {
     private carpetasUrl = 'http://127.0.0.1:8000/api/apartados/';
     archivos: Archivo[];
     favoritos: Archivo[] = [A7, A8, A3, A9, A5, A10];
-
-    carpetas: Carpeta[] = [C1, C2, C3];
-
+    constructor(private message: NzMessageService) {}
     getArchivosFavoritos(): Archivo[] {
         // TODO: LLAMADA A API
         return this.favoritos;
@@ -59,5 +56,31 @@ export class ArchivosService {
         idArchivo;
         favorito;
         // TODO: LLAMADA A API
+    }
+
+    async postArchivo(archivo: ArchivoPost): Promise<ArchivoPost> {
+        try {
+            const response: Response = await fetch(this.baseUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(archivo),
+            });
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const archivoResponse: ArchivoPost = await response.json();
+            this.message.success('La unidad se creó exitosamente', {
+                nzDuration: 10000,
+            });
+            return archivoResponse;
+        } catch (error) {
+            console.error('Error creando la unidad', error);
+            this.message.error('Hubo un error al crear la unidad', {
+                nzDuration: 10000,
+            });
+            throw error; // Es útil para manejar el error en otros lugares si es necesario
+        }
     }
 }

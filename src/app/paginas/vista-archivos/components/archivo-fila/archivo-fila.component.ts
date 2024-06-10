@@ -68,7 +68,16 @@ export class ArchivoFilaComponent {
     }
 
     formatDate(dateString: string): string {
-        const [day, month, year] = dateString.split('-');
+        if (!dateString) {
+            return 'Fecha no disponible'; // Retorna un mensaje predeterminado si la entrada no es válida
+        }
+
+        const parts: string[] = dateString.split('-');
+        if (parts.length < 3) {
+            return 'Formato de fecha incorrecto'; // Retorna un mensaje si el formato no es correcto
+        }
+
+        const [day, month, year] = parts;
         const date: Date = new Date(
             Number(year),
             Number(month) - 1,
@@ -80,6 +89,5 @@ export class ArchivoFilaComponent {
             day: '2-digit',
         });
     }
-
     protected readonly getIcono = getIcono;
 }
