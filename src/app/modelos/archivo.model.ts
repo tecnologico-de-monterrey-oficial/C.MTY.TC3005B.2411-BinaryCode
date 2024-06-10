@@ -12,7 +12,7 @@ export class Archivo {
     descripcion: string;
     terminacion: string = 'unknown';
     fecha: string;
-    usuario_info: Usuario;
+    propietario: Usuario;
     etiquetas: Etiqueta[];
     favorito: boolean;
     iteracion: number;

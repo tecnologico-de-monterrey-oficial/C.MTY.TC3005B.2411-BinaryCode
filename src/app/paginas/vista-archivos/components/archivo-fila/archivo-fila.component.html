@@ -24,11 +24,11 @@
         </div>
 
         <div nz-col nzFlex="6" class="hide-on-small-3">
-            <ng-container *ngIf="archivo.usuario_info.imagen; else icono">
+            <ng-container *ngIf="archivo.propietario.imagen; else icono">
                 <!-- Mostrar la imagen si la URL de la imagen está presente -->
                 <img
                     class="usuario-imagen"
-                    [src]="archivo.usuario_info.imagen"
+                    [src]="archivo.propietario.imagen"
                     alt="Imagen de usuario" />
             </ng-container>
 
@@ -38,7 +38,7 @@
                     <span class="usuario-icono" nz-icon nzType="user"></span>
                 </div>
             </ng-template>
-            <div class="texto">{{ archivo.usuario_info.nombre }}</div>
+            <div class="texto">{{ archivo.propietario.nombre }}</div>
         </div>
 
         <!-- Etiquetas -->

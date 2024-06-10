@@ -14,18 +14,18 @@
         <div class="usuario-info">
             <div class="usuario-icono-container">
                 <img
-                    *ngIf="archivo.usuario_info.imagen"
+                    *ngIf="archivo.propietario.imagen"
                     class="usuario-imagen"
-                    [src]="archivo.usuario_info.imagen"
+                    [src]="archivo.propietario.imagen"
                     alt="Imagen de usuario" />
                 <span
-                    *ngIf="!archivo.usuario_info.imagen"
+                    *ngIf="!archivo.propietario.imagen"
                     class="usuario-icono"
                     nz-icon
                     nzType="user"></span>
             </div>
             <div class="usuario-detalles">
-                <p class="nombre">{{ archivo.usuario_info.nombre }}</p>
+                <p class="nombre">{{ archivo.propietario.nombre }}</p>
                 <p class="fecha">{{ formatDate(archivo.fecha) }}</p>
             </div>
         </div>
