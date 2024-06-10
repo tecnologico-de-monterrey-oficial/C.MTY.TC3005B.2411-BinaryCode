@@ -8,7 +8,7 @@ import {
 import { Archivo, Etiqueta } from '../../../modelos';
 import { US1 } from '../../../../assets/mocks/usuarios';
 import Fuse, { FuseResult, IFuseOptions } from 'fuse.js';
-import { EtiquetasService } from '../../../servicios/etiquetas.service';
+import { EtiquetasService } from '../../../services/etiquetas.service';
 import {
     palabrasTotalesArchivoDescripcion,
     palabrasTotalesNombreArchivo,
@@ -64,9 +64,12 @@ export class ArchivosCrearModalComponent implements OnInit {
 
         this.archivoEnProceso = this.archivoOriginal || {
             nombre: '',
-            favorito: false,
+            descripcion: '',
+            terminacion: '',
             propietario: US1,
             etiquetas: this.etiquetasActuales,
+            favorito: false,
+            id_apartado: this.unidadId,
         };
 
         this.validateForm = this.fb.group({

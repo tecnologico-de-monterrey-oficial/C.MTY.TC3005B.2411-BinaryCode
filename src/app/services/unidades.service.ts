@@ -2,21 +2,29 @@ import { Injectable } from '@angular/core';
 import { Unidad, Usuario } from '../modelos';
 import { US1, US2, US3, US4, US5, US6 } from '../../assets/mocks/usuarios';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { BASE_URL } from '../constantes';
+import { AuthService } from './auth.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class UnidadesService {
-    baseUrl: string = 'http://127.0.0.1:8000/api/apartados/';
-    coordinadores: Usuario[] = [US4, US5, US6];
-    editores: Usuario[] = [US1, US2, US3, US4, US5, US6];
+    private baseUrl: string = BASE_URL + 'api/apartados/';
+    private token: string = this.authService.getToken();
+    private customHeader: HeadersInit = this.token
+        ? {
+              'Content-Type': 'application/json',
+              Authorization: 'Bearer ' + this.token,
+          }
+        : {
+              'Content-Type': 'application/json',
+          };
 
-    customHeader: HeadersInit = {
-        'Content-Type': 'application/json',
-    };
+    private coordinadores: Usuario[] = [US4, US5, US6];
+    private editores: Usuario[] = [US1, US2, US3, US4, US5, US6];
 
-    unidadesCache: { [id: number]: Unidad } = [];
-    unidadesPorProyectoCache: { [id: number]: number[] } = [];
+    private unidadesCache: { [id: number]: Unidad } = [];
+    private unidadesPorProyectoCache: { [id: number]: number[] } = [];
 
     async getUnidadIndividual(unidadId: number): Promise<Unidad> {
         if (this.unidadesCache && this.unidadesCache[unidadId]) {
@@ -179,5 +187,8 @@ export class UnidadesService {
         return unidadesPorProyecto;
     }
 
-    constructor(private message: NzMessageService) {}
+    constructor(
+        private message: NzMessageService,
+        private authService: AuthService
+    ) {}
 }

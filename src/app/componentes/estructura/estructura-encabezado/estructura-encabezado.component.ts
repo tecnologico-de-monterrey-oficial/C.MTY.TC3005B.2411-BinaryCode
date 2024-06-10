@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import Fuse, { FuseResult, IFuseOptions } from 'fuse.js';
 import { US1 } from '../../../../assets/mocks/usuarios';
 import { Archivo, Usuario } from '../../../modelos';
-import { ArchivosService } from '../../../servicios/archivos.service';
+import { ArchivosService } from '../../../services/archivos.service';
 
 @Component({
     selector: 'app-estructura-encabezado',
@@ -65,6 +65,11 @@ export class EstructuraEncabezadoComponent implements OnInit {
         this.menuBusquedaVisible = false;
         this.terminoBusquedaArchivo = '';
         this.router.navigate(['/archivo', archivoId]);
+    }
+
+    cambioArchivosTotales(nuevosArchivos: Archivo[]): void {
+        this.archivosTotales = nuevosArchivos;
+        this.fuse.setCollection(this.archivosTotales);
     }
 
     constructor(

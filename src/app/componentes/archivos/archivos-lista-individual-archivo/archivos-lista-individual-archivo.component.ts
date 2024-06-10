@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Archivo } from '../../../modelos';
-import { ArchivosService } from '../../../servicios/archivos.service';
+import { ArchivosService } from '../../../services/archivos.service';
 import { Router } from '@angular/router';
 
 @Component({

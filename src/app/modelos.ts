@@ -13,12 +13,15 @@ import {
 
 export type Archivo = {
     id?: string;
-    favorito: boolean;
-    icono?: Icono;
     nombre: string;
+    descripcion: string;
+    terminacion: string;
+    icono?: Icono;
+    fecha?: string;
     propietario: Usuario;
     etiquetas: Etiqueta[];
-    fecha?: string;
+    favorito: boolean;
+    id_apartado: number;
 };
 
 export type Carpeta = {

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Unidad } from '../../../modelos';
-import { UnidadesService } from '../../../servicios/unidades.service';
+import { UnidadesService } from '../../../services/unidades.service';
 
 @Component({
     selector: 'app-unidades-crear-tarjeta',

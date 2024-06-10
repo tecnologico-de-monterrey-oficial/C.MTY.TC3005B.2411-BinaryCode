@@ -7,7 +7,7 @@ import {
     entradaBorrarProyecto,
 } from '../proyectos-constantes';
 import { Proyecto } from '../../../modelos';
-import { ProyectosService } from '../../../servicios/proyectos.service';
+import { ProyectosService } from '../../../services/proyectos.service';
 
 @Component({
     selector: 'app-proyectos-tarjeta',

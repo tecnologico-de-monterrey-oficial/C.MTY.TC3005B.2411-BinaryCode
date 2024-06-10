@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router, Scroll } from '@angular/router';
 import { Archivo, Carpeta } from '../../../modelos';
-import { ArchivosService } from '../../../servicios/archivos.service';
+import { ArchivosService } from '../../../services/archivos.service';
 
 @Component({
     selector: 'app-archivos-pagina-contenidos',

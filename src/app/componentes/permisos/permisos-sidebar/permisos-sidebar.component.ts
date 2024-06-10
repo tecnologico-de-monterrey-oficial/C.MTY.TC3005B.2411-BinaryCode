@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { permisoType } from '../permisos-constantes';
 import { Proyecto, Unidad, Usuario } from '../../../modelos';
-import { ProyectosService } from '../../../servicios/proyectos.service';
-import { UnidadesService } from '../../../servicios/unidades.service';
+import { ProyectosService } from '../../../services/proyectos.service';
+import { UnidadesService } from '../../../services/unidades.service';
 
 @Component({
     selector: 'app-permisos-sidebar',

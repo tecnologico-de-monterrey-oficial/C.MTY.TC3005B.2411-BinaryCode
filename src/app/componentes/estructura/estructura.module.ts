@@ -12,6 +12,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 
 import { EstructuraEncabezadoComponent } from './estructura-encabezado/estructura-encabezado.component';
+import { EstructuraEncabezadoBusquedaOpcionesComponent } from './estructura-encabezado-busqueda-opciones/estructura-encabezado-busqueda-opciones.component';
 import { EstructuraEntradaLoginComponent } from './estructura-entrada-login/estructura-entrada-login.component';
 import { EstructuraEntradaPaginaComponent } from './estructura-entrada-pagina/estructura-entrada-pagina.component';
 import { EstructuraEntradaRegistroComponent } from './estructura-entrada-registro/estructura-entrada-registro.component';
@@ -35,6 +36,7 @@ import { EstructuraVacioComponent } from './estructura-vacio/estructura-vacio.co
     ],
     declarations: [
         EstructuraEncabezadoComponent,
+        EstructuraEncabezadoBusquedaOpcionesComponent,
         EstructuraEntradaLoginComponent,
         EstructuraEntradaPaginaComponent,
         EstructuraEntradaRegistroComponent,

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Unidad, Usuario } from '../../../modelos';
-import { UnidadesService } from '../../../servicios/unidades.service';
+import { UnidadesService } from '../../../services/unidades.service';
 import { permisoType } from '../../permisos/permisos-constantes';
 
 @Component({

@@ -2,18 +2,25 @@ import { Injectable } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Etiqueta } from '../modelos';
 import { E1, E2, E3, E4, E5, E6, E7 } from '../../assets/mocks/etiquetas';
+import { BASE_URL } from '../constantes';
+import { AuthService } from './auth.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class EtiquetasService {
-    baseUrl: string = 'http://127.0.0.1:8000/api/etiquetas/'; // Base URL for API
+    private baseUrl: string = BASE_URL + 'api/etiquetas/'; // Base URL for API
+    private token: string = this.authService.getToken();
+    private etiquetasCache: { [id: number]: Etiqueta };
 
-    customHeader: HeadersInit = {
-        'Content-Type': 'application/json',
-    };
-
-    etiquetasCache: { [id: number]: Etiqueta };
+    private customHeader: HeadersInit = this.token
+        ? {
+              'Content-Type': 'application/json',
+              Authorization: 'Bearer ' + this.token,
+          }
+        : {
+              'Content-Type': 'application/json',
+          };
 
     getEtiquetas: { (): Promise<Etiqueta[]> } = async () => {
         return [E1, E2, E3, E4, E5, E6, E7];
@@ -65,5 +72,8 @@ export class EtiquetasService {
             }
         };
 
-    constructor(private message: NzMessageService) {}
+    constructor(
+        private message: NzMessageService,
+        private authService: AuthService
+    ) {}
 }

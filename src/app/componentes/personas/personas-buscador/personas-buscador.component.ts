@@ -9,7 +9,7 @@ import {
 import { modalGenericoInput } from '../../micelaneos/micelaneos-modal-generico/micelaneos-modal-generico.component';
 import { permisoType } from '../../permisos/permisos-constantes';
 import { Usuario } from '../../../modelos';
-import { UsuariosService } from '../../../servicios/usuarios.service';
+import { UsuariosService } from '../../../services/usuarios.service';
 
 @Component({
     selector: 'app-personas-buscador',

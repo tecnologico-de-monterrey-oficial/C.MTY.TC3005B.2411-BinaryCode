@@ -9,21 +9,60 @@ import { PermisosPaginaComponent } from './componentes/permisos/permisos-pagina/
 import { PersonasPaginaComponent } from './componentes/personas/personas-pagina/personas-pagina.component';
 import { ProyectosPaginaComponent } from './componentes/proyectos/proyectos-pagina/proyectos-pagina.component';
 import { UnidadesPaginaComponent } from './componentes/unidades/unidades-pagina/unidades-pagina.component';
+import { IsAuthGuard, IsNotAuthGuard } from './guards/auth.guards';
 
 const routes: Routes = [
-    { path: 'registro', component: EstructuraEntradaRegistroComponent },
-    { path: 'login', component: EstructuraEntradaLoginComponent },
+    {
+        path: 'registro',
+        component: EstructuraEntradaRegistroComponent,
+        canActivate: [IsNotAuthGuard],
+    },
+    {
+        path: 'login',
+        component: EstructuraEntradaLoginComponent,
+        canActivate: [IsNotAuthGuard],
+    },
 
-    { path: '', pathMatch: 'full', redirectTo: '/proyectos' },
-    { path: 'favoritos', component: ArchivosPaginaContenidosComponent },
-    { path: 'recientes', component: ArchivosPaginaContenidosComponent },
-    { path: 'personas', component: PersonasPaginaComponent },
-    { path: 'permisos/:tipo/:id', component: PermisosPaginaComponent },
-    { path: 'proyectos', component: ProyectosPaginaComponent },
-    { path: 'proyectos/:id/unidades', component: UnidadesPaginaComponent },
+    {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: '/proyectos',
+        canActivate: [IsAuthGuard],
+    },
+    {
+        path: 'favoritos',
+        component: ArchivosPaginaContenidosComponent,
+        canActivate: [IsAuthGuard],
+    },
+    {
+        path: 'recientes',
+        component: ArchivosPaginaContenidosComponent,
+        canActivate: [IsAuthGuard],
+    },
+    {
+        path: 'personas',
+        component: PersonasPaginaComponent,
+        canActivate: [IsAuthGuard],
+    },
+    {
+        path: 'permisos/:tipo/:id',
+        component: PermisosPaginaComponent,
+        canActivate: [IsAuthGuard],
+    },
+    {
+        path: 'proyectos',
+        component: ProyectosPaginaComponent,
+        canActivate: [IsAuthGuard],
+    },
+    {
+        path: 'proyectos/:id/unidades',
+        component: UnidadesPaginaComponent,
+        canActivate: [IsAuthGuard],
+    },
     {
         path: 'proyectos/:proyectoID/unidades/:apartadoID',
         component: ArchivosPaginaContenidosComponent,
+        canActivate: [IsAuthGuard],
     },
 
     { path: '**', component: EstructuraVacioComponent },

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Proyecto, Unidad } from '../../../modelos';
-import { ProyectosService } from '../../../servicios/proyectos.service';
-import { UnidadesService } from '../../../servicios/unidades.service';
+import { ProyectosService } from '../../../services/proyectos.service';
+import { UnidadesService } from '../../../services/unidades.service';
 
 @Component({
     selector: 'app-permisos-pagina',

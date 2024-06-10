@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { modalBorrarInputInput } from '../../micelaneos/micelaneos-modal-borrar-input/micelaneos-modal-borrar-input.component';
 import { entradaBorrarUnidad } from '../unidades-constantes';
 import { Unidad } from '../../../modelos';
-import { UnidadesService } from '../../../servicios/unidades.service';
+import { UnidadesService } from '../../../services/unidades.service';
 
 @Component({
     selector: 'app-unidades-tarjeta',

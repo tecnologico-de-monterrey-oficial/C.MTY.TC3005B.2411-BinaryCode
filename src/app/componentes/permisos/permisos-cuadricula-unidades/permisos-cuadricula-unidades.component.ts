@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Unidad } from '../../../modelos';
-import { UnidadesService } from '../../../servicios/unidades.service';
+import { UnidadesService } from '../../../services/unidades.service';
 
 @Component({
     selector: 'app-permisos-cuadricula-unidades',

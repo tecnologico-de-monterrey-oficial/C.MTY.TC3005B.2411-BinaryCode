@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Proyecto, Usuario } from '../modelos';
 import { US4, US5, US6 } from '../../assets/mocks/usuarios';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { BASE_URL } from '../constantes';
+import { AuthService } from './auth.service';
 
 export type actualizarProyectoMessages = {
     success: string;
@@ -12,15 +14,19 @@ export type actualizarProyectoMessages = {
     providedIn: 'root',
 })
 export class ProyectosService {
-    lideres: Usuario[] = [US4, US5, US6];
+    private baseUrl: string = BASE_URL + 'api/proyectos/';
+    private token: string = this.authService.getToken();
+    private customHeader: HeadersInit = this.token
+        ? {
+              'Content-Type': 'application/json',
+              Authorization: 'Bearer ' + this.token,
+          }
+        : {
+              'Content-Type': 'application/json',
+          };
 
-    baseUrl: string = 'http://127.0.0.1:8000/api/proyectos/'; // Base URL for API
-
-    customHeader: HeadersInit = {
-        'Content-Type': 'application/json',
-    };
-
-    proyectosCache: { [id: number]: Proyecto };
+    private lideres: Usuario[] = [US4, US5, US6];
+    private proyectosCache: { [id: number]: Proyecto };
 
     async getProyectos(): Promise<Proyecto[]> {
         if (this.proyectosCache) {
@@ -199,5 +205,8 @@ export class ProyectosService {
         return this.lideres;
     }
 
-    constructor(private message: NzMessageService) {}
+    constructor(
+        private message: NzMessageService,
+        private authService: AuthService
+    ) {}
 }

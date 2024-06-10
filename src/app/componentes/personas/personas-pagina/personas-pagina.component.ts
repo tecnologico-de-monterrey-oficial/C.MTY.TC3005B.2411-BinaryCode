@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../../modelos';
-import { UsuariosService } from '../../../servicios/usuarios.service';
+import { UsuariosService } from '../../../services/usuarios.service';
 
 @Component({
     selector: 'app-personas-pagina',
