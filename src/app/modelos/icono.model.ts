@@ -29,6 +29,7 @@ export function getIcono(terminacion: string): Icono {
         image: { nombre: 'file-image', color: icono_azul_claro },
         txt: { nombre: 'file-text', color: icono_gris },
         unknown: { nombre: 'file-unknown', color: icono_rosa_fuerte },
+        cal: { nombre: 'file-cal', color: icono_rosa_fuerte },
     };
 
     return fileIcons[terminacion.toLowerCase()] || fileIcons['unknown'];
