@@ -103,3 +103,60 @@ button:hover {
     color: var(--rojoLogin);
     border: 1px solid var(--rojoLogin);
 }
+
+/* Media queries para hacerlo responsivo */
+@media (max-width: 1200px) {
+    .logo {
+        width: 140px;
+        height: 50px;
+    }
+    .buscador-container {
+        margin: 0 10px;
+    }
+    .derecha .usuario-imagen,
+    .derecha .usuario-icono-container {
+        margin-right: 20px;
+    }
+}
+
+@media (max-width: 992px) {
+    .logo {
+        width: 120px;
+        height: 45px;
+    }
+    .buscador-container {
+        margin: 0 5px;
+    }
+    .derecha .usuario-imagen,
+    .derecha .usuario-icono-container {
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        width: 100px;
+        height: 40px;
+    }
+    .buscador-container {
+        margin: 0;
+    }
+    .derecha .usuario-imagen,
+    .derecha .usuario-icono-container {
+        margin-right: 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo {
+        width: 80px;
+        height: 35px;
+    }
+    .buscador-container {
+        display: none;
+    }
+    .derecha .usuario-imagen,
+    .derecha .usuario-icono-container {
+        margin-right: 0;
+    }
+}
