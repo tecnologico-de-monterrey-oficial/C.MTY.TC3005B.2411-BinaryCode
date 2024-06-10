@@ -15,4 +15,5 @@ export class Archivo {
     usuario_info: Usuario;
     etiquetas: Etiqueta[];
     favorito: boolean;
-}
+    iteracion: number;
+};
