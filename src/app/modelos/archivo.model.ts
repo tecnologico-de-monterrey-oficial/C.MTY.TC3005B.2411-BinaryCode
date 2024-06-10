@@ -16,7 +16,7 @@ export class Archivo {
     etiquetas: Etiqueta[];
     favorito: boolean;
     iteracion: number;
-};
+}
 
 export type version = {
     nombre: string;
@@ -32,5 +32,5 @@ export type ArchivoPost = {
     id_usuario: number;
     id_apartado: string;
     etiquetas: EtiquetaArelacional[];
-    versiones: version;
+    //versiones: version;
 };

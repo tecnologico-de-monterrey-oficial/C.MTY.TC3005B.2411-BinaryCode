@@ -19,10 +19,8 @@ export class ArchivoFilaComponent {
     constructor(
         private modal: NzModalService,
         private archivoModalService: ArchivoModalService,
-        private favoritosService: FavoritosService
-
+        private favoritosService: FavoritosService,
         private archivoCompartidoService: ArchivoCompartidoService // Inyectar el servicio
-
     ) {}
 
     @Input() archivo: Archivo;

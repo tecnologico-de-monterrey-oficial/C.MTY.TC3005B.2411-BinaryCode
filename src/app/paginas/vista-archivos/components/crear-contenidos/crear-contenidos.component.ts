@@ -1,11 +1,7 @@
 // crear-contenidos.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ArchivoCompartidoService } from '../../../../servicios/archivo-compartido.service';
-import {
-    Archivo,
-    ArchivoPost,
-    version,
-} from '../../../../modelos/archivo.model';
+import { Archivo, ArchivoPost } from '../../../../modelos/archivo.model';
 import { Location } from '@angular/common';
 import { ArchivosService } from '../../../../servicios/archivo.services';
 import { EtiquetaArelacional } from '../../../../modelos/etiqueta.model';
@@ -27,7 +23,6 @@ export class CrearContenidosComponent implements OnInit {
     isOther: boolean = false;
     fileName: string = '';
     tagInput: string = '';
-    version: version = { nombre: '', archivo: null, iteracion: 1 };
     etiquetas: EtiquetaArelacional[] = [];
     isEditing: boolean = false; // Nueva propiedad para indicar si se está editando
 
@@ -90,8 +85,7 @@ export class CrearContenidosComponent implements OnInit {
         this.subirArchivo();
     }
 
-    async subirArchivo(): Promise<void> {
-        this.version.nombre = this.nombreVersion;
+    subirArchivo(): void {
         const archivo: ArchivoPost = {
             nombre: this.nombreArchivo,
             descripcion: this.descripcion,
@@ -100,18 +94,10 @@ export class CrearContenidosComponent implements OnInit {
             id_apartado: this.unidadId,
             id_usuario: 1,
             etiquetas: this.etiquetas,
-            versiones: this.version,
         };
         console.log('Datos válidos, subiendo archivo...');
         console.log(archivo);
-        console.log('Enviando datos:', archivo);
-        try {
-            const archivoResponse: ArchivoPost =
-                await this.archivosService.postArchivo(archivo);
-            console.log('Archivo creado con éxito', archivoResponse);
-        } catch (error) {
-            console.error('Error al crear el archivo:', error);
-        }
+        this.archivosService.postArchivo(archivo);
     }
 
     formatDate(date: Date): string {
@@ -125,9 +111,7 @@ export class CrearContenidosComponent implements OnInit {
         const input: HTMLInputElement = event.target as HTMLInputElement;
         const file: File | null = input.files ? input.files[0] : null;
         if (!file) return;
-        this.resetFileFlags();
         this.fileName = file.name;
-        this.version.archivo = file;
         const reader: FileReader = new FileReader();
         reader.onload = (e: ProgressEvent<FileReader>): void => {
             const result: string | ArrayBuffer | null = e.target?.result;
@@ -155,7 +139,7 @@ export class CrearContenidosComponent implements OnInit {
         if (this.tagInput.trim() !== '') {
             const nuevaEtiqueta: EtiquetaArelacional = {
                 nombre: this.tagInput.trim(),
-                color: '#fffacd',
+                color: '#00304E',
             };
             this.etiquetas.push(nuevaEtiqueta);
             this.tagInput = '';
