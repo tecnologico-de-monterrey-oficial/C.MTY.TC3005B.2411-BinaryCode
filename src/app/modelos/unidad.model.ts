@@ -8,4 +8,5 @@ export type Unidad = {
     color: string;
     imagen: string;
     id_proyecto: number;
+    fecha: string;
 };

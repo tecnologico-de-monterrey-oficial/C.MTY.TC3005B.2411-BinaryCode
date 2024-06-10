@@ -1,0 +1,74 @@
+.modal-contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: auto;
+    background-color: #f7faff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 60px;
+}
+
+.modal-seccion {
+    flex: 1 1 50%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.etiquetas {
+    display: inline-block;
+    background-color: #fff;
+    color: var(--negro);
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap;
+    border: 1px solid #c5cdd1;
+}
+
+.proyectos-select,
+.etiquetas-select,
+.personas-select {
+    min-width: 200px;
+}
+
+.fecha-rango {
+    display: flex;
+    align-items: center;
+}
+
+.fecha-input {
+    width: calc(50% - 10px);
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.fecha-separador {
+    margin: 0 10px;
+}
+
+.modal-boton {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+button {
+    padding: 10px 50px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--rojoLogin);
+    color: var(--blanco);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--blanco);
+    color: var(--rojoLogin);
+    border: 2px solid var(--rojoLogin);
+}

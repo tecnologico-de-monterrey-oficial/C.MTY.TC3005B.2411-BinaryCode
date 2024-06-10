@@ -12,7 +12,7 @@ export class Archivo {
     descripcion: string;
     terminacion: string = 'unknown';
     fecha: string;
-    usuario_info: Usuario; // Asegúrate de que tienes un tipo Usuario definido.
+    usuario_info: Usuario;
     etiquetas: Etiqueta[];
     favorito: boolean;
 }

@@ -3,7 +3,7 @@ import { Usuario } from '../../modelos/usuario.model';
 import { US1 } from '../../../assets/mocks/usuarios';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { EditarPerfilComponent } from './editar-perfil/editar-perfil.component';
-
+import { BusquedaAvanzadaComponent } from './busqueda-avanzada/busqueda-avanzada.component';
 @Component({
     selector: 'app-encabezado',
     templateUrl: './encabezado.component.html',
@@ -23,6 +23,14 @@ export class EncabezadoComponent {
         this.modal.create({
             nzTitle: 'Editar Perfil',
             nzContent: EditarPerfilComponent,
+            nzFooter: null,
+        });
+    }
+
+    abrirModalBusquedaAvanzada(): void {
+        this.modal.create({
+            nzTitle: 'Búsqueda Avanzada',
+            nzContent: BusquedaAvanzadaComponent,
             nzFooter: null,
         });
     }

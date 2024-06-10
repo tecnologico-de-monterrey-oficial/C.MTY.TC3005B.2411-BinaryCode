@@ -1,4 +1,3 @@
-//contenidos.component.ts
 import { Component, OnInit } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { Archivo } from '../../../../modelos/archivo.model';
@@ -7,7 +6,7 @@ import { CrearContenidosComponent } from '../../components/crear-contenidos/crea
 import { CrearCarpetaComponent } from '../../components/crear-carpeta/crear-carpeta.component';
 import { ActivatedRoute } from '@angular/router';
 import { Unidad } from '../../../../modelos/unidad.model';
-// import { Contenidos } from '../../../../modelos/contenidos.model';
+import { ArchivoCompartidoService } from '../../../../servicios/archivo-compartido.service'; // Importar el servicio
 
 @Component({
     selector: 'app-contenidos',
@@ -18,10 +17,12 @@ export class ContenidosComponent implements OnInit {
     archivos: Archivo[] = [];
     carpetas: Unidad[] = [];
     unidadId: string;
+
     constructor(
         private archivosService: ArchivosService,
         private modalService: NzModalService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private archivoCompartidoService: ArchivoCompartidoService // Inyectar el servicio
     ) {}
 
     async ngOnInit(): Promise<void> {
@@ -37,6 +38,7 @@ export class ContenidosComponent implements OnInit {
     }
 
     abrirModalCrearContenido(): void {
+        this.archivoCompartidoService.reset(); // Restablecer el servicio
         this.modalService.create({
             nzTitle: 'Crear Contenido',
             nzContent: CrearContenidosComponent,

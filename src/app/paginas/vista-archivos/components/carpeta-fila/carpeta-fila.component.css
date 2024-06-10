@@ -27,6 +27,19 @@ body {
     margin-right: 8px;
 }
 
+.detalles {
+    color: var(--negro);
+}
+
+.columna-icono {
+    justify-content: center;
+    padding: 0;
+}
+
+.icono-opcion {
+    margin-right: 8px;
+}
+
 .icono-borrar {
     color: var(--rojoLogin);
 }

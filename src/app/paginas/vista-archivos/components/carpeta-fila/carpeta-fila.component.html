@@ -1,51 +1,58 @@
-<div nz-row class="file-card" (click)="onFolderClick()">
-    <div nz-col nzFlex="1"></div>
+<a href="javascript:void(0)" (click)="onFolderClick()">
+    <div nz-row class="file-card">
+        <div nz-col nzFlex="1"></div>
 
-    <!-- Nombre de carpeta -->
-    <div nz-col nzFlex="6">
-        <span
-            class="archivo-icono"
-            nz-icon
-            nzType="folder"
-            [ngStyle]="{ color: carpeta.color }"
-            nzTheme="fill"></span>
-        <div class="texto">{{ carpeta.nombre }}</div>
+        <!-- Nombre de carpeta -->
+        <div nz-col nzFlex="6">
+            <span
+                class="archivo-icono"
+                nz-icon
+                nzType="folder"
+                [ngStyle]="{ color: carpeta.color }"
+                nzTheme="fill"></span>
+            <div class="texto">{{ carpeta.nombre }}</div>
+        </div>
+
+        <div nz-col nzFlex="6"></div>
+
+        <div nz-col nzFlex="6" class="hide-on-small-1"></div>
+
+        <!-- Fecha -->
+        <div nz-col nzFlex="6" class="hide-on-small-2">
+            <div class="texto">{{ carpeta.fecha }}</div>
+        </div>
+
+        <!-- Icono de detalles -->
+        <div
+            nz-col
+            nzFlex="1"
+            nz-dropdown
+            nzTrigger="click"
+            [nzDropdownMenu]="menu"
+            class="columna-icono"
+            (click)="onMenuClick($event)">
+            <span
+                class="detalles"
+                nz-icon
+                nzType="more"
+                nzTheme="outline"></span>
+        </div>
+
+        <!-- Menu opciones -->
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu nzSelectable>
+                <li nz-menu-item>
+                    <span class="icono-opcion" nz-icon nzType="edit"></span>
+                    Editar
+                </li>
+                <li nz-menu-item nzDanger>
+                    <span
+                        class="icono-opcion icono-borrar"
+                        nz-icon
+                        nzType="delete"></span>
+                    Borrar
+                </li>
+            </ul>
+        </nz-dropdown-menu>
     </div>
-
-    <div nz-col nzFlex="6"></div>
-
-    <div nz-col nzFlex="6" class="hide-on-small-1"></div>
-
-    <!-- Fecha -->
-    <div nz-col nzFlex="6" class="hide-on-small-2">
-        <div class="texto">{{ carpeta.fecha }}</div>
-    </div>
-
-    <!-- Icono de detalles -->
-    <div
-        nz-col
-        nzFlex="1"
-        nz-dropdown
-        nzTrigger="click"
-        [nzDropdownMenu]="menu"
-        class="columna-icono">
-        <span class="detalles" nz-icon nzType="more" nzTheme="outline"></span>
-    </div>
-
-    <!-- Menu de opciones -->
-    <nz-dropdown-menu #menu="nzDropdownMenu">
-        <ul nz-menu nzSelectable>
-            <li nz-menu-item>
-                <span class="icono-opcion" nz-icon nzType="edit"></span>
-                Editar
-            </li>
-            <li nz-menu-item nzDanger>
-                <span
-                    class="icono-opcion icono-borrar"
-                    nz-icon
-                    nzType="delete"></span>
-                Borrar
-            </li>
-        </ul>
-    </nz-dropdown-menu>
-</div>
+</a>
