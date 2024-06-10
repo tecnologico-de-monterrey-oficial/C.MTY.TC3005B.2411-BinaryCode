@@ -36,7 +36,7 @@ import { VistaUnidadesModule } from './paginas/vista-unidades/vista-unidades.mod
 import { VistaPermisosModule } from './paginas/vista-permisos/vista-permisos.module';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 
-// Imports idiomas
+// Imports idioma
 import { registerLocaleData } from '@angular/common';
 import es from '@angular/common/locales/es';
 import { NZ_I18N, es_ES } from 'ng-zorro-antd/i18n';

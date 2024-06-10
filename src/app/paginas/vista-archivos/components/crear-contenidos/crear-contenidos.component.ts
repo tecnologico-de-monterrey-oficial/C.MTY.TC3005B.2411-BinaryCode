@@ -1,12 +1,14 @@
 // crear-contenidos.component.ts
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ArchivoCompartidoService } from '../../../../servicios/archivo-compartido.service';
+import { Archivo } from '../../../../modelos/archivo.model';
 
 @Component({
     selector: 'app-crear-contenidos',
     templateUrl: './crear-contenidos.component.html',
     styleUrls: ['./crear-contenidos.component.css'],
 })
-export class CrearContenidosComponent {
+export class CrearContenidosComponent implements OnInit {
     nombreArchivo: string = '';
     descripcion: string = '';
     nombreVersion: string = '';
@@ -18,6 +20,45 @@ export class CrearContenidosComponent {
     fileName: string = '';
     tagInput: string = '';
     tags: string[] = [];
+    isEditing: boolean = false; // Nueva propiedad para indicar si se está editando
+
+    constructor(private archivoCompartidoService: ArchivoCompartidoService) {}
+
+    ngOnInit(): void {
+        this.archivoCompartidoService
+            .getArchivo()
+            .subscribe((archivo: Archivo | null) => {
+                if (archivo) {
+                    this.nombreArchivo = archivo.nombre;
+                    this.descripcion = archivo.descripcion;
+                    this.tags = archivo.etiquetas.map(
+                        etiqueta => etiqueta.nombre
+                    );
+                } else {
+                    this.resetForm();
+                }
+            });
+
+        this.archivoCompartidoService
+            .isEditing()
+            .subscribe((isEditing: boolean) => {
+                this.isEditing = isEditing;
+            });
+    }
+
+    resetForm(): void {
+        this.nombreArchivo = '';
+        this.descripcion = '';
+        this.nombreVersion = '';
+        this.filePreview = null;
+        this.isImage = false;
+        this.isDocument = false;
+        this.isVideo = false;
+        this.isOther = false;
+        this.fileName = '';
+        this.tagInput = '';
+        this.tags = [];
+    }
 
     validarDatos(): void {
         if (
