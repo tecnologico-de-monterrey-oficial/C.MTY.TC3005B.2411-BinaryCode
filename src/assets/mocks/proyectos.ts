@@ -1,21 +1,23 @@
-// import { Proyecto } from '../../app/modelos/proyectos.model';
-// import {
-//     proyecto_amarillo,
-//     proyecto_celeste,
-//     proyecto_morado,
-//     proyecto_rojo,
-//     proyecto_rosa,
-//     proyecto_verde,
-// } from '../colores';
+import { Proyecto } from '../../app/modelos/proyectos.model';
+import {
+    //     proyecto_amarillo,
+    proyecto_celeste,
+    //     proyecto_morado,
+    //     proyecto_rojo,
+    //     proyecto_rosa,
+    //     proyecto_verde,
+} from '../colores';
 
-// export const P1: Proyecto = {
-//     id: 'P1',
-//     nombre: 'Proyecto 1',
-//     imagen: 'assets/images/proyectos_props/p1.png',
-//     color: proyecto_celeste,
-//     descripcion:
-//         'En este proyecto se puede ver todo lo realizado en el año 2023 para la creación del carro utilizado para la competencia de “SAE Formula Studente 2023”. Incluyendo los archivos relacionados a los patrocinadores de Tec Racing en su momento.',
-// };
+export const P1: Proyecto = {
+    id: 1,
+    nombre: 'Proyecto 1',
+    imagen: 'assets/images/proyectos_props/p1.png',
+    color: proyecto_celeste,
+    descripcion:
+        'En este proyecto se puede ver todo lo realizado en el año 2023 para la creación del carro utilizado para la competencia de “SAE Formula Studente 2023”. Incluyendo los archivos relacionados a los patrocinadores de Tec Racing en su momento.',
+    activo: false,
+    creator: 1,
+};
 
 // export const P2: Proyecto = {
 //     id: 'P2',

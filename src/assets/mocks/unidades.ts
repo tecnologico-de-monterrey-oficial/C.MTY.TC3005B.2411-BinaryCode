@@ -16,6 +16,7 @@ export const UN1: Unidad = {
     imagen: 'assets/images/unidades_props/marketing_temporal_prop.png',
     color: unidad_roja,
     id_proyecto: 1,
+    fecha: '',
 };
 /*
 export const UN2: Unidad = {
