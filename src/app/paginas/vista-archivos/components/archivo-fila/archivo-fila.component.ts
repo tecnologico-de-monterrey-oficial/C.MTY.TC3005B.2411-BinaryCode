@@ -36,7 +36,6 @@ export class ArchivoFilaComponent {
     }
 
     onFileClick(): void {
-        console.log('Archivo clickeado:', this.archivo);
         this.archivoModalService.setArchivo(this.archivo);
         this.modal.create({
             nzTitle: 'Detalles del Archivo',

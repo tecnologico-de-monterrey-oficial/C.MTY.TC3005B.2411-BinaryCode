@@ -1,4 +1,3 @@
-/* archivo-fila.component.css */
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
@@ -22,16 +21,11 @@ body {
     color: var(--negro);
 }
 
-.estrella-llena {
-    font-size: 18px;
-    cursor: pointer;
-    color: var(--negro);
-}
-
+.estrella-llena,
 .estrella-vacia {
     font-size: 18px;
     cursor: pointer;
-    color: var(--contentBg);
+    color: var(--negro);
 }
 
 .estrella-vacia:hover {
