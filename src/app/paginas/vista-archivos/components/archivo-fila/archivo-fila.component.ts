@@ -4,9 +4,9 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 import { ArchivoCompletoComponent } from '../archivo-completo/archivo-completo.component';
 import { CrearVersionComponent } from '../crear-version/crear-version.component';
 import { Archivo } from '../../../../modelos/archivo.model';
-import { ArchivosService } from '../../../../servicios/archivo.services';
 import { ArchivoModalService } from '../../../../servicios/archivo-modal.service';
 import { getIcono } from '../../../../modelos/icono.model';
+import { FavoritosService } from '../../../../servicios/favoritos.services';
 
 @Component({
     selector: 'app-archivo-fila',
@@ -15,20 +15,27 @@ import { getIcono } from '../../../../modelos/icono.model';
 })
 export class ArchivoFilaComponent {
     constructor(
-        private archivosService: ArchivosService,
         private modal: NzModalService,
-        private archivoModalService: ArchivoModalService
+        private archivoModalService: ArchivoModalService,
+        private favoritosService: FavoritosService
     ) {}
 
     @Input() archivo: Archivo;
 
     onStarClick(event: Event): void {
         event.stopPropagation();
-        this.archivo.favorito = !this.archivo.favorito;
-        this.archivosService.setFavorito(
-            this.archivo.id,
-            this.archivo.favorito
-        );
+        if (this.archivo && this.archivo.id) {
+            this.favoritosService.toggleFavorito(this.archivo.id).subscribe(
+                response => {
+                    this.archivo.favorito = response.favorito;
+                },
+                error => {
+                    console.error('Error toggling favorito:', error);
+                }
+            );
+        } else {
+            console.error('Archivo o archivo.id no está definido');
+        }
     }
 
     onMenuClick(event: Event): void {
