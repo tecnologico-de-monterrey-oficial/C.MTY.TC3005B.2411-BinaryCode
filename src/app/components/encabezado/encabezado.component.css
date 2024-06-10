@@ -14,15 +14,27 @@
     align-items: center;
 }
 
-.ant-input-affix-wrapper {
-    width: 70%;
+.buscador-container {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    margin: 0 20px;
 }
+
 .buscador {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    border-radius: 25px;
+}
+
+.boton-busqueda-avanzada {
+    margin-left: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 10%;
-    width: 100px;
-    border-radius: 25px;
 }
 
 .header-icon {
@@ -40,7 +52,6 @@
     overflow: hidden;
     justify-content: center;
     align-items: center;
-
     font-size: 1.4rem;
 }
 
@@ -70,4 +81,25 @@
 
 .icono-opcion {
     margin-right: 8px;
+}
+
+button {
+    height: 40px;
+    width: 40px;
+    padding: 5px 10px;
+    border: 1px solid #c5cdd1;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #c5cdd1;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button:hover {
+    background-color: var(--blanco);
+    color: var(--rojoLogin);
+    border: 1px solid var(--rojoLogin);
 }

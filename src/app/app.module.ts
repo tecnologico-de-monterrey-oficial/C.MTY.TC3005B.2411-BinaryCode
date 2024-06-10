@@ -15,6 +15,8 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzColDirective, NzRowDirective } from 'ng-zorro-antd/grid';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
 // Imports locales
 import { AppComponent } from './app.component';
@@ -24,6 +26,7 @@ import { ProyectoCrearComponent } from './paginas/vista-proyectos/components/pro
 import { CrearUnidadComponent } from './paginas/vista-unidades/components/crear-unidad/crear-unidad.component';
 import { CrearVersionComponent } from './paginas/vista-archivos/components/crear-version/crear-version.component';
 import { EditarPerfilComponent } from './components/encabezado/editar-perfil/editar-perfil.component';
+import { BusquedaAvanzadaComponent } from './components/encabezado/busqueda-avanzada/busqueda-avanzada.component';
 import { EntradaLoginModule } from './EntradaLogin/entrada-login.module';
 import { AppRoutingModule } from './app-routing.module';
 import { VistaProyectosModule } from './paginas/vista-proyectos/vista-proyectos.module';
@@ -32,6 +35,13 @@ import { VistaPersonasModule } from './paginas/vista-personas/vista-persona.modu
 import { VistaUnidadesModule } from './paginas/vista-unidades/vista-unidades.module';
 import { VistaPermisosModule } from './paginas/vista-permisos/vista-permisos.module';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+
+// Imports idiomas
+import { registerLocaleData } from '@angular/common';
+import es from '@angular/common/locales/es';
+import { NZ_I18N, es_ES } from 'ng-zorro-antd/i18n';
+
+registerLocaleData(es);
 
 enableRipple(true);
 
@@ -44,6 +54,7 @@ enableRipple(true);
         CrearUnidadComponent,
         CrearVersionComponent,
         EditarPerfilComponent,
+        BusquedaAvanzadaComponent,
     ],
     imports: [
         CommonModule,
@@ -55,6 +66,8 @@ enableRipple(true);
         RouterModule,
         ColorPickerModule,
         NzDropDownModule,
+        NzSelectModule,
+        NzDatePickerModule,
         NzIconModule,
         NzInputModule,
         NzLayoutModule,
@@ -68,12 +81,17 @@ enableRipple(true);
         AppRoutingModule,
         NzColDirective,
         NzRowDirective,
+        BrowserAnimationsModule,
     ],
     providers: [
         {
             provide: HTTP_INTERCEPTORS,
             useClass: TokenInterceptor,
             multi: true,
+        },
+        {
+            provide: NZ_I18N,
+            useValue: es_ES,
         },
     ],
     bootstrap: [AppComponent],

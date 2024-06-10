@@ -1,0 +1,69 @@
+<div class="modal-contenedor">
+    <div class="modal-seccion">
+        <label for="proyectos-select">Proyectos:</label> <br />
+        <nz-select
+            id="proyectos-select"
+            nzMode="multiple"
+            nzPlaceHolder="Selecciona proyectos"
+            [(ngModel)]="selectedProyectos"
+            (ngModelChange)="onProyectoSelect($event)"
+            class="proyectos-select">
+            <nz-option
+                *ngFor="let proyecto of proyectos"
+                [nzLabel]="proyecto.nombre"
+                [nzValue]="proyecto">
+            </nz-option>
+        </nz-select>
+    </div>
+    <div class="modal-seccion">
+        <label for="etiquetas-select">Buscar por etiquetas:</label><br />
+        <nz-select
+            id="etiquetas-select"
+            nzMode="multiple"
+            nzPlaceHolder="Selecciona etiquetas"
+            [(ngModel)]="selectedEtiquetas"
+            (ngModelChange)="onEtiquetaSelect($event)"
+            class="etiquetas-select">
+            <nz-option
+                *ngFor="let etiqueta of etiquetas"
+                [nzLabel]="etiqueta.nombre"
+                [nzValue]="etiqueta">
+            </nz-option>
+        </nz-select>
+    </div>
+    <div class="modal-seccion">
+        <label for="personas-select">Buscar por personas:</label> <br />
+        <nz-select
+            id="personas-select"
+            nzMode="multiple"
+            nzPlaceHolder="Selecciona personas"
+            [(ngModel)]="selectedPersonas"
+            (ngModelChange)="onPersonaSelect($event)"
+            class="personas-select">
+            <nz-option
+                *ngFor="let persona of personas"
+                [nzLabel]="persona.nombre"
+                [nzValue]="persona">
+            </nz-option>
+        </nz-select>
+    </div>
+    <div class="modal-seccion">
+        <label for="fecha-inicio">Rango de fechas:</label>
+        <div class="fecha-rango">
+            <input
+                id="fecha-inicio"
+                type="date"
+                [(ngModel)]="fechaInicio"
+                class="fecha-input" />
+            <span class="fecha-separador">-</span>
+            <input
+                id="fecha-fin"
+                type="date"
+                [(ngModel)]="fechaFin"
+                class="fecha-input" />
+        </div>
+    </div>
+    <div class="modal-boton">
+        <button>Buscar</button>
+    </div>
+</div>
