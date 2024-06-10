@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
-// No me funciono lo de los colores, a ver si ustedes pueden hacerlo funcionar
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CarpetaCompartidaService } from '../../../../servicios/carpeta-compartida.service'; // Asegúrate de poner la ruta correcta
 import {
     tarjeta_amarillo,
     tarjeta_amarillo_claro,
@@ -31,6 +30,7 @@ import {
 export class CrearCarpetaComponent implements OnInit {
     unidadForm: FormGroup;
     colorSeleccionado: string;
+    esModoEdicion: boolean;
     colores: string[] = [
         tarjeta_amarillo,
         tarjeta_amarillo_claro,
@@ -52,11 +52,29 @@ export class CrearCarpetaComponent implements OnInit {
         tarjeta_verde_medio,
     ];
 
-    constructor(private formBuilder: FormBuilder) {}
+    constructor(
+        private formBuilder: FormBuilder,
+        private carpetaService: CarpetaCompartidaService
+    ) {}
 
     ngOnInit(): void {
         this.iniciarFormulario();
-        console.log('Colores disponibles:', this.colores);
+        this.carpetaService.modoEdicionActual$.subscribe(modoEdicion => {
+            this.esModoEdicion = modoEdicion;
+        });
+        this.carpetaService.carpetaActual$.subscribe(carpeta => {
+            if (carpeta) {
+                this.unidadForm.patchValue({
+                    nombreCarpeta: carpeta.nombre,
+                    color: carpeta.color,
+                });
+                this.colorSeleccionado = carpeta.color;
+            } else {
+                this.unidadForm.reset();
+                this.colorSeleccionado = this.colores[0];
+                this.unidadForm.patchValue({ color: this.colores[0] });
+            }
+        });
     }
 
     iniciarFormulario(): void {

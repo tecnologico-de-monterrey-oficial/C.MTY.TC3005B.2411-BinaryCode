@@ -27,6 +27,7 @@ import { CrearUnidadComponent } from './paginas/vista-unidades/components/crear-
 import { CrearVersionComponent } from './paginas/vista-archivos/components/crear-version/crear-version.component';
 import { EditarPerfilComponent } from './components/encabezado/editar-perfil/editar-perfil.component';
 import { BusquedaAvanzadaComponent } from './components/encabezado/busqueda-avanzada/busqueda-avanzada.component';
+import { CrearCarpetaComponent } from './paginas/vista-archivos/components/crear-carpeta/crear-carpeta.component';
 import { EntradaLoginModule } from './EntradaLogin/entrada-login.module';
 import { AppRoutingModule } from './app-routing.module';
 import { VistaProyectosModule } from './paginas/vista-proyectos/vista-proyectos.module';
@@ -55,6 +56,7 @@ enableRipple(true);
         CrearVersionComponent,
         EditarPerfilComponent,
         BusquedaAvanzadaComponent,
+        CrearCarpetaComponent,
     ],
     imports: [
         CommonModule,

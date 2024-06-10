@@ -16,10 +16,10 @@
 
     <div nz-col nzFlex="6" class="hide-on-small-1"></div>
 
-    <!-- Fecha -->
+    <!-- Fecha 
     <div nz-col nzFlex="6" class="hide-on-small-2">
-        <div class="texto">{{ carpeta.fecha }}</div>
-    </div>
+      <div class="texto">{{ carpeta.fecha }}</div>
+    </div> -->
 
     <!-- Icono de detalles -->
     <div
@@ -35,7 +35,7 @@
     <!-- Menu de opciones -->
     <nz-dropdown-menu #menu="nzDropdownMenu">
         <ul nz-menu nzSelectable>
-            <li nz-menu-item>
+            <li nz-menu-item (click)="openEditModal()">
                 <span class="icono-opcion" nz-icon nzType="edit"></span>
                 Editar
             </li>

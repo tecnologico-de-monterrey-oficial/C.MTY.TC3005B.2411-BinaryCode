@@ -2,7 +2,6 @@
     width: 160px;
     height: 60px;
     margin-left: 30px;
-    float: left;
 }
 
 .ant-layout-header {
@@ -153,7 +152,7 @@ button:hover {
         height: 35px;
     }
     .buscador-container {
-        display: none;
+        flex-grow: 0.5;
     }
     .derecha .usuario-imagen,
     .derecha .usuario-icono-container {

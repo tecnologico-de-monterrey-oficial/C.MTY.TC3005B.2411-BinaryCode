@@ -8,7 +8,7 @@
     <div class="buscador-container">
         <nz-input-group
             nz-col
-            nzSpan="3"
+            nzSpan="20"
             [nzSuffix]="suffixIconSearch"
             class="buscador">
             <input type="text" nz-input placeholder="Ingresa la búsqueda" />
@@ -24,7 +24,6 @@
     </div>
     <div class="derecha">
         <ng-container *ngIf="!showPlaceholderUsuario; else icono">
-            <!-- Mostrar la imagen si la URL de la imagen está presente -->
             <img
                 class="usuario-imagen"
                 nz-dropdown

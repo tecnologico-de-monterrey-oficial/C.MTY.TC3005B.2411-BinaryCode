@@ -7,6 +7,7 @@ import { CrearCarpetaComponent } from '../../components/crear-carpeta/crear-carp
 import { ActivatedRoute } from '@angular/router';
 import { Unidad } from '../../../../modelos/unidad.model';
 import { ArchivoCompartidoService } from '../../../../servicios/archivo-compartido.service'; // Importar el servicio
+import { CarpetaCompartidaService } from '../../../../servicios/carpeta-compartida.service'; // Importar el servicio
 
 @Component({
     selector: 'app-contenidos',
@@ -22,7 +23,8 @@ export class ContenidosComponent implements OnInit {
         private archivosService: ArchivosService,
         private modalService: NzModalService,
         private route: ActivatedRoute,
-        private archivoCompartidoService: ArchivoCompartidoService // Inyectar el servicio
+        private archivoCompartidoService: ArchivoCompartidoService,
+        private carpetaService: CarpetaCompartidaService
     ) {}
 
     async ngOnInit(): Promise<void> {
@@ -38,7 +40,7 @@ export class ContenidosComponent implements OnInit {
     }
 
     abrirModalCrearContenido(): void {
-        this.archivoCompartidoService.reset(); // Restablecer el servicio
+        this.archivoCompartidoService.reset();
         this.modalService.create({
             nzTitle: 'Crear Contenido',
             nzContent: CrearContenidosComponent,
@@ -48,11 +50,12 @@ export class ContenidosComponent implements OnInit {
     }
 
     abrirModalCrearCarpeta(): void {
+        this.carpetaService.reset();
+        this.carpetaService.setModoEdicion(false);
         this.modalService.create({
             nzTitle: 'Crear Carpeta',
             nzContent: CrearCarpetaComponent,
             nzFooter: null,
-            nzWidth: '70%',
         });
     }
 }
