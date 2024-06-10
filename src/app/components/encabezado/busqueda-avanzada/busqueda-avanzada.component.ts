@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import { ProyectosService } from '../../../servicios/proyecto.services';
+// import { Proyecto } from '../../../servicios/proyecto.services';
+// import { UnidadService } from '../../../servicios/unidad.services';
 
 interface Proyecto {
-    id: number;
+    // id: number;
     nombre: string;
-    color: string;
+    // color: string;
 }
 
 interface Etiqueta {
@@ -23,11 +26,10 @@ interface Persona {
     styleUrls: ['./busqueda-avanzada.component.css'],
 })
 export class BusquedaAvanzadaComponent {
-    proyectos: Proyecto[] = [
-        { id: 1, nombre: 'Proyecto A', color: 'red' },
-        { id: 2, nombre: 'Proyecto B', color: 'blue' },
-        { id: 3, nombre: 'Proyecto C', color: 'green' },
-    ];
+    constructor(private proyectoService: ProyectosService) {}
+    // constructor (private unidadService: UnidadService) {}
+    proyectos: Proyecto[] = this.proyectoService.getCache();
+
     etiquetas: Etiqueta[] = [
         { id: 1, nombre: 'Etiqueta A', color: 'yellow' },
         { id: 2, nombre: 'Etiqueta B', color: 'purple' },
