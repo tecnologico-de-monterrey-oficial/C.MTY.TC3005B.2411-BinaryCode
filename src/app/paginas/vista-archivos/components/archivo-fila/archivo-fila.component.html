@@ -75,7 +75,7 @@
         <!-- Menu opciones -->
         <nz-dropdown-menu #menu="nzDropdownMenu">
             <ul nz-menu nzSelectable>
-                <li nz-menu-item>
+                <li nz-menu-item (click)="onEditClick()">
                     <span class="icono-opcion" nz-icon nzType="edit"></span>
                     Editar
                 </li>

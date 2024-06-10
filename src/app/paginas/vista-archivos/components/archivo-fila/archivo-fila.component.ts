@@ -3,9 +3,11 @@ import { Component, Input } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { ArchivoCompletoComponent } from '../archivo-completo/archivo-completo.component';
 import { CrearVersionComponent } from '../crear-version/crear-version.component';
+import { CrearContenidosComponent } from '../crear-contenidos/crear-contenidos.component';
 import { Archivo } from '../../../../modelos/archivo.model';
 import { ArchivosService } from '../../../../servicios/archivo.services';
 import { ArchivoModalService } from '../../../../servicios/archivo-modal.service';
+import { ArchivoCompartidoService } from '../../../../servicios/archivo-compartido.service'; // Importar el nuevo servicio
 import { getIcono } from '../../../../modelos/icono.model';
 
 @Component({
@@ -17,7 +19,8 @@ export class ArchivoFilaComponent {
     constructor(
         private archivosService: ArchivosService,
         private modal: NzModalService,
-        private archivoModalService: ArchivoModalService
+        private archivoModalService: ArchivoModalService,
+        private archivoCompartidoService: ArchivoCompartidoService // Inyectar el servicio
     ) {}
 
     @Input() archivo: Archivo;
@@ -49,6 +52,16 @@ export class ArchivoFilaComponent {
         this.modal.create({
             nzTitle: 'Agregar Versión',
             nzContent: CrearVersionComponent,
+            nzFooter: null,
+            nzWidth: '70%',
+        });
+    }
+
+    onEditClick(): void {
+        this.archivoCompartidoService.setArchivo(this.archivo, true);
+        this.modal.create({
+            nzTitle: 'Editar Archivo',
+            nzContent: CrearContenidosComponent,
             nzFooter: null,
             nzWidth: '70%',
         });
