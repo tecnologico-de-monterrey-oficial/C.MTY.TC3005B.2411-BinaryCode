@@ -17,11 +17,7 @@ export class ProyectosComponent implements OnInit {
         private route: ActivatedRoute
     ) {}
 
-    ngOnInit(): void {
-        this.proyectoService.getProyectos().subscribe({
-            next: data => (this.proyectos = data),
-            error: err => console.error('Error fetching projects:', err),
-            complete: () => console.log('Fetching projects complete'),
-        });
+    async ngOnInit(): Promise<void> {
+        this.proyectos = await this.proyectoService.getProyectos();
     }
 }
