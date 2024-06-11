@@ -22,14 +22,13 @@
             placeholder="Búsqueda de archivos" />
     </nz-input-group>
     <div class="derecha">
-        <ng-container *ngIf="!showPlaceholderUsuario; else icono">
+        <ng-container *ngIf="usuario.imagen; else icono">
             <!-- Mostrar la imagen si la URL de la imagen está presente -->
             <img
                 class="usuario-imagen"
                 nz-dropdown
                 [nzDropdownMenu]="menuUsuario"
-                (error)="handleImageError()"
-                [src]="usuario.imagenUrl"
+                [src]="usuario.imagen"
                 alt="Imagen de usuario" />
         </ng-container>
     </div>
@@ -71,7 +70,7 @@
                 nzTheme="outline"
                 class="icono-opcion"></span>
         </li>
-        <li nz-menu-item nzDanger>
+        <li nz-menu-item nzDanger (click)="logout()">
             Cerrar sesión
             <span
                 nz-icon
@@ -91,7 +90,8 @@
     <div
         class="usuario-icono-container"
         nz-dropdown
-        [nzDropdownMenu]="menuUsuario">
+        [nzDropdownMenu]="menuUsuario"
+        [style.background-color]="usuario.color">
         <span class="usuario-icono" nz-icon nzType="user"></span>
     </div>
 </ng-template>

@@ -1,9 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Fuse, { FuseResult, IFuseOptions } from 'fuse.js';
-import { US1 } from '../../../../assets/mocks/usuarios';
 import { Archivo, Usuario } from '../../../modelos';
 import { ArchivosService } from '../../../services/archivos.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
     selector: 'app-estructura-encabezado',
@@ -11,9 +11,7 @@ import { ArchivosService } from '../../../services/archivos.service';
     styleUrl: './estructura-encabezado.component.css',
 })
 export class EstructuraEncabezadoComponent implements OnInit {
-    @Input() usuario: Usuario = US1;
-
-    showPlaceholderUsuario: boolean = false;
+    usuario: Usuario;
 
     fuse: Fuse<Archivo>;
 
@@ -30,13 +28,13 @@ export class EstructuraEncabezadoComponent implements OnInit {
     };
 
     async ngOnInit(): Promise<void> {
+        console.log('EstructuraEncabezadoComponent');
         this.archivosAPI = await this.archivosService.getArchivos();
+        this.usuario = this.authService.getUsuarioActual();
         this.archivosTotales = this.archivosAPI;
         this.fuse = new Fuse(this.archivosTotales, this.parametrosBusqueda);
-    }
 
-    handleImageError(): void {
-        this.showPlaceholderUsuario = true;
+        console.log(this.usuario);
     }
 
     handleBusquedaArchivo(): void {
@@ -72,8 +70,14 @@ export class EstructuraEncabezadoComponent implements OnInit {
         this.fuse.setCollection(this.archivosTotales);
     }
 
+    logout(): void {
+        this.authService.logout();
+        this.router.navigate(['/login']);
+    }
+
     constructor(
         private archivosService: ArchivosService,
-        private router: Router
+        private router: Router,
+        private authService: AuthService
     ) {}
 }

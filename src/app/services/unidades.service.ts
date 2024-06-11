@@ -32,7 +32,11 @@ export class UnidadesService {
         }
         try {
             const response: Response = await fetch(
-                `${this.baseUrl}${unidadId}/`
+                `${this.baseUrl}${unidadId}/`,
+                {
+                    method: 'GET',
+                    headers: this.customHeader,
+                }
             );
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -55,7 +59,11 @@ export class UnidadesService {
         }
         try {
             const response: Response = await fetch(
-                `${this.baseUrl}?search=${proyectoId}`
+                `${this.baseUrl}?search=${proyectoId}`,
+                {
+                    method: 'GET',
+                    headers: this.customHeader,
+                }
             );
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -116,6 +124,7 @@ export class UnidadesService {
                 `${this.baseUrl}${unidadId}/`,
                 {
                     method: 'DELETE',
+                    headers: this.customHeader,
                 }
             );
             if (!response.ok) {

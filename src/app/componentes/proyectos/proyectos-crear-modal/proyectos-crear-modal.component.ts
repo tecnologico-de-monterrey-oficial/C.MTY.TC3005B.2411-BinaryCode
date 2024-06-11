@@ -8,6 +8,7 @@ import {
 import { paletaColores } from '../../../../assets/colores';
 import { permisoType } from '../../permisos/permisos-constantes';
 import { Proyecto } from '../../../modelos';
+import { AuthService } from '../../../services/auth.service';
 
 type sendCrearProyecto = {
     proyecto: Proyecto;
@@ -52,7 +53,7 @@ export class ProyectosCrearModalComponent implements OnInit {
             ],
             imagen: '',
             activo: true,
-            creator: 1,
+            creator: this.authService.getUsuarioActual().id,
         };
 
         this.imagenControl = this.proyectoEnProceso.imagen;
@@ -140,5 +141,8 @@ export class ProyectosCrearModalComponent implements OnInit {
         }
     }
 
-    constructor(private fb: NonNullableFormBuilder) {}
+    constructor(
+        private fb: NonNullableFormBuilder,
+        private authService: AuthService
+    ) {}
 }

@@ -27,7 +27,6 @@ const routes: Routes = [
         path: '',
         pathMatch: 'full',
         redirectTo: '/proyectos',
-        canActivate: [IsAuthGuard],
     },
     {
         path: 'favoritos',

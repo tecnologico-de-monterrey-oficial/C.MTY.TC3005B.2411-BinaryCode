@@ -3,10 +3,12 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { BASE_URL } from '../constantes';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { Usuario } from '../modelos';
 
 interface AuthResponse {
     access: string;
     refresh: string;
+    usuario: Usuario;
 }
 
 @Injectable({
@@ -23,39 +25,62 @@ export class AuthService {
         'Content-Type': 'application/json',
     };
 
-    async login(email: string, password: string): Promise<AuthResponse> {
+    getUsuarioActual(): Usuario {
+        return JSON.parse(localStorage.getItem('usuario'));
+    }
+
+    async iniciarSesion(email: string, password: string): Promise<Usuario> {
         try {
+            const passwordHash: string = await this.hashPassword(password);
             const response: Response = await fetch(this.apiUrl, {
                 method: 'POST',
                 headers: this.customHeader,
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({ email: email, password: passwordHash }),
             });
+
+            if (response.status === 400) {
+                throw new Error('Credenciales incorrectas');
+            }
 
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
             const authResponse: AuthResponse = await response.json();
+            const usuarioActual: Usuario = authResponse.usuario;
             localStorage.setItem('access_token', authResponse.access);
             localStorage.setItem('refresh_token', authResponse.refresh);
+            localStorage.setItem('usuario', JSON.stringify(usuarioActual));
             this.authStatusListener.next(true);
-            return authResponse;
+
+            return usuarioActual;
         } catch (error) {
-            console.error('Error autentificación', error);
-            this.message.error('Hubo un error durante la autentificación', {
-                nzDuration: 10000,
-            });
+            if (error.message === 'Credenciales incorrectas') {
+                this.message.error('No se encontró usuario/contraseña', {
+                    nzDuration: 10000,
+                });
+            } else {
+                console.error('Error autentificación', error);
+                this.message.error(
+                    'Hubo un error al iniciar sesión, por favor intente más tarde',
+                    {
+                        nzDuration: 10000,
+                    }
+                );
+            }
         }
     }
 
-    async register(
+    async registrar(
         first_name: string,
         last_name: string,
         email: string,
         password: string,
-        color: string
-    ): Promise<void> {
+        color: string,
+        imagen: string
+    ): Promise<Usuario> {
         try {
+            const passwordHash: string = await this.hashPassword(password);
             const fecha: string = new Date().toISOString().split('T')[0]; // Formato YYYY-MM-DD
             const response: Response = await fetch(this.registerUrl, {
                 method: 'POST',
@@ -64,9 +89,10 @@ export class AuthService {
                     first_name,
                     last_name,
                     email,
-                    password,
+                    password: passwordHash,
                     color,
                     fecha,
+                    imagen,
                 }),
             });
 
@@ -74,13 +100,15 @@ export class AuthService {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
-            const loginRespuesta: AuthResponse = await this.login(
+            this.message.success('Se creó el usuario exitosamente', {
+                nzDuration: 10000,
+            });
+
+            const loginRespuesta: Usuario = await this.iniciarSesion(
                 email,
                 password
             );
-            if (loginRespuesta) {
-                this.router.navigate(['/proyectos']);
-            }
+            return loginRespuesta;
         } catch (error) {
             console.error('Error during registration', error);
             this.message.error('Hubo un error durante autentificación', {
@@ -93,7 +121,6 @@ export class AuthService {
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
         this.authStatusListener.next(false);
-        this.router.navigate(['/login']);
     }
 
     getToken(): string {
@@ -101,12 +128,24 @@ export class AuthService {
     }
 
     isAuthenticated(): boolean {
-        const token: string = localStorage.getItem('access_token');
-        return !!token;
+        return !!this.getToken();
     }
 
     getAuthStatusListener(): Observable<boolean> {
         return this.authStatusListener.asObservable();
+    }
+
+    async hashPassword(password: string): Promise<string> {
+        const msgUint8: Uint8Array = new TextEncoder().encode(password);
+        const hashBuffer: ArrayBuffer = await crypto.subtle.digest(
+            'SHA-256',
+            msgUint8
+        );
+        const hashArray: number[] = Array.from(new Uint8Array(hashBuffer));
+        const hashHex: string = hashArray
+            .map(b => b.toString(16).padStart(2, '0'))
+            .join('');
+        return hashHex;
     }
 
     constructor(

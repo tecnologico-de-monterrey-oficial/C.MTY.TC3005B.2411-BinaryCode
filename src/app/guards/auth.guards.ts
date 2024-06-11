@@ -6,20 +6,20 @@ import { AuthService } from '../services/auth.service';
     providedIn: 'root',
 })
 class AuthGuard {
-    isAuth: boolean = this.authService.isAuthenticated();
-
     canActivate(): boolean {
-        if (!this.isAuth) {
+        const isAuth: boolean = this.authService.isAuthenticated();
+        if (!isAuth) {
             this.router.navigate(['/login']);
         }
-        return this.isAuth;
+        return isAuth;
     }
 
     canActivateRedirect(): boolean {
-        if (this.isAuth) {
+        const isAuth: boolean = this.authService.isAuthenticated();
+        if (isAuth) {
             this.router.navigate(['/proyectos']);
         }
-        return !this.isAuth;
+        return !isAuth;
     }
 
     constructor(

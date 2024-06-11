@@ -32,14 +32,31 @@ button:hover {
 }
 
 .header {
+    display: flex;
     text-align: center;
+    flex-direction: column;
     margin-bottom: 20px;
+    height: 250px;
 }
 
-.campo-texto {
+.campo-texto,
+.ant-input-affix-wrapper {
     padding: 10px;
     background-color: var(--contentBg);
     border: 1px solid var(--bordes);
+    box-shadow: 0 0 0 0;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.ant-input-affix-wrapper-status-error:not(
+        .ant-input-affix-wrapper-disabled
+    ):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper,
+.ant-input-affix-wrapper-status-error:not(
+        .ant-input-affix-wrapper-disabled
+    ):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper:hover {
+    padding: 10px;
+    background-color: var(--contentBg);
     box-shadow: 0 0 0 0;
     border-radius: 5px;
     font-size: 16px;
@@ -69,13 +86,34 @@ button:hover {
     border-width: 3px;
 }
 
+.usuario-icono {
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 4rem;
+}
+
 .usuario-icono-container {
     font-size: 110px;
     width: 175px;
     height: 175px;
     border-radius: 50%;
     border: 2px solid var(--negro);
-    margin: 35px auto;
+    margin: auto;
+    flex: auto;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.usuario-imagen {
+    width: 175px;
+    height: 175px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid var(--negro);
 }
 
 .ant-form-horizontal .ant-form-item-label {

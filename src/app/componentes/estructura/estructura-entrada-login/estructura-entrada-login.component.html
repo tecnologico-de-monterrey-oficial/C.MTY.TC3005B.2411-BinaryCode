@@ -1,9 +1,61 @@
 <app-estructura-entrada-pagina>
-    <div class="text">
-        <h2>Iniciar sesión en CarDrive</h2>
+    <div class="header">
+        <div class="titulo">Iniciar sesión en CarDrive</div>
     </div>
-    <div class="buttons">
-        <button>Iniciar sesión con Google</button>
-        <button>Iniciar sesión con Microsoft</button>
-    </div>
+
+    <form nz-form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+        <nz-form-item>
+            <nz-form-label class="etiqueta" nzFor="usuario">
+                Usuario
+            </nz-form-label>
+            <nz-form-control [nzErrorTip]="nombreErrorTpl">
+                <input
+                    nz-input
+                    class="campo-texto"
+                    placeholder="Usuario"
+                    type="text"
+                    formControlName="usuario" />
+                <ng-template #nombreErrorTpl>
+                    Se necesita agregar un usuario
+                </ng-template>
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label class="etiqueta" nzFor="contrasena">
+                Apellido
+            </nz-form-label>
+            <nz-form-control [nzErrorTip]="apellidoErrorTpl">
+                <nz-input-group [nzSuffix]="ojoIcono">
+                    <input
+                        nz-input
+                        class="campo-texto"
+                        placeholder="Contraseña"
+                        formControlName="contrasena"
+                        [type]="passwordVisible ? 'text' : 'password'" />
+                </nz-input-group>
+                <ng-template #apellidoErrorTpl>
+                    Se necesita agregar una contraseña
+                </ng-template>
+                <ng-template #ojoIcono>
+                    <span
+                        nz-icon
+                        [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                        (click)="passwordVisible = !passwordVisible"></span>
+                </ng-template>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+
+    <button
+        class="boton-registrar"
+        nz-button
+        (click)="onSubmit()"
+        type="submit"
+        [disabled]="botonCargando"
+        [nzLoading]="botonCargando">
+        Iniciar sesión
+    </button>
+
+    <a routerLink="/registro">¿No tienes cuenta? Regístrate</a>
 </app-estructura-entrada-pagina>

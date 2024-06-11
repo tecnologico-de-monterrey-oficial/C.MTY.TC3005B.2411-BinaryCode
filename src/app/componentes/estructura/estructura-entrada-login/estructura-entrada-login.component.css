@@ -1,26 +1,85 @@
-.buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.titulo {
+    font-size: 35px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 button {
-    padding: 10px 70px;
-    margin: 5px 0;
-    border: 2px solid #ff4d4f;
+    padding: 7px 70px;
+    margin: 20px auto 0;
+    border: 2px solid var(--blanco);
     border-radius: 5px;
-    background-color: #fff;
-    color: #ff4d4f;
-    font-size: 16px;
+    background-color: var(--rojoLogin);
+    color: var(--blanco);
+    font-size: 20px;
     cursor: pointer;
+    display: block;
 }
 
-button:hover {
-    background-color: #ff4d4f;
-    color: #f7faff;
-}
-
-.text {
+.header {
     text-align: center;
     margin-bottom: 20px;
+}
+
+.campo-texto,
+.ant-input-affix-wrapper {
+    padding: 10px;
+    background-color: var(--contentBg);
+    border: 1px solid var(--bordes);
+    box-shadow: 0 0 0 0;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.ant-input-status-error:not(.ant-input-disabled):not(
+        .ant-input-borderless
+    ).ant-input,
+.ant-input-status-error:not(.ant-input-disabled):not(
+        .ant-input-borderless
+    ).ant-input:hover,
+.ant-input-status-error:not(.ant-input-disabled):not(
+        .ant-input-borderless
+    ).ant-input:focus {
+    background-color: var(--contentBg);
+}
+
+.ant-form-horizontal .ant-form-item-label {
+    padding-top: 10px;
+}
+
+::ng-deep .ant-form-item-label > label {
+    color: var(--negro);
+    font-size: 20px;
+}
+
+.boton-registrar {
+    font-size: 1rem;
+    height: auto;
+
+    background-color: var(--rojoLogin);
+    border: 2px solid var(--rojoLogin);
+    color: var(--blanco);
+
+    border-radius: 20px;
+}
+
+.ant-form {
+    width: 60%;
+}
+
+a {
+    margin-top: 10px;
+    color: var(--tarjeta_azul_fuerte);
+}
+
+/* Media queries para pantallas pequeñas */
+@media (max-width: 768px) {
+    .titulo {
+        font-size: 28px;
+    }
+
+    button {
+        padding: 7px 40px;
+        font-size: 18px;
+    }
 }

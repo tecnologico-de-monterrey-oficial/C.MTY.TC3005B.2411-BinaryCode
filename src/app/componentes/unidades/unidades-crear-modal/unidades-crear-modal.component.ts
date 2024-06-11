@@ -8,6 +8,7 @@ import {
 import { paletaColores } from '../../../../assets/colores';
 import { permisoType } from '../../permisos/permisos-constantes';
 import { Unidad } from '../../../modelos';
+import { AuthService } from '../../../services/auth.service';
 
 type sendCrearUnidad = {
     unidad: Unidad;
@@ -50,7 +51,7 @@ export class UnidadesCrearModalComponent implements OnInit {
                 Math.floor(Math.random() * this.colores.length)
             ],
             imagen: '',
-            id_usuario: 1,
+            id_usuario: this.authService.getUsuarioActual().id,
         };
 
         this.imagenControl = this.unidadEnProceso.imagen;
@@ -128,5 +129,8 @@ export class UnidadesCrearModalComponent implements OnInit {
         }
     }
 
-    constructor(private fb: NonNullableFormBuilder) {}
+    constructor(
+        private fb: NonNullableFormBuilder,
+        private authService: AuthService
+    ) {}
 }

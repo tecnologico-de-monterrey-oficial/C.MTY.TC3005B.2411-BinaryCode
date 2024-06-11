@@ -1,27 +1,14 @@
 <app-estructura-entrada-pagina>
-    <form nz-form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
-        <nz-form-item class="header">
-            <div class="titulo">Registrarse en CarDrive</div>
-            <nz-form-control (click)="fileInput.click()">
-                <ng-container *ngIf="imagenControl; else perfilIcono">
-                    <img
-                        class="usuario-imagen"
-                        nz-dropdown
-                        [nzDropdownMenu]="menuUsuario"
-                        (error)="handleImageError()"
-                        [src]="imagenControl"
-                        alt="Imagen de usuario" />
-                </ng-container>
-                <input
-                    #fileInput
-                    formControlName="imagen"
-                    type="file"
-                    (change)="onFileSelected($event)"
-                    accept=".png, .jpg, .jpeg"
-                    hidden />
-            </nz-form-control>
-        </nz-form-item>
+    <div class="header">
+        <div class="titulo">Registrarse en CarDrive</div>
+        <div
+            class="usuario-icono-container"
+            [style.background-color]="registroForm.value.colorSeleccionado">
+            <span class="usuario-icono" nz-icon nzType="user"></span>
+        </div>
+    </div>
 
+    <form nz-form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
         <nz-form-item>
             <nz-form-label class="etiqueta" nzFor="nombre">
                 Nombre
@@ -146,16 +133,6 @@
         Registrar
     </button>
 </app-estructura-entrada-pagina>
-
-<ng-template #perfilIcono>
-    <div
-        class="usuario-icono-container"
-        nz-dropdown
-        [nzDropdownMenu]="menuUsuario"
-        [style.background-color]="registroForm.value.colorSeleccionado">
-        <span class="usuario-icono" nz-icon nzType="upload"></span>
-    </div>
-</ng-template>
 
 <ng-template #ojoIcono>
     <span

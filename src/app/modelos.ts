@@ -66,7 +66,7 @@ export type Usuario = {
     primer_nombre: string;
     segundo_nombre: string;
     color: string;
-    imagenUrl: string;
+    imagen: string;
     fecha?: string;
 };
 

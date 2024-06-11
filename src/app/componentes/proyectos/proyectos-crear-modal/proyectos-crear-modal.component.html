@@ -36,21 +36,6 @@
                             </div>
                         </nz-form-control>
                     </nz-form-item>
-                    <ng-template #imagenPreview>
-                        <div
-                            class="contenedor-imagen"
-                            [style.background-color]="
-                                validateForm.value.colorSeleccionado
-                            ">
-                            <img
-                                [src]="imagenControl"
-                                alt="Vista previa de la imagen"
-                                class="imagen-proyecto" />
-                        </div>
-                    </ng-template>
-                    <ng-template #imagenProyectoErrorTpl>
-                        Se necesita agregar una imagen
-                    </ng-template>
                 </div>
             </div>
             <app-personas-agregar-lista-pq [tipoUsuario]="permisosType.lider" />
@@ -68,9 +53,6 @@
                         nz-input
                         formControlName="nombreProyecto"
                         placeholder="Nombre del proyecto" />
-                    <ng-template #nombreProyectoErrorTpl>
-                        Se necesita agregar un nombre
-                    </ng-template>
                 </nz-form-control>
             </nz-form-item>
             <nz-form-label nzFor="nombreProyecto">
@@ -100,9 +82,6 @@
                         rows="4"
                         formControlName="descripcion"
                         placeholder="Añade una descripción breve del proyecto"></textarea>
-                    <ng-template #descripcionErrorTpl>
-                        Añade una descripción
-                    </ng-template>
                 </nz-form-control>
             </nz-form-item>
         </div>
@@ -126,3 +105,22 @@
         </button>
     </div>
 </div>
+
+<ng-template #imagenPreview>
+    <div
+        class="contenedor-imagen"
+        [style.background-color]="validateForm.value.colorSeleccionado">
+        <img
+            [src]="imagenControl"
+            alt="Vista previa de la imagen"
+            class="imagen-proyecto" />
+    </div>
+</ng-template>
+
+<ng-template #imagenProyectoErrorTpl>
+    Se necesita agregar una imagen
+</ng-template>
+<ng-template #nombreProyectoErrorTpl>
+    Se necesita agregar un nombre
+</ng-template>
+<ng-template #descripcionErrorTpl> Añade una descripción </ng-template>

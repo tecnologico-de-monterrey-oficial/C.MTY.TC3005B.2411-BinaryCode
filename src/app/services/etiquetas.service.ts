@@ -28,7 +28,10 @@ export class EtiquetasService {
             return Object.values(this.etiquetasCache);
         }
         try {
-            const response: Response = await fetch(this.baseUrl);
+            const response: Response = await fetch(this.baseUrl, {
+                method: 'GET',
+                headers: this.customHeader,
+            });
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }

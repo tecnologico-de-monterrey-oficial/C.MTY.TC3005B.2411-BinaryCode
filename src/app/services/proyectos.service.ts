@@ -33,7 +33,10 @@ export class ProyectosService {
             return Object.values(this.proyectosCache);
         }
         try {
-            const response: Response = await fetch(this.baseUrl);
+            const response: Response = await fetch(this.baseUrl, {
+                method: 'GET',
+                headers: this.customHeader,
+            });
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -61,7 +64,10 @@ export class ProyectosService {
         }
         try {
             const url: string = `${this.baseUrl}${proyectoId}/`;
-            const response: Response = await fetch(url);
+            const response: Response = await fetch(url, {
+                method: 'GET',
+                headers: this.customHeader,
+            });
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -102,6 +108,7 @@ export class ProyectosService {
             const url: string = `${this.baseUrl}${proyectoId}/`;
             const response: Response = await fetch(url, {
                 method: 'DELETE',
+                headers: this.customHeader,
             });
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
