@@ -67,7 +67,7 @@ export class PersonasBuscadorComponent implements OnInit {
     sortTotales(): void {
         this.usuariosTotales.sort((a, b) => {
             if (a.seleccionado === b.seleccionado) {
-                return a.primer_nombre.localeCompare(b.primer_nombre);
+                return a.first_name.localeCompare(b.last_name);
             }
             return b.seleccionado ? 1 : -1;
         });

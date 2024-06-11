@@ -4,6 +4,7 @@ import Fuse, { FuseResult, IFuseOptions } from 'fuse.js';
 import { Archivo, Usuario } from '../../../modelos';
 import { ArchivosService } from '../../../services/archivos.service';
 import { AuthService } from '../../../services/auth.service';
+import { BASE_URL } from '../../../constantes';
 
 @Component({
     selector: 'app-estructura-encabezado',
@@ -11,6 +12,7 @@ import { AuthService } from '../../../services/auth.service';
     styleUrl: './estructura-encabezado.component.css',
 })
 export class EstructuraEncabezadoComponent implements OnInit {
+    BASE_URL: string = BASE_URL;
     usuario: Usuario;
 
     fuse: Fuse<Archivo>;
@@ -28,13 +30,14 @@ export class EstructuraEncabezadoComponent implements OnInit {
     };
 
     async ngOnInit(): Promise<void> {
-        console.log('EstructuraEncabezadoComponent');
-        this.archivosAPI = await this.archivosService.getArchivos();
         this.usuario = this.authService.getUsuarioActual();
+        this.setArchivos();
+    }
+
+    async setArchivos(): Promise<void> {
+        this.archivosAPI = await this.archivosService.getArchivos();
         this.archivosTotales = this.archivosAPI;
         this.fuse = new Fuse(this.archivosTotales, this.parametrosBusqueda);
-
-        console.log(this.usuario);
     }
 
     handleBusquedaArchivo(): void {

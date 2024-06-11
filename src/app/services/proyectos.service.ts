@@ -4,6 +4,7 @@ import { US4, US5, US6 } from '../../assets/mocks/usuarios';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { BASE_URL } from '../constantes';
 import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 export type actualizarProyectoMessages = {
     success: string;
@@ -214,6 +215,7 @@ export class ProyectosService {
 
     constructor(
         private message: NzMessageService,
-        private authService: AuthService
+        private authService: AuthService,
+        private router: Router
     ) {}
 }

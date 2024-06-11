@@ -89,13 +89,16 @@ export class EstructuraEntradaRegistroComponent implements OnInit {
     async onSubmit(): Promise<void> {
         this.isLoading = true;
         if (this.registroForm.valid) {
+            const usuario: Usuario = {
+                first_name: this.registroForm.controls.nombre.value,
+                last_name: this.registroForm.controls.apellido.value,
+                color: this.registroForm.controls.colorSeleccionado.value,
+                imagen: this.imagenControl,
+            };
             const resultadoAPI: Usuario = await this.authService.registrar(
-                this.registroForm.controls.nombre.value,
-                this.registroForm.controls.apellido.value,
+                usuario,
                 this.registroForm.controls.correo.value,
-                this.registroForm.controls.contrasena.value,
-                this.registroForm.controls.colorSeleccionado.value,
-                this.imagenControl
+                this.registroForm.controls.contrasena.value
             );
             if (resultadoAPI) {
                 this.router.navigate(['/proyectos']);

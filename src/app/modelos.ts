@@ -63,8 +63,8 @@ export type Unidad = {
 
 export type Usuario = {
     id?: number;
-    primer_nombre: string;
-    segundo_nombre: string;
+    first_name: string;
+    last_name: string;
     color: string;
     imagen: string;
     fecha?: string;

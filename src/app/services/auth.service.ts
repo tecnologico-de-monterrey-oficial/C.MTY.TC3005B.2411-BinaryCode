@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { BASE_URL } from '../constantes';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -72,27 +71,21 @@ export class AuthService {
     }
 
     async registrar(
-        first_name: string,
-        last_name: string,
-        email: string,
-        password: string,
-        color: string,
-        imagen: string
+        usuario: Usuario,
+        correo: string,
+        password: string
     ): Promise<Usuario> {
         try {
             const passwordHash: string = await this.hashPassword(password);
-            const fecha: string = new Date().toISOString().split('T')[0]; // Formato YYYY-MM-DD
+            const fecha: string = new Date().toISOString().split('T')[0];
+            usuario.fecha = fecha;
             const response: Response = await fetch(this.registerUrl, {
                 method: 'POST',
                 headers: this.customHeader,
                 body: JSON.stringify({
-                    first_name,
-                    last_name,
-                    email,
+                    ...usuario,
+                    email: correo,
                     password: passwordHash,
-                    color,
-                    fecha,
-                    imagen,
                 }),
             });
 
@@ -105,7 +98,7 @@ export class AuthService {
             });
 
             const loginRespuesta: Usuario = await this.iniciarSesion(
-                email,
+                correo,
                 password
             );
             return loginRespuesta;
@@ -148,8 +141,5 @@ export class AuthService {
         return hashHex;
     }
 
-    constructor(
-        private message: NzMessageService,
-        private router: Router
-    ) {}
+    constructor(private message: NzMessageService) {}
 }
