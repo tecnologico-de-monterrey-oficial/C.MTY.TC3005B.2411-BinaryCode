@@ -16,4 +16,4 @@ export class Archivo {
     etiquetas: Etiqueta[];
     favorito: boolean;
     iteracion: number;
-};
+}
