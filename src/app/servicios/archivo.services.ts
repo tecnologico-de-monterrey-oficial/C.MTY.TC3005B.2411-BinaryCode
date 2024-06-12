@@ -16,6 +16,7 @@ import { Unidad } from '../modelos/unidad.model';
 export class ArchivosService {
     private baseUrl = 'http://127.0.0.1:8000/api/archivos/';
     private carpetasUrl = 'http://127.0.0.1:8000/api/apartados/';
+
     archivos: Archivo[];
     favoritos: Archivo[] = [A7, A8, A3, A9, A5, A10];
 
@@ -24,6 +25,18 @@ export class ArchivosService {
     getArchivosFavoritos(): Archivo[] {
         // TODO: LLAMADA A API
         return this.favoritos;
+    }
+
+    async getCarpetasRecientes(apartado_id: string): Promise<Carpeta[]> {
+        const response: Response = await fetch(
+            `${this.baseUrl}?apartado_id=${apartado_id}`
+        );
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const carpetas: Carpeta[] = await response.json();
+        console.log(carpetas);
+        return carpetas;
     }
 
     getArchivosRecientes(): Archivo[] {
@@ -41,6 +54,52 @@ export class ArchivosService {
         const carpetas: Unidad[] = await response.json();
         console.log(carpetas);
         return carpetas;
+    }
+
+    async getArchivosPorProyecto(proyectoId: string): Promise<Archivo[]> {
+        const response: Response = await fetch(
+            `${this.baseUrl}?proyecto_id=${proyectoId}`
+        );
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const archivos: Archivo[] = await response.json();
+        console.log(archivos);
+        return archivos;
+    }
+    async getArchivoPorUnidades(unidadesId: string): Promise<Archivo[]> {
+        const response: Response = await fetch(
+            `${this.baseUrl}?apartado_nombre=${unidadesId}`
+        );
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const archivos: Archivo[] = await response.json();
+        console.log(archivos);
+        return archivos;
+    }
+
+    async getEtiquetasArchivos(etiquetaNombre: string): Promise<Archivo[]> {
+        const response: Response = await fetch(
+            `${this.baseUrl}?etiqueta_nombre=${etiquetaNombre}`
+        );
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const archivos: Archivo[] = await response.json();
+        console.log(archivos);
+        return archivos;
+    }
+    async getPersonasArchivos(personaId: string): Promise<Archivo[]> {
+        const response: Response = await fetch(
+            `${this.baseUrl}?persona=${personaId}`
+        );
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const archivos: Archivo[] = await response.json();
+        console.log(archivos);
+        return archivos;
     }
 
     async getArchivos(unidadId: string): Promise<Archivo[]> {

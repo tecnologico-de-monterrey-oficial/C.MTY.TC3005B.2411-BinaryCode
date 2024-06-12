@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { ProyectosService } from '../../../servicios/proyecto.services';
 // import { Proyecto } from '../../../servicios/proyecto.services';
 // import { UnidadService } from '../../../servicios/unidad.services';
+// import { ArchivoServices } from '../../../modelos/archivo.model';
 
 interface Proyecto {
-    // id: number;
+    id: number;
     nombre: string;
-    // color: string;
+    color: string;
 }
 
 interface Etiqueta {
@@ -31,9 +32,9 @@ export class BusquedaAvanzadaComponent {
     proyectos: Proyecto[] = this.proyectoService.getCache();
 
     etiquetas: Etiqueta[] = [
-        { id: 1, nombre: 'Etiqueta A', color: 'yellow' },
-        { id: 2, nombre: 'Etiqueta B', color: 'purple' },
-        { id: 3, nombre: 'Etiqueta C', color: 'orange' },
+        // { id: 1, nombre: 'Etiqueta A', color: 'yellow' },
+        // { id: 2, nombre: 'Etiqueta B', color: 'purple' },
+        // { id: 3, nombre: 'Etiqueta C', color: 'orange' },
     ];
     personas: Persona[] = [
         { id: 1, nombre: 'Persona A' },

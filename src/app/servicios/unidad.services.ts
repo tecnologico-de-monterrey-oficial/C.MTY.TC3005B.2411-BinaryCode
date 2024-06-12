@@ -13,7 +13,6 @@ export class UnidadesService {
     // unidades: Unidad[] = [UN1, UN2, UN3, UN4, UN5, UN6];
     coordinadores: Usuario[] = [US4, US5, US6];
     editores: Usuario[] = [US1, US2, US3, US4, US5, US6];
-    Unidades: Unidad[] = [];
 
     constructor(private http: HttpClient) {}
     // getCache(): Unidad[] {
