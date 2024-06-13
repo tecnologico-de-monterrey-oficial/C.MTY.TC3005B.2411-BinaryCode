@@ -20,7 +20,7 @@ export class Archivo {
 
 export type version = {
     nombre: string;
-    archivo: File;
+    archivo: string;
     iteracion: number;
 };
 
@@ -32,5 +32,5 @@ export type ArchivoPost = {
     id_usuario: number;
     id_apartado: string;
     etiquetas: EtiquetaArelacional[];
-    //versiones: version;
+    versiones: version[];
 };

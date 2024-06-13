@@ -23,6 +23,7 @@ import {
 import { ModalDataService } from '../../../../servicios/modal-data.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { UnidadPost } from '../../../../modelos/unidad.model';
 
 @Component({
     selector: 'app-crear-unidad',
@@ -106,16 +107,16 @@ export class CrearUnidadComponent implements OnInit {
         const idProyecto: number = this.extraerNumero(ruta);
         if (this.modo === 'crear') {
             if (this.unidadForm.valid) {
-                // eslint-disable-next-line @typescript-eslint/typedef
-                const unidadData = {
+                const unidadData: UnidadPost = {
                     nombre: this.unidadForm.get('nombreUnidad').value,
                     color: this.unidadForm.get('color').value,
                     imagen: this.unidadForm.get('imagen').value,
-                    //fecha: date,
+                    fecha: this.formatDate(new Date()),
                     id_padre: null,
                     id_proyecto: idProyecto,
                     id_usuario: 1, //TODO se debe sacar desde que se inicia la app
                 };
+                console.log(unidadData);
                 fetch('http://127.0.0.1:8000/api/apartados/', {
                     method: 'POST',
                     headers: {
@@ -126,9 +127,9 @@ export class CrearUnidadComponent implements OnInit {
                     .then(response => response.json())
                     .then(unidadData => {
                         console.log('Success:', unidadData);
-                        setTimeout(function () {
+                        /*setTimeout(function () {
                             location.reload();
-                        }, 500);
+                        }, 500);*/
                     })
                     .catch(error => {
                         console.error('Error:', error);
@@ -158,8 +159,7 @@ export class CrearUnidadComponent implements OnInit {
                     body: JSON.stringify(unidadEdit),
                 })
                     .then(response => response.json())
-                    .then(unidadData => {
-                        console.log('Success:', unidadData);
+                    .then(() => {
                         setTimeout(function () {
                             location.reload();
                         }, 500);
@@ -187,5 +187,11 @@ export class CrearUnidadComponent implements OnInit {
             /\/proyectos\/(\d+)\/unidades/
         );
         return match ? parseInt(match[1], 10) : null;
+    }
+    formatDate(date: Date): string {
+        const day: string = date.getDate().toString().padStart(2, '0');
+        const month: string = (date.getMonth() + 1).toString().padStart(2, '0');
+        const year: number = date.getFullYear();
+        return `${day}-${month}-${year}`;
     }
 }

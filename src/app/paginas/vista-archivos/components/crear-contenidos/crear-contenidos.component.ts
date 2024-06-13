@@ -1,7 +1,11 @@
 // crear-contenidos.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ArchivoCompartidoService } from '../../../../servicios/archivo-compartido.service';
-import { Archivo, ArchivoPost } from '../../../../modelos/archivo.model';
+import {
+    Archivo,
+    ArchivoPost,
+    version,
+} from '../../../../modelos/archivo.model';
 import { Location } from '@angular/common';
 import { ArchivosService } from '../../../../servicios/archivo.services';
 import { EtiquetaArelacional } from '../../../../modelos/etiqueta.model';
@@ -24,7 +28,9 @@ export class CrearContenidosComponent implements OnInit {
     fileName: string = '';
     tagInput: string = '';
     etiquetas: EtiquetaArelacional[] = [];
-    isEditing: boolean = false; // Nueva propiedad para indicar si se está editando
+    version: version = { nombre: '', archivo: null, iteracion: 1 };
+    versionesLista: version[] = [];
+    isEditing: boolean = false;
 
     constructor(
         private archivoCompartidoService: ArchivoCompartidoService,
@@ -86,6 +92,8 @@ export class CrearContenidosComponent implements OnInit {
     }
 
     subirArchivo(): void {
+        this.version.nombre = this.fileName;
+        this.versionesLista.push(this.version);
         const archivo: ArchivoPost = {
             nombre: this.nombreArchivo,
             descripcion: this.descripcion,
@@ -94,10 +102,14 @@ export class CrearContenidosComponent implements OnInit {
             id_apartado: this.unidadId,
             id_usuario: 1,
             etiquetas: this.etiquetas,
+            versiones: this.versionesLista,
         };
         console.log('Datos válidos, subiendo archivo...');
         console.log(archivo);
         this.archivosService.postArchivo(archivo);
+        this.versionesLista = this.versionesLista.filter(
+            t => t !== this.version
+        );
     }
 
     formatDate(date: Date): string {
@@ -109,22 +121,40 @@ export class CrearContenidosComponent implements OnInit {
 
     fileChanged(event: Event): void {
         const input: HTMLInputElement = event.target as HTMLInputElement;
-        const file: File | null = input.files ? input.files[0] : null;
-        if (!file) return;
-        this.fileName = file.name;
-        const reader: FileReader = new FileReader();
-        reader.onload = (e: ProgressEvent<FileReader>): void => {
-            const result: string | ArrayBuffer | null = e.target?.result;
-            this.filePreview = result;
-            this.isImage = file.type.includes('image');
-            this.isDocument = file.type.includes('application/pdf');
-            this.isVideo = file.type.includes('video');
-            this.isOther = !this.isImage && !this.isDocument && !this.isVideo;
-        };
-        if (file.type.includes('image') || file.type.includes('video')) {
+        if (input.files && input.files.length > 0) {
+            const file: File = input.files[0];
+            this.fileName = file.name;
+            this.version.nombre = this.fileName;
+
+            const reader: FileReader = new FileReader();
+            reader.onloadend = (): void => {
+                if (reader.readyState === FileReader.DONE) {
+                    // Verificar que la lectura esté completa
+                    const base64: string = reader.result as string;
+                    if (base64) {
+                        this.filePreview = base64;
+                        this.version.archivo = base64;
+                        this.isImage = file.type.includes('image');
+                        this.isDocument = file.type.includes('application/pdf');
+                        this.isVideo = file.type.includes('video');
+                        this.isOther =
+                            !this.isImage && !this.isDocument && !this.isVideo;
+                    } else {
+                        console.error(
+                            'No se pudo leer el archivo o la conversión a base64 falló.'
+                        );
+                    }
+                }
+            };
+            // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+            reader.onerror = error => {
+                console.error('Error al leer el archivo:', error);
+            };
             reader.readAsDataURL(file);
         } else {
-            this.filePreview = null;
+            console.error(
+                'No hay archivo seleccionado o el archivo es inaccesible.'
+            );
         }
     }
 
