@@ -5,10 +5,10 @@ import { ArchivoCompletoComponent } from '../archivo-completo/archivo-completo.c
 import { CrearVersionComponent } from '../crear-version/crear-version.component';
 import { CrearContenidosComponent } from '../crear-contenidos/crear-contenidos.component';
 import { Archivo } from '../../../../modelos/archivo.model';
-import { ArchivosService } from '../../../../servicios/archivo.services';
 import { ArchivoModalService } from '../../../../servicios/archivo-modal.service';
 import { ArchivoCompartidoService } from '../../../../servicios/archivo-compartido.service'; // Importar el nuevo servicio
 import { getIcono } from '../../../../modelos/icono.model';
+import { FavoritosService } from '../../../../servicios/favoritos.services';
 
 @Component({
     selector: 'app-archivo-fila',
@@ -17,9 +17,9 @@ import { getIcono } from '../../../../modelos/icono.model';
 })
 export class ArchivoFilaComponent {
     constructor(
-        private archivosService: ArchivosService,
         private modal: NzModalService,
         private archivoModalService: ArchivoModalService,
+        private favoritosService: FavoritosService,
         private archivoCompartidoService: ArchivoCompartidoService // Inyectar el servicio
     ) {}
 
@@ -27,11 +27,18 @@ export class ArchivoFilaComponent {
 
     onStarClick(event: Event): void {
         event.stopPropagation();
-        this.archivo.favorito = !this.archivo.favorito;
-        this.archivosService.setFavorito(
-            this.archivo.id,
-            this.archivo.favorito
-        );
+        if (this.archivo && this.archivo.id) {
+            this.favoritosService.toggleFavorito(this.archivo.id).subscribe(
+                response => {
+                    this.archivo.favorito = response.favorito;
+                },
+                error => {
+                    console.error('Error toggling favorito:', error);
+                }
+            );
+        } else {
+            console.error('Archivo o archivo.id no está definido');
+        }
     }
 
     onMenuClick(event: Event): void {
@@ -68,7 +75,16 @@ export class ArchivoFilaComponent {
     }
 
     formatDate(dateString: string): string {
-        const [day, month, year] = dateString.split('-');
+        if (!dateString) {
+            return 'Fecha no disponible'; // Retorna un mensaje predeterminado si la entrada no es válida
+        }
+
+        const parts: string[] = dateString.split('-');
+        if (parts.length < 3) {
+            return 'Formato de fecha incorrecto'; // Retorna un mensaje si el formato no es correcto
+        }
+
+        const [day, month, year] = parts;
         const date: Date = new Date(
             Number(year),
             Number(month) - 1,
@@ -80,6 +96,5 @@ export class ArchivoFilaComponent {
             day: '2-digit',
         });
     }
-
     protected readonly getIcono = getIcono;
 }

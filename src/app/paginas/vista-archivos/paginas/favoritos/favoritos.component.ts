@@ -1,17 +1,20 @@
-// favoritos.component.ts
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Archivo } from '../../../../modelos/archivo.model';
-import { ArchivosService } from '../../../../servicios/archivo.services';
+import { FavoritosService } from '../../../../servicios/favoritos.services';
 
 @Component({
     selector: 'app-favoritos',
     templateUrl: './favoritos.component.html',
-    styleUrls: ['../contenidos/contenidos.component.css'],
+    styleUrls: ['./favoritos.component.css'],
 })
-export class FavoritosComponent {
+export class FavoritosComponent implements OnInit {
     archivos: Archivo[] = [];
 
-    constructor(archivosService: ArchivosService) {
-        this.archivos = archivosService.getArchivosFavoritos();
+    constructor(private favoritosService: FavoritosService) {}
+
+    ngOnInit(): void {
+        this.favoritosService.getFavoritos().subscribe(data => {
+            this.archivos = data;
+        });
     }
 }
