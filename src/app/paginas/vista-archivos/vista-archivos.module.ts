@@ -10,6 +10,8 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzTagModule } from 'ng-zorro-antd/tag';
+import { ReactiveFormsModule } from '@angular/forms'; // Añade esta línea
+import { HttpClientModule } from '@angular/common/http'; // Importa también HttpClientModule si no está ya importado
 
 // Declarations
 import { ArchivoFilaComponent } from './components/archivo-fila/archivo-fila.component';
@@ -29,6 +31,8 @@ import { ArchivoCompletoComponent } from './components/archivo-completo/archivo-
         NzGridModule,
         NzIconModule,
         NzTagModule,
+        ReactiveFormsModule, // Añade esta línea
+        HttpClientModule, // Asegúrate de importar HttpClientModule aquí
     ],
     declarations: [
         ArchivoFilaComponent,
