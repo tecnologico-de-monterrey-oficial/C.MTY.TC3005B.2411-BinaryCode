@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { IsAuthGuard } from './guards/auth.guards';
 import { AuthRedirectGuardFn } from './guards/authRedirect.guards';
+import { ContenidosComponent } from './paginas/vista-archivos/paginas/contenidos/contenidos.component';
 
 const routes: Routes = [
     {
@@ -10,6 +11,7 @@ const routes: Routes = [
         redirectTo: '/login',
         //canActivate: [AuthRedirectGuardFn],
     },
+    { path: 'contenidos', component: ContenidosComponent },
     {
         path: 'entrada',
         loadChildren: () =>
