@@ -41,7 +41,6 @@ export class CrearContenidosComponent implements OnInit {
         const segments: string[] = path.split('/');
         const index: number = segments.findIndex(seg => seg === 'unidades');
         this.unidadId = segments[index + 1];
-        console.log(this.unidadId);
     }
 
     ngOnInit(): void {
