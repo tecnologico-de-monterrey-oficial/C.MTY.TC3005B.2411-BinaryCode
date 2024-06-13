@@ -24,6 +24,7 @@ import { ModalDataService } from '../../../../servicios/modal-data.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { UnidadPost } from '../../../../modelos/unidad.model';
+import { NzModalRef } from 'ng-zorro-antd/modal';
 
 @Component({
     selector: 'app-crear-unidad',
@@ -59,13 +60,15 @@ export class CrearUnidadComponent implements OnInit {
     imagenURL: string | ArrayBuffer | null = null;
     modo: string = 'crear';
     imagenOriginal: string;
+
     constructor(
         private fb: FormBuilder,
         private modalDataService: ModalDataService,
-        private router: Router
+        private router: Router,
+        private modalRef: NzModalRef
     ) {
         this.unidadForm = this.fb.group({
-            nombreUnidad: ['', Validators.required],
+            nombreUnidad: ['', [Validators.required, Validators.maxLength(20)]],
             color: ['', Validators.required],
             imagen: [null, Validators.required],
         });
@@ -127,6 +130,7 @@ export class CrearUnidadComponent implements OnInit {
                     .then(response => response.json())
                     .then(unidadData => {
                         console.log('Success:', unidadData);
+                        this.modalRef.close(); // Cierra el modal después de una creación exitosa
                         /*setTimeout(function () {
                             location.reload();
                         }, 500);*/
@@ -140,8 +144,13 @@ export class CrearUnidadComponent implements OnInit {
             }
         } else {
             if (this.unidadForm.valid) {
-                // eslint-disable-next-line @typescript-eslint/typedef
-                const unidadEdit = {
+                const unidadEdit: {
+                    nombre: string;
+                    color: string;
+                    imagen?: string | ArrayBuffer | null;
+                    id_usuario: number;
+                    id_proyecto: number;
+                } = {
                     nombre: this.unidadForm.get('nombreUnidad').value,
                     color: this.unidadForm.get('color').value,
                     imagen: this.imagenEditada()
@@ -151,7 +160,6 @@ export class CrearUnidadComponent implements OnInit {
                     id_proyecto: idProyecto,
                 };
                 fetch(`http://127.0.0.1:8000/api/apartados/${this.unidadId}/`, {
-                    // Reemplaza con tu URL de la API
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -160,6 +168,7 @@ export class CrearUnidadComponent implements OnInit {
                 })
                     .then(response => response.json())
                     .then(() => {
+                        this.modalRef.close(); // Cierra el modal después de una edición exitosa
                         setTimeout(function () {
                             location.reload();
                         }, 500);
@@ -178,16 +187,18 @@ export class CrearUnidadComponent implements OnInit {
         this.colorSeleccionado = color;
         this.unidadForm.patchValue({ color: this.colorSeleccionado });
     }
+
     imagenEditada(): boolean {
-        // Comprueba si la URL actual de la imagen es diferente de la URL original
         return this.unidadForm.get('imagen').value !== this.imagenOriginal;
     }
+
     extraerNumero(ruta: string): number {
         const match: RegExpMatchArray = ruta.match(
             /\/proyectos\/(\d+)\/unidades/
         );
         return match ? parseInt(match[1], 10) : null;
     }
+
     formatDate(date: Date): string {
         const day: string = date.getDate().toString().padStart(2, '0');
         const month: string = (date.getMonth() + 1).toString().padStart(2, '0');
