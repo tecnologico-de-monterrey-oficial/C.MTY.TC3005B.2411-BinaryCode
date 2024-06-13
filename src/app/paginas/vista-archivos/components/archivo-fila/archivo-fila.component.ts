@@ -9,6 +9,7 @@ import { ArchivoModalService } from '../../../../servicios/archivo-modal.service
 import { ArchivoCompartidoService } from '../../../../servicios/archivo-compartido.service'; // Importar el nuevo servicio
 import { getIcono } from '../../../../modelos/icono.model';
 import { FavoritosService } from '../../../../servicios/favoritos.services';
+import { ArchivosService } from '../../../../servicios/archivo.services';
 
 @Component({
     selector: 'app-archivo-fila',
@@ -20,10 +21,38 @@ export class ArchivoFilaComponent {
         private modal: NzModalService,
         private archivoModalService: ArchivoModalService,
         private favoritosService: FavoritosService,
-        private archivoCompartidoService: ArchivoCompartidoService // Inyectar el servicio
+        private archivoCompartidoService: ArchivoCompartidoService, // Inyectar el servicio,
+        private archivosService: ArchivosService // Inyectar el servicio
     ) {}
 
     @Input() archivo: Archivo;
+
+    isVisible = false;
+    isConfirmLoading = false;
+
+    showModal(): void {
+        this.isVisible = true;
+    }
+
+    handleOk(): void {
+        this.isConfirmLoading = true;
+        this.archivosService.eliminarArchivo(this.archivo.id).subscribe(
+            response => {
+                console.log('Archivo eliminado:', response);
+                this.isVisible = false;
+                this.isConfirmLoading = false;
+                // Lógica para actualizar la vista después de la eliminación
+            },
+            error => {
+                console.error('Error eliminando el archivo:', error);
+                this.isConfirmLoading = false;
+            }
+        );
+    }
+
+    handleCancel(): void {
+        this.isVisible = false;
+    }
 
     onStarClick(event: Event): void {
         event.stopPropagation();

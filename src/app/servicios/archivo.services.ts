@@ -67,6 +67,12 @@ export class ArchivosService {
         const params: HttpParams = new HttpParams().set('search', term);
         return this.http.get<Archivo[]>(this.baseUrl, { params });
     }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    eliminarArchivo(archivoId: string): Observable<any> {
+        const url: string = `${this.baseUrl}${archivoId}/`;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        return this.http.delete<any>(url);
+    }
 
     async postArchivo(archivo: ArchivoPost): Promise<ArchivoPost> {
         try {
