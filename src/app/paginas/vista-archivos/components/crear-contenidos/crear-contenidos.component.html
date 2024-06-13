@@ -1,4 +1,3 @@
-<!-- crear-contenidos.component.html -->
 <div class="tarjeta">
     <div class="container">
         <div class="left" (click)="fileInput.click()">
@@ -39,14 +38,22 @@
                     type="text"
                     id="nombre_archivo"
                     name="nombre_archivo"
-                    [(ngModel)]="nombreArchivo" />
+                    [(ngModel)]="nombreArchivo"
+                    (ngModelChange)="validateNombreArchivo()" />
+                <div class="error" *ngIf="nombreArchivoError">
+                    {{ nombreArchivoError }}
+                </div>
             </div>
             <label for="descripcion">Descripción:</label>
             <textarea
                 id="descripcion"
                 name="descripcion"
                 rows="4"
-                [(ngModel)]="descripcion"></textarea>
+                [(ngModel)]="descripcion"
+                (ngModelChange)="validateDescripcion()"></textarea>
+            <div class="error" *ngIf="descripcionError">
+                {{ descripcionError }}
+            </div>
             <div>
                 <br />
                 <label for="nombre_version">Nombre de la versión:</label>
@@ -54,7 +61,11 @@
                     type="text"
                     id="nombre_version"
                     name="nombre_version"
-                    [(ngModel)]="nombreVersion" />
+                    [(ngModel)]="nombreVersion"
+                    (ngModelChange)="validateNombreVersion()" />
+                <div class="error" *ngIf="nombreVersionError">
+                    {{ nombreVersionError }}
+                </div>
             </div>
             <div class="tags">
                 <label for="etiquetas">Etiquetas:</label>
@@ -64,6 +75,9 @@
                         [(ngModel)]="tagInput"
                         placeholder="Agregar etiqueta" />
                     <button (click)="agregarTag()">Añadir</button>
+                </div>
+                <div class="error" *ngIf="etiquetasError">
+                    {{ etiquetasError }}
                 </div>
                 <div class="tags-list">
                     <div
