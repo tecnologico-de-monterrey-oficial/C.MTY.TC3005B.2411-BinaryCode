@@ -4,6 +4,8 @@ import { Archivo, ArchivoPost } from '../modelos/archivo.model';
 import { A10, A3, A5, A7, A8, A9 } from '../../assets/mocks/archivos';
 import { Unidad } from '../modelos/unidad.model';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root',
@@ -17,7 +19,10 @@ export class ArchivosService {
     private carpetasUrl = 'http://127.0.0.1:8000/api/apartados/';
     archivos: Archivo[];
     favoritos: Archivo[] = [A7, A8, A3, A9, A5, A10];
-    constructor(private message: NzMessageService) {}
+    constructor(
+        private message: NzMessageService,
+        private http: HttpClient
+    ) {}
     getArchivosFavoritos(): Archivo[] {
         // TODO: LLAMADA A API
         return this.favoritos;
@@ -47,15 +52,30 @@ export class ArchivosService {
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const archivos: Archivo[] = await response.json();
-        console.log(archivos);
-        return archivos;
+        return await response.json();
+    }
+    //http://localhost:8000/api/versiones/3/download/1/
+    downloadFile(archivoId: string): Observable<Blob> {
+        // eslint-disable-next-line @typescript-eslint/typedef
+        const url = `http://localhost:8000/api/versiones/${archivoId}/download/1/`;
+        return this.http.get(url, { responseType: 'blob' });
     }
 
     setFavorito(idArchivo: string, favorito: boolean): void {
         idArchivo;
         favorito;
         // TODO: LLAMADA A API
+    }
+
+    buscarArchivos(term: string): Observable<Archivo[]> {
+        const params: HttpParams = new HttpParams().set('search', term);
+        return this.http.get<Archivo[]>(this.baseUrl, { params });
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    eliminarArchivo(archivoId: string): Observable<any> {
+        const url: string = `${this.baseUrl}${archivoId}/`;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        return this.http.delete<any>(url);
     }
 
     async postArchivo(archivo: ArchivoPost): Promise<ArchivoPost> {

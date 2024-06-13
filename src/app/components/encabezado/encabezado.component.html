@@ -11,16 +11,29 @@
             nzSpan="3"
             [nzSuffix]="suffixIconSearch"
             class="buscador">
-            <input type="text" nz-input placeholder="Ingresa la búsqueda" />
+            <input
+                #searchInput
+                type="text"
+                nz-input
+                placeholder="Ingresa la búsqueda" />
         </nz-input-group>
         <ng-template #suffixIconSearch>
-            <span nz-icon nzType="search" class="header-icon"></span>
+            <span
+                nz-icon
+                nzType="search"
+                class="header-icon"
+                (click)="buscarArchivos(searchInput.value)"></span>
         </ng-template>
         <button
             (click)="abrirModalBusquedaAvanzada()"
             class="boton-busqueda-avanzada">
             <span nz-icon nzType="bars"></span>
         </button>
+    </div>
+    <div class="resultados-busqueda" *ngIf="searchResults.length > 0">
+        <ul>
+            <li *ngFor="let archivo of searchResults">{{ archivo.nombre }}</li>
+        </ul>
     </div>
     <div class="derecha">
         <ng-container *ngIf="!showPlaceholderUsuario; else icono">
@@ -33,7 +46,6 @@
                 [src]="usuario.imagenUrl"
                 alt="Imagen de usuario" />
         </ng-container>
-
         <ng-template #icono>
             <div
                 class="usuario-icono-container"
@@ -43,7 +55,6 @@
             </div>
         </ng-template>
     </div>
-
     <nz-dropdown-menu #menu="nzDropdownMenu">
         <ul nz-menu nzSelectable>
             <li nz-menu-item (click)="abrirModalEditarPerfil()">

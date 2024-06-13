@@ -26,14 +26,28 @@ export class ContenidosComponent implements OnInit {
     ) {}
 
     async ngOnInit(): Promise<void> {
-        this.route.params.subscribe(async params => {
-            this.unidadId = params['unidadesId'];
-            this.archivos = await this.archivosService.getArchivos(
-                this.unidadId
-            );
-            this.carpetas = await this.archivosService.getCarpetas(
-                this.unidadId
-            );
+        this.route.queryParams.subscribe(async params => {
+            const search: string = params['search'];
+            if (search) {
+                this.archivosService.buscarArchivos(search).subscribe(
+                    result => {
+                        this.archivos = result;
+                    },
+                    error => {
+                        console.error('Error buscando archivos:', error);
+                    }
+                );
+            } else {
+                this.route.params.subscribe(async params => {
+                    this.unidadId = params['unidadesId'];
+                    this.archivos = await this.archivosService.getArchivos(
+                        this.unidadId
+                    );
+                    this.carpetas = await this.archivosService.getCarpetas(
+                        this.unidadId
+                    );
+                });
+            }
         });
     }
 
