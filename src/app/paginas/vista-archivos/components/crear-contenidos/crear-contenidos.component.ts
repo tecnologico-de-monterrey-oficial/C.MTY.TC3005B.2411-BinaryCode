@@ -116,7 +116,7 @@ export class CrearContenidosComponent implements OnInit {
         const day: string = date.getDate().toString().padStart(2, '0');
         const month: string = (date.getMonth() + 1).toString().padStart(2, '0');
         const year: number = date.getFullYear();
-        return `${year}-${month}-${day}`; // Cambia el formato a YYYY-MM-DD
+        return `${year}-${month}-${day}`;
     }
 
     fileChanged(event: Event): void {

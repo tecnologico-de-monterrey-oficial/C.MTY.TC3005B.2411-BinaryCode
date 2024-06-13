@@ -40,6 +40,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 import { registerLocaleData } from '@angular/common';
 import es from '@angular/common/locales/es';
 import { NZ_I18N, es_ES } from 'ng-zorro-antd/i18n';
+import { CrearCarpetaComponent } from './paginas/vista-archivos/components/crear-carpeta/crear-carpeta.component';
 
 registerLocaleData(es);
 
@@ -50,6 +51,7 @@ enableRipple(true);
         AppComponent,
         EncabezadoComponent,
         CrearContenidosComponent,
+        CrearCarpetaComponent,
         ProyectoCrearComponent,
         CrearUnidadComponent,
         CrearVersionComponent,
