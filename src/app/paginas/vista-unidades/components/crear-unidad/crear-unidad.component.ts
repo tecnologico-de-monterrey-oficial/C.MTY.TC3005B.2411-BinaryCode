@@ -131,9 +131,9 @@ export class CrearUnidadComponent implements OnInit {
                     .then(unidadData => {
                         console.log('Success:', unidadData);
                         this.modalRef.close(); // Cierra el modal después de una creación exitosa
-                        /*setTimeout(function () {
+                        setTimeout(function () {
                             location.reload();
-                        }, 500);*/
+                        }, 500);
                     })
                     .catch(error => {
                         console.error('Error:', error);

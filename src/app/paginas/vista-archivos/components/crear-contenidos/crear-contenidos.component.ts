@@ -157,7 +157,10 @@ export class CrearContenidosComponent implements OnInit {
         this.versionesLista = this.versionesLista.filter(
             t => t !== this.version
         );
-        this.modalRef.close(); // Cerrar el modal
+        this.modalRef.close();
+        setTimeout(function () {
+            location.reload();
+        }, 750); // Cerrar el modal
     }
 
     formatDate(date: Date): string {

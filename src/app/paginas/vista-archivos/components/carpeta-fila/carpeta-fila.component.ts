@@ -31,6 +31,9 @@ export class CarpetaFilaComponent {
                 this.isVisible = false;
                 this.isConfirmLoading = false;
                 // Lógica para actualizar la vista después de la eliminación
+                setTimeout(function () {
+                    location.reload();
+                }, 50);
             },
             error => {
                 console.error('Error eliminando la carpeta:', error);

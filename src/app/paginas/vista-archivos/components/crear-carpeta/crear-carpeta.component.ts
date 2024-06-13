@@ -133,7 +133,10 @@ export class CrearCarpetaComponent implements OnInit {
                 )
                 .subscribe(response => {
                     console.log('Carpeta creada con éxito:', response);
-                    this.modalRef.close(); // Cierra el modal después de una creación exitosa
+                    this.modalRef.close();
+                    setTimeout(function () {
+                        location.reload();
+                    }, 500); // Cierra el modal después de una creación exitosa
                 });
         } else {
             console.log(this.unidadForm.value);
