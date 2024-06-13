@@ -6,3 +6,8 @@ export type Etiqueta = {
     nombre: string;
     color?: string;
 };
+
+export type EtiquetaArelacional = {
+    nombre: string;
+    color?: string;
+};

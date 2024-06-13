@@ -1,5 +1,5 @@
 // archivo.model.ts
-import { Etiqueta } from './etiqueta.model';
+import { Etiqueta, EtiquetaArelacional } from './etiqueta.model';
 import { Usuario } from './usuario.model';
 
 // TODO: Parametros que delimitar
@@ -12,8 +12,25 @@ export class Archivo {
     descripcion: string;
     terminacion: string = 'unknown';
     fecha: string;
-    usuario_info: Usuario;
+    propietario: Usuario;
     etiquetas: Etiqueta[];
     favorito: boolean;
     iteracion: number;
+}
+
+export type version = {
+    nombre: string;
+    archivo: string;
+    iteracion: number;
+};
+
+export type ArchivoPost = {
+    nombre: string;
+    descripcion: string;
+    terminacion: string;
+    fecha: string;
+    id_usuario: number;
+    id_apartado: string;
+    etiquetas: EtiquetaArelacional[];
+    versiones: version[];
 };

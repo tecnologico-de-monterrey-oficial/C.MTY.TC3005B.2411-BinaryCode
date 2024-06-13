@@ -7,6 +7,17 @@ export type Unidad = {
     nombre: string;
     color: string;
     imagen: string;
+    id_padre: number;
     id_proyecto: number;
     fecha: string;
+};
+
+export type UnidadPost = {
+    nombre: string;
+    color: string;
+    imagen: string;
+    id_padre: number;
+    id_proyecto: number;
+    fecha: string;
+    id_usuario: number;
 };
