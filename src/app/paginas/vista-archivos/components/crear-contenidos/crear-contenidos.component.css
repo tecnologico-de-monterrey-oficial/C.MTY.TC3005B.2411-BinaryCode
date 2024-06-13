@@ -168,6 +168,12 @@
     justify-content: center;
 }
 
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
 button {
     padding: 10px 50px;
     border: none;

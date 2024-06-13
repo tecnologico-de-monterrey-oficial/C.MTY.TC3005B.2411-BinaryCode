@@ -1,4 +1,3 @@
-<!-- proyecto-crear.component.html -->
 <div class="tarjeta" [formGroup]="proyectoForm">
     <div class="container">
         <div class="left" (click)="fileInput.click()">
@@ -33,6 +32,29 @@
                     class="buscador"
                     placeholder="Nombre del proyecto"
                     formControlName="nombreProyecto" />
+                <div
+                    *ngIf="
+                        proyectoForm.controls['nombreProyecto'].invalid &&
+                        proyectoForm.controls['nombreProyecto'].touched
+                    "
+                    class="error-message">
+                    <small
+                        *ngIf="
+                            proyectoForm.controls['nombreProyecto'].errors?.[
+                                'required'
+                            ]
+                        "
+                        >El nombre del proyecto es requerido.</small
+                    >
+                    <small
+                        *ngIf="
+                            proyectoForm.controls['nombreProyecto'].errors?.[
+                                'maxlength'
+                            ]
+                        "
+                        >El nombre no puede exceder los 20 caracteres.</small
+                    >
+                </div>
             </div>
 
             <div class="campo">
@@ -56,6 +78,30 @@
                     formControlName="descripcion"
                     rows="4"
                     cols="50"></textarea>
+                <div
+                    *ngIf="
+                        proyectoForm.controls['descripcion'].invalid &&
+                        proyectoForm.controls['descripcion'].touched
+                    "
+                    class="error-message">
+                    <small
+                        *ngIf="
+                            proyectoForm.controls['descripcion'].errors?.[
+                                'required'
+                            ]
+                        "
+                        >La descripción es requerida.</small
+                    >
+                    <small
+                        *ngIf="
+                            proyectoForm.controls['descripcion'].errors?.[
+                                'maxlength'
+                            ]
+                        "
+                        >La descripción no puede exceder los 300
+                        caracteres.</small
+                    >
+                </div>
             </div>
         </div>
     </div>

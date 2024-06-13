@@ -1,5 +1,5 @@
-// crear-contenidos.component.ts
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ArchivoCompartidoService } from '../../../../servicios/archivo-compartido.service';
 import { Archivo } from '../../../../modelos/archivo.model';
 
@@ -9,31 +9,48 @@ import { Archivo } from '../../../../modelos/archivo.model';
     styleUrls: ['./crear-contenidos.component.css'],
 })
 export class CrearContenidosComponent implements OnInit {
-    nombreArchivo: string = '';
-    descripcion: string = '';
-    nombreVersion: string = '';
+    contenidoForm: FormGroup;
     filePreview: string | ArrayBuffer | null = null;
     isImage: boolean = false;
     isDocument: boolean = false;
     isVideo: boolean = false;
     isOther: boolean = false;
     fileName: string = '';
-    tagInput: string = '';
-    tags: string[] = [];
-    isEditing: boolean = false; // Nueva propiedad para indicar si se está editando
+    isEditing: boolean = false;
 
-    constructor(private archivoCompartidoService: ArchivoCompartidoService) {}
+    constructor(
+        private fb: FormBuilder,
+        private archivoCompartidoService: ArchivoCompartidoService
+    ) {
+        this.contenidoForm = this.fb.group({
+            nombreArchivo: [
+                '',
+                [Validators.required, Validators.maxLength(32)],
+            ],
+            descripcion: ['', [Validators.required, Validators.maxLength(150)]],
+            nombreVersion: [
+                '',
+                [Validators.required, Validators.maxLength(32)],
+            ],
+            file: [null, Validators.required],
+            tagInput: [''],
+            tags: [[]],
+        });
+    }
 
     ngOnInit(): void {
         this.archivoCompartidoService
             .getArchivo()
             .subscribe((archivo: Archivo | null) => {
                 if (archivo) {
-                    this.nombreArchivo = archivo.nombre;
-                    this.descripcion = archivo.descripcion;
-                    this.tags = archivo.etiquetas.map(
-                        etiqueta => etiqueta.nombre
-                    );
+                    this.isEditing = true;
+                    this.contenidoForm.patchValue({
+                        nombreArchivo: archivo.nombre,
+                        descripcion: archivo.descripcion,
+                        tags: archivo.etiquetas.map(
+                            etiqueta => etiqueta.nombre
+                        ),
+                    });
                 } else {
                     this.resetForm();
                 }
@@ -47,25 +64,24 @@ export class CrearContenidosComponent implements OnInit {
     }
 
     resetForm(): void {
-        this.nombreArchivo = '';
-        this.descripcion = '';
-        this.nombreVersion = '';
+        this.contenidoForm.reset({
+            nombreArchivo: '',
+            descripcion: '',
+            nombreVersion: '',
+            file: null,
+            tagInput: '',
+            tags: [],
+        });
         this.filePreview = null;
         this.isImage = false;
         this.isDocument = false;
         this.isVideo = false;
         this.isOther = false;
         this.fileName = '';
-        this.tagInput = '';
-        this.tags = [];
     }
 
     validarDatos(): void {
-        if (
-            this.nombreArchivo.trim() === '' ||
-            this.descripcion.trim() === '' ||
-            this.nombreVersion.trim() === ''
-        ) {
+        if (this.contenidoForm.invalid) {
             alert('Por favor completa todos los campos.');
             return;
         }
@@ -97,6 +113,7 @@ export class CrearContenidosComponent implements OnInit {
         } else {
             this.filePreview = null;
         }
+        this.contenidoForm.patchValue({ file: file });
     }
 
     resetFileFlags(): void {
@@ -107,13 +124,18 @@ export class CrearContenidosComponent implements OnInit {
     }
 
     agregarTag(): void {
-        if (this.tagInput.trim() !== '') {
-            this.tags.push(this.tagInput.trim());
-            this.tagInput = '';
+        const tagInputValue: string = this.contenidoForm.value.tagInput.trim();
+        if (tagInputValue !== '') {
+            const tags: string[] = this.contenidoForm.value.tags;
+            tags.push(tagInputValue);
+            this.contenidoForm.patchValue({ tags: tags, tagInput: '' });
         }
     }
 
     eliminarTag(tag: string): void {
-        this.tags = this.tags.filter(t => t !== tag);
+        const tags: string[] = this.contenidoForm.value.tags.filter(
+            (t: string) => t !== tag
+        );
+        this.contenidoForm.patchValue({ tags: tags });
     }
 }

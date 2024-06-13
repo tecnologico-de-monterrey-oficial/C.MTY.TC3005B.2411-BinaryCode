@@ -22,6 +22,15 @@ import {
     tarjeta_verde_fuerte,
     tarjeta_verde_medio,
 } from '../../../../../assets/colores';
+
+interface ProyectoData {
+    id: number;
+    nombre: string;
+    descripcion: string;
+    color: string;
+    imagen: string;
+}
+
 @Component({
     selector: 'app-proyecto-crear',
     templateUrl: './proyecto-crear.component.html',
@@ -61,8 +70,11 @@ export class ProyectoCrearComponent implements OnInit, OnDestroy {
         private modalDataService: ModalDataService
     ) {
         this.proyectoForm = this.fb.group({
-            nombreProyecto: ['', Validators.required],
-            descripcion: ['', Validators.required],
+            nombreProyecto: [
+                '',
+                [Validators.required, Validators.maxLength(20)],
+            ],
+            descripcion: ['', [Validators.required, Validators.maxLength(300)]],
             color: ['#000000', Validators.required],
             imagen: [null, Validators.required],
         });
@@ -70,7 +82,7 @@ export class ProyectoCrearComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.subscription = this.modalDataService.proyectoData.subscribe(
-            data => {
+            (data: ProyectoData | null) => {
                 if (data) {
                     this.idProyecto = data.id;
                     this.modo = 'editar';
@@ -108,82 +120,92 @@ export class ProyectoCrearComponent implements OnInit, OnDestroy {
     }
 
     validarDatos(): void {
-        if (this.modo === 'crear') {
-            if (this.proyectoForm.valid) {
-                // eslint-disable-next-line @typescript-eslint/typedef
-                const proyectoData = {
-                    nombre: this.proyectoForm.get('nombreProyecto').value,
-                    descripcion: this.proyectoForm.get('descripcion').value,
-                    color: this.proyectoForm.get('color').value,
-                    imagen: this.proyectoForm.get('imagen').value,
-                    activo: true,
-                    creator: 1,
-                };
-                fetch('http://127.0.0.1:8000/api/proyectos/', {
-                    // Reemplazar con URL de la API
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(proyectoData),
-                })
-                    .then(response => response.json())
-                    .then(proyectoData => {
-                        console.log('Success:', proyectoData);
-                        setTimeout(function () {
-                            location.reload();
-                        }, 500);
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert('Error al crear el proyecto.');
-                    });
+        if (this.proyectoForm.valid) {
+            if (this.modo === 'crear') {
+                this.crearProyecto();
             } else {
-                alert('Por favor completa todos los campos.');
+                this.editarProyecto();
             }
         } else {
-            if (this.proyectoForm.valid) {
-                // eslint-disable-next-line @typescript-eslint/typedef
-                const proyectoEdit = {
-                    nombre: this.proyectoForm.get('nombreProyecto').value,
-                    descripcion: this.proyectoForm.get('descripcion').value,
-                    color: this.proyectoForm.get('color').value,
-                    imagen: this.imagenEditada()
-                        ? this.proyectoForm.get('imagen').value
-                        : undefined,
-                    activo: true,
-                    creator: 1, //TODO
-                };
-                fetch(
-                    `http://127.0.0.1:8000/api/proyectos/${this.idProyecto}/`,
-                    {
-                        // Reemplaza con tu URL de la API
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(proyectoEdit),
-                    }
-                )
-                    .then(response => response.json())
-                    .then(proyectoData => {
-                        console.log('Success:', proyectoData);
-                        setTimeout(function () {
-                            location.reload();
-                        }, 500);
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert('Error al editar el proyecto.');
-                    });
-            } else {
-                alert('Por favor completa todos los campos.');
-            }
+            alert('Por favor completa todos los campos.');
         }
     }
 
+    crearProyecto(): void {
+        const proyectoData: {
+            nombre: string;
+            descripcion: string;
+            color: string;
+            imagen: string | ArrayBuffer | null;
+            activo: boolean;
+            creator: number;
+        } = {
+            nombre: this.proyectoForm.get('nombreProyecto').value,
+            descripcion: this.proyectoForm.get('descripcion').value,
+            color: this.proyectoForm.get('color').value,
+            imagen: this.proyectoForm.get('imagen').value,
+            activo: true,
+            creator: 1,
+        };
+        fetch('http://127.0.0.1:8000/api/proyectos/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(proyectoData),
+        })
+            .then(response => response.json())
+            .then(proyectoData => {
+                console.log('Success:', proyectoData);
+                setTimeout(() => {
+                    location.reload();
+                }, 500);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error al crear el proyecto.');
+            });
+    }
+
+    editarProyecto(): void {
+        const proyectoEdit: {
+            nombre: string;
+            descripcion: string;
+            color: string;
+            imagen?: string | ArrayBuffer | null;
+            activo: boolean;
+            creator: number;
+        } = {
+            nombre: this.proyectoForm.get('nombreProyecto').value,
+            descripcion: this.proyectoForm.get('descripcion').value,
+            color: this.proyectoForm.get('color').value,
+            imagen: this.imagenEditada()
+                ? this.proyectoForm.get('imagen').value
+                : undefined,
+            activo: true,
+            creator: 1,
+        };
+        fetch(`http://127.0.0.1:8000/api/proyectos/${this.idProyecto}/`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(proyectoEdit),
+        })
+            .then(response => response.json())
+            .then(proyectoData => {
+                console.log('Success:', proyectoData);
+                setTimeout(() => {
+                    location.reload();
+                }, 500);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error al editar el proyecto.');
+            });
+    }
+
     imagenEditada(): boolean {
-        // Comprueba si la URL actual de la imagen es diferente de la URL original
         return this.proyectoForm.get('imagen').value !== this.imagenOriginal;
     }
 

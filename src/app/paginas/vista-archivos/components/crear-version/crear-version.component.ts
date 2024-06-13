@@ -1,5 +1,5 @@
-// crear-version.component.ts
 import { Component } from '@angular/core'; // OnInit
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-crear-version',
@@ -7,18 +7,20 @@ import { Component } from '@angular/core'; // OnInit
     styleUrls: ['./crear-version.component.css'],
 })
 export class CrearVersionComponent {
-    //implements OnInit
+    versionForm: FormGroup;
     filePreview: string | ArrayBuffer | null = null;
     isImage: boolean = false;
     isDocument: boolean = false;
     isVideo: boolean = false;
     isOther: boolean = false;
     fileName: string = '';
-    versionName: string = '';
 
-    //constructor() {}
-
-    //ngOnInit(): void {}
+    constructor(private fb: FormBuilder) {
+        this.versionForm = this.fb.group({
+            versionName: ['', [Validators.required, Validators.maxLength(32)]],
+            file: [null, Validators.required],
+        });
+    }
 
     fileChanged(event: Event): void {
         const input: HTMLInputElement = event.target as HTMLInputElement;
@@ -41,6 +43,7 @@ export class CrearVersionComponent {
         } else {
             this.filePreview = null;
         }
+        this.versionForm.patchValue({ file: file });
     }
 
     resetFileFlags(): void {
@@ -51,10 +54,10 @@ export class CrearVersionComponent {
     }
 
     agregarVersion(): void {
-        if (this.versionName.trim() === '') {
-            alert('Por favor ingresa un nombre para la versión.');
+        if (this.versionForm.invalid) {
+            alert('Por favor completa todos los campos.');
             return;
         }
-        console.log('Versión agregada:', this.versionName);
+        console.log('Versión agregada:', this.versionForm.value.versionName);
     }
 }

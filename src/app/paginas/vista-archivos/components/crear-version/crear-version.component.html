@@ -1,5 +1,4 @@
-<!-- crear-version.component.html -->
-<div class="tarjeta">
+<div class="tarjeta" [formGroup]="versionForm">
     <div class="container">
         <div class="left" (click)="fileInput.click()">
             <input
@@ -39,7 +38,27 @@
             type="text"
             id="version_name"
             name="version_name"
-            [(ngModel)]="versionName" />
-        <button (click)="agregarVersion()">Agregar versión</button>
+            formControlName="versionName"
+            placeholder="Nombre de la versión" />
+        <div
+            *ngIf="
+                versionForm.controls['versionName'].invalid &&
+                versionForm.controls['versionName'].touched
+            "
+            class="error-message">
+            <small
+                *ngIf="versionForm.controls['versionName'].errors?.['required']"
+                >El nombre de la versión es requerido.</small
+            >
+            <small
+                *ngIf="
+                    versionForm.controls['versionName'].errors?.['maxlength']
+                "
+                >El nombre no puede exceder los 32 caracteres.</small
+            >
+        </div>
+        <button type="button" (click)="agregarVersion()">
+            Agregar versión
+        </button>
     </div>
 </div>

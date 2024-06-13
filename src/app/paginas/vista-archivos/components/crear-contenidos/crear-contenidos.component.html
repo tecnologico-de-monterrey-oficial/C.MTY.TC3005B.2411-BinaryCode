@@ -1,5 +1,4 @@
-<!-- crear-contenidos.component.html -->
-<div class="tarjeta">
+<div class="tarjeta" [formGroup]="contenidoForm">
     <div class="container">
         <div class="left" (click)="fileInput.click()">
             <input
@@ -39,36 +38,107 @@
                     type="text"
                     id="nombre_archivo"
                     name="nombre_archivo"
-                    [(ngModel)]="nombreArchivo" />
+                    formControlName="nombreArchivo"
+                    placeholder="Nombre del archivo" />
+                <div
+                    *ngIf="
+                        contenidoForm.controls['nombreArchivo'].invalid &&
+                        contenidoForm.controls['nombreArchivo'].touched
+                    "
+                    class="error-message">
+                    <small
+                        *ngIf="
+                            contenidoForm.controls['nombreArchivo'].errors?.[
+                                'required'
+                            ]
+                        "
+                        >El nombre del archivo es requerido.</small
+                    >
+                    <small
+                        *ngIf="
+                            contenidoForm.controls['nombreArchivo'].errors?.[
+                                'maxlength'
+                            ]
+                        "
+                        >El nombre no puede exceder los 32 caracteres.</small
+                    >
+                </div>
             </div>
             <label for="descripcion">Descripción:</label>
             <textarea
                 id="descripcion"
                 name="descripcion"
                 rows="4"
-                [(ngModel)]="descripcion"></textarea>
+                formControlName="descripcion"
+                placeholder="Descripción del archivo"></textarea>
+            <div
+                *ngIf="
+                    contenidoForm.controls['descripcion'].invalid &&
+                    contenidoForm.controls['descripcion'].touched
+                "
+                class="error-message">
+                <small
+                    *ngIf="
+                        contenidoForm.controls['descripcion'].errors?.[
+                            'required'
+                        ]
+                    "
+                    >La descripción es requerida.</small
+                >
+                <small
+                    *ngIf="
+                        contenidoForm.controls['descripcion'].errors?.[
+                            'maxlength'
+                        ]
+                    "
+                    >La descripción no puede exceder los 150 caracteres.</small
+                >
+            </div>
             <div>
-                <br />
                 <label for="nombre_version">Nombre de la versión:</label>
                 <input
                     type="text"
                     id="nombre_version"
                     name="nombre_version"
-                    [(ngModel)]="nombreVersion" />
+                    formControlName="nombreVersion"
+                    placeholder="Nombre de la versión" />
+                <div
+                    *ngIf="
+                        contenidoForm.controls['nombreVersion'].invalid &&
+                        contenidoForm.controls['nombreVersion'].touched
+                    "
+                    class="error-message">
+                    <small
+                        *ngIf="
+                            contenidoForm.controls['nombreVersion'].errors?.[
+                                'required'
+                            ]
+                        "
+                        >El nombre de la versión es requerido.</small
+                    >
+                    <small
+                        *ngIf="
+                            contenidoForm.controls['nombreVersion'].errors?.[
+                                'maxlength'
+                            ]
+                        "
+                        >El nombre no puede exceder los 32 caracteres.</small
+                    >
+                </div>
             </div>
             <div class="tags">
                 <label for="tags">Etiquetas:</label>
                 <div class="tag-input-container">
                     <input
                         type="text"
-                        [(ngModel)]="tagInput"
+                        formControlName="tagInput"
                         placeholder="Agregar etiqueta" />
-                    <button (click)="agregarTag()">Añadir</button>
+                    <button type="button" (click)="agregarTag()">Añadir</button>
                 </div>
                 <div class="tags-list">
                     <div
                         class="tag"
-                        *ngFor="let tag of tags"
+                        *ngFor="let tag of contenidoForm.value.tags"
                         (click)="eliminarTag(tag)">
                         {{ tag }}
                     </div>
@@ -77,7 +147,7 @@
         </div>
     </div>
     <div class="bottom-section">
-        <button (click)="validarDatos()">
+        <button type="button" (click)="validarDatos()">
             {{ isEditing ? 'Editar archivo' : 'Guardar archivo' }}
         </button>
     </div>

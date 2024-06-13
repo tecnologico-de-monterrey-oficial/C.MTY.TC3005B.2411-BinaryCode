@@ -5,6 +5,12 @@
     --negro: #070809;
 }
 
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
 .body {
     margin: 0;
     padding: 0;

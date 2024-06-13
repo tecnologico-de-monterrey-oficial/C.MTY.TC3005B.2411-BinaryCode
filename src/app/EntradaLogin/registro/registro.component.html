@@ -38,6 +38,19 @@
             placeholder="Introduce tu email"
             formControlName="email"
             type="email" />
+        <div
+            *ngIf="
+                registroForm.controls['email'].invalid &&
+                registroForm.controls['email'].touched
+            "
+            class="error-message">
+            <small *ngIf="registroForm.controls['email'].errors?.['required']"
+                >El email es requerido.</small
+            >
+            <small *ngIf="registroForm.controls['email'].errors?.['email']"
+                >Formato de email inválido.</small
+            >
+        </div>
     </div>
 
     <div class="campo">
@@ -45,29 +58,50 @@
         <div class="input-wrapper">
             <input
                 nz-input
-                type="password"
                 placeholder="Introduce tu contraseña"
                 formControlName="password"
-                [type]="hide ? 'password' : 'text'" />
+                [type]="hidePassword ? 'password' : 'text'" />
             <i
                 nz-icon
-                nzType="{{ hide ? 'eye-invisible' : 'eye' }}"
-                (click)="toggleHide()"></i>
+                nzType="{{ hidePassword ? 'eye-invisible' : 'eye' }}"
+                (click)="toggleHidePassword()"></i>
+        </div>
+        <div
+            *ngIf="
+                registroForm.controls['password'].invalid &&
+                registroForm.controls['password'].touched
+            "
+            class="error-message">
+            <small
+                *ngIf="registroForm.controls['password'].errors?.['required']"
+                >La contraseña es requerida.</small
+            >
+            <small
+                *ngIf="registroForm.controls['password'].errors?.['minlength']"
+                >La contraseña debe tener al menos 6 caracteres.</small
+            >
+            <small
+                *ngIf="registroForm.controls['password'].errors?.['maxlength']"
+                >La contraseña no puede exceder los 128 caracteres.</small
+            >
         </div>
     </div>
 
     <div class="campo">
-        <label for="password">Confirma tu contraseña:</label>
+        <label for="confirm_password">Confirma tu contraseña:</label>
         <div class="input-wrapper">
             <input
                 nz-input
-                type="password"
                 placeholder="Confirma tu contraseña"
-                [type]="hide ? 'password' : 'text'" />
+                formControlName="confirm_password"
+                [type]="hideConfirmPassword ? 'password' : 'text'" />
             <i
                 nz-icon
-                nzType="{{ hide ? 'eye-invisible' : 'eye' }}"
-                (click)="toggleHide()"></i>
+                nzType="{{ hideConfirmPassword ? 'eye-invisible' : 'eye' }}"
+                (click)="toggleHideConfirmPassword()"></i>
+        </div>
+        <div *ngIf="registroForm.errors?.['mismatch']" class="error-message">
+            <small>Las contraseñas no coinciden.</small>
         </div>
     </div>
 
@@ -78,6 +112,23 @@
             placeholder="Nombre"
             type="text"
             formControlName="first_name" />
+        <div
+            *ngIf="
+                registroForm.controls['first_name'].invalid &&
+                registroForm.controls['first_name'].touched
+            "
+            class="error-message">
+            <small
+                *ngIf="registroForm.controls['first_name'].errors?.['required']"
+                >El nombre es requerido.</small
+            >
+            <small
+                *ngIf="
+                    registroForm.controls['first_name'].errors?.['maxlength']
+                "
+                >El nombre no puede exceder los 40 caracteres.</small
+            >
+        </div>
     </div>
 
     <div class="campo">
@@ -87,6 +138,21 @@
             placeholder="Apellido"
             type="text"
             formControlName="last_name" />
+        <div
+            *ngIf="
+                registroForm.controls['last_name'].invalid &&
+                registroForm.controls['last_name'].touched
+            "
+            class="error-message">
+            <small
+                *ngIf="registroForm.controls['last_name'].errors?.['required']"
+                >El apellido es requerido.</small
+            >
+            <small
+                *ngIf="registroForm.controls['last_name'].errors?.['maxlength']"
+                >El apellido no puede exceder los 40 caracteres.</small
+            >
+        </div>
     </div>
 
     <p class="texto-color" *ngIf="!imagenSeleccionada">Selecciona el color</p>
@@ -101,5 +167,5 @@
             [style.background-color]="opcionColor"></div>
     </div>
 
-    <button type="submit">Registrarse</button>
+    <button type="submit" [disabled]="!registroForm.valid">Registrarse</button>
 </form>
