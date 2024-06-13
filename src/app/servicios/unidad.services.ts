@@ -40,4 +40,9 @@ export class UnidadesService {
         const url: string = `${this.baseUrl}${unidadId}/`;
         return this.http.delete<Unidad>(url);
     }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    crearCarpeta(carpetaData: any): Observable<any> {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        return this.http.post<any>(this.baseUrl, carpetaData);
+    }
 }

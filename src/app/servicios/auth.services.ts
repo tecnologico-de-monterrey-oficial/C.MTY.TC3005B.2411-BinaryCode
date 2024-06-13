@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap, map } from 'rxjs/operators';
 
 interface AuthResponse {
     access: string;
@@ -16,6 +16,7 @@ interface AuthResponse {
 export class AuthService {
     private apiUrl = 'http://127.0.0.1:8000/api/usuarios/login/';
     private registerUrl = 'http://127.0.0.1:8000/api/usuarios/';
+    private userUrl = 'http://127.0.0.1:8000/api/usuarios/me/'; // Nueva URL para obtener el usuario autenticado
     private authStatusListener = new BehaviorSubject<boolean>(
         this.isAuthenticated()
     );
@@ -27,7 +28,7 @@ export class AuthService {
 
     login(email: string, password: string): Observable<AuthResponse> {
         return this.http
-            .post<AuthResponse>(this.apiUrl, { email: email, password })
+            .post<AuthResponse>(this.apiUrl, { email, password })
             .pipe(
                 tap(response => {
                     localStorage.setItem('access_token', response.access);
@@ -35,6 +36,11 @@ export class AuthService {
                     this.authStatusListener.next(true);
                 })
             );
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    getUsuarioAutenticado(): Observable<any> {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        return this.http.get<any>(this.userUrl).pipe(map(user => user));
     }
 
     register(

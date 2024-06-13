@@ -1,4 +1,3 @@
-// crear-contenidos.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ArchivoCompartidoService } from '../../../../servicios/archivo-compartido.service';
 import {
@@ -9,6 +8,8 @@ import {
 import { Location } from '@angular/common';
 import { ArchivosService } from '../../../../servicios/archivo.services';
 import { EtiquetaArelacional } from '../../../../modelos/etiqueta.model';
+import { AuthService } from '../../../../servicios/auth.services';
+import { firstValueFrom } from 'rxjs'; // Importar firstValueFrom para convertir Observable en Promise
 
 @Component({
     selector: 'app-crear-contenidos',
@@ -35,7 +36,8 @@ export class CrearContenidosComponent implements OnInit {
     constructor(
         private archivoCompartidoService: ArchivoCompartidoService,
         private location: Location,
-        private archivosService: ArchivosService
+        private archivosService: ArchivosService,
+        private authService: AuthService // Inyectar el servicio de autenticación
     ) {
         const path: string = this.location.path();
         const segments: string[] = path.split('/');
@@ -51,8 +53,7 @@ export class CrearContenidosComponent implements OnInit {
                 if (archivo) {
                     this.nombreArchivo = archivo.nombre;
                     this.descripcion = archivo.descripcion;
-                    // Asume que archivo.etiquetas ya es de tipo EtiquetaArelacional[]
-                    this.etiquetas = archivo.etiquetas; // Asigna directamente si ya es el tipo correcto
+                    this.etiquetas = archivo.etiquetas;
                 } else {
                     this.resetForm();
                 }
@@ -91,19 +92,24 @@ export class CrearContenidosComponent implements OnInit {
         this.subirArchivo();
     }
 
-    subirArchivo(): void {
+    async subirArchivo(): Promise<void> {
         this.version.nombre = this.fileName;
         this.versionesLista.push(this.version);
+        // eslint-disable-next-line @typescript-eslint/typedef
+        const usuario = await firstValueFrom(
+            this.authService.getUsuarioAutenticado()
+        ); // Obtener el usuario autenticado como Promise
         const archivo: ArchivoPost = {
             nombre: this.nombreArchivo,
             descripcion: this.descripcion,
             fecha: this.formatDate(new Date()),
             terminacion: this.getFileExtension(this.fileName),
             id_apartado: this.unidadId,
-            id_usuario: 1,
+            id_usuario: usuario.id, // Asignar el ID del usuario autenticado
             etiquetas: this.etiquetas,
             versiones: this.versionesLista,
         };
+
         console.log('Datos válidos, subiendo archivo...');
         console.log(archivo);
         this.archivosService.postArchivo(archivo);
@@ -116,7 +122,7 @@ export class CrearContenidosComponent implements OnInit {
         const day: string = date.getDate().toString().padStart(2, '0');
         const month: string = (date.getMonth() + 1).toString().padStart(2, '0');
         const year: number = date.getFullYear();
-        return `${year}-${month}-${day}`; // Cambia el formato a YYYY-MM-DD
+        return `${year}-${month}-${day}`;
     }
 
     fileChanged(event: Event): void {
@@ -129,7 +135,6 @@ export class CrearContenidosComponent implements OnInit {
             const reader: FileReader = new FileReader();
             reader.onloadend = (): void => {
                 if (reader.readyState === FileReader.DONE) {
-                    // Verificar que la lectura esté completa
                     const base64: string = reader.result as string;
                     if (base64) {
                         this.filePreview = base64;
