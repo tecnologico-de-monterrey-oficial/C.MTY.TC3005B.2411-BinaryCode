@@ -9,7 +9,7 @@ import { Location } from '@angular/common';
 import { ArchivosService } from '../../../../servicios/archivo.services';
 import { EtiquetaArelacional } from '../../../../modelos/etiqueta.model';
 import { AuthService } from '../../../../servicios/auth.services';
-import { firstValueFrom } from 'rxjs'; // Importar firstValueFrom para convertir Observable en Promise
+import { firstValueFrom } from 'rxjs';
 
 @Component({
     selector: 'app-crear-contenidos',
