@@ -52,9 +52,13 @@ export class ArchivosService {
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const archivos: Archivo[] = await response.json();
-        console.log(archivos);
-        return archivos;
+        return await response.json();
+    }
+    //http://localhost:8000/api/versiones/3/download/1/
+    downloadFile(archivoId: string): Observable<Blob> {
+        // eslint-disable-next-line @typescript-eslint/typedef
+        const url = `http://localhost:8000/api/versiones/${archivoId}/download/1/`;
+        return this.http.get(url, { responseType: 'blob' });
     }
 
     setFavorito(idArchivo: string, favorito: boolean): void {

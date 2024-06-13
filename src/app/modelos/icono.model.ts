@@ -19,7 +19,7 @@ export type Icono = {
 
 export function getIcono(terminacion: string): Icono {
     const fileIcons: { [key: string]: Icono } = {
-        excel: { nombre: 'file-excel', color: icono_verde },
+        xlsx: { nombre: 'file-excel', color: icono_verde },
         jpg: { nombre: 'file-jpg', color: icono_morado },
         pdf: { nombre: 'file-pdf', color: icono_rojo },
         ppt: { nombre: 'file-ppt', color: icono_naranja },
