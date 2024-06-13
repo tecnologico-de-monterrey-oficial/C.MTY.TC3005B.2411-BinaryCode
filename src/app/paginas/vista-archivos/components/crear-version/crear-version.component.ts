@@ -1,24 +1,31 @@
-// crear-version.component.ts
-import { Component } from '@angular/core'; // OnInit
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NzModalRef } from 'ng-zorro-antd/modal';
 
 @Component({
     selector: 'app-crear-version',
     templateUrl: './crear-version.component.html',
     styleUrls: ['./crear-version.component.css'],
 })
-export class CrearVersionComponent {
-    //implements OnInit
+export class CrearVersionComponent implements OnInit {
     filePreview: string | ArrayBuffer | null = null;
     isImage: boolean = false;
     isDocument: boolean = false;
     isVideo: boolean = false;
     isOther: boolean = false;
     fileName: string = '';
-    versionName: string = '';
+    versionForm: FormGroup;
 
-    //constructor() {}
+    constructor(
+        private fb: FormBuilder,
+        private modalRef: NzModalRef
+    ) {}
 
-    //ngOnInit(): void {}
+    ngOnInit(): void {
+        this.versionForm = this.fb.group({
+            versionName: ['', [Validators.required, Validators.maxLength(15)]],
+        });
+    }
 
     fileChanged(event: Event): void {
         const input: HTMLInputElement = event.target as HTMLInputElement;
@@ -51,10 +58,13 @@ export class CrearVersionComponent {
     }
 
     agregarVersion(): void {
-        if (this.versionName.trim() === '') {
-            alert('Por favor ingresa un nombre para la versión.');
+        if (this.versionForm.invalid) {
+            alert('Por favor completa todos los campos.');
             return;
         }
-        console.log('Versión agregada:', this.versionName);
+
+        const versionName: string = this.versionForm.get('versionName')?.value;
+        console.log('Versión agregada:', versionName);
+        this.modalRef.close(); // Cierra el modal después de una operación exitosa
     }
 }

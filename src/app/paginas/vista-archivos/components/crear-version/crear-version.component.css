@@ -125,3 +125,8 @@ button:hover {
     color: var(--rojoLogin);
     border: 2px solid var(--rojoLogin);
 }
+
+.error {
+    color: red;
+    font-size: 12px;
+}
