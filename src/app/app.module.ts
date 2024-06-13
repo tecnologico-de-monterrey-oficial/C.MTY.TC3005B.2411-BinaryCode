@@ -57,6 +57,7 @@ enableRipple(true);
         CrearVersionComponent,
         EditarPerfilComponent,
         BusquedaAvanzadaComponent,
+        CrearCarpetaComponent,
     ],
     imports: [
         CommonModule,
