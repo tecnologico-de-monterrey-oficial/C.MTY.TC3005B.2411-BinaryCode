@@ -26,6 +26,8 @@
     align-items: center;
     flex-grow: 1;
     border-radius: 25px;
+    max-width: 600px; /* Ajusta el tamaño máximo según tu diseño */
+    width: 100%;
 }
 
 .boton-busqueda-avanzada {
