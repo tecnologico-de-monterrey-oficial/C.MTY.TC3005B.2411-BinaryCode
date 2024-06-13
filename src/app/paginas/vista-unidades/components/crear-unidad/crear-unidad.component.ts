@@ -127,9 +127,9 @@ export class CrearUnidadComponent implements OnInit {
                     .then(response => response.json())
                     .then(unidadData => {
                         console.log('Success:', unidadData);
-                        /*setTimeout(function () {
+                        setTimeout(function () {
                             location.reload();
-                        }, 500);*/
+                        }, 500);
                     })
                     .catch(error => {
                         console.error('Error:', error);

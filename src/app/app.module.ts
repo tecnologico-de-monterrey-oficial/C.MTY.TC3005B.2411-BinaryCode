@@ -51,6 +51,7 @@ enableRipple(true);
         AppComponent,
         EncabezadoComponent,
         CrearContenidosComponent,
+        CrearCarpetaComponent,
         ProyectoCrearComponent,
         CrearUnidadComponent,
         CrearVersionComponent,
