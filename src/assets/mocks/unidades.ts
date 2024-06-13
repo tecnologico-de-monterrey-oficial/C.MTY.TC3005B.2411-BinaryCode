@@ -17,6 +17,7 @@ export const UN1: Unidad = {
     color: unidad_roja,
     id_proyecto: 1,
     fecha: '',
+    id_padre: null,
 };
 /*
 export const UN2: Unidad = {
