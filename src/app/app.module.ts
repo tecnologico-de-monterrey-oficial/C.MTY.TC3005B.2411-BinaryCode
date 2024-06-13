@@ -26,6 +26,7 @@ import { ProyectoCrearComponent } from './paginas/vista-proyectos/components/pro
 import { CrearUnidadComponent } from './paginas/vista-unidades/components/crear-unidad/crear-unidad.component';
 import { CrearVersionComponent } from './paginas/vista-archivos/components/crear-version/crear-version.component';
 import { EditarPerfilComponent } from './components/encabezado/editar-perfil/editar-perfil.component';
+import { CrearCarpetaComponent } from './paginas/vista-archivos/components/crear-carpeta/crear-carpeta.component';
 import { BusquedaAvanzadaComponent } from './components/encabezado/busqueda-avanzada/busqueda-avanzada.component';
 import { EntradaLoginModule } from './EntradaLogin/entrada-login.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -40,7 +41,6 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 import { registerLocaleData } from '@angular/common';
 import es from '@angular/common/locales/es';
 import { NZ_I18N, es_ES } from 'ng-zorro-antd/i18n';
-import { CrearCarpetaComponent } from './paginas/vista-archivos/components/crear-carpeta/crear-carpeta.component';
 
 registerLocaleData(es);
 

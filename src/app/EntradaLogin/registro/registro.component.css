@@ -125,3 +125,8 @@ button:hover {
         height: 150px;
     }
 }
+
+.error {
+    color: red;
+    font-size: 12px;
+}

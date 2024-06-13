@@ -30,6 +30,22 @@
                     class="buscador"
                     placeholder="Nombre de la Unidad"
                     formControlName="nombreUnidad" />
+                <div
+                    *ngIf="
+                        unidadForm.get('nombreUnidad').invalid &&
+                        (unidadForm.get('nombreUnidad').dirty ||
+                            unidadForm.get('nombreUnidad').touched)
+                    "
+                    class="error">
+                    <div *ngIf="unidadForm.get('nombreUnidad').errors.required">
+                        El nombre de la unidad es obligatorio.
+                    </div>
+                    <div
+                        *ngIf="unidadForm.get('nombreUnidad').errors.maxlength">
+                        El nombre de la unidad no puede tener más de 20
+                        caracteres.
+                    </div>
+                </div>
             </div>
 
             <div>

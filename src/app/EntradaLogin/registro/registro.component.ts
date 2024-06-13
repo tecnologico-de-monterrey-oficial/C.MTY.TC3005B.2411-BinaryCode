@@ -1,5 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+    FormBuilder,
+    FormGroup,
+    Validators,
+    AbstractControl,
+} from '@angular/forms';
 import { AuthService } from '../../servicios/auth.services';
 import { Router } from '@angular/router';
 
@@ -56,7 +61,8 @@ export class RegistroComponent implements OnInit {
 
     colorSeleccionado: string;
     imagenSeleccionada: string | ArrayBuffer | null = null;
-    hide = true;
+    hidePassword = true;
+    hideConfirmPassword = true;
 
     constructor(
         private fb: FormBuilder,
@@ -68,17 +74,64 @@ export class RegistroComponent implements OnInit {
         this.colorSeleccionado =
             this.colores[Math.floor(Math.random() * this.colores.length)];
 
-        this.registroForm = this.fb.group({
-            first_name: ['', Validators.required],
-            last_name: ['', Validators.required],
-            color: [this.colorSeleccionado, Validators.required],
-            email: ['', [Validators.required, Validators.email]],
-            password: ['', [Validators.required, Validators.minLength(6)]],
-        });
+        this.registroForm = this.fb.group(
+            {
+                first_name: [
+                    '',
+                    [
+                        Validators.required,
+                        Validators.minLength(1),
+                        Validators.maxLength(25),
+                    ],
+                ],
+                last_name: [
+                    '',
+                    [
+                        Validators.required,
+                        Validators.minLength(1),
+                        Validators.maxLength(25),
+                    ],
+                ],
+                color: [this.colorSeleccionado, Validators.required],
+                email: ['', [Validators.required, Validators.email]],
+                password: [
+                    '',
+                    [
+                        Validators.required,
+                        Validators.minLength(6),
+                        Validators.maxLength(128),
+                    ],
+                ],
+                confirmPassword: ['', [Validators.required]],
+            },
+            { validator: this.passwordMatchValidator }
+        );
     }
 
-    toggleHide(): void {
-        this.hide = !this.hide;
+    passwordMatchValidator(
+        control: AbstractControl
+    ): { [key: string]: boolean } | null {
+        const password: AbstractControl | null = control.get('password');
+        const confirmPassword: AbstractControl | null =
+            control.get('confirmPassword');
+        if (
+            password &&
+            confirmPassword &&
+            password.value !== confirmPassword.value
+        ) {
+            confirmPassword.setErrors({ mismatch: true });
+            return { mismatch: true };
+        }
+        confirmPassword.setErrors(null);
+        return null;
+    }
+
+    toggleHidePassword(): void {
+        this.hidePassword = !this.hidePassword;
+    }
+
+    toggleHideConfirmPassword(): void {
+        this.hideConfirmPassword = !this.hideConfirmPassword;
     }
 
     seleccionarColor(color: string): void {
@@ -125,5 +178,21 @@ export class RegistroComponent implements OnInit {
         } else {
             console.log('Formulario no válido');
         }
+    }
+
+    get first_name(): AbstractControl | null {
+        return this.registroForm.get('first_name');
+    }
+    get last_name(): AbstractControl | null {
+        return this.registroForm.get('last_name');
+    }
+    get email(): AbstractControl | null {
+        return this.registroForm.get('email');
+    }
+    get password(): AbstractControl | null {
+        return this.registroForm.get('password');
+    }
+    get confirmPassword(): AbstractControl | null {
+        return this.registroForm.get('confirmPassword');
     }
 }

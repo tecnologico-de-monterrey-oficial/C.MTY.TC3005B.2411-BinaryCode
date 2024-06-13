@@ -9,7 +9,9 @@ import { Location } from '@angular/common';
 import { ArchivosService } from '../../../../servicios/archivo.services';
 import { EtiquetaArelacional } from '../../../../modelos/etiqueta.model';
 import { AuthService } from '../../../../servicios/auth.services';
-import { firstValueFrom } from 'rxjs'; // Importar firstValueFrom para convertir Observable en Promise
+import { Usuario } from '../../../../modelos/usuario.model'; // Asegúrate de que 'Usuario' está importado desde el archivo correcto
+import { NzModalRef } from 'ng-zorro-antd/modal';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
     selector: 'app-crear-contenidos',
@@ -33,11 +35,17 @@ export class CrearContenidosComponent implements OnInit {
     versionesLista: version[] = [];
     isEditing: boolean = false;
 
+    nombreArchivoError: string | null = null;
+    descripcionError: string | null = null;
+    nombreVersionError: string | null = null;
+    etiquetasError: string | null = null;
+
     constructor(
         private archivoCompartidoService: ArchivoCompartidoService,
         private location: Location,
         private archivosService: ArchivosService,
-        private authService: AuthService // Inyectar el servicio de autenticación
+        private authService: AuthService,
+        private modalRef: NzModalRef // Inyectar el servicio NzModalRef
     ) {
         const path: string = this.location.path();
         const segments: string[] = path.split('/');
@@ -78,34 +86,67 @@ export class CrearContenidosComponent implements OnInit {
         this.fileName = '';
         this.tagInput = '';
         this.etiquetas = [];
+        this.resetErrors();
+    }
+
+    resetErrors(): void {
+        this.nombreArchivoError = null;
+        this.descripcionError = null;
+        this.nombreVersionError = null;
+        this.etiquetasError = null;
     }
 
     validarDatos(): void {
-        if (
-            this.nombreArchivo.trim() === '' ||
-            this.descripcion.trim() === '' ||
-            this.nombreVersion.trim() === ''
-        ) {
-            alert('Por favor completa todos los campos.');
-            return;
+        this.resetErrors();
+
+        if (!this.nombreArchivo || this.nombreArchivo.trim().length === 0) {
+            this.nombreArchivoError = 'El nombre del archivo es obligatorio.';
+        } else if (this.nombreArchivo.trim().length > 32) {
+            this.nombreArchivoError =
+                'El nombre del archivo debe tener máximo 32 caracteres.';
         }
-        this.subirArchivo();
+
+        if (!this.descripcion || this.descripcion.trim().length === 0) {
+            this.descripcionError = 'La descripción es obligatoria.';
+        } else if (this.descripcion.trim().length > 150) {
+            this.descripcionError =
+                'La descripción debe tener máximo 150 caracteres.';
+        }
+
+        if (!this.nombreVersion || this.nombreVersion.trim().length === 0) {
+            this.nombreVersionError = 'El nombre de la versión es obligatorio.';
+        } else if (this.nombreVersion.trim().length > 15) {
+            this.nombreVersionError =
+                'El nombre de la versión debe tener máximo 15 caracteres.';
+        }
+
+        if (this.etiquetas.length > 5) {
+            this.etiquetasError = 'No puedes añadir más de 5 etiquetas.';
+        }
+
+        if (
+            !this.nombreArchivoError &&
+            !this.descripcionError &&
+            !this.nombreVersionError &&
+            !this.etiquetasError
+        ) {
+            this.subirArchivo();
+        }
     }
 
     async subirArchivo(): Promise<void> {
         this.version.nombre = this.fileName;
         this.versionesLista.push(this.version);
-        // eslint-disable-next-line @typescript-eslint/typedef
-        const usuario = await firstValueFrom(
+        const usuario: Usuario = await firstValueFrom(
             this.authService.getUsuarioAutenticado()
-        ); // Obtener el usuario autenticado como Promise
+        );
         const archivo: ArchivoPost = {
             nombre: this.nombreArchivo,
             descripcion: this.descripcion,
             fecha: this.formatDate(new Date()),
             terminacion: this.getFileExtension(this.fileName),
             id_apartado: this.unidadId,
-            id_usuario: usuario.id, // Asignar el ID del usuario autenticado
+            id_usuario: usuario.id,
             etiquetas: this.etiquetas,
             versiones: this.versionesLista,
         };
@@ -116,6 +157,10 @@ export class CrearContenidosComponent implements OnInit {
         this.versionesLista = this.versionesLista.filter(
             t => t !== this.version
         );
+        this.modalRef.close();
+        setTimeout(function () {
+            location.reload();
+        }, 750); // Cerrar el modal
     }
 
     formatDate(date: Date): string {
@@ -151,8 +196,9 @@ export class CrearContenidosComponent implements OnInit {
                     }
                 }
             };
-            // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-            reader.onerror = error => {
+            reader.onerror = (
+                error: ErrorEvent | ProgressEvent<FileReader>
+            ): void => {
                 console.error('Error al leer el archivo:', error);
             };
             reader.readAsDataURL(file);
@@ -172,21 +218,59 @@ export class CrearContenidosComponent implements OnInit {
 
     agregarTag(): void {
         if (this.tagInput.trim() !== '') {
-            const nuevaEtiqueta: EtiquetaArelacional = {
-                nombre: this.tagInput.trim(),
-                color: '#00304E',
-            };
-            this.etiquetas.push(nuevaEtiqueta);
-            this.tagInput = '';
+            if (this.etiquetas.length < 5) {
+                const nuevaEtiqueta: EtiquetaArelacional = {
+                    nombre: this.tagInput.trim(),
+                    color: '#00304E',
+                };
+                this.etiquetas.push(nuevaEtiqueta);
+                this.tagInput = '';
+            } else {
+                this.etiquetasError = 'No puedes añadir más de 5 etiquetas.';
+            }
         }
     }
 
     eliminarTag(etiqueta: EtiquetaArelacional): void {
         this.etiquetas = this.etiquetas.filter(t => t !== etiqueta);
+        this.etiquetasError = null;
     }
 
     getFileExtension(fileName: string): string {
         const parts: string[] = fileName.split('.');
         return parts.length > 1 ? parts.pop() || '' : '';
+    }
+
+    validateNombreArchivo(): void {
+        if (!this.nombreArchivo || this.nombreArchivo.trim().length === 0) {
+            this.nombreArchivoError = 'El nombre del archivo es obligatorio.';
+        } else if (this.nombreArchivo.trim().length > 32) {
+            this.nombreArchivoError =
+                'El nombre del archivo debe tener máximo 32 caracteres.';
+        } else {
+            this.nombreArchivoError = null;
+        }
+    }
+
+    validateDescripcion(): void {
+        if (!this.descripcion || this.descripcion.trim().length === 0) {
+            this.descripcionError = 'La descripción es obligatoria.';
+        } else if (this.descripcion.trim().length > 150) {
+            this.descripcionError =
+                'La descripción debe tener máximo 150 caracteres.';
+        } else {
+            this.descripcionError = null;
+        }
+    }
+
+    validateNombreVersion(): void {
+        if (!this.nombreVersion || this.nombreVersion.trim().length === 0) {
+            this.nombreVersionError = 'El nombre de la versión es obligatorio.';
+        } else if (this.nombreVersion.trim().length > 15) {
+            this.nombreVersionError =
+                'El nombre de la versión debe tener máximo 15 caracteres.';
+        } else {
+            this.nombreVersionError = null;
+        }
     }
 }

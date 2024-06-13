@@ -5,6 +5,7 @@ import { UnidadesService } from '../../../../servicios/unidad.services';
 import { firstValueFrom } from 'rxjs';
 import { catchError, throwError } from 'rxjs';
 import { Location } from '@angular/common';
+import { NzModalRef } from 'ng-zorro-antd/modal';
 import {
     tarjeta_amarillo,
     tarjeta_amarillo_claro,
@@ -25,6 +26,12 @@ import {
     tarjeta_verde_fuerte,
     tarjeta_verde_medio,
 } from '../../../../../assets/colores';
+
+interface Usuario {
+    id: string;
+    nombre: string;
+    // otras propiedades que tenga el usuario
+}
 
 @Component({
     selector: 'app-crear-carpeta',
@@ -61,7 +68,8 @@ export class CrearCarpetaComponent implements OnInit {
         private fb: FormBuilder,
         private authService: AuthService,
         private unidadesService: UnidadesService,
-        private location: Location
+        private location: Location,
+        private modalRef: NzModalRef
     ) {
         const path: string = this.location.path();
         const segments: string[] = path.split('/');
@@ -78,7 +86,10 @@ export class CrearCarpetaComponent implements OnInit {
 
     iniciarFormulario(): void {
         this.unidadForm = this.fb.group({
-            nombreCarpeta: ['', Validators.required],
+            nombreCarpeta: [
+                '',
+                [Validators.required, Validators.maxLength(20)],
+            ],
             color: [this.colores[0], Validators.required],
         });
         this.colorSeleccionado = this.colores[0];
@@ -91,12 +102,17 @@ export class CrearCarpetaComponent implements OnInit {
 
     async crearCarpeta(): Promise<void> {
         if (this.unidadForm.valid) {
-            // eslint-disable-next-line @typescript-eslint/typedef
-            const usuario = await firstValueFrom(
+            const usuario: Usuario = await firstValueFrom(
                 this.authService.getUsuarioAutenticado()
             );
-            // eslint-disable-next-line @typescript-eslint/typedef
-            const carpetaData = {
+            const carpetaData: {
+                nombre: string;
+                color: string;
+                id_usuario: string;
+                fecha: string;
+                id_padre: string | null;
+                id_proyecto: string | null;
+            } = {
                 nombre: this.unidadForm.get('nombreCarpeta').value,
                 color: this.unidadForm.get('color').value,
                 id_usuario: usuario.id,
@@ -104,12 +120,6 @@ export class CrearCarpetaComponent implements OnInit {
                 id_padre: this.id_padre,
                 id_proyecto: this.id_proyecto,
             };
-
-            // if (!this.id_proyecto || !this.id_padre) {
-            //     console.error('No se pudieron obtener los IDs de la ruta.');
-            //     alert('Error al obtener los IDs de la ruta.');
-            //     return;
-            // }
 
             console.log('Datos de la carpeta a enviar:', carpetaData);
 
@@ -123,7 +133,10 @@ export class CrearCarpetaComponent implements OnInit {
                 )
                 .subscribe(response => {
                     console.log('Carpeta creada con éxito:', response);
-                    // Aquí puedes añadir lógica adicional, como redireccionar o mostrar un mensaje
+                    this.modalRef.close();
+                    setTimeout(function () {
+                        location.reload();
+                    }, 500); // Cierra el modal después de una creación exitosa
                 });
         } else {
             console.log(this.unidadForm.value);

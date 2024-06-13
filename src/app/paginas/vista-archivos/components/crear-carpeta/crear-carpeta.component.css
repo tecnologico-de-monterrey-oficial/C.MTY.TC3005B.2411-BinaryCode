@@ -59,3 +59,9 @@ button:hover {
     color: var(--rojoLogin);
     border: 2px solid var(--rojoLogin);
 }
+
+.alerta-error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}

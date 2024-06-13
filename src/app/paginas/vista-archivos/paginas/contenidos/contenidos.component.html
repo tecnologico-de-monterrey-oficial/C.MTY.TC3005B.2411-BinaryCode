@@ -1,6 +1,12 @@
-<app-lista-archivos
-    [archivos]="archivos"
-    [carpetas]="carpetas"></app-lista-archivos>
+<!-- contenidos.component.html -->
+<nz-breadcrumb>
+    <nz-breadcrumb-item>Proyectos</nz-breadcrumb-item>
+    <nz-breadcrumb-item>Unidades</nz-breadcrumb-item>
+    <nz-breadcrumb-item>Contenidos</nz-breadcrumb-item>
+</nz-breadcrumb>
+
+<app-lista-archivos [archivos]="archivos" [carpetas]="carpetas">
+</app-lista-archivos>
 
 <div>
     <a

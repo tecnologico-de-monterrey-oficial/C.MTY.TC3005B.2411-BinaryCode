@@ -38,6 +38,14 @@
             placeholder="Introduce tu email"
             formControlName="email"
             type="email" />
+        <div
+            *ngIf="email.invalid && (email.dirty || email.touched)"
+            class="error">
+            <div *ngIf="email.errors?.required">El email es obligatorio.</div>
+            <div *ngIf="email.errors?.email">
+                Debe ser un correo electrónico válido.
+            </div>
+        </div>
     </div>
 
     <div class="campo">
@@ -45,29 +53,54 @@
         <div class="input-wrapper">
             <input
                 nz-input
-                type="password"
                 placeholder="Introduce tu contraseña"
                 formControlName="password"
-                [type]="hide ? 'password' : 'text'" />
+                [type]="hidePassword ? 'password' : 'text'" />
             <i
                 nz-icon
-                nzType="{{ hide ? 'eye-invisible' : 'eye' }}"
-                (click)="toggleHide()"></i>
+                nzType="{{ hidePassword ? 'eye-invisible' : 'eye' }}"
+                (click)="toggleHidePassword()"></i>
+        </div>
+        <div
+            *ngIf="password.invalid && (password.dirty || password.touched)"
+            class="error">
+            <div *ngIf="password.errors?.required">
+                La contraseña es obligatoria.
+            </div>
+            <div *ngIf="password.errors?.minlength">
+                La contraseña debe tener al menos 6 caracteres.
+            </div>
+            <div *ngIf="password.errors?.maxlength">
+                La contraseña no puede exceder los 128 caracteres.
+            </div>
         </div>
     </div>
 
     <div class="campo">
-        <label for="password">Confirma tu contraseña:</label>
+        <label for="confirmPassword">Confirma tu contraseña:</label>
         <div class="input-wrapper">
             <input
                 nz-input
-                type="password"
                 placeholder="Confirma tu contraseña"
-                [type]="hide ? 'password' : 'text'" />
+                formControlName="confirmPassword"
+                [type]="hideConfirmPassword ? 'password' : 'text'" />
             <i
                 nz-icon
-                nzType="{{ hide ? 'eye-invisible' : 'eye' }}"
-                (click)="toggleHide()"></i>
+                nzType="{{ hideConfirmPassword ? 'eye-invisible' : 'eye' }}"
+                (click)="toggleHideConfirmPassword()"></i>
+        </div>
+        <div
+            *ngIf="
+                confirmPassword.invalid &&
+                (confirmPassword.dirty || confirmPassword.touched)
+            "
+            class="error">
+            <div *ngIf="confirmPassword.errors?.required">
+                Confirmar la contraseña es obligatorio.
+            </div>
+            <div *ngIf="confirmPassword.errors?.mismatch">
+                Las contraseñas deben coincidir.
+            </div>
         </div>
     </div>
 
@@ -78,6 +111,21 @@
             placeholder="Nombre"
             type="text"
             formControlName="first_name" />
+        <div
+            *ngIf="
+                first_name.invalid && (first_name.dirty || first_name.touched)
+            "
+            class="error">
+            <div *ngIf="first_name.errors?.required">
+                El nombre es obligatorio.
+            </div>
+            <div *ngIf="first_name.errors?.minlength">
+                El nombre debe tener al menos 1 caracter.
+            </div>
+            <div *ngIf="first_name.errors?.maxlength">
+                El nombre no puede exceder los 25 caracteres.
+            </div>
+        </div>
     </div>
 
     <div class="campo">
@@ -87,6 +135,19 @@
             placeholder="Apellido"
             type="text"
             formControlName="last_name" />
+        <div
+            *ngIf="last_name.invalid && (last_name.dirty || last_name.touched)"
+            class="error">
+            <div *ngIf="last_name.errors?.required">
+                El apellido es obligatorio.
+            </div>
+            <div *ngIf="last_name.errors?.minlength">
+                El apellido debe tener al menos 1 caracter.
+            </div>
+            <div *ngIf="last_name.errors?.maxlength">
+                El apellido no puede exceder los 25 caracteres.
+            </div>
+        </div>
     </div>
 
     <p class="texto-color" *ngIf="!imagenSeleccionada">Selecciona el color</p>
