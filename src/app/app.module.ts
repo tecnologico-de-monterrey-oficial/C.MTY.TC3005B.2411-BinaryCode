@@ -28,6 +28,7 @@ import { CrearVersionComponent } from './paginas/vista-archivos/components/crear
 import { EditarPerfilComponent } from './components/encabezado/editar-perfil/editar-perfil.component';
 import { CrearCarpetaComponent } from './paginas/vista-archivos/components/crear-carpeta/crear-carpeta.component';
 import { BusquedaAvanzadaComponent } from './components/encabezado/busqueda-avanzada/busqueda-avanzada.component';
+import { PermisosComponent } from './paginas/vista-permisos-carlos/permisos.component';
 import { EntradaLoginModule } from './EntradaLogin/entrada-login.module';
 import { AppRoutingModule } from './app-routing.module';
 import { VistaProyectosModule } from './paginas/vista-proyectos/vista-proyectos.module';
@@ -36,6 +37,7 @@ import { VistaPersonasModule } from './paginas/vista-personas/vista-persona.modu
 import { VistaUnidadesModule } from './paginas/vista-unidades/vista-unidades.module';
 import { VistaPermisosModule } from './paginas/vista-permisos/vista-permisos.module';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { PermisosFilaComponent } from './paginas/vista-permisos-carlos/permisos-fila/permisos-fila.component';
 
 // Imports idioma
 import { registerLocaleData } from '@angular/common';
@@ -57,6 +59,8 @@ enableRipple(true);
         EditarPerfilComponent,
         BusquedaAvanzadaComponent,
         CrearCarpetaComponent,
+        PermisosComponent,
+        PermisosFilaComponent,
     ],
     imports: [
         CommonModule,

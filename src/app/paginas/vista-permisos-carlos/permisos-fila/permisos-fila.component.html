@@ -1,0 +1,29 @@
+<div nz-row class="file-card">
+    <!-- Icono de usuario y nombre -->
+    <div nz-col nzFlex="6" class="grupo-columna">
+        <div class="usuario-container">
+            <ng-container *ngIf="usuario?.imagen; else icono">
+                <img
+                    class="usuario-imagen"
+                    [src]="usuario.imagen"
+                    alt="Imagen de usuario" />
+            </ng-container>
+
+            <ng-template #icono>
+                <div class="usuario-icono-container">
+                    <span class="usuario-icono" nz-icon nzType="user"></span>
+                </div>
+            </ng-template>
+        </div>
+
+        <div class="texto">{{ usuario?.nombre }}</div>
+    </div>
+
+    <!-- Checkbox -->
+    <div nz-col nzFlex="6" class="columna-checkbox">
+        <label class="container">
+            <input type="checkbox" [(ngModel)]="checkboxValue" />
+            <div class="checkmark"></div>
+        </label>
+    </div>
+</div>

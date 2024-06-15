@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { NzModalService } from 'ng-zorro-antd/modal';
-import { ModalDataService } from './modal-data.service';
+import { NzModalService, NzModalRef } from 'ng-zorro-antd/modal';
 import { ProyectoCrearComponent } from '../paginas/vista-proyectos/components/proyecto-crear/proyecto-crear.component';
 import { Proyecto } from '../modelos/proyectos.model';
-import { NzModalRef } from 'ng-zorro-antd/modal';
 import { Unidad } from '../modelos/unidad.model';
 import { CrearUnidadComponent } from '../paginas/vista-unidades/components/crear-unidad/crear-unidad.component';
+import { PermisosComponent } from '../paginas/vista-permisos-carlos/permisos.component';
+import { PermisosRango } from './permisos.service';
 
 @Injectable({
     providedIn: 'root',
@@ -13,11 +13,10 @@ import { CrearUnidadComponent } from '../paginas/vista-unidades/components/crear
 export class ModalService {
     constructor(
         private modalService: NzModalService,
-        private modalDataService: ModalDataService
+        private permisosRango: PermisosRango
     ) {}
 
     openProyectoModal(data?: Proyecto): void {
-        this.modalDataService.setProyectoData(data);
         const modalRef: NzModalRef = this.modalService.create({
             nzTitle: data ? 'Editar Proyecto' : 'Crear Proyecto',
             nzContent: ProyectoCrearComponent,
@@ -26,11 +25,11 @@ export class ModalService {
         });
 
         modalRef.afterClose.subscribe(() => {
-            this.modalDataService.clearData();
+            this.permisosRango.clearData();
         });
     }
+
     openUnidadModal(data?: Unidad): void {
-        this.modalDataService.setUnidadData(data);
         const modalRef: NzModalRef = this.modalService.create({
             nzTitle: data ? 'Editar Unidad' : 'Crear Unidad',
             nzContent: CrearUnidadComponent,
@@ -38,7 +37,20 @@ export class ModalService {
             nzWidth: '80%',
         });
         modalRef.afterClose.subscribe(() => {
-            this.modalDataService.clearData();
+            this.permisosRango.clearData();
+        });
+    }
+
+    openPermisosModal(titulo: string): void {
+        this.permisosRango.changeTitulo(titulo);
+        const modalRef: NzModalRef = this.modalService.create({
+            nzTitle: 'Permisos',
+            nzContent: PermisosComponent,
+            nzFooter: null,
+        });
+
+        modalRef.afterClose.subscribe(() => {
+            this.permisosRango.clearData();
         });
     }
 }
