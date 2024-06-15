@@ -5,7 +5,7 @@ import { ModalService } from '../../../../servicios/modal.service';
 @Component({
     selector: 'app-unidad',
     templateUrl: './unidad-tarjeta.component.html',
-    styleUrl: './unidad-tarjeta.component.css',
+    styleUrls: ['./unidad-tarjeta.component.css'],
 })
 export class UnidadTarjetaComponent {
     @Input() unidad: Unidad;
@@ -18,6 +18,7 @@ export class UnidadTarjetaComponent {
     handleImageError(): void {
         this.showPlaceholder = true;
     }
+
     editarUnidad(): void {
         this.modalService.openUnidadModal(this.unidad);
     }
@@ -36,5 +37,10 @@ export class UnidadTarjetaComponent {
 
     handleCancel(): void {
         this.isVisible = false;
+    }
+
+    openPermisosModal(): void {
+        console.log('openPermisosModal called with title: Coordinadores');
+        this.modalService.openPermisosModal('Coordinadores');
     }
 }

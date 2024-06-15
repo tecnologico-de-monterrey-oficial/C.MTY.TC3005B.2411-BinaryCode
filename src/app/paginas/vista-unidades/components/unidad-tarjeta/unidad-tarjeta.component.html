@@ -13,9 +13,9 @@
             nzNotFoundImage="simple"
             *ngIf="showPlaceholder"
             [nzNotFoundContent]="contentTpl">
-            <ng-template #contentTpl
-                >Hubo un problema cargando la imagen</ng-template
-            >
+            <ng-template #contentTpl>
+                Hubo un problema cargando la imagen
+            </ng-template>
         </nz-empty>
     </a>
     <div class="options-button">
@@ -32,14 +32,7 @@
                     <span class="icono-opcion" nz-icon nzType="edit"></span>
                     Editar
                 </li>
-                <li nz-menu-item>
-                    <span
-                        class="icono-opcion"
-                        nz-icon
-                        nzType="folder-open"></span>
-                    Archivar
-                </li>
-                <li nz-menu-item>
+                <li nz-menu-item (click)="openPermisosModal()">
                     <span class="icono-opcion" nz-icon nzType="unlock"></span>
                     Permisos
                 </li>

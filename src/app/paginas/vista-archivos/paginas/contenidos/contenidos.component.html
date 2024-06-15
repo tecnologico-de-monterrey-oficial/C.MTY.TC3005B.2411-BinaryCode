@@ -1,4 +1,3 @@
-<!-- contenidos.component.html -->
 <nz-breadcrumb>
     <nz-breadcrumb-item>Proyectos</nz-breadcrumb-item>
     <nz-breadcrumb-item>Unidades</nz-breadcrumb-item>
@@ -25,6 +24,10 @@
             <li nz-menu-item (click)="abrirModalCrearCarpeta()">
                 <span nz-icon nzType="folder-add" class="icono-opcion"></span>
                 Crear Carpeta
+            </li>
+            <li nz-menu-item (click)="abrirModalPermisosEditor()">
+                <span nz-icon nzType="unlock" class="icono-opcion"></span>
+                Permisos
             </li>
         </ul>
     </nz-dropdown-menu>

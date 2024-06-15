@@ -1,0 +1,146 @@
+.file-card {
+    width: 100%;
+    border-top: 1px solid var(--bordes);
+    padding: 10px;
+}
+
+.detalles {
+    color: var(--negro);
+}
+
+.ant-col {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.columna-icono {
+    justify-content: center;
+    padding: 0;
+}
+
+.columna-checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.texto {
+    padding-left: 15px;
+}
+
+.usuario-container {
+    max-width: 100%;
+    max-height: 100%;
+    align-items: center;
+}
+
+.usuario-imagen {
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.usuario-icono-container {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid var(--negro);
+    background-color: var(--celeste);
+}
+
+.usuario-icono {
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+.icono-opcion {
+    margin-right: 8px;
+}
+
+.container {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 20px;
+    user-select: none;
+}
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 2.3em;
+    width: 2.3em;
+    background-color: #ccc;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+.checkmark:hover {
+    box-shadow:
+        inset 17px 17px 16px #b3b3b3,
+        inset -17px -17px 16px #ffffff;
+}
+
+.container input:checked ~ .checkmark {
+    box-shadow: none;
+    background-color: limegreen;
+    transform: rotateX(360deg);
+}
+
+.container input:checked ~ .checkmark:hover {
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.checkmark:after {
+    content: '';
+    position: absolute;
+    display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.container .checkmark:after {
+    left: 0.96em;
+    top: 0.7em;
+    width: 0.25em;
+    height: 0.5em;
+    border: solid white;
+    border-width: 0 0.15em 0.15em 0;
+    box-shadow: 0.1em 0.1em 0em 0 rgba(0, 0, 0, 0.3);
+    transform: rotate(45deg);
+}
+
+@media (max-width: 1048px) {
+    .hide-on-small-1 {
+        display: none;
+    }
+}
+
+@media (max-width: 820px) {
+    .hide-on-small-2 {
+        display: none;
+    }
+}
+
+@media (max-width: 540px) {
+    .hide-on-small-3 {
+        display: none;
+    }
+}

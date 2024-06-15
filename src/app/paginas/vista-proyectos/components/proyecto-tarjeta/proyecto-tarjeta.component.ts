@@ -35,4 +35,8 @@ export class ProyectoTarjetaComponent {
     editarProyecto(): void {
         this.modalService.openProyectoModal(this.proyecto);
     }
+
+    openPermisos(): void {
+        this.modalService.openPermisosModal('Líderes');
+    }
 }
