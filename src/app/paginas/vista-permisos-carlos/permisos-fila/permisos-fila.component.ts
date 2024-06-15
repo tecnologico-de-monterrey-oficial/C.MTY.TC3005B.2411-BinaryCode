@@ -8,4 +8,5 @@ import { Usuario } from '../../../modelos/usuario.model';
 })
 export class PermisosFilaComponent {
     @Input() usuario: Usuario;
+    checkboxValue: boolean = false;
 }
